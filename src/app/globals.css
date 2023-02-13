@@ -6,12 +6,12 @@
   body {
     @apply min-h-screen font-sans text-lg text-neutral-600;
 
-    display: grid;
+    /* display: grid;
     grid-template-columns: min-content [stack] 1fr;
 
     & > :is(aside, div) {
       grid-area: stack;
-    }
+    } */
   }
 
   h1 {
