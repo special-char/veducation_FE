@@ -11,12 +11,12 @@ module.exports = {
     colors: {
       transparent: "transparent",
       primary: "#FF7136",
-      primary1: "#FFE6C3",
+      primary2: "#FF7034",
+      primary3: "#FFE6C3",
+      primary4: "#A99376",
       bacnground: "#FFEDD7",
-      secondary1: "#544241",
-      secondary2: "#FCDF69",
-      secondary3: "#F99D77",
-      secondary4: "#7EB7FB",
+      bacnground2: "#1E1E1E",
+      secondary: "#544241",
       error: "#ff9494",
       neutral: {
         100: "#FFFFFF",
