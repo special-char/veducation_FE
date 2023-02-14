@@ -1,0 +1,7 @@
+.reviews{
+    @apply flex items-center;
+
+    & > svg{
+        @apply fill-orange
+    }
+}

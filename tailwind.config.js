@@ -31,6 +31,10 @@ module.exports = {
         800: "#23262F",
         900: "#222222",
       },
+      slate: {
+        100: "#F1DEC7",
+      },
+      orange: "#FF9900",
     },
     screens: {
       xs: "320px",
