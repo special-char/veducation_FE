@@ -213,7 +213,7 @@
   }
 
   .btn {
-    @apply inline-block rounded-full py-6 px-10 text-center text-base font-bold uppercase tracking-[0.08em];
+    @apply rounded-md py-3 px-10 text-center text-base font-bold uppercase tracking-[0.08em];
     transition: transform 300ms ease, background-color 300ms ease;
     transform-style: preserve-3d;
 
@@ -233,6 +233,10 @@
       @apply bg-neutral-800 text-neutral-100;
     }
 
+    &--primary3 {
+      @apply bg-primary3 text-background2;
+    }
+
     &--secondary {
       @apply bg-neutral-300 text-neutral-700;
     }
@@ -241,7 +245,11 @@
       @apply bg-neutral-400 text-neutral-700;
     }
 
-    &--white {
+    &--secondary2 {
+      @apply bg-primary3 text-background2;
+    }
+
+    /* &--white {
       @apply bg-neutral-100 text-neutral-800;
     }
 
@@ -250,14 +258,17 @@
       & > svg {
         @apply fill-neutral-100;
       }
-    }
+    } */
 
     &--small {
-      @apply py-4 px-6 text-base;
+      @apply py-3 w-1/2 text-base;
     }
 
     &--large {
-      @apply py-6 px-[68px] text-xxl;
+      @apply py-3 w-full;
+    }
+    &--count {
+      @apply py-1 px-3;
     }
   }
 
