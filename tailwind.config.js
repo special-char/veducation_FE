@@ -40,8 +40,7 @@ module.exports = {
       xl: "1440px",
     },
     fontFamily: {
-      sans: ["var(--font-kumbh)", ...fontFamily.sans],
-      serif: ["var(--font-newsreader)", ...fontFamily.serif],
+      sans: ["var(--font-SF-Display)", ...fontFamily.sans],
       cursive: ["var(--font-block)", "cursive"],
     },
     fontSize: {
