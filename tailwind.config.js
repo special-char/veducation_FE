@@ -2,25 +2,34 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/app/**/*.{js,ts,jsx,tsx}", "./src/ui/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/app/**/*.{js,ts,jsx,tsx}",
+    "./src/ui/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     colors: {
       transparent: "transparent",
-      primary: "#064EA4",
-      secondary1: "#E1EDFB",
-      secondary2: "#FCDF69",
-      secondary3: "#F99D77",
-      secondary4: "#7EB7FB",
+      primary: "#FF7136",
+      primary2: "#FF7034",
+      primary3: "#FFE6C3",
+      primary4: "#A99376",
+      background: "#FFEDD7",
+      background2: "#1E1E1E",
+      secondary: "#544241",
+      notification: "#ED4949",
       error: "#ff9494",
       neutral: {
         100: "#FFFFFF",
-        200: "#F9FAFB",
-        300: "#E7EAEE",
-        400: "#BECAD7",
-        500: "#8096B0",
-        600: "#62778F",
+        200: "#585858",
+        300: "#3A3A3A",
+        400: "#23262F",
+        500: "#EED9BC",
+        550: "#ffedd7",
+        600: "#A99376",
         700: "#1E3D60",
-        800: "#0F437F",
+        800: "#23262F",
+        900: "#222222",
       },
     },
     screens: {
@@ -31,8 +40,7 @@ module.exports = {
       xl: "1440px",
     },
     fontFamily: {
-      sans: ["var(--font-kumbh)", ...fontFamily.sans],
-      serif: ["var(--font-newsreader)", ...fontFamily.serif],
+      sans: ["var(--font-SF-Display)", ...fontFamily.sans],
       cursive: ["var(--font-block)", "cursive"],
     },
     fontSize: {
@@ -115,7 +123,7 @@ module.exports = {
     },
   },
   plugins: [
-    require("`@tailwindcss/typography`"),
+    require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
   ],
 };
