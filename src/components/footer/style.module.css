@@ -1,3 +1,7 @@
-.footer{
-    
+.footer {
+  display: flex;
+
+  &__item {
+    flex: 1;
+  }
 }

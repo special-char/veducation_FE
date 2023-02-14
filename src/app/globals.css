@@ -15,11 +15,11 @@
   }
 
   h1 {
-    @apply mb-6 font-serif text-5xl font-semibold text-neutral-800 sm:text-7xl md:text-8xl lg:text-9xl;
+    @apply mb-6  text-5xl font-semibold text-neutral-800 sm:text-7xl md:text-8xl lg:text-9xl;
   }
 
   h2 {
-    @apply mb-4 font-serif text-3xl font-semibold text-neutral-800 md:text-6xl;
+    @apply mb-4  text-3xl font-semibold text-neutral-800 md:text-6xl;
   }
 
   h3 {
