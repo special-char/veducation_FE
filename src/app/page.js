@@ -1,9 +1,11 @@
-import Input from "@/components/InputComponent";
+// import Input from "@/components/InputComponent";
+import Reviews from "@/components/Reviews";
 
 export default function Home() {
   return (
     <div>
-      <Input
+      <h1>Hello</h1>
+      {/* <Input
         label={"FIRST NAME"}
         placeholder={"Name"}
         type={"text"}
@@ -65,7 +67,11 @@ export default function Home() {
         type={"text"}
         id="Ordernote"
         required
-      />
+      /> */}
+
+      {/* <Reviews rate={4} count={96} />
+      <Reviews rate={3} count={110} />
+      <Reviews rate={3.5} count={110} /> */}
     </div>
   );
 }

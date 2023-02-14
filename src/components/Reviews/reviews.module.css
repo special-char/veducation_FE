@@ -1,0 +1,11 @@
+.reviews {
+  @apply flex items-center;
+
+  & > svg {
+    @apply fill-orange;
+  }
+
+  &__count {
+    @apply text-neutral-100;
+  }
+}
