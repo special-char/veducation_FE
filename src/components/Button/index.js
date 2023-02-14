@@ -8,7 +8,6 @@ const Button = ({ ...props }) => {
         "btn--primary": props.variant === "primary",
         "btn--primary3": props.variant === "primary2",
         //"btn--secondary": props.variant === "secondary",
-        // "btn--secondary2": props.variant === "count",
         "btn--small": props.size === "small",
         "btn--large": props.size === "large",
         "btn--count": props.size === "count",
