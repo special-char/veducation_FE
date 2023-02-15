@@ -1,14 +1,22 @@
 .footer {
-  color: #585858;
   position: absolute;
   bottom: 0;
+
+  min-height: 85px;
   width: 100%;
-  min-height: auto;
+
   display: flex;
-  flex-grow: 1;
+  justify-content: space-around;
+  align-items: center;
+
   background-color: #f4dfc4;
 
-  &__item {
-    @apply flex-grow;
-  }
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 120%;
+}
+.span1 {
+  margin-bottom: 3px;
 }
