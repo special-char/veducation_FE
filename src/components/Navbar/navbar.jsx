@@ -38,7 +38,7 @@ const data = [
 
 const Navbar = () => {
   return (
-    <div className="flex flex-1 justify-evenly gap-3 ">
+    <div className="flex flex-1 justify-evenly gap-3 sticky bottom-0">
       {data.map((val) => {
         const Svg = () => val.svg;
         return (
