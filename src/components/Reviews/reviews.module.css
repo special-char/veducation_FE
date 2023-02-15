@@ -2,7 +2,7 @@
   @apply flex items-center;
 
   & > svg {
-    @apply fill-orange;
+    @apply fill-primary2;
   }
 
   &__count {
