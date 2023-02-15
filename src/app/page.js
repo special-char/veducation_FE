@@ -1,10 +1,10 @@
 // import Input from "@/components/InputComponent";
+import Header from "@/components/Header";
 import Reviews from "@/components/Reviews";
 
 export default function Home() {
   return (
     <div>
-      <h1>Hello</h1>
       {/* <Input
         label={"FIRST NAME"}
         placeholder={"Name"}

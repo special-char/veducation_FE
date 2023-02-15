@@ -1,0 +1,10 @@
+.headerRoot{
+  @apply bg-background p-2 flex justify-between;
+
+  &__title{
+    @apply flex flex-row items-center gap-1;
+  }
+  &__rightIcon{
+    @apply flex flex-row gap-4 items-center
+  }
+}

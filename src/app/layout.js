@@ -1,6 +1,8 @@
 import "./globals.css";
 import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
+import Header from "@/components/Header";
+import ProductContextProvider from "@/context/ProductContext";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -26,7 +28,13 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+
+      <body>
+        <ProductContextProvider>
+          <Header />
+          <main>{children}</main>
+        </ProductContextProvider>
+      </body>
     </html>
   );
 }
