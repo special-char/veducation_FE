@@ -1,7 +1,14 @@
 .footer {
+  color: #585858;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: auto;
   display: flex;
+  flex-grow: 1;
+  background-color: #f4dfc4;
 
   &__item {
-    flex: 1;
+    @apply flex-grow;
   }
 }

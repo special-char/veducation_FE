@@ -5,5 +5,5 @@
   @apply text-xs font-bold text-primary4;
 }
 .inbox {
-  @apply p-2 border-[2.5px] rounded-lg text-xs font-medium font-serif bg-neutral-550 border-neutral-600 w-full placeholder-background2;
+  @apply p-2 border-[2.5px] rounded-lg text-xs font-medium  bg-neutral-550 border-neutral-600 w-full placeholder-background2;
 }
