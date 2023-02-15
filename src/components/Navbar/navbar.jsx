@@ -8,7 +8,7 @@ import Group from "public/icons/group.svg";
 import Menubar from "public/icons/menubar.svg";
 import Yoddha from "public/icons/yoddha.svg";
 
-const Data = [
+const data = [
   {
     id: 1,
     svg: <Home />,
@@ -38,11 +38,14 @@ const Data = [
 
 const Navbar = () => {
   return (
-    <div className="flex items-center  justify-center px-container gap-6 bg-primary3">
-      {Data.map((val) => {
+    <div className="flex flex-1 justify-evenly gap-3 ">
+      {data.map((val) => {
+        const Svg = () => val.svg;
         return (
-          <div key={val.id} className="py-3 flex flex-col items-center gap-4  ">
-            <div className="w-5">{val.svg}</div>
+          <div key={val.id} className="flex max-w-[50px] flex-col items-center">
+            <div className="w-5  pb-3">
+              <Svg />
+            </div>
             <div className="text-xs text-center">{val.desc}</div>
           </div>
         );

@@ -1,12 +1,14 @@
 // import Input from "@/components/InputComponent";
 import Navbar from "@/components/Navbar/navbar";
+import ProductItem from "@/components/productItem";
 import Reviews from "@/components/Reviews";
 import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   return (
-    <div>
+    <section>
+      <div className="h-screen">ProductItem</div>
       <Navbar />
-    </div>
+    </section>
   );
 }
