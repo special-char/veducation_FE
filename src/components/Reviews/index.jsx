@@ -21,7 +21,7 @@ const Reviews = ({ rate, count }) => {
         }
         return <Star key={i} width={24} height={24} className={styles.__svg} />;
       })}
-      <p className="mb-0 ">{`(${count})`}</p>
+      <p className="reviews__count">{`(${count})`}</p>
     </div>
   );
 };
