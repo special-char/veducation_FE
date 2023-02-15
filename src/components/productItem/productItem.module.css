@@ -1,5 +1,5 @@
 .productItem {
-  @apply flex flex-col gap-3 bg-transparent border border-neutral-850 py-3;
+  @apply flex flex-col gap-3 bg-transparent  py-3 border border-neutral-250 rounded-md;
 
   &__image {
     @apply relative aspect-image mx-6 bg-primary;
