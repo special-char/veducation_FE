@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import clsx from "classnames";
 import React from "react";
 
 const Button = ({ as: Tag, variant, size, isRound, className, ...rest }) => {
