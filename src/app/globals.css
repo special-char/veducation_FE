@@ -213,7 +213,7 @@
   }
 
   .btn {
-    @apply rounded-md py-3 px-10 text-center text-base font-bold uppercase tracking-[0.08em];
+    @apply rounded-md py-3 px-2 text-center text-base font-bold uppercase tracking-[0.08em];
     transition: transform 300ms ease, background-color 300ms ease;
     transform-style: preserve-3d;
 
@@ -226,12 +226,12 @@
     }
 
     &--primary {
-      @apply bg-primary text-neutral-100;
+      @apply bg-primary text-white;
     }
 
-    &--primary:hover {
-      @apply bg-neutral-800 text-neutral-100;
-    }
+    /* &--primary:hover {
+      @apply bg-primary2 text-neutral-100;
+    } */
 
     &--primary3 {
       @apply bg-primary3 text-background2;

@@ -1,22 +1,21 @@
 import clsx from "clsx";
 import React from "react";
 
-const Button = ({ ...props }) => {
+const Button = ({ as: Tag, variant, size, isRound, className, ...rest }) => {
   return (
-    <button
+    <Tag
       className={clsx("btn", {
-        "btn--primary": props.variant === "primary",
-        "btn--primary3": props.variant === "primary2",
-        //"btn--secondary": props.variant === "secondary",
-        "btn--small": props.size === "small",
-        "btn--large": props.size === "large",
-        "btn--count": props.size === "count",
-        "btn--round": props.isRound,
-        [props.className || ""]: !!props.className,
+        "btn--primary": variant === "primary",
+        "btn--primary3": variant === "primary2",
+        "btn--secondary": variant === "secondary",
+        "btn--small": size === "small",
+        "btn--large": size === "large",
+        "btn--count": size === "count",
+        "btn--round": isRound,
+        [className || ""]: !!className,
       })}
-    >
-      {props.btnText}
-    </button>
+      {...rest}
+    />
   );
 };
 
