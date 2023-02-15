@@ -1,2 +1,19 @@
 .productItem {
+  @apply flex flex-col gap-3 bg-transparent border border-neutral-850 py-3;
+
+  &__image {
+    @apply relative aspect-image mx-6 bg-primary;
+  }
+
+  &__desc {
+    @apply mx-3;
+  }
+
+  &__name {
+    @apply text-base;
+  }
+
+  &__author {
+    @apply text-xs;
+  }
 }
