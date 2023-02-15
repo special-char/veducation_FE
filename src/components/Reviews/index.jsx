@@ -14,13 +14,18 @@ const Reviews = ({ rate, count }) => {
               key={item}
               height={24}
               width={24}
-              className="fill-orange"
+              className="fill-primary2"
             />
           );
         }
 
         return (
-          <StarIcon key={item} height={24} width={24} className="fill-orange" />
+          <StarIcon
+            key={item}
+            height={24}
+            width={24}
+            className="fill-primary2"
+          />
         );
       })}
 
