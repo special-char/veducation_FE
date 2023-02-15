@@ -1,6 +1,5 @@
 import React from "react";
-
-import "../Navbar/navbar.module.css";
+import styles from "../Navbar/navbar.module.css";
 import Home from "public/icons/home.svg";
 import Book from "public/icons/book.svg";
 import Group from "public/icons/group.svg";
@@ -38,15 +37,15 @@ const data = [
 
 const Navbar = () => {
   return (
-    <div className="flex flex-1 justify-evenly gap-3 sticky bottom-0">
+    <div className={styles.navBar}>
       {data.map((val) => {
         const Svg = () => val.svg;
         return (
-          <div key={val.id} className="flex max-w-[50px] flex-col items-center">
-            <div className="w-5  pb-3">
+          <div key={val.id} className={styles.navBar__navItem}>
+            <div className={styles.navBar__navItem__svg}>
               <Svg />
             </div>
-            <div className="text-xs text-center">{val.desc}</div>
+            <div className={styles.navBar__navItem__desc}>{val.desc}</div>
           </div>
         );
       })}
