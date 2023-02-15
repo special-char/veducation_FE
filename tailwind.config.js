@@ -2,11 +2,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/app/**/*.{js,ts,jsx,tsx}",
-    "./src/ui/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
       transparent: "transparent",
@@ -36,7 +32,7 @@ module.exports = {
         750: "#4CA137",
         800: "#303030",
         850: "#EDEDED",
-        900: " ##FF9900",
+        900: "#FF9900",
         950: "#222222",
       },
     },
@@ -48,7 +44,7 @@ module.exports = {
       xl: "1440px",
     },
     fontFamily: {
-      sans: ["var(--font-kumbh)", ...fontFamily.sans],
+      sans: ["var(--font-SF-Display)", ...fontFamily.sans],
       serif: ["var(--font-newsreader)", ...fontFamily.serif],
       cursive: ["var(--font-block)", "cursive"],
     },

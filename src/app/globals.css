@@ -15,19 +15,19 @@
   }
 
   h1 {
-    @apply mb-6 font-serif text-5xl font-semibold text-neutral-800 sm:text-7xl md:text-8xl lg:text-9xl;
+    @apply mb-2 font-sans text-5xl font-semibold text-neutral-800 sm:text-7xl md:text-8xl lg:text-9xl;
   }
 
   h2 {
-    @apply mb-4 font-serif text-3xl font-semibold text-neutral-800 md:text-6xl;
+    @apply mb-2 font-sans text-3xl font-semibold text-neutral-800 md:text-6xl;
   }
 
   h3 {
-    @apply mb-4 text-xl font-bold text-neutral-700 sm:text-xxl md:text-2xl;
+    @apply mb-2 text-xl font-bold text-neutral-700 sm:text-xxl md:text-2xl;
   }
 
   h4 {
-    @apply mb-4 text-lg font-bold text-neutral-700 sm:text-xl;
+    @apply mb-1 text-lg font-bold text-neutral-700 sm:text-xl;
   }
 
   h5 {
@@ -39,10 +39,10 @@
   }
 
   p {
-    @apply mb-5 text-neutral-600;
-    &:last-child {
+    @apply mb-1  text-neutral-600;
+    /* &:last-child {
       @apply mb-0 pb-0;
-    }
+    } */
   }
 
   p.small {
@@ -64,7 +64,7 @@
   } */
 
   label {
-    @apply mb-4 block font-bold text-neutral-700;
+    @apply mb-1 block font-bold text-neutral-700;
   }
 
   blockquote {
