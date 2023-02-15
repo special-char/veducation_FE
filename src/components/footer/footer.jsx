@@ -35,7 +35,7 @@ const Footer = () => {
       {data.map((x) => (
         <a className={styles.footer__iteam} href="#">
           <span className={styles.span1}>{x.svg}</span>
-          <p className="iteamn">{x.name}</p>
+          <p className={styles.text}>{x.name}</p>
         </a>
       ))}
     </div>
