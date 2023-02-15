@@ -1,36 +1,27 @@
 import React from "react";
-import StarIcon from "public/icons/star.svg";
-import StarHalfIcon from "public/icons/star_half.svg";
-import StarFillIcon from "public/icons/star_fill.svg";
 import styles from "./reviews.module.css";
+import StarFull from "public/icons/star_fill.svg";
+import Star from "public/icons/star.svg";
+import StarHalf from "public/icons/star_half.svg";
 
 const Reviews = ({ rate, count }) => {
+  const start = [1, 2, 3, 4, 5];
   return (
     <div className={styles.reviews}>
-      {[1, 2, 3, 4, 5].map((item, index) => {
-        if (rate >= item) {
+      {start.map((i) => {
+        if (rate >= i) {
           return (
-            <StarFillIcon
-              key={item}
-              height={24}
-              width={24}
-              className="fill-primary2"
-            />
+            <StarFull key={i} width={24} height={24} className="reviews__svg" />
           );
         }
-
-        return (
-          <StarIcon
-            key={item}
-            height={24}
-            width={24}
-            className="fill-primary2"
-          />
-        );
+        if (i - 0.5 === rate) {
+          return (
+            <StarHalf key={i} width={24} height={24} className="reviews__svg" />
+          );
+        }
+        return <Star key={i} width={24} height={24} className={styles.__svg} />;
       })}
-
-      {/* {rate >= item ? <StarIcon /> : rate >= (count + 0.5)(<StarHalfIcon />)} */}
-      <p className="reviews__count">{`(${count})`}</p>
+      <p className="mb-0 ">{`(${count})`}</p>
     </div>
   );
 };
