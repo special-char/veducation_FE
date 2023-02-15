@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   body {
     @apply min-h-screen font-sans text-lg text-neutral-600;
@@ -40,7 +39,7 @@
   }
 
   p {
-    @apply mb-1  text-neutral-600;
+    @apply text-neutral-600;
     /* &:last-child {
       @apply mb-0 pb-0;
     } */
@@ -239,7 +238,7 @@
     }
 
     &--secondary {
-      @apply bg-neutral-300 text-neutral-700;
+      @apply bg-secondary text-white text-xs;
     }
 
     &--secondary:hover {
@@ -250,6 +249,9 @@
       @apply bg-primary3 text-background2;
     }
 
+    &--count {
+      @apply bg-neutral-1050 text-background2;
+    }
     /* &--white {
       @apply bg-neutral-100 text-neutral-800;
     }
@@ -641,18 +643,17 @@
   }
 }
 
-
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
-        display: none;
+      display: none;
     }
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
     }
   }
 }
