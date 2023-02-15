@@ -28,8 +28,6 @@ const Reviews = ({ rate, count }) => {
           />
         );
       })}
-
-      {/* {rate >= item ? <StarIcon /> : rate >= (count + 0.5)(<StarHalfIcon />)} */}
       <p className="reviews__count">{`(${count})`}</p>
     </div>
   );
