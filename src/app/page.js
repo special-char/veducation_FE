@@ -1,3 +1,9 @@
+import Carousal from "@/components/Banner";
+
 export default function Home() {
-  return <main>hello next</main>;
+  return (
+    <>
+      <Carousal />
+    </>
+  );
 }
