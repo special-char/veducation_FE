@@ -32,6 +32,7 @@ const data = [
 const Footer = () => {
   return (
     <div className={styles.footer}>
+      <div className="footer__nav"></div>
       {data.map((x) => (
         <a className={styles.footer__iteam} href="#">
           <span className={styles.span1}>{x.svg}</span>

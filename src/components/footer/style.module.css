@@ -1,5 +1,5 @@
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
 
   min-height: 85px;
@@ -16,6 +16,10 @@
   font-weight: 500;
   font-size: 9px;
   line-height: 120%;
+
+  &__nav {
+    @apply bg-primary h-5 w-5;
+  }
 }
 .text {
   margin-top: 15px;
