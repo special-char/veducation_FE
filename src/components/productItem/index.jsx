@@ -19,4 +19,20 @@ const ProductItem = ({ img, title, author, rate, count }) => {
   );
 };
 
-export default ProductItem;
+const Productlist = ({ productList }) => {
+  return (
+    <>
+      <div className="flex justify-between items-center py-4">
+        <h5 className="mb-0">Veducation Books</h5>
+        <span>View all</span>
+      </div>
+      <div className="flex overflow-x-scroll no-scrollbar gap-1">
+        {productList.map((val) => {
+          return <ProductItem key={val.title} {...val} />;
+        })}
+      </div>
+    </>
+  );
+};
+
+export default Productlist;
