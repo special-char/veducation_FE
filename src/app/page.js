@@ -5,7 +5,7 @@ import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   return (
-    <div className="h-screen px-container">
+    <div className="h-full">
       <SocialLinks />
       <ProductItem />
       <Coursecard />
