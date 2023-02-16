@@ -1,0 +1,31 @@
+.details{
+    @apply absolute w-full mt-7 left-3;
+    &__heading{
+        @apply font-bold text-sm mb-3 leading-5 items-center;
+    }
+    &__hText{
+        @apply  text-neutral-800;
+    }
+    &__detail{
+        @apply flex flex-col;
+    }
+}
+.border{
+    @apply border-b-2  border-[#E6E8EC] flex flex-col;
+    &__noBorder{
+        @apply flex flex-col;
+    }
+}
+.item{
+    @apply font-medium mt-2 leading-6 items-start flex flex-none order-1 gap-2 flex-grow-0;
+    &__name{
+        @apply text-neutral-200;
+    }
+    &__value{
+        @apply mb-2 font-bold text-sm leading-6 flex items-center flex-none order-1 flex-grow-0;
+        
+    }
+    &__iText{
+        @apply text-secondary;
+    }
+}
