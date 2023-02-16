@@ -1,14 +1,13 @@
-import Button from "@/components/Button";
+"use client";
 import Navbar from "@/components/Navbar/navbar";
-import SignIn from "@/containers/SignIn";
-import Link from "next/link";
+import ProductItem from "@/components/productItem";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   return (
-    <div className="">
-      <Button as={Link} variant="primary" size="large" href="">
-        Submit
-      </Button>
+    <div className="h-screen px-container">
+      <SocialLinks />
+      <ProductItem />
     </div>
   );
 }

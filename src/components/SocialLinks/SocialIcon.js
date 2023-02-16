@@ -6,7 +6,8 @@ const SocialIcon = ({ Icon, name, variant }) => {
     <div className="flex justify-center items-center flex-col">
       <div
         className={clx({
-          "bg-gradient-to-tr from-[#C913B9] flex rounded-full flex-col h-[67px] w-[67px] justify-center items-center via-[#F9373F] to-[#FECD00]":
+          "bg-gradient-to-tr from-[#FECD00] flex rounded-full flex-col h-[67px] w-[67px] justify-center items-center via-[#F9373F] to-[#C913B9]":
+            // "bg-gradient-to-tr from-[#C913B9] flex rounded-full flex-col h-[67px] w-[67px] justify-center items-center via-[#F9373F] to-[#FECD00]":
             variant === "social",
         })}
       >
