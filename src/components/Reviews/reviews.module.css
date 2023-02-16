@@ -2,6 +2,10 @@
   @apply flex items-center;
 
   & > svg {
-    @apply fill-primary;
+    @apply fill-primary2;
+  }
+
+  &__count {
+    @apply text-neutral-850;
   }
 }

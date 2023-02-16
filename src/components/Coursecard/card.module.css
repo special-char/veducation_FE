@@ -1,0 +1,21 @@
+.cardRoot {
+  @apply grid mx-4 my-2;
+  grid-template-columns: 1fr;
+  &__image {
+    @apply aspect-blog-image relative w-full;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+  &__body {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    z-index: 10;
+    @apply m-4;
+  }
+  &__title {
+    @apply font-bold text-white;
+  }
+  &__desc {
+    @apply pr-20 line-clamp-2 text-white;
+  }
+}
