@@ -1,6 +1,9 @@
 import "./globals.css";
+import React from "react";
 import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
+import Header from "@/components/Header";
+import Navbar from "@/components/Navbar/navbar";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -26,7 +29,13 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+
+      <body>
+        <main className="bg-background">
+          <Header />
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
