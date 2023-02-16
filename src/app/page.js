@@ -1,10 +1,13 @@
+"use client";
 import Navbar from "@/components/Navbar/navbar";
-import SignIn from "@/containers/SignIn";
+import ProductItem from "@/components/productItem";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
+    <div className="h-screen px-container">
+      <SocialLinks />
+      <ProductItem />
     </div>
   );
 }
