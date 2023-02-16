@@ -3,6 +3,7 @@ import React from "react";
 import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
 import Header from "@/components/Header";
+import Navbar from "@/components/Navbar/navbar";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <main className="bg-background">
           <Header />
           {children}
+          <Navbar />
         </main>
       </body>
     </html>
