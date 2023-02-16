@@ -1,6 +1,6 @@
 "use client";
-import Navbar from "@/components/Navbar/navbar";
 import ProductItem from "@/components/productItem";
+import Coursecard from "@/components/Coursecard/coursecard";
 import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
     <div className="h-screen px-container">
       <SocialLinks />
       <ProductItem />
+      <Coursecard />
     </div>
   );
 }
