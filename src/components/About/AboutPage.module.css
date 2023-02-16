@@ -1,0 +1,21 @@
+.AboutPage {
+  @apply p-3 pb-16 flex-col;
+  &__Content {
+    @apply text-xl pt-2 mb-0 pb-0;
+  }
+  &__span{
+    @apply text-primary2 font-bold;
+  }
+  &__details{
+    @apply text-sm pb-4 pt-2 text-neutral-400 font-normal leading-6;
+  }
+  &__details1{
+    @apply text-sm pb-5;
+  }
+  &__button{
+    @apply  bg-primary2 p-2 items-center justify-between text-center rounded-md  ;
+  }
+  &__button1{
+    @apply text-white text-base;
+  }
+}
