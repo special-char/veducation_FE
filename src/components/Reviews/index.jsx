@@ -22,8 +22,8 @@ const Reviews = ({ rate, count }) => {
         return (
           <StarIcon
             key={item}
-            height={24}
-            width={24}
+            height={18}
+            width={18}
             className="fill-primary2"
           />
         );
