@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
         <main className="bg-background">
           <Header />
           {children}
+          <Navbar />
         </main>
       </body>
     </html>
