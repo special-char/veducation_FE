@@ -1,0 +1,44 @@
+.main {
+  @apply p-3 bg-transparent;
+
+  &__header {
+    @apply flex  justify-between mx-auto;
+  }
+  &__heading {
+    @apply text-[#303030] md:text-5xl text-sm;
+  }
+  &__donationInfo {
+    @apply text-primary border border-[#F1DEC7] rounded-sm p-3 flex flex-col text-[#3A3A3A] mb-3;
+    &__img {
+      @apply pb-2 rounded-sm;
+    }
+  }
+  &__about {
+    @apply font-bold  text-[#3A3A3A] mb-0 pb-0 pt-2 leading-none;
+  }
+  &__value {
+    @apply text-[12px] text-[#3A3A3A] text-[9px] pb-0 mb-0;
+  }
+  &__infoBtn {
+    @apply text-[9px] flex pb-4;
+  }
+  &__day {
+    @apply bg-[#F7DCBD]  h-5 px-3  leading-none mx-2 rounded font-normal flex  items-center gap-1;
+  }
+  &__person {
+    @apply bg-[#F7DCBD]  h-5 px-3  leading-none mx-2 rounded font-normal flex items-center gap-1;
+  }
+
+  &__span {
+    @apply font-bold;
+  }
+  &__btns {
+    @apply flex  font-bold;
+  }
+  &__Share {
+    @apply text-[11px] text-[#3F3F3F] w-full h-9 flex-1 bg-[#FFE6C3] mr-2 rounded border border-[#F5D9B1];
+  }
+  &__Donate {
+    @apply text-[11px]  w-full h-9 bg-primary flex-1 rounded text-neutral-100 text-white;
+  }
+}

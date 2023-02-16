@@ -1,0 +1,68 @@
+.main {
+  @apply text-primary2 ;
+
+  &__first {
+    @apply text-error  mx-3 md:mx-auto;
+  }
+  &__header {
+    @apply flex  justify-between mx-auto;
+  }
+  &__heading {
+    @apply text-[#303030] md:text-5xl text-sm;
+  }
+
+  &__view {
+    @apply underline text-[#303030] text-[12px] font-normal;
+  }
+  &__card{
+    @apply border border-[#F1DEC7] border rounded-md  flex p-3;
+  }
+  &__img{
+    @apply aspect-auto h-[135px] rounded;
+  }
+  &__text{
+    @apply flex-col pl-3 mb-0 pb-0 leading-none;
+  }
+  &__helpUsTxt {
+    @apply text-xl mb-0 pb-2 leading-none;
+  }
+  &__discription{
+    @apply text-[9px] mb-0 text-[#585858] pb-4 font-medium leading-3;
+  }
+  &__span {
+    @apply text-primary2;
+  }
+  &__button{
+    @apply bg-primary text-white rounded-sm w-full h-9  text-[11px] font-bold;
+  }
+
+
+
+   /* &__card {
+    @apply flex border-[#F1DEC7] border rounded-md items-center px-2 py-3 gap-3;
+     w-[388px] h-[159px];
+  }
+
+ &__img {
+    @apply  bg-primary2 rounded aspect-auto h-32;
+    
+    h-[135px] w-[139px];
+  }
+
+  & __text {
+    @apply text-left flex-col py-3 pb-0;
+  }
+  &__helpUsTxt {
+    @apply text-xl  mb-0 ;
+  }
+  &__discription {
+    @apply text-[9px] md:text-xl mb-0 pb-0;
+  }
+  &__span {
+    @apply text-primary2;
+  }
+
+  &__button {
+    @apply bg-primary text-neutral-100 h-[36px] w-[217px] rounded-sm text-[11px];
+  } */
+}
