@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   body {
     @apply min-h-screen font-sans text-lg text-neutral-600;
@@ -15,19 +16,19 @@
   }
 
   h1 {
-    @apply mb-6 font-serif text-5xl font-semibold text-neutral-800 sm:text-7xl md:text-8xl lg:text-9xl;
+    @apply mb-2 font-sans text-5xl font-semibold text-neutral-800 sm:text-7xl md:text-8xl lg:text-9xl;
   }
 
   h2 {
-    @apply mb-4 font-serif text-3xl font-semibold text-neutral-800 md:text-6xl;
+    @apply mb-2 font-sans text-3xl font-semibold text-neutral-800 md:text-6xl;
   }
 
   h3 {
-    @apply mb-4 text-xl font-bold text-neutral-700 sm:text-xxl md:text-2xl;
+    @apply mb-2 text-xl font-bold text-neutral-700 sm:text-xxl md:text-2xl;
   }
 
   h4 {
-    @apply mb-4 text-lg font-bold text-neutral-700 sm:text-xl;
+    @apply mb-1 text-lg font-bold text-neutral-700 sm:text-xl;
   }
 
   h5 {
@@ -39,10 +40,10 @@
   }
 
   p {
-    @apply mb-5 text-neutral-600;
-    &:last-child {
+    @apply mb-1  text-neutral-600;
+    /* &:last-child {
       @apply mb-0 pb-0;
-    }
+    } */
   }
 
   p.small {
@@ -64,7 +65,7 @@
   } */
 
   label {
-    @apply mb-4 block font-bold text-neutral-700;
+    @apply mb-1 block font-bold text-neutral-700;
   }
 
   blockquote {
@@ -213,7 +214,7 @@
   }
 
   .btn {
-    @apply inline-block rounded-full py-6 px-10 text-center text-base font-bold uppercase tracking-[0.08em];
+    @apply rounded-md py-3 px-2 text-center text-base font-bold uppercase tracking-[0.08em];
     transition: transform 300ms ease, background-color 300ms ease;
     transform-style: preserve-3d;
 
@@ -226,11 +227,15 @@
     }
 
     &--primary {
-      @apply bg-primary text-neutral-100;
+      @apply bg-primary text-white;
     }
 
-    &--primary:hover {
-      @apply bg-neutral-800 text-neutral-100;
+    /* &--primary:hover {
+      @apply bg-primary2 text-neutral-100;
+    } */
+
+    &--primary3 {
+      @apply bg-primary3 text-background2;
     }
 
     &--secondary {
@@ -241,7 +246,11 @@
       @apply bg-neutral-400 text-neutral-700;
     }
 
-    &--white {
+    &--secondary2 {
+      @apply bg-primary3 text-background2;
+    }
+
+    /* &--white {
       @apply bg-neutral-100 text-neutral-800;
     }
 
@@ -250,14 +259,17 @@
       & > svg {
         @apply fill-neutral-100;
       }
-    }
+    } */
 
     &--small {
-      @apply py-4 px-6 text-base;
+      @apply py-3 w-1/2 text-base;
     }
 
     &--large {
-      @apply py-6 px-[68px] text-xxl;
+      @apply py-3 w-full;
+    }
+    &--count {
+      @apply py-1 px-3;
     }
   }
 
@@ -625,6 +637,22 @@
 
     &__item {
       @apply my-8 grid grid-cols-1 gap-8 lg:grid-cols-2;
+    }
+  }
+}
+
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
   }
 }
