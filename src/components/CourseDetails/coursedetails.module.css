@@ -1,5 +1,5 @@
 .coursedetails {
-  @apply pt-5 py-28 h-full;
+  @apply pt-5 py-16 h-full;
 
   &__imagebody {
     @apply relative aspect-square bg-primary;
