@@ -23,7 +23,7 @@ const SignIn = () => {
       <Modal
         open={open}
         onClose={toggleModal}
-        className="flex-1 flex flex-col gap-3 pt-3 px-3"
+        className="flex-1 flex flex-col gap-3 py-5 px-3"
       >
         <span className="flex justify-center items-center">
           <Icon />
@@ -31,17 +31,20 @@ const SignIn = () => {
         </span>
         <h4 className=" text-background2">Sign in</h4>
         <div className="flex flex-col gap-5">
-          <Input
-            label="Email/Phone"
-            placeholder="Enter Mobile Number"
-            className="p-2 border border-primary3 w-full"
-          />
+          <div>
+            <p className="text-neutral-300 text-sm">Email/Phone</p>
+            <Input
+              // label="Email/Phone"
+              placeholder="Enter Mobile Number"
+              className="w-full"
+            />
+          </div>
           <Button
             as={Link}
             href=""
             variant="primary"
             size="small"
-            className={"w-full py-2"}
+            className={"w-full"}
           >
             Continue
           </Button>

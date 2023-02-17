@@ -1,14 +1,15 @@
+"use client";
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
+import Link from "next/link";
 import React, { useState } from "react";
 import Veducation from "public/VEDUCATION.svg";
 import Icon from "public/veducationIcon.svg";
 import Input from "@/components/InputComponent";
 import Google from "public/icons/google.svg";
 import Facebook from "public/icons/facebook.svg";
-import Link from "next/link";
 
-const Varification = () => {
+const SignUpDetails = () => {
   const [open, setOpen] = useState(false);
   function toggleModal() {
     setOpen((prev) => !prev);
@@ -17,36 +18,51 @@ const Varification = () => {
   return (
     <div>
       <Button onClick={toggleModal} as={Link} href="">
-        Open
+        Details
       </Button>
       <Modal
         open={open}
         onClose={toggleModal}
-        className=" flex-col gap-3 pt-3 px-3"
+        className="flex-1 flex flex-col gap-3 py-5 px-3"
       >
-        <span className="flex justify-center items-center py-5">
+        <span className="flex justify-center items-center">
           <Icon />
           <Veducation />
         </span>
-        <h4 className="font-bold text-background2">Enter OTP</h4>
+        <h4 className=" text-background2">Fill Your Details</h4>
         <div className="flex flex-col gap-5">
-          <div className="relative">
-            <p className="text-neutral-300 text-sm">
-              Please enter OTP sent to 79xxxx340
-            </p>
-            <Input placeholder="OTP" className=" w-full relative" />
-            <a href="http://" className="text-primary absolute top-9 right-3">
-              Resend OTP
-            </a>
+          <div>
+            <p className="text-neutral-300 text-sm">Name</p>
+            <Input
+              // label="Email/Phone"
+              placeholder="Enter Your Name"
+              className="w-full"
+            />
+          </div>
+          <div>
+            <p className="text-neutral-300 text-sm">Email/Phone</p>
+            <Input
+              // label="Email/Phone"
+              placeholder="Enter Your Email"
+              className="w-full"
+            />
+          </div>
+          <div>
+            <p className="text-neutral-300 text-sm">Email/Phone</p>
+            <Input
+              // label="Email/Phone"
+              placeholder="Enter Your password"
+              className="w-full"
+            />
           </div>
           <Button
             as={Link}
             href=""
             variant="primary"
             size="small"
-            className={"w-full "}
+            className={"w-full"}
           >
-            Continue
+            Send OTP
           </Button>
         </div>
 
@@ -61,4 +77,4 @@ const Varification = () => {
   );
 };
 
-export default Varification;
+export default SignUpDetails;
