@@ -67,7 +67,7 @@ const items = [
 
 const OrderdItem = () => {
   const [arriving, setArriving] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const incrementCount = () => {
     setCount(count + 1);
   };
@@ -87,9 +87,11 @@ const OrderdItem = () => {
           </div>
           <div className={styles.main__desc}>
             <h5 className={styles.main__name}>{x.item}</h5>
-            <p className={styles.main__price}>
-              $ {x.price} | {x.quantity} pcs
-            </p>
+            {count > 0 && (
+              <p className={styles.main__price}>
+                $ {count * x.price} | {count} pcs
+              </p>
+            )}
             {arriving ? (
               <p className={styles.main__arriving}>
                 Arriving by :
@@ -107,6 +109,7 @@ const OrderdItem = () => {
             )}
 
             <div>
+            {count > 0 && (
               <div className={styles.main__counter}>
                 <button
                   onClick={decrementCount}
@@ -130,6 +133,7 @@ const OrderdItem = () => {
                   Delete
                 </button>
               </div>
+              )}
             </div>
           </div>
         </div>
