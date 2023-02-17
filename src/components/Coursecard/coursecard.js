@@ -32,7 +32,7 @@ const carddata = [
 ];
 const Coursecard = () => {
   return (
-    <section className="flex flex-col gap-3">
+    <section className="">
       {carddata.map((val, index) => {
         return (
           <div key={index} className={styles.cardRoot}>
