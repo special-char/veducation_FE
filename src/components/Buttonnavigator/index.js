@@ -3,6 +3,7 @@ import React from "react";
 import BtnNavigator from "public/icons/navigator.svg";
 import Arrow from "public/icons/arrow.svg";
 import styles from "./navigator.module.css";
+
 const btndata = [
   {
     id: 1,
@@ -46,23 +47,17 @@ const btndata = [
   },
 ];
 
-const Btnnavigator = () => {
+const Btnnavigator = ({ icon, title }) => {
   return (
-    <>
-      {btndata.map((val) => {
-        return (
-          <>
-            <div className={styles.navRoot}>
-              <span className={styles.navRoot__body}>
-                {val.svg1}
-                <h5 className="mb-0">{val.title}</h5>
-              </span>
-              <Arrow />
-            </div>
-          </>
-        );
-      })}
-    </>
+    <div className="flex flex-col gap-2">
+      <div className={styles.navRoot}>
+        <span className={styles.navRoot__body}>
+          {icon}
+          <h5 className="mb-0">{title}</h5>
+        </span>
+        <Arrow />
+      </div>
+    </div>
   );
 };
 
