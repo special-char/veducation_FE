@@ -1,10 +1,13 @@
-// import Input from "@/components/InputComponent";
-import Accordian from "@/components/Accordian";
-import CourseDetails from "@/components/CourseDetails";
-import Header from "@/components/Header";
-import Reviews from "@/components/Reviews";
+"use client";
+import Coursecard from "@/components/Coursecard/coursecard";
+import Navbar from "@/components/Navbar/navbar";
+import ProductItem from "@/components/productItem";
 import SocialLinks from "@/components/SocialLinks";
 import Btnnavigator from "@/components/Buttonnavigator";
+import SignIn from "@/containers/SignIn";
+import Varification from "@/containers/otpVarification";
+import CourseDetails from "@/components/CourseDetails";
+import Checkbox from "@/components/CheckBox";
 
 const data = [
   {
@@ -32,13 +35,16 @@ const data = [
 export default function Home() {
   function onClick() {}
   return (
-    <div className="h-full px-container">
+    <div className="h-full ">
       <SocialLinks />
-      <CourseDetails />
-      {/* <SocialLinks />
+      <div className="px-container">
+        <CourseDetails />
+        {/* <SocialLinks />
       <ProductItem />
       <Coursecard /> */}
-      <Btnnavigator />
+        <Btnnavigator />
+        <Varification />
+      </div>
     </div>
   );
 }

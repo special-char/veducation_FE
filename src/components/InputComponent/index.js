@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../InputComponent/input.module.css";
+import clsx from "classnames";
 
-const Input = ({ ...props }) => {
+const Input = ({ className, ...props }) => {
   return (
     <div className={styles.section}>
       <label className="body">{props.label}</label>{" "}
@@ -10,7 +11,12 @@ const Input = ({ ...props }) => {
         placeholder={props.placeholder}
         id={props.id}
         {...props}
-        className="inbox w-full p-2 placeholder-secondary border border-[#F5D9B1] rounded-md px-2 text-base"
+        className={clsx(
+          "w-full p-2 placeholder-secondary  bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base",
+          {
+            [className || ""]: !!className,
+          }
+        )}
       />
     </div>
   );

@@ -115,8 +115,8 @@ const CourseDetails = () => {
                   <Reviews
                     count={val.count}
                     rate={val.rate}
-                    width={12}
-                    height={12}
+                    width={18}
+                    height={18}
                   />
                   <p className={styles.coursedetails__reviewerdate}>
                     {`By ${val.reviewer} - ${val.date}`}

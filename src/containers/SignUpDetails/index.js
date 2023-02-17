@@ -9,7 +9,7 @@ import Input from "@/components/InputComponent";
 import Google from "public/icons/google.svg";
 import Facebook from "public/icons/facebook.svg";
 
-const SignIn = () => {
+const SignUpDetails = () => {
   const [open, setOpen] = useState(false);
   function toggleModal() {
     setOpen((prev) => !prev);
@@ -18,7 +18,7 @@ const SignIn = () => {
   return (
     <div>
       <Button onClick={toggleModal} as={Link} href="">
-        Open
+        Details
       </Button>
       <Modal
         open={open}
@@ -29,13 +29,29 @@ const SignIn = () => {
           <Icon />
           <Veducation />
         </span>
-        <h4 className=" text-background2">Sign in</h4>
+        <h4 className=" text-background2">Fill Your Details</h4>
         <div className="flex flex-col gap-5">
+          <div>
+            <p className="text-neutral-300 text-sm">Name</p>
+            <Input
+              // label="Email/Phone"
+              placeholder="Enter Your Name"
+              className="w-full"
+            />
+          </div>
           <div>
             <p className="text-neutral-300 text-sm">Email/Phone</p>
             <Input
               // label="Email/Phone"
-              placeholder="Enter Mobile Number"
+              placeholder="Enter Your Email"
+              className="w-full"
+            />
+          </div>
+          <div>
+            <p className="text-neutral-300 text-sm">Email/Phone</p>
+            <Input
+              // label="Email/Phone"
+              placeholder="Enter Your password"
               className="w-full"
             />
           </div>
@@ -46,44 +62,14 @@ const SignIn = () => {
             size="small"
             className={"w-full"}
           >
-            Continue
+            Send OTP
           </Button>
         </div>
-        <div className="text-center flex justify-center items-center gap-3 py-4">
-          <div className="w-16 h-[1px] bg-neutral-150"></div>
-          <p className="small">Or continue with</p>
-          <div className="w-16 h-[1px] bg-neutral-200"></div>
-        </div>
-        <div className="flex gap-2">
-          <Button
-            as={Link}
-            href=""
-            variant="secondary2"
-            size="small"
-            className={
-              "w-full py-2 border border-[#F5D9B1] flex items-center justify-center gap-2"
-            }
-          >
-            <Google />
-            Google
-          </Button>
-          <Button
-            as={Link}
-            href=""
-            variant="secondary2"
-            size="small"
-            className={
-              "w-full border border-[#F5D9B1] py-2 flex items-center justify-center gap-2"
-            }
-          >
-            <Facebook />
-            Facebook
-          </Button>
-        </div>
-        <p className="text-center small">
-          Already have an account?
-          <a className="text-primary" href="http://">
-            Login
+
+        <p className="text-center small pt-4">
+          By Signing in , I agree to
+          <a className="underline pl-2" href="http://">
+            Terms & Condition
           </a>
         </p>
       </Modal>
@@ -91,4 +77,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUpDetails;
