@@ -1,16 +1,22 @@
 import React from "react";
-import "../InputComponent/input.module.css";
+import styles from "../InputComponent/input.module.css";
+import clsx from "classnames";
 
-const Input = ({ ...props }) => {
+const Input = ({ className, ...props }) => {
   return (
-    <div className="section ">
+    <div className={styles.section}>
       <label className="body">{props.label}</label>{" "}
       <input
         type={props.type}
         placeholder={props.placeholder}
         id={props.id}
         {...props}
-        className="inbox"
+        className={clsx(
+          "w-full p-2 placeholder-secondary  bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base",
+          {
+            [className || ""]: !!className,
+          }
+        )}
       />
     </div>
   );
