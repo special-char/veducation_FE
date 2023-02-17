@@ -1,5 +1,5 @@
 .cardRoot {
-  @apply grid mx-4 my-2;
+  @apply grid m-3;
   grid-template-columns: 1fr;
   &__image {
     @apply aspect-blog-image relative w-full;
@@ -10,12 +10,27 @@
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     z-index: 10;
-    @apply m-4;
+    @apply my-auto px-4;
   }
   &__title {
     @apply font-bold text-white;
   }
   &__desc {
-    @apply pr-20 line-clamp-2 text-white;
+    @apply line-clamp-2 text-white;
   }
 }
+/* .cardRoot {
+  @apply bg-primary3 w-full relative;
+  &__image {
+    @apply aspect-video w-full  absolute;
+  }
+  &__body {
+    @apply absolute px-4 py-2;
+  }
+  &__title {
+    @apply font-bold text-white;
+  }
+  &__desc {
+    @apply line-clamp-2 text-white;
+  }
+} */
