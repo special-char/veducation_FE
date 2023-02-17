@@ -2,16 +2,16 @@
 import ProductItem from "@/components/productItem";
 import Coursecard from "@/components/Coursecard/coursecard";
 import SocialLinks from "@/components/SocialLinks";
-import SignIn from "@/containers/SignIn";
+import Btnnavigator from "@/components/Buttonnavigator";
 
 export default function Home() {
   function onClick() {}
   return (
     <div className="h-full">
-      <SocialLinks onClick={onClick} />
-      {/* <ProductItem />
+      {/* <SocialLinks />
+      <ProductItem />
       <Coursecard /> */}
-      <SignIn />
+      <Btnnavigator />
     </div>
   );
 }
