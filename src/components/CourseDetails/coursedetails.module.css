@@ -1,0 +1,55 @@
+.coursedetails {
+  @apply pt-5 py-28 h-full;
+
+  &__imagebody {
+    @apply relative aspect-square bg-primary;
+  }
+  &__playicon {
+    @apply flex h-12 absolute top-[40%] right-[45%];
+  }
+  &__datails {
+    @apply py-4 border-b-2 border-[#EED9BC];
+  }
+  &__prize {
+    @apply font-bold text-xl text-neutral-500 pt-2;
+  }
+  &__imformation {
+    @apply flex gap-8 items-center text-center py-2;
+  }
+  &__underline {
+    @apply border-b-[2.5px] w-6;
+  }
+  &__review {
+    @apply text-base text-neutral-150 font-medium;
+  }
+  &__faqpage {
+    @apply pt-3 pb-8;
+  }
+  &__faqheader {
+    @apply text-neutral-800 font-bold;
+  }
+  &__rateing {
+    @apply flex gap-2 items-center py-2;
+  }
+  &__star {
+    @apply font-bold text-4xl;
+  }
+  &__reviewinfo {
+    @apply flex justify-between text-neutral-800;
+  }
+  &__viewall {
+    @apply underline text-xs font-semibold text-neutral-800;
+  }
+  &__reviewpage {
+    @apply flex flex-col rounded-md shadow-base gap-4 mb-6;
+  }
+  &__commentpage {
+    @apply flex bg-[#F4DFC4] flex-col p-4;
+  }
+  &__ratingstar {
+    @apply flex items-start gap-2;
+  }
+  &__reviewerdate {
+    @apply text-[12px] font-medium text-neutral-400;
+  }
+}

@@ -149,6 +149,50 @@
   }
 
   details {
+    @apply mb-4 max-w-full bg-background px-2 border-b-2 border-primary4 py-3 text-left;
+
+    & > summary {
+      @apply relative flex cursor-pointer list-none items-start justify-start text-2xl font-bold  md:items-center;
+
+      &::marker {
+        @apply hidden;
+      }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::before {
+        content: "\2228";
+        @apply absolute right-0 text-center items-center text-sm font-bold text-secondary;
+      }
+    }
+    & > div:last-child {
+      @apply overflow-hidden border-none pt-2 text-left text-sm;
+    }
+  }
+
+  details.with-tag {
+    & > summary {
+      &::after {
+        content: "Download";
+        @apply absolute right-0 flex w-fit items-end justify-end text-left font-bold;
+      }
+    }
+  }
+
+  details[open] {
+    & > summary {
+      @apply text-neutral-600;
+
+      &::before {
+        content: "\2227";
+        @apply aspect-square text-secondary  text-center text-sm font-bold absolute right-0;
+      }
+    }
+  }
+
+  /* details {
     @apply mb-4 max-w-full rounded-md bg-neutral-100 px-8 py-4 text-left drop-shadow-lg;
 
     & > summary {
@@ -190,7 +234,7 @@
         @apply mr-4 aspect-square h-12 w-12 rotate-0 rounded-full bg-neutral-300 text-center text-4xl font-bold text-neutral-600 duration-300;
       }
     }
-  }
+  } */
 
   nav {
     a {
