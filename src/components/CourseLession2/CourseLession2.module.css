@@ -1,7 +1,7 @@
 .CourseLession2 {
   @apply h-screen p-2 flex-1;
   &__card {
-    @apply flex border-2 p-1 rounded-md border-[#4D310914] justify-between gap-2 mb-2;
+    @apply grid grid-cols-[1fr_2fr] border-2 p-1 rounded-md border-[#4D310914] justify-between gap-2 mb-2;
   }
   &__p {
     @apply text-xs font-bold text-neutral-500 leading-5;
@@ -10,6 +10,6 @@
     @apply text-[13px] leading-3 text-neutral-400 font-bold font-sans;
   }
   &__img {
-    @apply w-full h-[57px] object-cover absolute rounded-sm;
+    @apply  bg-primary3    ;
   }
 }

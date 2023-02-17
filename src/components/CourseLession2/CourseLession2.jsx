@@ -20,14 +20,15 @@ const CourseLession2 = () => {
     <div className={styles.CourseLession2}>
       {details.map((x, key) => (
         <div className={styles.CourseLession2__card} key="card">
-          <div className="w-[100px] relative">
+          <div className="aspect-video relative w-full">
             <Image
               src={x.img}
               alt="thumbnail"
+              fill
               className={styles.CourseLession2__img}
             />
           </div>
-          <div className={styles.CourseLession2__right}>
+          <div className="">
             <p className={styles.CourseLession2__p}>{x.p}</p>
             <p className={styles.CourseLession2__span}>{x.time}</p>
           </div>
