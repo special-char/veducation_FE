@@ -32,22 +32,24 @@ const carddata = [
 ];
 const Coursecard = () => {
   return (
-    <section className="">
+    <section className="flex flex-col gap-3">
       {carddata.map((val, index) => {
         return (
           <div key={index} className={styles.cardRoot}>
-            <div className={styles.cardRoot__image}>
-              <Image src={CardImage} fill alt="" className="" />
-            </div>
-            <div className={styles.cardRoot__body}>
-              <h5 className={styles.cardRoot__title}>{val.title}</h5>
-              <Reviews className="text-xs text-white" count={24} />
-              <span className="text-xs font-semibold text-white">
-                {val.time} | {val.lessons}
-              </span>
-              <br />
-              <p className={styles.cardRoot__desc}>{val.desc}</p>
-            </div>
+            <>
+              <div className={styles.cardRoot__image}>
+                <Image src={CardImage} fill alt="" className="" />
+              </div>
+              <div className={styles.cardRoot__body}>
+                <h5 className={styles.cardRoot__title}>{val.title}</h5>
+                <Reviews className="text-xs text-white" count={24} />
+                <span className="text-xs font-semibold text-white">
+                  {val.time} | {val.lessons}
+                </span>
+                <br />
+                <p className={styles.cardRoot__desc}>{val.desc}</p>
+              </div>
+            </>
           </div>
         );
       })}
