@@ -1,8 +1,8 @@
 .cardRoot {
-  @apply grid m-3;
+  @apply grid gap-2;
   grid-template-columns: 1fr;
   &__image {
-    @apply aspect-blog-image relative w-full;
+    @apply aspect-video relative w-full;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
   }
