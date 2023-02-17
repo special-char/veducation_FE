@@ -1,0 +1,15 @@
+.profile{
+    @apply flex flex-col pb-20 m-container;
+    &__title{
+        @apply font-bold text-2xl leading-8 text-neutral-100 pb-6;
+    }
+    &__image{
+        @apply relative pb-2;
+    }
+    &__icon{
+        @apply absolute bottom-0 left-24;
+    }
+    &__form{
+        @apply flex flex-col gap-3 pb-7 pt-4;
+    }
+}

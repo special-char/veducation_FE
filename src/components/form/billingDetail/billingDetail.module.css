@@ -1,0 +1,9 @@
+.detail{
+    @apply flex flex-col gap-8 pb-20 m-container ;
+    &__title{
+        @apply text-2xl font-bold leading-8 text-neutral-100;
+    }
+    &__form{
+        @apply flex flex-col gap-3 pb-4;
+    }
+}
