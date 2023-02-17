@@ -4,6 +4,7 @@ import CourseDetails from "@/components/CourseDetails";
 import Header from "@/components/Header";
 import Reviews from "@/components/Reviews";
 import SocialLinks from "@/components/SocialLinks";
+import Btnnavigator from "@/components/Buttonnavigator";
 
 const data = [
   {
@@ -29,10 +30,15 @@ const data = [
 ];
 
 export default function Home() {
+  function onClick() {}
   return (
     <div className="h-full px-container">
       <SocialLinks />
       <CourseDetails />
+      {/* <SocialLinks />
+      <ProductItem />
+      <Coursecard /> */}
+      <Btnnavigator />
     </div>
   );
 }
