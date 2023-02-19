@@ -30,7 +30,7 @@ const data = [
     id: 3,
     img: CourseImage,
     coursetitle: "Brahmacharya",
-    duration: "4h 44min",
+    duration: "4h 45min",
     lessons: "12 lessons",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's",
