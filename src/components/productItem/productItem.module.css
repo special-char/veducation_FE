@@ -13,7 +13,7 @@
     @apply text-neutral-700;
   }
 
-  /* &__author {
-    @apply;
-  } */
+  &__author {
+    @apply text-sm font-bold;
+  }
 }
