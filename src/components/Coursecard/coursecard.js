@@ -4,7 +4,15 @@ import CardImage from "public/icons/image1.png";
 import Reviews from "../Reviews";
 import styles from "./card.module.css";
 
-const Coursecard = ({ img, coursetitle, duration, lessons, description }) => {
+const Coursecard = ({
+  img,
+  coursetitle,
+  duration,
+  lessons,
+  description,
+  rate,
+  count,
+}) => {
   return (
     <div className={styles.cardRoot}>
       <div className={styles.cardRoot__image}>
@@ -12,7 +20,7 @@ const Coursecard = ({ img, coursetitle, duration, lessons, description }) => {
       </div>
       <div className={styles.cardRoot__body}>
         <h5 className={styles.cardRoot__title}>{coursetitle}</h5>
-        <Reviews className="text-xs text-white" count={24} />
+        <Reviews className="text-xs text-white" count={count} rate={rate} />
         <span className="text-xs font-semibold text-white">
           {duration} | {lessons}
         </span>
