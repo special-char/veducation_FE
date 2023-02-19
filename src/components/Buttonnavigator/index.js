@@ -47,13 +47,16 @@ const btndata = [
   },
 ];
 
-const Btnnavigator = ({ icon, title }) => {
+const Btnnavigator = ({ icon, title, desc }) => {
   return (
     <div className="flex flex-col gap-2">
       <div className={styles.navRoot}>
         <span className={styles.navRoot__body}>
           {icon}
-          <h5 className="mb-0">{title}</h5>
+          <span className="flex flex-col">
+            <h6 className="mb-0">{title}</h6>
+            <p className="text-base">{desc && desc}</p>
+          </span>
         </span>
         <Arrow />
       </div>
