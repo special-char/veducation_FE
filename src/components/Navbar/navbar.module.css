@@ -1,0 +1,14 @@
+.navBar {
+  @apply flex flex-1 justify-evenly gap-3 fixed w-full bottom-0 z-20 pt-4 bg-background;
+
+  &__navItem {
+    @apply flex max-w-[50px] flex-col items-center;
+
+    &__svg {
+      @apply w-5  pb-3;
+    }
+    &__desc {
+      @apply text-xs text-center;
+    }
+  }
+}
