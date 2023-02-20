@@ -213,7 +213,7 @@
   }
 
   .btn {
-    @apply rounded-md py-3 px-2 text-center text-base font-bold uppercase tracking-[0.08em];
+    @apply rounded-md py-6 inline-block items-center  px-10 text-center text-base font-bold tracking-[0.08em];
     transition: transform 300ms ease, background-color 300ms ease;
     transform-style: preserve-3d;
 
@@ -249,9 +249,9 @@
       @apply bg-primary3 text-background2;
     }
 
-    &--count {
+    /* &--count {
       @apply bg-neutral-1050 text-background2;
-    }
+    } */
     /* &--white {
       @apply bg-neutral-100 text-neutral-800;
     }
@@ -264,19 +264,19 @@
     } */
 
     &--small {
-      @apply py-3 w-1/2 text-base;
+      @apply py-4 px-6  text-xs;
     }
 
     &--large {
-      @apply py-3 w-full;
+      @apply py-2 px-8 text-lg;
     }
     &--count {
-      @apply py-1 px-3;
+      @apply py-1 text-base px-3;
     }
   }
 
   .chip {
-    @apply flex w-fit items-center justify-center rounded-full py-3 px-4 align-middle text-xs font-bold shadow-base sm:px-6;
+    @apply flex w-fit items-center justify-center  py-3 px-4 align-middle text-xs font-bold shadow-base sm:px-6;
 
     &.icon {
       @apply gap-2;

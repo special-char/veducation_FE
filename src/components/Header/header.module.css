@@ -1,10 +1,19 @@
 .headerRoot{
-  @apply  p-2 flex justify-between;
+  @apply  p-2 flex justify-between sticky top-0 bg-background z-20;
 
   &__title{
     @apply flex flex-row items-center gap-1;
   }
   &__rightIcon{
-    @apply flex flex-row gap-4 items-center
+    @apply flex flex-row gap-4 items-center relative;  
+    &__floatNum{
+      @apply text-xs bg-notification text-white max-h-[14px] max-w-[14px] p-[9px] rounded-full justify-center items-center flex absolute top-[-10%] border-[2px];
+       &:nth-last-child(1) {
+        @apply right-[-8%]  ;
+      };
+      &:nth-child(2){
+        @apply left-[20%]  ;
+      }
+    }
   }
 }
