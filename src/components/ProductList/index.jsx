@@ -7,12 +7,21 @@ import ProductTitle from "../ProductTitle";
 import Link from "next/link";
 import { getProductData } from "@/lib/getHomeProductData";
 
-const ProductItem = ({ img, title, author, rate, count, weight, content }) => {
+const ProductItem = async ({
+  attributes: { posterImageUrl, title, author },
+}) => {
+  console.log("props", title);
+  // const productData = await getProductData();
+  // console.log("getProductData", productData);
+  // const {
+  //   attributes: { posterImageUrl, title, author, rate, count, weight, content },
+  // } = productData?.data;
+
   return (
     <div className={styles.product_item}>
       <div className={styles.product_item__image}>
         <Image
-          src={img}
+          src={posterImageUrl}
           fill
           alt="book"
           sizes="(max-width: 768px) 100vw,
@@ -25,9 +34,9 @@ const ProductItem = ({ img, title, author, rate, count, weight, content }) => {
         <p className={styles.product_item__author}>
           {author && `by ${author}`}
         </p>
-        <p className={styles.product_item__author}>{weight && weight}</p>
-        <p className={styles.product_item__author}>{content && content}</p>
-        <Reviews rate={rate} count={count} />
+        {/* <p className={styles.product_item__author}>{weight && weight}</p>
+        <p className={styles.product_item__author}>{content && content}</p> */}
+        {/* <Reviews rate={rate} count={count} /> */}
       </div>
     </div>
   );
@@ -37,15 +46,14 @@ const Productlist = async ({ productList }) => {
   const productData = await getProductData();
   console.log("getProductData", productData);
   const {
-    attributes: { name , products },
-  
+    attributes: { name, products },
   } = productData?.data;
 
   return (
     <div className="flex flex-col">
       <ProductTitle title={name} link="View All" />
       <div className="flex overflow-x-scroll no-scrollbar gap-1">
-        {productList.map((val) => {
+        {products?.data.map((val) => {
           return (
             <Link key={val.id} href="/yoddha-store">
               <ProductItem {...val} />
