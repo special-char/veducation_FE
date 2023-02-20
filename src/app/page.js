@@ -51,7 +51,7 @@ export default function Home() {
   // function onClick() {}
   return (
     <div className="h-full pb-44">
-      {/* <SocialLinks /> */}
+      <SocialLinks />
       <div className="px-container">
         <Productlist productList={data} />
         {/* <DonationCard /> */}

@@ -34,26 +34,6 @@ const SocialLinks = () => {
       Icon: () => <FacebookSvg />,
       name: "Facebook",
     },
-    {
-      variant: "social",
-      Icon: () => <YoutubeSvg />,
-      name: "Youtube",
-    },
-    {
-      variant: "social",
-      Icon: () => <InstagramSvg />,
-      name: "Instagram",
-    },
-    {
-      variant: "social",
-      Icon: () => <SpotifySvg />,
-      name: "Spotify",
-    },
-    {
-      variant: "social",
-      Icon: () => <FacebookSvg />,
-      name: "Facebook",
-    },
   ];
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">
