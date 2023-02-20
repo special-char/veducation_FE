@@ -46,7 +46,7 @@ const Productlist = async ({ productList }) => {
       <div className="flex overflow-x-scroll no-scrollbar gap-1">
         {productList.map((val) => {
           return (
-            <Link key={val.id} href="/yoddha-store">
+            <Link key={val.id} href={`/product/${val.id}`}>
               <ProductItem {...val} />
             </Link>
           );

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import Tshirt from "public/icons/tshirt.png";
-import Reviews from "../../../components/Reviews";
-import Button from "../../../components/Button";
+import Reviews from "../Reviews";
+import Button from "../Button";
 import Link from "next/link";
 import styles from "./product.module.css";
 
-const Page = () => {
+const ProductPage = () => {
   return (
     <section className={styles.ProductPage}>
       <div className={styles.ProductPage__image}>
@@ -75,4 +75,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default ProductPage;

@@ -14,6 +14,7 @@ const Button = ({
       className={clsx("btn", {
         "btn--primary": variant === "primary",
         "btn--secondary": variant === "secondary",
+        "btn--count": variant === "count",
         "btn--primary3": variant === "secondary2",
         "btn--small": size === "small",
         "btn--large": size === "large",

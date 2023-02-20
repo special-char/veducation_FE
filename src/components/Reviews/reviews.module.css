@@ -1,5 +1,5 @@
 .reviews {
-  @apply flex items-center;
+  @apply flex text-center;
 
   & > svg {
     @apply fill-primary2;
