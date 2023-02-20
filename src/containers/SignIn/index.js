@@ -2,24 +2,28 @@
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Veducation from "public/VEDUCATION.svg";
 import Icon from "public/veducationIcon.svg";
 import Input from "@/components/InputComponent";
 import Google from "public/icons/google.svg";
 import Facebook from "public/icons/facebook.svg";
+import { ProductContext } from "@/context/ProductContextProvider";
 
 const SignIn = () => {
-  const [open, setOpen] = useState(false);
+  const {
+    state: { signIn: open },
+    dispatch,
+  } = useContext(ProductContext);
   function toggleModal() {
-    setOpen((prev) => !prev);
+    dispatch({ signIn: false });
   }
 
   return (
     <div>
-      <Button onClick={toggleModal} as={Link} href="">
+      {/* <Button onClick={toggleModal} as={Link} href="">
         Open
-      </Button>
+      </Button> */}
       <Modal
         open={open}
         onClose={toggleModal}
