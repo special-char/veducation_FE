@@ -1,0 +1,8 @@
+.donationcard {
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+    @apply p-2 border border-neutral-250 rounded-md;
+  }
+}

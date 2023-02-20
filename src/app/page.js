@@ -6,44 +6,56 @@ import SocialLinks from "@/components/SocialLinks";
 import Btnnavigator from "@/components/Buttonnavigator";
 import SignIn from "@/containers/SignIn";
 import Varification from "@/containers/otpVarification";
+import Productlist from "@/components/productItem";
+import Book from "public/book.png";
+import DonationCard2 from "@/components/DonationCard";
+import DonationCard from "@/components/DonationCard";
 import CourseDetails from "@/components/CourseDetails";
-import Checkbox from "@/components/CheckBox";
 
 const data = [
   {
-    id: 1,
-    title: "What will i learn from this course ?",
-    description: "this is description",
+    img: Book,
+    title: "B.O.S.S : Basics of Sanatan Sanskriti",
+    author: "Prateeik Prajapati",
+    rate: 3,
+    count: 20,
   },
   {
-    id: 2,
-    title: "What will i learn from this course ?",
-    description: "this is description",
+    img: Book,
+    title: "B.O.S.S : Basics of Sanatan Sanskriti",
+    author: "Prateeik Prajapati",
+    rate: 3,
+    count: 20,
   },
   {
-    id: 3,
-    title: "What will i learn from this course ?",
-    description: "this is description",
+    img: Book,
+    title: "B.O.S.S : Basics of Sanatan Sanskriti",
+    author: "Prateeik Prajapati",
+    rate: 3,
+    count: 20,
   },
   {
-    id: 4,
-    title: "What will i learn from this course ?",
-    description: "this is description",
+    img: Book,
+    title: "B.O.S.S : Basics of Sanatan Sanskriti",
+    author: "Prateeik Prajapati",
+    rate: 3,
+    count: 20,
   },
 ];
 
 export default function Home() {
   function onClick() {}
   return (
-    <div className="h-full ">
+    <div className="h-full pb-44">
       <SocialLinks />
       <div className="px-container">
+        {/* <Productlist productList={data} /> */}
         <CourseDetails />
-        {/* <SocialLinks />
-      <ProductItem />
-      <Coursecard /> */}
-        <Btnnavigator />
-        <Varification />
+        <DonationCard />
+        <DonationCard2 />
+        <Coursecard />
+        {/* <ProductItem /> */}
+        <Navbar />
       </div>
     </div>
   );
