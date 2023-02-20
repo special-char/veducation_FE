@@ -10,11 +10,13 @@ const DonationCard = () => {
     <section className={styles.donationcard}>
       <div className="flex justify-between items-center py-4">
         <h5 className="mb-0">Donations</h5>
-        <span>View all</span>
+        <Link href="" className="border-b-1">
+          View All
+        </Link>
       </div>
       <div className={styles.donationcard__main}>
         <div className="relative aspect-square h-full w-full">
-          <Image src={Imag1} fill className="" />
+          <Image src={Imag1} fill alt="donation image" />
         </div>
         <div className="flex flex-col justify-center">
           <h3 className="font-bold mb-0 ">Help us spread Dharma</h3>

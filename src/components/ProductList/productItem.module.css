@@ -1,4 +1,4 @@
-.productItem {
+.product_item {
   @apply flex flex-col gap-3 bg-transparent  py-3 border border-neutral-250 rounded-md;
 
   &__image {

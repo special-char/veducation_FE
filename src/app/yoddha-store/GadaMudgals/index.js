@@ -1,4 +1,4 @@
-import Productlist from "@/components/ProductItem";
+import Productlist from "@/components/ProductList";
 import ProductTitle from "@/components/ProductTitle";
 import Gada from "public/gada.png";
 import React from "react";
@@ -38,7 +38,7 @@ const data = [
 const GadaMudgals = () => {
   return (
     <section>
-      <ProductTitle title="Gada - Mudgals" link="view all" />
+      <ProductTitle title="Gada - Mudgals" link="View All" />
       <Productlist productList={data} />
     </section>
   );

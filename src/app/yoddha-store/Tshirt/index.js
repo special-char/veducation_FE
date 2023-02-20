@@ -1,6 +1,6 @@
 import React from "react";
 import Tshirt from "public/tshirt.png";
-import Productlist from "@/components/ProductItem";
+import Productlist from "@/components/ProductList";
 import ProductTitle from "@/components/ProductTitle";
 const data = [
   {
@@ -35,7 +35,7 @@ const data = [
 const TshirtStuff = () => {
   return (
     <section>
-      <ProductTitle title={"T-shirts - Hoodies"} link={"view all"} />
+      <ProductTitle title={"T-shirts - Hoodies"} link={"View All"} />
       <Productlist productList={data} />
     </section>
   );
