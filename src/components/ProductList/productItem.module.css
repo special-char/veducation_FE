@@ -1,5 +1,5 @@
 .product_item {
-  @apply flex flex-col gap-3 bg-transparent  py-3 border border-neutral-250 rounded-md;
+  @apply flex flex-col gap-3 bg-transparent  py-3 border border-neutral-250 rounded-md min-w-[123px];
 
   &__image {
     @apply relative aspect-image mx-6;
@@ -10,10 +10,10 @@
   }
 
   &__name {
-    @apply text-neutral-700;
+    @apply text-neutral-700 text-xs;
   }
 
   &__author {
-    @apply text-sm font-bold;
+    @apply text-xs font-bold;
   }
 }
