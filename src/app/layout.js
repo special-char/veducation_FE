@@ -4,6 +4,7 @@ import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar/navbar";
+import ProductContextProvider from "@/context/ProductContextProvider";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -31,11 +32,13 @@ export default function RootLayout({ children }) {
       <head />
 
       <body>
-        <main className="bg-background md:px-container">
-          <Header />
-          {children}
-          <Navbar />
-        </main>
+        <ProductContextProvider>
+          <main className="bg-background md:px-container">
+            <Header />
+            {children}
+            <Navbar />
+          </main>
+        </ProductContextProvider>
       </body>
     </html>
   );
