@@ -37,8 +37,9 @@ const Productlist = async ({ productList }) => {
   const productData = await getProductData();
   console.log("getProductData", productData);
   const {
-    attributes: { name },
-  } = productData.data;
+    attributes: { name , products },
+  
+  } = productData?.data;
 
   return (
     <div className="flex flex-col">
