@@ -8,7 +8,6 @@ import Minus from "public/icons/minus.svg";
 import Delete from "public/icons/delete.svg";
 import OrderdItem from "../oderedItem/orderedItem";
 
-
 // const item={
 //   img:Tshirt,
 //   item:"Veducation T Shirt - Mens Tshirt Pure Black",
@@ -18,7 +17,7 @@ import OrderdItem from "../oderedItem/orderedItem";
 //   deliveredOn:"13 june"
 // }
 
-const ProductConfirm = ({ image, title, price }) => {
+const ProductConfirm = ({ image, title, price, isCourse }) => {
   const [arriving, setArriving] = useState(false);
   const [count, setCount] = useState(1);
   const incrementCount = () => {
@@ -39,14 +38,24 @@ const ProductConfirm = ({ image, title, price }) => {
         </div>
         <div className={styles.main__desc}>
           <h5 className={styles.main__name}>{title}</h5>
-          {count > 0 && (
-            <p className={styles.main__price}>
-              $ {count * price}
-              {/* | {count} pcs */}
-            </p>
-          )}
+          <div className="flex justify-between">
+            {count > 0 && (
+              <p className={styles.main__price}>
+                $ { price}
+                 {/* | {count} pcs */}
+              </p>
+            )}
+           {isCourse && <button
+              className={` ${styles.main__dltBtn} ${
+                count && count ? "block" : "hidden"
+              }`}
+            >
+              <Delete />
+              Delete
+            </button>}
+          </div>
 
-          <div>
+         {!isCourse && <div>
             {count > 0 && (
               <div className={styles.main__counter}>
                 <button
@@ -72,7 +81,7 @@ const ProductConfirm = ({ image, title, price }) => {
                 </button>
               </div>
             )}
-          </div>
+          </div>}
         </div>
       </div>
     </div>

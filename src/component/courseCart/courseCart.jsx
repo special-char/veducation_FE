@@ -24,7 +24,7 @@ const CourseCart = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.main__detail} key="items">
+      {/* <div className={styles.main__detail} key="items">
         <div className={styles.main__imgdiv}>
           <Image src={Img} alt="item" className={styles.main__img} />
         </div>
@@ -37,7 +37,7 @@ const CourseCart = () => {
             <button className={styles.main__dltBtn}><Delete />Delete</button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.main__textbox}>
         {/* <input
@@ -53,7 +53,7 @@ const CourseCart = () => {
             placeholder="Enter your promoCode"
             value={searchValue}
             onChange={(x) => setSearchValue(x.target.value)}
-            className={"px-3"}
+            className={"px-9"}
           />
 
           <Promo className={styles.main__promo} />
