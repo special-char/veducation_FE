@@ -1,5 +1,5 @@
 .main {
-  @apply px-container;
+  
   &__detail {
     @apply flex gap-5 border-b-2  border-[#EED9BC] justify-center p-2;
   }
@@ -28,6 +28,7 @@
   &__dltBtn {
     @apply flex items-center justify-center gap-1 text-[#909090] text-xs border border-[949494] rounded-[4px] h-[30px] px-3  font-normal;
   }
+ 
   &__counterSvg {
     @apply mx-auto;
   }
