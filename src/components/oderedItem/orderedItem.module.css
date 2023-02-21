@@ -1,7 +1,6 @@
 .main {
-  @apply px-container;
   &__detail {
-    @apply flex gap-5 border-b-2  border-[#EED9BC] justify-center p-2;
+    @apply grid grid-cols-[1fr_4fr] gap-3 border-b-2  border-[#EED9BC] justify-center p-2;
   }
   /* &__img{
     @apply justify-center items-center;
@@ -17,7 +16,7 @@
     @apply text-xs text-[#455441];
   }
   &__date {
-    @apply text-[#4CA137];
+    @apply font-bold;
   }
   &__counter {
     @apply flex gap-5;

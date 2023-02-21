@@ -7,13 +7,20 @@ import Plus from "public/icons/plus.svg";
 import Minus from "public/icons/minus.svg";
 import Delete from "public/icons/delete.svg";
 
-const OrderdItem = ({ image, title, price, quantity, arriving, deliveredOn }) => {
+const OrderdItem = ({
+  image,
+  title,
+  price,
+  quantity,
+  arriving,
+  deliveredOn,
+}) => {
   // const [arriving, setArriving] = useState(false);
 
   return (
     <div className={styles.main}>
       <div className={styles.main__detail} key="items">
-        <div className="relative aspect-square min-h-[93px]   ">
+        <div className="relative aspect-square min-h-[53px]   ">
           <Image src={image} alt="item" fill className={styles.main__img} />
         </div>
         <div className={styles.main__desc}>
@@ -25,18 +32,29 @@ const OrderdItem = ({ image, title, price, quantity, arriving, deliveredOn }) =>
             </p>
           )}
 
-          {arriving && (
+          {arriving ? (
             <p className={styles.main__arriving}>
-              Arriving by :<span className={styles.main__date}>{arriving}</span>
+              Arriving by :<span className="text-[#4CA137] font-bold">{arriving}</span>
+            </p>
+          ) : (
+            <p className={styles.main__arriving}>
+              delivery on :
+              <span
+                className={`${styles.main__date} ${
+                  { arriving } ? "text-neutral-150 " : "text-[#4CA137]"
+                }`}
+              >
+                {deliveredOn}
+              </span>
             </p>
           )}
 
-          {deliveredOn && (
+          {/* {deliveredOn && (
             <p className={styles.main__arriving}>
               delivery by :
               <span className={styles.main__date}>{deliveredOn}</span>
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </div>
