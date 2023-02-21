@@ -42,8 +42,8 @@ const ProductItem = async ({
   );
 };
 
-const Productlist = async ({ productList }) => {
-  const productData = await getProductData();
+const Productlist = async ({ id }) => {
+  const productData = await getProductData(id);
   console.log("getProductData", productData);
   const {
     attributes: { name, products },
