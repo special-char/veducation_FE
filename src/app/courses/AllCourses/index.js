@@ -2,8 +2,7 @@ import Coursecard from "@/components/Coursecard/coursecard";
 import CourseImage from "public/courseImg.png";
 import CourseImage2 from "public/courseImg2.png";
 import React from "react";
-import {  getCourses } from "@/lib/getCourses";
-
+import { getCourses } from "@/lib/getCourses";
 
 // const data = [
 //   {
@@ -63,23 +62,14 @@ import {  getCourses } from "@/lib/getCourses";
 //   },
 // ];
 
-const AllCourses = async() => {
+const AllCourses = async () => {
   const productCourses = await getCourses();
   console.log(productCourses);
-  
-
-
   return (
     <section className="pb-24">
       <div className="flex flex-col gap-3">
         {productCourses?.data.map((val) => {
-          
-          return (
-            <Coursecard
-            key={val.id}
-             {...val}
-            />
-          );
+          return <Coursecard key={val.id} {...val} />;
         })}
       </div>
     </section>
