@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useContext, useEffect } from "react";
 import SocialIcon from "./SocialIcon";
 import YoutubeSvg from "../../../public/youtubesvg.svg";
 import InstagramSvg from "../../../public/instagramSvg.svg";
@@ -6,8 +7,15 @@ import UserSvg from "../../../public/user.svg";
 import SpotifySvg from "../../../public/spotify.svg";
 import FacebookSvg from "../../../public/facebook.svg";
 import Plus from "../../../public/plus.svg";
+import ProductContextProvider, {
+  ProductContext,
+} from "@/context/ProductContextProvider";
 
 const SocialLinks = () => {
+  const {
+    state: { signIn },
+    dispatch,
+  } = useContext(ProductContext);
   const socials = [
     {
       variant: "user",
@@ -34,32 +42,27 @@ const SocialLinks = () => {
       Icon: () => <FacebookSvg />,
       name: "Facebook",
     },
-    {
-      variant: "social",
-      Icon: () => <YoutubeSvg />,
-      name: "Youtube",
-    },
-    {
-      variant: "social",
-      Icon: () => <InstagramSvg />,
-      name: "Instagram",
-    },
-    {
-      variant: "social",
-      Icon: () => <SpotifySvg />,
-      name: "Spotify",
-    },
-    {
-      variant: "social",
-      Icon: () => <FacebookSvg />,
-      name: "Facebook",
-    },
   ];
+  useEffect(() => {
+    console.log(signIn);
+
+    return () => {};
+  }, [signIn]);
+
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">
       {socials.map((social) => {
         return (
-          <div key={social.name} className="relative">
+          <div
+            onClick={() => {
+              if (social.variant === "user") {
+                dispatch({ signIn: true });
+                return;
+              }
+            }}
+            key={social.name}
+            className="relative"
+          >
             <SocialIcon
               variant={social.variant}
               Icon={social.Icon}

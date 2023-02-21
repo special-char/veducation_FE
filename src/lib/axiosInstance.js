@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL ?? "http://192.168.1.5:1337/api",
   timeout: 5000,
   timeoutErrorMessage: "Timeout! something went wrong",
 });

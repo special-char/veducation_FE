@@ -11,7 +11,9 @@ import ProductContextProvider, {
 } from "@/context/ProductContextProvider";
 
 const Header = () => {
-  const { cartItems, notifications } = useContext(ProductContext);
+  const {
+    state: { cartItems, notifications },
+  } = useContext(ProductContext);
   console.log({ cartItems, notifications });
   return (
     <ProductContextProvider>

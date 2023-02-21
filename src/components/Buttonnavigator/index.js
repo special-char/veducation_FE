@@ -54,7 +54,7 @@ const Btnnavigator = ({ icon, title, desc }) => {
         <span className={styles.navRoot__body}>
           {icon}
           <span className="flex flex-col">
-            <h6 className="mb-0">{title}</h6>
+            <h6 className="mb-0 text-base font-bold text-secondary">{title}</h6>
             <p className="text-base">{desc && desc}</p>
           </span>
         </span>

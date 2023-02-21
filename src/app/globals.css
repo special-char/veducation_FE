@@ -39,7 +39,7 @@
   }
 
   p {
-    @apply mb-1  text-neutral-600;
+    @apply text-neutral-600;
     /* &:last-child {
       @apply mb-0 pb-0;
     } */
@@ -282,7 +282,7 @@
     }
 
     &--secondary {
-      @apply bg-neutral-300 text-neutral-700;
+      @apply bg-secondary text-white text-xs;
     }
 
     &--secondary:hover {
@@ -292,6 +292,20 @@
     &--secondary2 {
       @apply bg-primary3 text-background2;
     }
+
+    /* &--count {
+      @apply bg-neutral-1050 text-background2;
+    } */
+    /* &--white {
+      @apply bg-neutral-100 text-neutral-800;
+    }
+
+    &--white:hover {
+      @apply bg-primary text-neutral-100;
+      & > svg {
+        @apply fill-neutral-100;
+      }
+    } */
 
     &--small {
       @apply py-4 px-6  text-xs;
