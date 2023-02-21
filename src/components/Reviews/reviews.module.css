@@ -1,7 +1,11 @@
 .reviews {
-  @apply flex items-center;
+  @apply flex text-center;
 
   & > svg {
-    @apply fill-primary;
+    @apply fill-primary2;
+  }
+
+  &__count {
+    @apply text-neutral-850;
   }
 }
