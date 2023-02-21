@@ -12,7 +12,7 @@ export default function Home() {
     <div className="h-full pb-44">
       <SocialLinks />
       <SignIn />
-      <YourOrderPage />
+      
     </div>
   );
 }
