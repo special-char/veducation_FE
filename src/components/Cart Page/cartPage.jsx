@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductConfirm from '../ProductConfirm/productConfirm'
 import Tshirt from "public/tshirt.png";
+import CourseCart from '@/component/courseCart/courseCart';
 
 
 const item=[{
@@ -27,6 +28,13 @@ const item=[{
     arriving:"12 june",
     deliveredOn:"13 june"
   },]
+  const data = {
+    orderPrice: "75",
+    totalAmount: "95",
+    title:"Veducation T Shirt - Mens Tshirt Pure Black",
+    price:"55$"
+  };
+  
 
 const CartPage = () => {
   return (
@@ -34,6 +42,7 @@ const CartPage = () => {
         {item.map((x)=>(
         <ProductConfirm image={x.img} title={x.item} price={x.price}  key="Cart"/>
         ))}
+        <CourseCart title={data.title} price={data.price} orderPrice={data.orderPrice} totalAmount={data.totalAmount} />
         
     </div>
   )
