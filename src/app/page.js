@@ -54,9 +54,10 @@ export default function Home() {
     <div className="h-full pb-44">
       {/* <SocialLinks />
       <SignIn />
-      <div className="px-container">
-        <Productlist productList={data} />
-        <DonationCard /> */}
+      <div className="xs:px-container md:px-0">
+        <Productlist id={1} />
+        {/* <DonationCard /> */}
+      </div>
     </div>
   );
 }

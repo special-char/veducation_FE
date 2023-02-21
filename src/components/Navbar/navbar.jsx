@@ -46,25 +46,31 @@ const data = [
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <div className={styles.navBar}>
-      {data.map((val) => {
-        const Svg = val.svg;
-        return (
-          <Link href={val.href} key={val.id} className={styles.navBar__navItem}>
-            <div className={styles.navBar__navItem__svg}>
-              <Svg fill={pathname === val.href ? "#FF7136" : "#222"} />
-            </div>
-            <div
-              className={clx(styles.navBar__navItem__desc, {
-                "text-[#FF7136]": pathname === val.href,
-                // "text-[#222]": pathname !== val.href,
-              })}
+    <div className="bg-background flex fixed w-screen bottom-0  z-20 left-0 justify-center">
+      <nav className={styles.navBar}>
+        {data.map((val) => {
+          const Svg = val.svg;
+          return (
+            <Link
+              href={val.href}
+              key={val.id}
+              className={styles.navBar__navItem}
             >
-              {val.desc}
-            </div>
-          </Link>
-        );
-      })}
+              <div className={styles.navBar__navItem__svg}>
+                <Svg fill={pathname === val.href ? "#FF7136" : "#222"} />
+              </div>
+              <div
+                className={clx(styles.navBar__navItem__desc, {
+                  "text-[#FF7136]": pathname === val.href,
+                  // "text-[#222]": pathname !== val.href,
+                })}
+              >
+                {val.desc}
+              </div>
+            </Link>
+          );
+        })}
+      </nav>
     </div>
   );
 };
