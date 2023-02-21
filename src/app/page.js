@@ -55,6 +55,7 @@ export default function Home() {
       <SignIn />
       <div className="xs:px-container md:px-0">
         <Productlist id={1} />
+        <DonationCard />
         {/* <DonationCard /> */}
       </div>
     </div>
