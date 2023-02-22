@@ -1,8 +1,8 @@
 .coursedetails {
-  @apply pt-5 py-16 h-full;
+  @apply pt-5 py-16 h-full px-container;
 
   &__imagebody {
-    @apply relative aspect-square bg-primary;
+    @apply relative aspect-h-image   bg-primary rounded-md;
   }
   &__playicon {
     @apply flex h-12 absolute top-[40%] right-[45%];
@@ -17,10 +17,10 @@
     @apply flex gap-8 items-center text-center py-2;
   }
   &__underline {
-    @apply border-b-[2.5px] w-6;
+    @apply border-b-[2.5px] w-6 ;
   }
   &__review {
-    @apply text-base text-neutral-150 font-medium;
+    @apply text-base pb-2 text-neutral-150 font-medium;
   }
   &__faqpage {
     @apply pt-3 pb-8;
@@ -41,10 +41,10 @@
     @apply underline text-xs font-semibold text-neutral-800;
   }
   &__reviewpage {
-    @apply flex flex-col rounded-md shadow-base gap-4 mb-6;
+    @apply flex flex-col   shadow-base gap-4 mb-6;
   }
   &__commentpage {
-    @apply flex bg-[#F4DFC4] flex-col p-4;
+    @apply flex rounded-md bg-[#F4DFC4] flex-col p-4;
   }
   &__ratingstar {
     @apply flex items-center gap-6;

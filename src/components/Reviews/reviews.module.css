@@ -6,6 +6,6 @@
   }
 
   &__count {
-    @apply text-neutral-500 mb-0 font-bold;
+    @apply text-neutral-500 mb-0 font-bold bg-primary;
   }
 }

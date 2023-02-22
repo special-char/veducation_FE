@@ -70,7 +70,7 @@
   blockquote {
     @apply mb-2 bg-neutral-100 py-10 px-5 text-lg shadow-base sm:py-12 sm:px-[50px] sm:text-xl md:py-[58px] md:px-[63px] md:text-xxl lg:py-[70px] lg:pr-[76px] lg:pl-[126px] lg:text-2xl;
     border-radius: 10px 20px 20px 10px;
-    border-left: 11px solid theme("colors.secondary3");
+    border-left: 11px solid theme("colors.secondary");
   }
 
   figure {
@@ -163,7 +163,7 @@
       }
 
       &::before {
-        content: "\2228";
+        content: "\2304";
         @apply absolute right-0 text-center items-center text-sm font-bold text-secondary;
       }
     }
@@ -186,7 +186,7 @@
       @apply text-neutral-600;
 
       &::before {
-        content: "\2227";
+        content: "\2303";
         @apply aspect-square text-secondary  text-center text-sm font-bold absolute right-0;
       }
     }
