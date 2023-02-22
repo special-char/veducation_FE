@@ -77,7 +77,7 @@ export const ProductItem = async ({
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
-  console.log("getCategoryData", productData);
+  console.log("getProductData", productData);
   const {
     attributes: { name, products },
   } = productData?.data;

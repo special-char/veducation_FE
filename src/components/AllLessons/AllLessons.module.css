@@ -1,0 +1,18 @@
+.AllLessons {
+  @apply pt-4;
+  &__card {
+    display:grid;
+    grid-template-columns:1fr 3fr;
+    gap:10px;
+    @apply   border-2 p-1 rounded-md border-[#4D310914]  gap-2 mb-2;
+  }
+  &__p {
+    @apply text-xs font-bold text-neutral-500 leading-5;
+  }
+  &__span {
+    @apply text-[13px] leading-3 text-neutral-400 font-bold font-sans;
+  }
+  &__img {
+    @apply  aspect-auto content-center   object-cover absolute rounded-sm;
+  }
+}

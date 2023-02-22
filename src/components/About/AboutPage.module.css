@@ -1,0 +1,19 @@
+.AboutPage {
+  @apply  flex-col  ;
+  &__Img {
+    @apply flex flex-col gap-8 pb-4;
+  }
+  &__Content {
+    @apply text-xl flex flex-col ;
+  }
+  &__span{
+    @apply text-primary2 font-bold;
+  }
+  &__details{
+    @apply text-sm text-neutral-400 font-normal leading-6 flex flex-col gap-y-5 ;
+  }
+  &__button{
+    @apply  bg-primary2 p-1 items-center justify-between text-center rounded-md  ;
+  }
+  
+}
