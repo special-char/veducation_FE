@@ -1,0 +1,28 @@
+.ProductPage {
+  @apply px-container py-4;
+
+  &__image {
+    @apply relative aspect-square max-w-[200px] mx-auto;
+  }
+  &__body {
+    @apply flex flex-col pt-8;
+  }
+  &__ptag {
+    @apply font-bold text-xs py-2;
+  }
+  &__title {
+    @apply flex flex-1 items-center justify-between py-6;
+  }
+  &__price {
+    @apply items-center text-xl font-bold flex;
+  }
+  &__count {
+    @apply flex gap-4 text-center;
+  }
+  &__item {
+    @apply text-primary font-bold;
+  }
+  &__btn {
+    @apply flex flex-col gap-2 py-6;
+  }
+}

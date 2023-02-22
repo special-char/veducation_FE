@@ -1,8 +1,11 @@
+"use client";
 const { createContext, useReducer } = require("react");
 
 const initialState = {
   cartItems: 0,
-  notifications: 1,
+  notifications: 0,
+  signIn: false,
+  cart: [],
 };
 
 export const ProductContext = createContext(initialState);

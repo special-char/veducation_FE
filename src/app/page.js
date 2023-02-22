@@ -1,20 +1,22 @@
-"use client";
 import Coursecard from "@/components/Coursecard/coursecard";
 import Navbar from "@/components/Navbar/navbar";
-import ProductItem from "@/components/productItem";
+import ProductItem from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
 import Btnnavigator from "@/components/Buttonnavigator";
 import SignIn from "@/containers/SignIn";
 import Varification from "@/containers/otpVarification";
-import SignUpDetails from "@/containers/SignUpDetails";
-import Productlist from "@/components/productItem";
+import Productlist from "@/components/ProductList";
 import Book from "public/book.png";
-import DonationCard from "@/components/Donation/donationCard";
 import DonationCard2 from "@/components/DonationCard";
+import DonationCard from "@/components/DonationCard";
+import { getProductData } from "@/lib/getHomeProductData";
+import ProductTitle from "@/components/ProductTitle";
+import AboutPage from "@/components/About/AboutPage";
 
 const data = [
   {
     img: Book,
+    id: 1,
     title: "B.O.S.S : Basics of Sanatan Sanskriti",
     author: "Prateeik Prajapati",
     rate: 3,
@@ -22,6 +24,7 @@ const data = [
   },
   {
     img: Book,
+    id: 2,
     title: "B.O.S.S : Basics of Sanatan Sanskriti",
     author: "Prateeik Prajapati",
     rate: 3,
@@ -29,6 +32,7 @@ const data = [
   },
   {
     img: Book,
+    id: 3,
     title: "B.O.S.S : Basics of Sanatan Sanskriti",
     author: "Prateeik Prajapati",
     rate: 3,
@@ -36,6 +40,7 @@ const data = [
   },
   {
     img: Book,
+    id: 4,
     title: "B.O.S.S : Basics of Sanatan Sanskriti",
     author: "Prateeik Prajapati",
     rate: 3,
@@ -44,13 +49,16 @@ const data = [
 ];
 
 export default function Home() {
-  function onClick() {}
+  // function onClick() {}
   return (
-    <div className="h-full pb-44 ">
+    <div className="h-full pb-44">
       <SocialLinks />
-      <div className="px-container">
-        <Productlist productList={data} />
-        <DonationCard2 />
+      {/* <SignIn /> */}
+      <AboutPage />
+
+      <div className="xs:px-container md:px-0">
+        <Productlist id={1} />
+        {/* <DonationCard /> */}
       </div>
     </div>
   );
