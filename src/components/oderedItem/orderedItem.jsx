@@ -13,7 +13,7 @@ const OrderdItem = ({ image, title, price, quantity, arriving, deliveredOn }) =>
   return (
     <div className={styles.main}>
       <div className={styles.main__detail} key="items">
-        <div className="relative aspect-square min-h-[93px]   ">
+        <div className="relative aspect-square min-h-[60px]   ">
           <Image src={image} alt="item" fill className={styles.main__img} />
         </div>
         <div className={styles.main__desc}>

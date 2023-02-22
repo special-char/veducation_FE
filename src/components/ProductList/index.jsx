@@ -5,7 +5,7 @@ import Book from "public/book.png";
 import Reviews from "../Reviews";
 import ProductTitle from "../ProductTitle";
 import Link from "next/link";
-import { getProductData } from "@/lib/getHomeProductData";
+import { getCategoryData, getProductData } from "@/lib/getHomeProductData";
 
 const ProductItem = async ({
   attributes: { posterImageUrl, title, author },
@@ -43,7 +43,7 @@ const ProductItem = async ({
 };
 
 const Productlist = async ({ id }) => {
-  const productData = await getProductData(id);
+  const productData = await getCategoryData(id);
   console.log("getProductData", productData);
   const {
     attributes: { name, products },

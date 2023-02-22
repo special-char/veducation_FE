@@ -43,7 +43,7 @@ const data = [
 
 const MenuSection = () => {
   return (
-    <section className="pt-4 flex flex-col gap-3-">
+    <section className="pt-4 flex flex-col gap-3">
       {data.map((val) => {
         return (
           <Btnnavigator
