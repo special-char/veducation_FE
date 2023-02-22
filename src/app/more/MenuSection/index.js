@@ -12,36 +12,43 @@ const data = [
   {
     icon: <Myorders className="w-5" />,
     title: "My Orders",
+    href: "/your-orders",
   },
   {
     icon: <Profile className="w-5" />,
     title: "Profile",
+    href: "/profile-settings",
   },
   {
     icon: <Call className="w-5" />,
     title: "Book a Consultation Call",
+    href: "/",
   },
   {
     icon: <Invite className="w-5" />,
     title: "Invite Us",
+    href: "/",
   },
   {
     icon: <JoinSena className="w-5" />,
     title: "Join Pandav Sena",
+    href: "/",
   },
   {
     icon: <Info className="w-5" />,
     title: "About Veducation",
+    href: "/about",
   },
 ];
 
 const MenuSection = () => {
   return (
-    <section className="pt-4 flex flex-col gap-3-">
+    <section className="pt-4 flex flex-col gap-3">
       {data.map((val) => {
         return (
           <Btnnavigator
             key={val.title}
+            href={val.href}
             icon={val.icon}
             title={val.title}
             desc={val.desc}

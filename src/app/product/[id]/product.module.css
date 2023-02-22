@@ -1,5 +1,5 @@
 .ProductPage {
-  @apply px-container py-4;
+  @apply xs:px-container lg:px-0 py-4 h-screen;
 
   &__image {
     @apply relative aspect-square max-w-[200px] mx-auto;
@@ -23,6 +23,6 @@
     @apply text-primary font-bold;
   }
   &__btn {
-    @apply flex flex-col gap-2 py-6;
+    @apply flex md:flex-row xs:flex-col justify-end gap-2 py-6;
   }
 }
