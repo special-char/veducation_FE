@@ -1,17 +1,8 @@
-import Coursecard from "@/components/Coursecard/coursecard";
-import Navbar from "@/components/Navbar/navbar";
-import ProductItem from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
-import Btnnavigator from "@/components/Buttonnavigator";
 import SignIn from "@/containers/SignIn";
-import Varification from "@/containers/otpVarification";
 import Productlist from "@/components/ProductList";
 import Book from "public/book.png";
-import DonationCard2 from "@/components/DonationCard";
 import DonationCard from "@/components/DonationCard";
-import { getProductData } from "@/lib/getHomeProductData";
-// import ProductTitle from "@/components/ProductTitle";
-// import Modalsucess from "@/containers/Modalsucess";
 
 const data = [
   {
@@ -56,7 +47,6 @@ export default function Home() {
       <SignIn />
       <div className="xs:px-container md:px-0">
         <Productlist id={1} />
-        <DonationCard />
         <DonationCard />
       </div>
     </div>

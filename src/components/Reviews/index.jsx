@@ -4,7 +4,7 @@ import StarFull from "public/icons/star_fill.svg";
 import Star from "public/icons/star.svg";
 import StarHalf from "public/icons/star_half.svg";
 
-const Reviews = ({ rate, count }) => {
+const Reviews = ({ rate, count, width, height }) => {
   const start = [1, 2, 3, 4, 5];
   return (
     <div className={styles.reviews}>
