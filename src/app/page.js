@@ -59,8 +59,6 @@ export default function Home() {
         <Productlist id={1} />
         {/* <DonationCard /> */}
       </div>
-    
-      
     </div>
   );
 }
