@@ -10,8 +10,8 @@ import Book from "public/book.png";
 import DonationCard2 from "@/components/DonationCard";
 import DonationCard from "@/components/DonationCard";
 import { getProductData } from "@/lib/getHomeProductData";
-import ProductTitle from "@/components/ProductTitle";
-import Modalsucess from "@/containers/Modalsucess";
+// import ProductTitle from "@/components/ProductTitle";
+// import Modalsucess from "@/containers/Modalsucess";
 
 const data = [
   {
@@ -52,12 +52,12 @@ export default function Home() {
   // function onClick() {}
   return (
     <div className="h-full pb-44">
-      {/* <SocialLinks />
+      <SocialLinks />
       <SignIn />
       <div className="xs:px-container md:px-0">
         <Productlist id={1} />
         <DonationCard />
-        {/* <DonationCard /> */}
+        <DonationCard />
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ const FeaturedBook = () => {
             <Button
               as={Link}
               variant="primary"
-              href=""
+              href="#"
               className="w-full px-0 py-2"
               size={"small"}
             >
@@ -33,7 +33,7 @@ const FeaturedBook = () => {
             <Button
               as={Link}
               variant="primary"
-              href=""
+              href="#"
               className="w-full px-0 py-2"
               size={"small"}
             >

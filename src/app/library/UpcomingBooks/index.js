@@ -31,6 +31,7 @@ const UpcomingBooks = () => {
       {data.map((val) => {
         return (
           <Btnnavigator
+            href={""}
             key={val.title}
             icon={<UpcomingBookImg className="w-6" />}
             title={val.title}
