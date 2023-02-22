@@ -1,14 +1,18 @@
+import AboutPage from "@/app/about/About/AboutPage";
 import Button from "@/components/Button";
 import { getAboutData } from "@/lib/getAboutData";
+import Link from "next/link";
 import React from "react";
-import About from "./AboutContainer";
 
-const Page = () => {
+const About = async () => {
+  const aboutData = await getAboutData();
+  console.log(aboutData, "aboutData");
+
   return (
-    <div>
-      <About />
-    </div>
+    <section className="px-container pt-4 pb-24">
+      <AboutPage />
+    </section>
   );
 };
 
-export default Page;
+export default About;
