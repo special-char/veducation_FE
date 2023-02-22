@@ -1,7 +1,7 @@
 import React from "react";
 import ProductConfirm from "../ProductConfirm/productConfirm";
 import Tshirt from "public/tshirt.png";
-import CourseCart from "@/component/courseCart/courseCart";
+import CourseCart from "@/components/courseCart/courseCart";
 
 const item = [
   {
@@ -48,14 +48,14 @@ const CartPage = () => {
             key="Cart"
           />
         ))}
-          </div>
-        <CourseCart
-          title={data.title}
-          price={data.price}
-          orderPrice={data.orderPrice}
-          totalAmount={data.totalAmount}
-          className="gap-y-16"
-        />
+      </div>
+      <CourseCart
+        title={data.title}
+        price={data.price}
+        orderPrice={data.orderPrice}
+        totalAmount={data.totalAmount}
+        className="gap-y-16"
+      />
     </div>
   );
 };
