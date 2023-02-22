@@ -4,34 +4,35 @@ import styles from "./donationView.module.css";
 import Imag2 from "public/img2.png";
 import Imag3 from "public/img3.png";
 import Imag4 from "public/img4.png";
-import Day from "public/icons/days.svg";
+// import Day from "public/icons/days.svg";
+import Clock from 'public/Clock.svg'
 import People from "public/icons/people.svg";
 import Progress from "./progressBar";
 
 const users = [
   {
-    img: <Image src={Imag2} alt="donation" className={styles.main__img} />,
+    img:Imag2,
     about: "Building Gaushala for Hundreds of Gaumatas in Mayapur, Kolkata",
     day: "50days",
-    bakers: "24000",
+    bakers: "24,000",
     donation: "50568",
-    progress: <Progress bgcolor="green" progress="10" height={5} />,
+    progress: "10",
   },
   {
-    img: <Image src={Imag3} alt="donation" className={styles.main__img} />,
+    img:Imag3,
     about: "Building Gaushala for Hundreds  Gaushala gaushala",
     day: "10days",
-    bakers: "32000",
+    bakers: "32,000",
     donation: "50568",
-    progress: <Progress bgcolor="green" progress="60" height={5} />,
+    progress: "60",
   },
   {
-    img: <Image src={Imag4} alt="donation" className={styles.main__img} />,
+    img:Imag4,
     about: "Building Gaushala for Hundreds  Gaushala gaushala",
     day: "84days",
     bakers: "1000",
     donation: "50568",
-    progress: <Progress bgcolor="green" progress="80" height={5} />,
+    progress: "90",
   },
 ];
 
@@ -45,8 +46,8 @@ const DonationView = () => {
       {users.map((x, i) => (
         <div className={styles.main__donationInfo} key={i}>
           <div className={styles.main__donationdata}>
-            {/* <Image src={Imag2} className={styles.main__img}/> */}
-            {x.img}
+            <Image src={x.img} className={styles.main__img} alt="donation"/>
+            {/* {x.img} */}
             <h6 className={styles.main__about}>{x.about}</h6>
             <p className={styles.main__value}>
               <span className={styles.main__span}>${x.donation}</span> raised
@@ -54,16 +55,17 @@ const DonationView = () => {
             </p>
             {/* <p>Lorem ipsum dolor sit amet.</p> */}
 
-            {x.progress}
+            {/* {x.progress} */}
+            <Progress bgcolor="green" progress={x.progress} height={5} />
 
             <div className={styles.main__infoBtn}>
               <button className={styles.main__day}>
-                <Day height={10} />
+                <Clock height={10} />
                 {x.day}
               </button>
               <button className={styles.main__person}>
                 <People height={10} />
-                {x.bakers}
+                {x.bakers} bakers
               </button>
             </div>
           </div>
