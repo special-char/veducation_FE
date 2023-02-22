@@ -1,5 +1,5 @@
-.CourseLession1 {
-  @apply px-container  flex flex-col;
+.BannerCourses {
+  @apply  flex flex-col;
   &__thumbnail {
     @apply bg-primary3 relative;
   }
