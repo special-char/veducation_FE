@@ -1,7 +1,7 @@
 .main {
   
   &__detail {
-    @apply flex gap-5 border-b-2  border-[#EED9BC] justify-center p-2;
+    @apply flex gap-2 border-b-2  border-[#EED9BC] justify-center p-2;
   }
   /* &__img{
     @apply justify-center items-center;

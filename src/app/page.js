@@ -13,6 +13,7 @@ import { getProductData } from "@/lib/getHomeProductData";
 import ProductTitle from "@/components/ProductTitle";
 import YourOrderPage from "@/components/yourOrdersPage/yourOrderPage";
 import ProductConfirm from "@/components/ProductConfirm/productConfirm";
+import OrderConfirm from "@/containers/orderConfirmation/orderConfirm";
 
 const data = [
   {
@@ -54,7 +55,8 @@ export default function Home() {
   return (
     <div className="h-full pb-44">
       <SocialLinks />
-      <SignIn />
+      {/* <SignIn /> */}
+      <OrderConfirm />
       <div className="xs:px-container md:px-0">
         <Productlist id={1} />
         {/* <DonationCard /> */}

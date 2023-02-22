@@ -36,7 +36,7 @@ const data = {
   price: "55$",
 };
 
-const CartPage = () => {
+const CoursesCartPage = () => {
   return (
     <div className=" flex flex-col gap-y-14">
       <div className="flex flex-col ">
@@ -46,6 +46,7 @@ const CartPage = () => {
             title={x.item}
             price={x.price}
             key="Cart"
+            isCourse={true}
           />
         ))}
       </div>
@@ -60,4 +61,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default CoursesCartPage;

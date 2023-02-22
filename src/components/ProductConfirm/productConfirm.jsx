@@ -33,55 +33,59 @@ const ProductConfirm = ({ image, title, price, isCourse }) => {
   return (
     <div className={styles.main}>
       <div className={styles.main__detail} key="items">
-        <div className="relative aspect-square min-h-[93px]   ">
-          <Image src={image} alt="item" fill className={styles.main__img} />
+        <div className="relative aspect-square min-h-[93px] py-3   ">
+          <Image src={image} alt="item" fill className="p-3" />
         </div>
-        <div className={styles.main__desc}>
+        <div className="flex flex-col place-content-center gap-2">
           <h5 className={styles.main__name}>{title}</h5>
           <div className="flex justify-between">
             {count > 0 && (
               <p className={styles.main__price}>
-                $ { price}
-                 {/* | {count} pcs */}
+                $ {price}
+                {/* | {count} pcs */}
               </p>
             )}
-           {isCourse && <button
-              className={` ${styles.main__dltBtn} ${
-                count && count ? "block" : "hidden"
-              }`}
-            >
-              <Delete />
-              Delete
-            </button>}
+            {isCourse && (
+              <button
+                className={` ${styles.main__dltBtn} ${
+                  count && count ? "block" : "hidden"
+                }`}
+              >
+                <Delete />
+                Delete
+              </button>
+            )}
           </div>
 
-         {!isCourse && <div>
-            {count > 0 && (
-              <div className={styles.main__counter}>
-                <button
-                  onClick={decrementCount}
-                  className={styles.main__counterBtn}
-                >
-                  <Minus className={styles.main__counterSvg} />
-                </button>
-                <h5 className={styles.main__counterValue}>{count}</h5>
-                <button
-                  onClick={incrementCount}
-                  className={styles.main__counterBtn}
-                >
-                  <Plus className={styles.main__counterSvg} />
-                </button>
+          {!isCourse && (
+            <div>
+              {count > 0 && (
+                <div className={styles.main__counter}>
+                  <button
+                    onClick={decrementCount}
+                    className={styles.main__counterBtn}
+                  >
+                    <Minus className={styles.main__counterSvg} />
+                  </button>
+                  <h5 className={styles.main__counterValue}>{count}</h5>
+                  <button
+                    onClick={incrementCount}
+                    className={styles.main__counterBtn}
+                  >
+                    <Plus className={styles.main__counterSvg} />
+                  </button>
 
-                <button
-                  className={styles.main__dltBtn}
-                  onClick={() => setCount(0)}
-                >
-                  <Delete />
-                  Delete
-                </button>
-              </div>
-            )}
-          </div>}
+                  <button
+                    className={styles.main__dltBtn}
+                    onClick={() => setCount(0)}
+                  >
+                    <Delete />
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

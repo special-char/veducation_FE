@@ -1,7 +1,7 @@
 import OrderdItem from '@/components/oderedItem/orderedItem'
 import OrderSucess from '@/components/OrderConfirm/OrderConfirm'
 import OrderDetails from '@/components/order_details'
-import Tshirt from "public/tshirt.png"
+import Tshirt from "public/blacktshirt.png"
 
 import React from 'react'
 
@@ -9,14 +9,21 @@ import React from 'react'
   
 
 const OrderConfirm = () => {
-    const items = {
+    const items = [{
         img:Tshirt,
         item:"Veducation T Shirt - Mens T-shirt Pure Black",
         price:"25.00",
         totalpcs:"3pcs",
         arriving:"12 june",
         deliveredOn:"13 june"
-      };
+      },{
+        img:Tshirt,
+        item:"Veducation T Shirt - Mens T-shirt Pure Black",
+        price:"25.00",
+        totalpcs:"3pcs",
+        arriving:"12 june",
+        deliveredOn:"13 june"
+      }];
       const details = {
         orderCode: "#85764564674646",
         date: "February 19, 2021",
@@ -25,10 +32,12 @@ const OrderConfirm = () => {
       };
     
   return (
-    <div>
+    <div className='flex flex-col gap-9'>
       <OrderSucess />
-      <OrderdItem  image={items.img} title={items.item}  arriving={items.arriving}  />
-        <OrderDetails  orderCode={details.orderCode} date={details.date} total={details.total} payment={details.payment} />
+      {items.map((x)=>(
+      <OrderdItem image={x.img} title={x.item}  price={x.price} key="df"  />
+      ))}
+      <OrderDetails  orderCode={details.orderCode} date={details.date} total={details.total} payment={details.payment} />
     </div>
   )
 }
