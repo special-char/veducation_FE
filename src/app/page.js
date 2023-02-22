@@ -8,7 +8,12 @@ import Varification from "@/containers/otpVarification";
 import Productlist from "@/components/ProductList";
 import Book from "public/book.png";
 import DonationCard2 from "@/components/DonationCard";
-import DonationView from "@/components/Donation/donationView";
+import DonationCard from "@/components/DonationCard";
+import { getProductData } from "@/lib/getHomeProductData";
+import ProductTitle from "@/components/ProductTitle";
+import YourOrderPage from "@/components/yourOrdersPage/yourOrderPage";
+import ProductConfirm from "@/components/ProductConfirm/productConfirm";
+import OrderConfirm from "@/containers/orderConfirmation/orderConfirm";
 
 const data = [
   {
@@ -50,10 +55,11 @@ export default function Home() {
   return (
     <div className="h-full pb-44">
       <SocialLinks />
-      <div className="px-container">
-        <Productlist productList={data} />
-        <DonationCard2 />
-        <DonationView />
+      {/* <SignIn /> */}
+      <OrderConfirm />
+      <div className="xs:px-container md:px-0">
+        <Productlist id={1} />
+        {/* <DonationCard /> */}
       </div>
     </div>
   );

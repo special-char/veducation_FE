@@ -7,8 +7,8 @@ const OrderSucess = () => {
         year : "2023"
     }
   return (
-    <div className='px-container pb-2'>
-        <div className='border-2 rounded-md p-3 border-[#F5D9B1] bg-[#FCE9CF]'> 
+    <div >
+        <div className='border-2 p-5 rounded-md  border-[#F5D9B1] bg-[#FCE9CF]'> 
             <p className='text-[#5C5C5C]'>Thank you! 🎉</p>
             <span className='text-[#455441] font-bold'>Your order has been received</span>
             <p className='text-[#455441] text-base '>Arriving by : <span className='text-[#4CA137] text-base font-bold'>{date.date}th {date.month} {date.year}</span></p>
