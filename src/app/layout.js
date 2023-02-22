@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
 
       <body>
         <ProductContextProvider>
-          <main className="bg-background md:px-container">
+          <main className="bg-background md:px-container h-full">
             <Header />
             {children}
             <Navbar />

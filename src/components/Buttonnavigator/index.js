@@ -3,6 +3,7 @@ import React from "react";
 import BtnNavigator from "public/icons/navigator.svg";
 import Arrow from "public/icons/arrow.svg";
 import styles from "./navigator.module.css";
+import Link from "next/link";
 
 const btndata = [
   {
@@ -47,9 +48,9 @@ const btndata = [
   },
 ];
 
-const Btnnavigator = ({ icon, title, desc }) => {
+const Btnnavigator = ({ icon, title, desc, href }) => {
   return (
-    <div className="flex flex-col gap-2">
+    <Link href={href} className="flex flex-col gap-2">
       <div className={styles.navRoot}>
         <span className={styles.navRoot__body}>
           {icon}
@@ -60,7 +61,7 @@ const Btnnavigator = ({ icon, title, desc }) => {
         </span>
         <Arrow />
       </div>
-    </div>
+    </Link>
   );
 };
 
