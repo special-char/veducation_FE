@@ -1,22 +1,19 @@
 import Link from "next/link";
 import React from "react";
 import Button from "../Button";
-import styles from "./donationcard.module.css";
-import Imag1 from "public/book.png";
+import styles from "./donation.module.css";
+import Imag1 from "public/img1.png";
 import Image from "next/image";
 
-const DonationCard = () => {
+const DonationCard2 = () => {
   return (
     <section className={styles.donationcard}>
-      <div className="flex justify-between items-center py-4">
-        <h5 className="mb-0">Donations</h5>
-        <Link href="" className="border-b-1">
-          View All
-        </Link>
+      <div className="flex justify-between p-2">
+        <h5>Donations</h5> <span>View all</span>
       </div>
       <div className={styles.donationcard__main}>
         <div className="relative aspect-square h-full w-full">
-          <Image src={Imag1} fill alt="donation image" />
+          <Image src={Imag1} fill className="" />
         </div>
         <div className="flex flex-col justify-center">
           <h3 className="font-bold mb-0 ">Help us spread Dharma</h3>
@@ -39,4 +36,4 @@ const DonationCard = () => {
   );
 };
 
-export default DonationCard;
+export default DonationCard2;
