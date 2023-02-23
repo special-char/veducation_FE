@@ -19,10 +19,8 @@ export const ProductItem = async ({
           src={posterImageUrl}
           fill
           alt="book"
-          className="object-contain"
-          sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+          className="px-3 py-2"
+          sizes=""
         />
       </div>
       <div className={styles.product_item__desc}>
