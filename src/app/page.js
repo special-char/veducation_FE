@@ -3,7 +3,7 @@ import SignIn from "@/containers/SignIn";
 import Productlist from "@/components/ProductList";
 import Book from "public/book.png";
 import OrderConfirm from "@/containers/orderConfirmation/orderConfirm";
-import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
+import HomePage from "@/containers/home";
 
 const data = [
   {
@@ -40,25 +40,11 @@ const data = [
   },
 ];
 
-export default async function Home(props) {
-  const token = `${new URLSearchParams(props?.searchParams).toString()}`;
-  // const token = props?.searchParams;
-  if (token) {
-    console.log({ token });
-    const response = await getGoogleSignInRequest(token);
-    // console.log({ response });
-  }
-
+export default function Home(props) {
   // function onClick() {}
   return (
     <div className="h-full pb-44">
-      <SocialLinks />
-      <SignIn />
-      <OrderConfirm />
-      <div className="xs:px-container md:px-0">
-        <Productlist id={1} />
-        {/* <DonationCard /> */}
-      </div>
+      <HomePage {...props} />
     </div>
   );
 }
