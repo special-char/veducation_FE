@@ -3,7 +3,7 @@ import SignIn from "@/containers/SignIn";
 import Productlist from "@/components/ProductList";
 import Book from "public/book.png";
 import OrderConfirm from "@/containers/orderConfirmation/orderConfirm";
-import HomePage from "@/containers/home";
+import HomePage from "@/containers/HomePage";
 
 const data = [
   {
@@ -40,7 +40,7 @@ const data = [
   },
 ];
 
-export default function Home(props) {
+export default function Page(props) {
   // function onClick() {}
   return (
     <div className="h-full pb-44">

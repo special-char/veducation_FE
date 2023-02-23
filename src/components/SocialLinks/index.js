@@ -43,11 +43,6 @@ const SocialLinks = () => {
       name: "Facebook",
     },
   ];
-  useEffect(() => {
-    console.log(signIn);
-
-    return () => {};
-  }, [signIn]);
 
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">

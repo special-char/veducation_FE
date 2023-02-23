@@ -1,22 +1,39 @@
+"use client";
 import DonationCard2 from "@/components/DonationCard";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
 import SocialIcon from "@/components/SocialLinks/SocialIcon";
+import { ProductContext } from "@/context/ProductContextProvider";
+import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
 import Imag1 from "public/img1.png";
-import React from "react";
+import { useEffect } from "react";
+import SignIn from "../SignIn";
 
 const HomePage = async (props) => {
-  const token = `${new URLSearchParams(props?.searchParams).toString()}`;
-  // const token = props?.searchParams;
+  // const {
+  //   state: { authToken },
+  //   dispatch,
+  // } = useContext(ProductContext);
+  const token = props?.searchParams.access_token;
+  // const token = `${new URLSearchParams(props?.searchParams.access_token).toString()}`;
+
   if (token) {
     console.log({ token });
     const response = await getGoogleSignInRequest(token);
-    // console.log({ response });
+
+    console.log({ response }, "home");
   }
+
+  useEffect(() => {
+    return () => {};
+  }, []);
+
   return (
     <section>
       <SocialLinks />
       <Productlist id={1} />
+      <SignIn />
+
       <DonationCard2
         img={Imag1}
         title="Help us spread Dharma"
