@@ -1,5 +1,5 @@
 .main {
-  @apply mt-5;
+  @apply mt-5  px-container;
 
   &__detail {
     @apply flex gap-5 border-b-2  border-[#EED9BC]  p-2 mb-16;
@@ -34,7 +34,7 @@
     @apply py-2 pl-8 pr-4 rounded-lg border-2 border-primary4 w-full h-12 font-normal text-secondary placeholder-secondary;
   }
   &__promo {
-    @apply absolute top-2 my-auto bottom-1 left-3 h-full w-8 text-primary flex items-center justify-center;
+    @apply absolute top-3 left-3 h-full w-8 text-primary flex items-center justify-center;
   }
   &__btndiv {
     @apply absolute top-0 right-0 h-full w-12 flex items-center justify-center bg-secondary rounded-lg;

@@ -73,7 +73,7 @@ const CourseDetails = () => {
       <div className={styles.coursedetails__datails}>
         <h3 className="mb-0">Brahmacharya</h3>
         <Reviews className="" rate={3} count={23} width={20} height={20} />
-        <span>
+        <span className="font-bold">
           {data.time} | {data.lesson}
         </span>
         <div className={styles.coursedetails__prize}>{prize.rate}</div>
@@ -81,12 +81,12 @@ const CourseDetails = () => {
       <div className="py-4">
         <div className={styles.coursedetails__imformation}>
           <div className=" flex flex-col">
-            <h5>Description</h5>
+            <h5 >Description</h5>
             <div className={styles.coursedetails__underline}></div>
           </div>
           <p className={styles.coursedetails__review}>Reviews</p>
         </div>
-        <p>
+        <p className="text-base">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -122,14 +122,14 @@ const CourseDetails = () => {
                     {`By ${val.reviewer} - ${val.date}`}
                   </p>
                 </div>
-                <p>{val.desc}</p>
+                <p className="text-base">{val.desc}</p>
               </div>
             </>
           );
         })}
       </div>
       <div className={styles.coursedetails__faqpage}>
-        <h5 className={styles.coursedetails__faqheader}>Topics Covered</h5>
+        <h5 className={styles.coursedetails__faqheader}>Frequently Asked Questions</h5>
         <Accordian data={data1} />
       </div>
       <Button

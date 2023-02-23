@@ -1,5 +1,5 @@
 .details {
-  @apply w-full  left-3 px-container p-3;
+  @apply w-full  left-3;
   &__heading {
     @apply font-bold text-sm gap-x-11 flex  leading-5 items-center;
   }
