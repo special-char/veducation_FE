@@ -80,7 +80,7 @@ const CourseCart = () => {
         {/* <button className={styles.main__button}>Check out</button> */}
         <Button
           as={Link}
-          href=""
+          href="/billingdetails"
           variant="primary"
           className="w-full p-3"
           size={"large"}

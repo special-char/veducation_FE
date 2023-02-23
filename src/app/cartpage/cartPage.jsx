@@ -1,5 +1,5 @@
 import React from "react";
-import ProductConfirm from "../ProductConfirm/productConfirm";
+import ProductConfirm from "../../components/ProductConfirm/productConfirm";
 import Tshirt from "public/tshirt.png";
 import CourseCart from "@/components/courseCart/courseCart";
 
@@ -38,7 +38,7 @@ const data = {
 
 const CartPage = () => {
   return (
-    <div className=" flex flex-col gap-y-14">
+    <div className=" flex flex-col gap-2 pb-24">
       <div className="flex flex-col ">
         {item.map((x) => (
           <ProductConfirm

@@ -55,7 +55,7 @@ const Page = async (props) => {
         <div className={styles.ProductPage__btn}>
           <Button
             as={Link}
-            href=""
+            href="/cartpage"
             className={" md:flex md:justify-center"}
             prefetch={false}
             variant={"secondary"}
