@@ -1,4 +1,3 @@
-"use client";
 import DonationCard2 from "@/components/DonationCard";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
@@ -6,7 +5,6 @@ import SocialIcon from "@/components/SocialLinks/SocialIcon";
 import { ProductContext } from "@/context/ProductContextProvider";
 import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
 import Imag1 from "public/img1.png";
-import { useEffect } from "react";
 import SignIn from "../SignIn";
 
 const HomePage = async (props) => {
@@ -23,10 +21,6 @@ const HomePage = async (props) => {
 
     console.log({ response }, "home");
   }
-
-  useEffect(() => {
-    return () => {};
-  }, []);
 
   return (
     <section>
