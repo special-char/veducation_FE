@@ -9,6 +9,7 @@ import ProductTitle from "@/components/ProductTitle";
 import YourOrderPage from "@/components/yourOrdersPage/yourOrderPage";
 import ProductConfirm from "@/components/ProductConfirm/productConfirm";
 import OrderConfirm from "@/containers/orderConfirmation/orderConfirm";
+import HomePage from "@/containers/home";
 
 const data = [
   {
@@ -49,13 +50,7 @@ export default function Home() {
   // function onClick() {}
   return (
     <div className="h-full pb-44">
-      <SocialLinks />
-      <SignIn />
-      <OrderConfirm />
-      <div className="xs:px-container md:px-0">
-        <Productlist id={1} />
-        {/* <DonationCard /> */}
-      </div>
+      <HomePage />
     </div>
   );
 }
