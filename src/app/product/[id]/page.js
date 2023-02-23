@@ -10,7 +10,6 @@ import { getProductData } from "@/lib/getHomeProductData";
 
 const Page = async (props) => {
   const productData = await getProductData(props?.params?.id);
-  console.log({ data: productData?.data?.attributes });
   const { title, name, posterImageUrl, price, description } =
     productData?.data?.attributes;
 
