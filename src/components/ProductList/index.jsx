@@ -5,17 +5,12 @@ import Book from "public/book.png";
 import Reviews from "../Reviews";
 import ProductTitle from "../ProductTitle";
 import Link from "next/link";
-import { getCategoryData, getProductData } from "@/lib/getHomeProductData";
+import { getCategoryData } from "@/lib/getHomeProductData";
 
-const ProductItem = async ({
-  attributes: { posterImageUrl, title, author },
+export const ProductItem = async ({
+  attributes: { posterImageUrl, title, name, author, subtitle },
 }) => {
   console.log("props", title);
-  // const productData = await getProductData();
-  // console.log("getProductData", productData);
-  // const {
-  //   attributes: { posterImageUrl, title, author, rate, count, weight, content },
-  // } = productData?.data;
 
   return (
     <div className={styles.product_item}>
@@ -24,6 +19,7 @@ const ProductItem = async ({
           src={posterImageUrl}
           fill
           alt="book"
+          className="object-contain"
           sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
@@ -33,14 +29,51 @@ const ProductItem = async ({
         <p className={styles.product_item__name}>{title}</p>
         <p className={styles.product_item__author}>
           {author && `by ${author}`}
+          {subtitle && subtitle}
         </p>
+
         {/* <p className={styles.product_item__author}>{weight && weight}</p>
         <p className={styles.product_item__author}>{content && content}</p> */}
-        {/* <Reviews rate={rate} count={count} /> */}
+        <Reviews rate={3.5} count={100} />
       </div>
     </div>
   );
 };
+// export const Item = async ({
+//   attributes: { posterImageUrl, title, name, author, subtitle },
+// }) => {
+//   console.log("props", title);
+
+//   return (
+//     <div
+//       className={
+//         "flex flex-col flex-1 bg-transparent xs:p-2 md:p-3 border border-neutral-250 rounded-md max-w-[123px]"
+//       }
+//     >
+//       <div className={"relative aspect-image flex-1 flex"}>
+//         <Image
+//           src={posterImageUrl}
+//           fill
+//           alt="book"
+//           className="object-contain"
+//           // sizes="(max-width: 768px) 100vw,
+//           //     (max-width: 1200px) 50vw,
+//           //     33vw"
+//         />
+//       </div>
+//       <div className="flex flex-col flex-1 mt-2">
+//         <p className={"text-neutral-700 text-[11px] leading-4"}>{title}</p>
+//         <p className={"text-xs font-bold text-[9px] leading-4"}>
+//           {author && `by ${author}`}
+//           {subtitle && subtitle}
+//         </p>
+//         {/* <p className={styles.product_item__author}>{weight && weight}</p>
+//         <p className={styles.product_item__author}>{content && content}</p> */}
+//         <Reviews rate={3.5} count={100} />
+//       </div>
+//     </div>
+//   );
+// };
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
@@ -51,7 +84,7 @@ const Productlist = async ({ id }) => {
 
   return (
     <div className="flex flex-col">
-      <ProductTitle title={name} link="View All" />
+      <ProductTitle title={name} link={`/products/${id}`} />
       <div className="flex overflow-x-scroll no-scrollbar gap-1">
         {products?.data.map((val) => {
           return (
