@@ -61,7 +61,7 @@ const SignIn = () => {
         <div className="flex gap-2">
           <Button
             as={Link}
-            href=""
+            href="https://0a47-2401-4900-1f3f-4063-a44e-2d37-8d43-11ed.in.ngrok.io/api/connect/google"
             variant="secondary2"
             size="small"
             className={
