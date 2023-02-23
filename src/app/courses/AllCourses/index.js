@@ -3,6 +3,7 @@ import CourseImage from "public/courseImg.png";
 import CourseImage2 from "public/courseImg2.png";
 import React from "react";
 import { getCourses } from "@/lib/getCourses";
+import Link from "next/link";
 
 // const data = [
 //   {
@@ -64,7 +65,6 @@ import { getCourses } from "@/lib/getCourses";
 
 const AllCourses = async () => {
   const productCourses = await getCourses();
-  console.log(productCourses);
   return (
     <section className="pb-24">
       <div className="flex flex-col gap-3">

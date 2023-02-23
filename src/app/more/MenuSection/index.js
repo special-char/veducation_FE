@@ -17,7 +17,7 @@ const data = [
   {
     icon: <Profile className="w-5" />,
     title: "Profile",
-    href: "/profile-settings",
+    href: "/profilesettings",
   },
   {
     icon: <Call className="w-5" />,

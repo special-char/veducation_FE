@@ -10,8 +10,6 @@ import { getCategoryData } from "@/lib/getHomeProductData";
 export const ProductItem = async ({
   attributes: { posterImageUrl, title, name, author, subtitle },
 }) => {
-  console.log("props", title);
-
   return (
     <div className={styles.product_item}>
       <div className={styles.product_item__image}>
@@ -75,7 +73,6 @@ export const ProductItem = async ({
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
-  console.log("getProductData", productData);
   const {
     attributes: { name, products },
   } = productData?.data;

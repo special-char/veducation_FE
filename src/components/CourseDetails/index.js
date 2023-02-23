@@ -63,7 +63,8 @@ const rating = {
   number: "4.7",
 };
 
-const CourseDetails = () => {
+const CourseDetails = (props) => {
+  console.log("props:", props);
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
@@ -81,7 +82,7 @@ const CourseDetails = () => {
       <div className="py-4">
         <div className={styles.coursedetails__imformation}>
           <div className=" flex flex-col">
-            <h5 >Description</h5>
+            <h5>Description</h5>
             <div className={styles.coursedetails__underline}></div>
           </div>
           <p className={styles.coursedetails__review}>Reviews</p>
@@ -129,7 +130,9 @@ const CourseDetails = () => {
         })}
       </div>
       <div className={styles.coursedetails__faqpage}>
-        <h5 className={styles.coursedetails__faqheader}>Frequently Asked Questions</h5>
+        <h5 className={styles.coursedetails__faqheader}>
+          Frequently Asked Questions
+        </h5>
         <Accordian data={data1} />
       </div>
       <Button

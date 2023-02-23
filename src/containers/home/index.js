@@ -1,4 +1,5 @@
 import CartPage from "@/app/cartpage/cartPage";
+import CourseDetails from "@/components/CourseDetails";
 import DonationCard2 from "@/components/DonationCard";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
