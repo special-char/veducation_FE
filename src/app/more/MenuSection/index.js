@@ -12,7 +12,7 @@ const data = [
   {
     icon: <Myorders className="w-5" />,
     title: "My Orders",
-    href: "/your-orders",
+    href: "/myorders",
   },
   {
     icon: <Profile className="w-5" />,

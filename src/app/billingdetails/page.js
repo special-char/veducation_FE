@@ -5,7 +5,7 @@ import React from "react";
 const Page = () => {
   return (
     <div>
-      <Button as={Link} href="/about" variant="primary">
+      <Button as={Link} href="/orderconfirmed" variant="primary">
         Continue to Pyment
       </Button>
     </div>

@@ -4,7 +4,7 @@ import Date from "public/icons/date.svg";
 import Total from "public/icons/total.svg";
 import Payment from "public/icons/payment.svg";
 import Styles from "./orderDetails.module.css";
-import Button from "../Button";
+import Button from "../../../components/Button";
 import Link from "next/link";
 
 const details = {
@@ -14,7 +14,7 @@ const details = {
   payment: "Cash on Delivery",
 };
 
-const OrderDetails = ({orderCode , date ,total ,payment}) => {
+const OrderDetails = ({ orderCode, date, total, payment }) => {
   return (
     <div className={Styles.details}>
       <div className={Styles.details__heading}>
@@ -60,9 +60,6 @@ const OrderDetails = ({orderCode , date ,total ,payment}) => {
             <p className={details.details__iText}>{payment}</p>
           </div>
         </div>
-      </div>
-      <div className="pt-6">
-      <Button variant="primary" size="large" as={Link} href="" className={'text-base w-full p-2'} >Order History</Button>
       </div>
     </div>
   );
