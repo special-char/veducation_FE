@@ -64,7 +64,6 @@ import { getCourses } from "@/lib/getCourses";
 
 const AllCourses = async () => {
   const productCourses = await getCourses();
-  console.log(productCourses);
   return (
     <section className="pb-24">
       <div className="flex flex-col gap-3">

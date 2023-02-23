@@ -6,6 +6,7 @@ const initialState = {
   notifications: 0,
   signIn: false,
   cart: [],
+  authToken: "",
 };
 
 export const ProductContext = createContext(initialState);

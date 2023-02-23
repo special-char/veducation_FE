@@ -10,8 +10,6 @@ import { getCategoryData } from "@/lib/getHomeProductData";
 export const ProductItem = async ({
   attributes: { posterImageUrl, title, name, author, subtitle },
 }) => {
-  console.log("props", title);
-
   return (
     <div className={styles.product_item}>
       <div className={styles.product_item__image}>
@@ -19,10 +17,8 @@ export const ProductItem = async ({
           src={posterImageUrl}
           fill
           alt="book"
-          className="object-contain"
-          sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+          className="px-3 py-2"
+          sizes=""
         />
       </div>
       <div className={styles.product_item__desc}>
@@ -77,7 +73,6 @@ export const ProductItem = async ({
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
-  console.log("getProductData", productData);
   const {
     attributes: { name, products },
   } = productData?.data;
