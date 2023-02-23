@@ -5,7 +5,14 @@ import SocialIcon from "@/components/SocialLinks/SocialIcon";
 import Imag1 from "public/img1.png";
 import React from "react";
 
-const HomePage = () => {
+const HomePage = async (props) => {
+  const token = `${new URLSearchParams(props?.searchParams).toString()}`;
+  // const token = props?.searchParams;
+  if (token) {
+    console.log({ token });
+    const response = await getGoogleSignInRequest(token);
+    // console.log({ response });
+  }
   return (
     <section>
       <SocialLinks />
