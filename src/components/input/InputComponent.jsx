@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React from "react";
-import clsx from "clsx";
+import clsx from "classnames";
 
 const Input2 = ({
   field, // { name, value, onChange, onBlur }
@@ -15,9 +15,9 @@ const Input2 = ({
         {props.label}
       </label>
       <input
-      onChange={onchange}
+        onChange={onchange}
         className={clsx(
-            " p-2 placeholder-secondary  bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base",
+          " p-2 placeholder-secondary  bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base",
           {
             [className]: !!className,
           }

@@ -1,3 +1,6 @@
+import CartPage from "@/app/cartpage/cartPage";
+import AllBooks from "@/components/AllBooks";
+import CourseDetails from "@/components/CourseDetails";
 import DonationCard2 from "@/components/DonationCard";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
@@ -5,6 +8,7 @@ import SocialIcon from "@/components/SocialLinks/SocialIcon";
 import { ProductContext } from "@/context/ProductContextProvider";
 import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
 import Imag1 from "public/img1.png";
+import FeatureDonations from "../home/FeaturDonations";
 import SignIn from "../SignIn";
 
 const HomePage = async (props) => {
@@ -23,16 +27,7 @@ const HomePage = async (props) => {
     <section>
       <SocialLinks />
       <Productlist id={1} />
-      <SignIn />
-
-      <DonationCard2
-        img={Imag1}
-        title="Help us spread Dharma"
-        desc="Help us in this mission of spreading this ancient knowledge
-            all over the world. So that we can again make India,'The Golden
-            Bird'"
-        btnText="3 Ways you can help us"
-      />
+      <FeatureDonations />
     </section>
   );
 };

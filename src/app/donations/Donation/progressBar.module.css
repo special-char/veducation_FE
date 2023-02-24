@@ -1,0 +1,7 @@
+.parentdiv {
+  @apply h-2 w-auto rounded-xl m-0 p-0 bg-primary3 mb-3 mt-2;
+
+  &__childdiv {
+    @apply h-full rounded-xl bg-gradient-to-l from-[#FEBC08] to-[#DD2289];
+  }
+}

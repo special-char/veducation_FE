@@ -24,7 +24,7 @@ const Page = async (props) => {
             Delivery by Monday, 23 January
           </p>
           <h3>{title}</h3>
-          <Reviews rate={4} count={"25k"} />
+          <Reviews rate={4} count={"25k"} height={22} width={22} />
         </div>
         <div className={styles.ProductPage__title}>
           <p className={styles.ProductPage__price}>{price}</p>
@@ -54,7 +54,7 @@ const Page = async (props) => {
         <div className={styles.ProductPage__btn}>
           <Button
             as={Link}
-            href=""
+            href="/cartpage"
             className={" md:flex md:justify-center"}
             prefetch={false}
             variant={"secondary"}

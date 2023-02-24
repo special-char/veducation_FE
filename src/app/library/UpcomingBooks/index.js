@@ -1,6 +1,8 @@
 import Btnnavigator from "@/components/Buttonnavigator";
 import React from "react";
 import UpcomingBookImg from "public/icons/upcomingbook.svg";
+import Link from "next/link";
+import { getAllBooksData } from "@/lib/getAllBooksData";
 
 const data = [
   {
@@ -25,17 +27,19 @@ const data = [
   },
 ];
 
-const UpcomingBooks = () => {
+const UpcomingBooks = async () => {
+  const { data } = await getAllBooksData();
+  console.log("UpcomingBooks:", data);
   return (
     <section className="pt-4">
-      {data.map((val) => {
+      {data?.map((val, index) => {
         return (
           <Btnnavigator
-            href={""}
-            key={val.title}
+            key={index}
+            href={`/library/books/${val.id}`}
             icon={<UpcomingBookImg className="w-6" />}
-            title={val.title}
-            desc={val.desc}
+            title={val.attributes?.title}
+            desc={val.attributes?.description}
           />
         );
       })}

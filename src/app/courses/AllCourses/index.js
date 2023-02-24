@@ -3,6 +3,7 @@ import CourseImage from "public/courseImg.png";
 import CourseImage2 from "public/courseImg2.png";
 import React from "react";
 import { getCourses } from "@/lib/getCourses";
+import Link from "next/link";
 
 // const data = [
 //   {
