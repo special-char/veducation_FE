@@ -9,7 +9,7 @@ const DonationCard2 = ({ img, title, desc, btnText }) => {
   return (
     <section className={styles.donationcard}>
       <div className="flex justify-between p-2">
-        <h5>Donations</h5> <span>View all</span>
+        <h5>Donations</h5> <a href="/donations">View all</a>
       </div>
       <div className={styles.donationcard__main}>
         <div className="relative aspect-square h-full w-full">

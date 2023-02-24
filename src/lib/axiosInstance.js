@@ -3,7 +3,7 @@ import axios from "axios";
 const axiosInstance = axios.create({
   baseURL:
     process.env.NEXT_PUBLIC_API_URL ??
-    "https://0a47-2401-4900-1f3f-4063-a44e-2d37-8d43-11ed.in.ngrok.io/api",
+    "https://2a9c-2401-4900-1f3f-4063-71af-86a2-9754-7bd4.in.ngrok.io/api",
   timeout: 5000,
   timeoutErrorMessage: "Timeout! something went wrong",
 });

@@ -137,7 +137,7 @@ const CourseDetails = (props) => {
       </div>
       <Button
         as={Link}
-        href=""
+        href="/cartpage"
         prefetch={false}
         variant={"primary"}
         size={"small"}

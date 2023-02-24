@@ -44,8 +44,7 @@ const OrderConfirm = () => {
         total={details.total}
         payment={details.payment}
       />
-      <p>something</p>
-      <p>something</p>
+
       <div className="pt-6">
         <Button
           variant="primary"
