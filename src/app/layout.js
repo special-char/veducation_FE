@@ -3,8 +3,10 @@ import React from "react";
 import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
 import Header from "@/components/Header";
+import { headers } from "next/headers";
 import Navbar from "@/components/Navbar/navbar";
 import ProductContextProvider from "@/context/ProductContextProvider";
+import AuthContext from "@/context/AuthContextProvider";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -19,7 +21,20 @@ const flowBlock = Flow_Block({
   preload: true,
 });
 
-export default function RootLayout({ children }) {
+async function getSession(cookie) {
+  const response = await fetch(`/api/auth/session`, {
+    headers: {
+      cookie,
+    },
+  });
+
+  const session = await response.json();
+
+  return Object.keys(session).length > 0 ? session : null;
+}
+
+export default async function RootLayout({ children }) {
+  const session = await getSession(headers().get("cookie") ?? "");
   return (
     <html
       lang="en"
@@ -32,13 +47,15 @@ export default function RootLayout({ children }) {
       <head />
 
       <body>
-        <ProductContextProvider>
-          <main className="bg-background md:px-container h-full">
-            <Header />
-            {children}
-            <Navbar />
-          </main>
-        </ProductContextProvider>
+        <AuthContext session={session}>
+          <ProductContextProvider>
+            <main className="bg-background md:px-container h-full">
+              <Header />
+              {children}
+              <Navbar />
+            </main>
+          </ProductContextProvider>
+        </AuthContext>
       </body>
     </html>
   );
