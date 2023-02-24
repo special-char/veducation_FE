@@ -40,8 +40,6 @@ const users = [
 const DonationView = async () => {
   const donations = await getDonationsData();
   const data = donations.data;
-  // console.log("data:", data);
-
   return (
     <div className={styles.main} id="View">
       <div className={styles.main__header}>

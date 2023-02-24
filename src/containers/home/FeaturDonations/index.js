@@ -5,7 +5,7 @@ import { getFeatureDonations } from "@/lib/getFeaturedDonation";
 
 const FeatureDonations = async () => {
   const data = await getFeatureDonations();
-  console.log("FeatureDonations data:", data.data.attributes);
+  //console.log("FeatureDonations data:", data.data.attributes);
   return (
     <div>
       <DonationCard2

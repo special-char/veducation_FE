@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import clsx from "classnames";
 import React from "react";
 
 const Dropdown = ({
@@ -11,13 +11,13 @@ const Dropdown = ({
 }) => {
   return (
     <div>
-      <label htmlFor={props.id} className="text-xs" >
+      <label htmlFor={props.id} className="text-xs">
         {props.label}
       </label>
       <select
-      onChange={onchange}
+        onChange={onchange}
         className={clsx(
-            " placeholder-secondary  bg-[#FCE9CF] border mr-0 border-[#F5D9B1] rounded-md text-base",
+          " placeholder-secondary  bg-[#FCE9CF] border mr-0 border-[#F5D9B1] rounded-md text-base",
           {
             [className]: !!className,
           }
@@ -25,13 +25,13 @@ const Dropdown = ({
         {...field}
         {...props}
       >
-        
         <option value="val">{props.placeholder}</option>
-        {options.map((val,index)=>{
-            return(
-          <option key={val.cou} className="text-primary4" value={val.cou}>
-          {val.cou}
-        </option> ) 
+        {options.map((val, index) => {
+          return (
+            <option key={val.cou} className="text-primary4" value={val.cou}>
+              {val.cou}
+            </option>
+          );
         })}
         {/* {options.map((x) => (
             

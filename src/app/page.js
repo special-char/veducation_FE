@@ -1,5 +1,5 @@
 import Book from "public/book.png";
-import OrderConfirm from "@/containers/orderConfirmation/orderConfirm";
+
 import HomePage from "@/containers/HomePage";
 
 const data = [
