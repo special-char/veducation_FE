@@ -7,6 +7,7 @@ import { headers } from "next/headers";
 import Navbar from "@/components/Navbar/navbar";
 import ProductContextProvider from "@/context/ProductContextProvider";
 import AuthContext from "@/context/AuthContextProvider";
+import axios from "axios";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -22,19 +23,22 @@ const flowBlock = Flow_Block({
 });
 
 async function getSession(cookie) {
-  const response = await fetch(`/api/auth/session`, {
-    headers: {
-      cookie,
-    },
-  });
+  try {
+    const response = await axios.get(`http://localhost:3000/api/auth/session`, {
+      headers: {
+        cookie,
+      },
+    });
 
-  const session = await response.json();
-
-  return Object.keys(session).length > 0 ? session : null;
+    return Object.keys(response.data).length > 0 ? response.data : null;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export default async function RootLayout({ children }) {
   const session = await getSession(headers().get("cookie") ?? "");
+
   return (
     <html
       lang="en"

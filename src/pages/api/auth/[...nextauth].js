@@ -1,58 +1,69 @@
+import axiosInstance from "@/lib/axiosInstance";
 import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
+export default NextAuth({
+  session: {
+    strategy: "jwt",
+  },
   // Configure one or more authentication providers
   providers: [
-    // GithubProvider({
-    //   clientId: String(process.env.GITHUB_ID),
-    //   clientSecret: String(process.env.GITHUB_SECRET),
-    // }),
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. "Sign in with...")
-      name: "Credentials",
-      // `credentials` is used to generate a form on the sign in page.
-      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-      // e.g. domain, username, password, 2FA token, etc.
-      // You can pass any HTML attribute to the <input> tag through the object.
+      name: "scott-point",
+      type: "credentials",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        email: {
+          label: "email",
+          type: "email",
+        },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
+        const payload = {
+          identifier: credentials.email,
+          password: credentials.password,
+        };
+        const res = await axiosInstance.post("auth/local", payload);
+        console.log({ respose: res.data });
+        const { id, email, username } = res?.data?.user;
+        const userObj = { id, email, name: username };
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
-          return null;
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
-        }
+        return userObj;
       },
     }),
+    // ...add more providers here
   ],
+  secret: process.env.JWT_SECRET,
+  pages: {
+    signIn: "/",
+  },
   callbacks: {
-    async signIn({ user }) {
-      let isAllowedToSignIn = true;
-      const allowedUser = ["YOURGITHUBACCID"];
-      console.log(user);
-      if (allowedUser.includes(String(user.id))) {
-        isAllowedToSignIn = true;
-      } else {
-        isAllowedToSignIn = false;
+    jwt({ token, user, account }) {
+      console.log({ token, user, account }, "jwt");
+
+      if (account && user) {
+        return {
+          ...token,
+          accessToken: user?.data?.access_token,
+          // roles: user?.data?.user?.roles,
+        };
       }
-      return isAllowedToSignIn;
+
+      return token;
+      // return { ...token, ...user, ...account };
+    },
+    session({ session, token, user }) {
+      console.log({ session, token, user }, "{ session, token, user }");
+      session.user.accessToken = token.accessToken || token.jti;
+      session.user.roles = token.roles;
+      return session;
     },
   },
-};
-
-export function auth(req, res) {
-  res.send({ message: "api success" });
-}
-
-export default NextAuth(authOptions);
+  theme: {
+    colorScheme: "auto", // "auto" | "dark" | "light"
+    brandColor: "", // Hex color code #33FF5D
+    logo: "images/sp_shop_logo.svg", // Absolute URL to image
+  },
+  // Enable debug messages in the console if you are having problems
+  debug: process.env.NODE_ENV === "development",
+});
