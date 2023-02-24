@@ -57,9 +57,9 @@ const SocialLinks = () => {
   ];
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">
-      {socials.map((social) => {
+      {socials.map((social,index) => {
         return (
-          <div key={social.name} className="relative">
+          <div key={index} className="relative">
             <SocialIcon
               variant={social.variant}
               Icon={social.Icon}
