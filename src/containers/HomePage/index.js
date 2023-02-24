@@ -20,10 +20,7 @@ const HomePage = async (props) => {
   // const token = `${new URLSearchParams(props?.searchParams.access_token).toString()}`;
 
   if (token) {
-    console.log({ token });
     const response = await getGoogleSignInRequest(token);
-
-    console.log({ response }, "home");
   }
 
   return (
