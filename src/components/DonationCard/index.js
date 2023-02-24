@@ -5,7 +5,7 @@ import styles from "./donation.module.css";
 import Imag1 from "public/img1.png";
 import Image from "next/image";
 
-const DonationCard2 = ({ img, title, desc, btnText }) => {
+const DonationCard2 = ({ img, title, desc, btnText, btnLink }) => {
   return (
     <section className={styles.donationcard}>
       <div className="flex justify-between p-2">
@@ -21,7 +21,7 @@ const DonationCard2 = ({ img, title, desc, btnText }) => {
           <Button
             as={Link}
             variant="primary"
-            href=""
+            href={btnLink}
             className="w-full px-0 py-2"
             size={"small"}
           >

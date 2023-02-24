@@ -1,4 +1,4 @@
-import DonationView from "@/components/Donation/donationView";
+import DonationView from "@/app/donations/Donation/donationView";
 import React from "react";
 
 const Donations = () => {
