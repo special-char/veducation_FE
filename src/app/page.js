@@ -1,20 +1,6 @@
-import Coursecard from "@/components/Coursecard/coursecard";
-import Navbar from "@/components/Navbar/navbar";
-import ProductItem from "@/components/ProductList";
-import SocialLinks from "@/components/SocialLinks";
-import Btnnavigator from "@/components/Buttonnavigator";
-import SignIn from "@/containers/SignIn";
-import Varification from "@/containers/otpVarification";
-import Productlist from "@/components/ProductList";
 import Book from "public/book.png";
-import DonationCard2 from "@/components/DonationCard";
-import DonationCard from "@/components/DonationCard";
-import { getProductData } from "@/lib/getHomeProductData";
-import ProductTitle from "@/components/ProductTitle";
-import YourOrderPage from "@/components/yourOrdersPage/yourOrderPage";
-import ProductConfirm from "@/components/ProductConfirm/productConfirm";
-import HomeBanner from "@/components/HomeBanner";
-import Carousal from "@/components/carousal";
+
+import HomePage from "@/containers/HomePage";
 
 const data = [
   {
@@ -51,17 +37,11 @@ const data = [
   },
 ];
 
-export default function Home() {
+export default function Page(props) {
   // function onClick() {}
   return (
     <div className="h-full pb-44">
-      <SocialLinks />
-      <HomeBanner />
-      {/* <SignIn /> */}
-      <div className="xs:px-container md:px-0">
-        {/* <Productlist id={1} /> */}
-        {/* <DonationCard /> */}
-      </div>
+      <HomePage {...props} />
     </div>
   );
 }

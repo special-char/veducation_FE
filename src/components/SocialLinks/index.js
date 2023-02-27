@@ -10,8 +10,11 @@ import Plus from "../../../public/plus.svg";
 import ProductContextProvider, {
   ProductContext,
 } from "@/context/ProductContextProvider";
+import { useSession } from "next-auth/react";
 
 const SocialLinks = () => {
+  const data = useSession();
+  console.log({ data });
   const {
     state: { signIn },
     dispatch,
@@ -20,7 +23,7 @@ const SocialLinks = () => {
     {
       variant: "user",
       Icon: () => <UserSvg />,
-      name: "Signup/Login",
+      name: data?.data?.user?.name ?? "Signup/Login",
     },
     {
       variant: "social",
@@ -43,11 +46,6 @@ const SocialLinks = () => {
       name: "Facebook",
     },
   ];
-  useEffect(() => {
-    console.log(signIn);
-
-    return () => {};
-  }, [signIn]);
 
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">
@@ -68,7 +66,7 @@ const SocialLinks = () => {
               Icon={social.Icon}
               name={social.name}
             />
-            {social.variant === "user" && (
+            {social.variant === "user" && !data?.data?.user && (
               <div className="absolute z-10 bottom-8 right-3">
                 <Plus />
               </div>

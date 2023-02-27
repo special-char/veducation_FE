@@ -315,7 +315,7 @@
       @apply py-2 px-8 text-lg;
     }
     &--count {
-      @apply py-1 text-base px-3;
+      @apply py-1 text-base px-3 bg-neutral-1050;
     }
   }
 

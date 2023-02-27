@@ -1,8 +1,8 @@
 .ProductPage {
-  @apply xs:px-container lg:px-0 py-4 h-screen;
+  @apply xs:px-container lg:px-0 py-4 h-full pb-24;
 
   &__image {
-    @apply relative aspect-square max-w-[200px] mx-auto;
+    @apply relative aspect-image max-w-[200px] mx-auto;
   }
   &__body {
     @apply flex flex-col pt-8;
