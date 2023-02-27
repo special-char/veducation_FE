@@ -10,7 +10,8 @@ const Page = async (props) => {
   return (
     <div className="flex  flex-col h-full w-full bg-background xs:px-container lg:px-0 pb-24">
       <ProductTitle title={name} link="" />
-      <div className="grid grid-cols-2 xs:gap-3 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 md:mx-auto gap-3 ">
+        {/* <div className="grid grid-cols-2 xs:gap-3 "> */}
         {products?.data?.map((product) => {
           return (
             <Link key={product.id} href={`/product/${product.id}`}>
