@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   body {
     @apply min-h-screen font-sans text-lg text-neutral-600;
@@ -40,7 +39,7 @@
   }
 
   p {
-    @apply mb-1  text-neutral-600;
+    @apply text-neutral-600;
     /* &:last-child {
       @apply mb-0 pb-0;
     } */
@@ -71,7 +70,7 @@
   blockquote {
     @apply mb-2 bg-neutral-100 py-10 px-5 text-lg shadow-base sm:py-12 sm:px-[50px] sm:text-xl md:py-[58px] md:px-[63px] md:text-xxl lg:py-[70px] lg:pr-[76px] lg:pl-[126px] lg:text-2xl;
     border-radius: 10px 20px 20px 10px;
-    border-left: 11px solid theme("colors.secondary3");
+    border-left: 11px solid theme("colors.secondary");
   }
 
   figure {
@@ -150,6 +149,50 @@
   }
 
   details {
+    @apply mb-4 max-w-full bg-background px-2 border-b-2 border-primary4 py-3 text-left;
+
+    & > summary {
+      @apply relative flex cursor-pointer list-none items-start justify-start text-2xl font-bold  md:items-center;
+
+      &::marker {
+        @apply hidden;
+      }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::before {
+        content: "\2304";
+        @apply absolute right-0 text-center items-center text-sm font-bold text-secondary;
+      }
+    }
+    & > div:last-child {
+      @apply overflow-hidden border-none pt-2 text-left text-sm;
+    }
+  }
+
+  details.with-tag {
+    & > summary {
+      &::after {
+        content: "Download";
+        @apply absolute right-0 flex w-fit items-end justify-end text-left font-bold;
+      }
+    }
+  }
+
+  details[open] {
+    & > summary {
+      @apply text-neutral-600;
+
+      &::before {
+        content: "\2303";
+        @apply aspect-square text-secondary  text-center text-sm font-bold absolute right-0;
+      }
+    }
+  }
+
+  /* details {
     @apply mb-4 max-w-full rounded-md bg-neutral-100 px-8 py-4 text-left drop-shadow-lg;
 
     & > summary {
@@ -191,7 +234,7 @@
         @apply mr-4 aspect-square h-12 w-12 rotate-0 rounded-full bg-neutral-300 text-center text-4xl font-bold text-neutral-600 duration-300;
       }
     }
-  }
+  } */
 
   nav {
     a {
@@ -214,7 +257,7 @@
   }
 
   .btn {
-    @apply rounded-md py-3 px-2 text-center text-base font-bold uppercase tracking-[0.08em];
+    @apply rounded-md py-6 inline-block items-center  px-10 text-center text-base font-bold tracking-[0.08em];
     transition: transform 300ms ease, background-color 300ms ease;
     transform-style: preserve-3d;
 
@@ -239,7 +282,7 @@
     }
 
     &--secondary {
-      @apply bg-neutral-300 text-neutral-700;
+      @apply bg-secondary text-white text-xs;
     }
 
     &--secondary:hover {
@@ -250,6 +293,9 @@
       @apply bg-primary3 text-background2;
     }
 
+    /* &--count {
+      @apply bg-neutral-1050 text-background2;
+    } */
     /* &--white {
       @apply bg-neutral-100 text-neutral-800;
     }
@@ -262,19 +308,19 @@
     } */
 
     &--small {
-      @apply py-3 w-1/2 text-base;
+      @apply py-4 px-6  text-xs;
     }
 
     &--large {
-      @apply py-3 w-full;
+      @apply py-2 px-8 text-lg;
     }
     &--count {
-      @apply py-1 px-3;
+      @apply py-1 text-base px-3 bg-neutral-1050;
     }
   }
 
   .chip {
-    @apply flex w-fit items-center justify-center rounded-full py-3 px-4 align-middle text-xs font-bold shadow-base sm:px-6;
+    @apply flex w-fit items-center justify-center  py-3 px-4 align-middle text-xs font-bold shadow-base sm:px-6;
 
     &.icon {
       @apply gap-2;
@@ -641,18 +687,17 @@
   }
 }
 
-
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
-        display: none;
+      display: none;
     }
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
     }
   }
 }

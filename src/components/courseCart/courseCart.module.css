@@ -1,0 +1,59 @@
+.main {
+  &__detail {
+    @apply flex gap-5 border-b-2  border-[#EED9BC]  p-2 mb-16;
+  }
+  &__name {
+    @apply text-[#5C5C5C] pb-0 mb-0;
+  }
+  &__price {
+    @apply text-[#261818] font-bold;
+  }
+  &__imgdiv {
+    @apply relative  w-36;
+  }
+  &__img {
+    @apply rounded-md  top-0 left-0 w-full h-[73px] object-cover absolute;
+    /* h-20 w-auto aspect-h-image */
+  }
+  &__dltBtn {
+    @apply flex items-center justify-center gap-1 text-[#909090] text-xs border border-[949494] rounded-md h-7 px-3  font-normal;
+  }
+  &__cart {
+    @apply flex justify-between;
+  }
+
+  &__sendBtn {
+    @apply bg-[#544241] h-14 w-14;
+  }
+  &__textbox {
+    @apply relative my-5;
+  }
+  &__input {
+    @apply py-2 pl-8 pr-4 rounded-lg border-2 border-primary4 w-full h-12 font-normal text-secondary placeholder-secondary;
+  }
+  &__promo {
+    @apply absolute top-3 left-3 h-full w-8 text-primary flex items-center justify-center;
+  }
+  &__btndiv {
+    @apply absolute top-0 right-0 h-full w-12 flex items-center justify-center bg-secondary rounded-lg;
+  }
+  &__sendbtn {
+    @apply bg-primary  text-neutral-100 font-bold py-2 px-4 rounded-lg;
+  }
+
+  &__order {
+    @apply flex justify-between  text-[#808080];
+  }
+  &__total {
+    @apply flex justify-between;
+  }
+  &__orderData {
+    @apply text-[#808080];
+  }
+  /* &__orderDetail {
+    @apply pb-10;
+  } */
+  &__button {
+    @apply bg-primary text-neutral-100 rounded-lg w-full h-9  text-lg font-bold;
+  }
+}

@@ -1,0 +1,21 @@
+.BannerCourses {
+  @apply  flex flex-col;
+  &__thumbnail {
+    @apply bg-primary3 relative;
+  }
+  &__img {
+    @apply min-w-full ;
+  }
+  &__vector {
+    @apply absolute top-[42%] left-[46%] ;
+  }
+  &__content {
+    @apply  py-4 border-b-2 border-b-[#EED9BC];
+  }
+  &__p {
+    @apply text-xl font-bold text-neutral-500 leading-5 mb-3;
+  }
+  &__span {
+    @apply text-xs leading-5 text-neutral-400;
+  }
+}
