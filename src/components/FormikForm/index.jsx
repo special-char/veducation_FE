@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Formik, FastField, Form } from "formik";
 import Button from "../Button";
