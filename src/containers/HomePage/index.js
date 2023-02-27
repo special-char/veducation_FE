@@ -2,6 +2,7 @@ import CartPage from "@/app/cartpage/cartPage";
 import AllBooks from "@/components/AllBooks";
 import CourseDetails from "@/components/CourseDetails";
 import DonationCard2 from "@/components/DonationCard";
+import HomeBanner from "@/components/HomeBanner";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
 import SocialIcon from "@/components/SocialLinks/SocialIcon";
@@ -27,6 +28,7 @@ const HomePage = async (props) => {
     <section>
       <SocialLinks />
       <SignIn />
+      <HomeBanner />
       <Productlist id={1} />
       <FeatureDonations />
     </section>
