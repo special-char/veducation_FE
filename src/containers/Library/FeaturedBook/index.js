@@ -10,7 +10,7 @@ const FeaturedBook = () => {
   return (
     <section className={styles.donationcard}>
       <div className={styles.donationcard__main}>
-        <div className="relative aspect-square h-full w-full">
+        <div className="relative aspect-image h-full w-full">
           <Image src={FeaturedBookImg} fill className="" />
         </div>
         <div className="flex flex-col justify-center">

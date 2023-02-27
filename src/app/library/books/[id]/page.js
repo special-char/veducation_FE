@@ -1,11 +1,8 @@
-import UpcomingBooks from "@/app/library/UpcomingBooks";
-import AllBooks from "@/components/AllBooks";
 import Btnnavigator from "@/components/Buttonnavigator";
-import Input from "@/components/InputComponent";
+
 import { getAllBooksData } from "@/lib/getAllBooksData";
 import BtnNavigator from "public/icons/navigator.svg";
 import React from "react";
-import Search from "public/icons/Search.svg";
 
 const Page = async (props) => {
   const {
