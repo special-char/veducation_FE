@@ -34,14 +34,14 @@ const ProductConfirm = ({ image, title, price, isCourse }) => {
     <div className={styles.main}>
       <div className={styles.main__detail} key="items">
         <div className="relative aspect-square min-h-[93px] py-3   ">
-          <Image src={image} alt="item" fill className="p-3" />
+          <Image src={image} alt="item" fill />
         </div>
         <div className="flex flex-col place-content-center gap-2">
           <h5 className={styles.main__name}>{title}</h5>
           <div className="flex justify-between">
             {count > 0 && (
               <p className={styles.main__price}>
-                $ {price}
+                {price}
                 {/* | {count} pcs */}
               </p>
             )}

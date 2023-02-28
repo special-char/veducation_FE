@@ -14,7 +14,6 @@ import { useSession } from "next-auth/react";
 
 const SocialLinks = () => {
   const data = useSession();
-  console.log({ data });
   const {
     state: { signIn },
     dispatch,

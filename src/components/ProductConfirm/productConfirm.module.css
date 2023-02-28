@@ -1,7 +1,7 @@
 .main {
   
   &__detail {
-    @apply flex gap-2 border-b-2  border-[#EED9BC] justify-center p-2;
+    @apply flex gap-2 border-b-2  border-[#EED9BC] justify-start p-2;
   }
   /* &__img{
     @apply justify-center items-center;
@@ -20,7 +20,7 @@
     @apply text-[#4CA137];
   }
   &__counter {
-    @apply flex gap-5;
+    @apply flex gap-3;
   }
   &__counterBtn {
     @apply h-7 w-7 rounded-md bg-[#EED9BC];
