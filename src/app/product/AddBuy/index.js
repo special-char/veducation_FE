@@ -8,6 +8,7 @@ import styles from "../[id]/product.module.css";
 
 const AddBuy = ({ id, users, cartItems }) => {
   const data = useSession();
+  console.log({ data: data.data.user.accessToken });
   const navigate = useRouter();
   const user = users?.find((item) => item.email === data?.data?.user?.email);
   async function onAddToCart() {

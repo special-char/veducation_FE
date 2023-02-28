@@ -4,6 +4,7 @@ import clx from "classnames";
 const PopupModal = ({ open, onClose, className, ...props }) => {
   return (
     <dialog
+      id="dialog"
       className={clx(
         "flex-col p-0 m-0 z-30 backdrop-blur-sm backdrop-brightness-50 ",
         {
