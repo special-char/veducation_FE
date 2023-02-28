@@ -3,11 +3,11 @@
   @apply flex flex-col gap-2 bg-transparent p-2  border border-neutral-250 rounded-md min-w-[150px];
 
   &__image {
-    @apply relative aspect-image min-h-[111px];
+    @apply relative aspect-image;
   }
 
   &__desc {
-    /* @apply; */
+    @apply max-w-[200px];
   }
 
   &__name {
