@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar/navbar";
 import ProductContextProvider from "@/context/ProductContextProvider";
 import AuthContext from "@/context/AuthContextProvider";
 import axios from "axios";
+import HideScrollBar from "@/containers/HideScroll";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -50,9 +51,11 @@ export default async function RootLayout({ children }) {
       */}
       <head />
 
-      <body>
+      <body style={{}}>
         <AuthContext session={session}>
           <ProductContextProvider>
+            <HideScrollBar />
+
             <main className="bg-background md:px-container h-full">
               <Header />
               {children}
