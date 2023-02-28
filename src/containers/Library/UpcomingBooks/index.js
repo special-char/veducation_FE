@@ -29,7 +29,6 @@ const data = [
 
 const UpcomingBooks = async () => {
   const { data } = await getAllBooksData();
-  console.log("UpcomingBooks:", data);
   return (
     <section className="pt-4">
       {data?.map((val, index) => {

@@ -24,11 +24,13 @@ export default NextAuth({
           password: credentials.password,
         };
         const res = await axiosInstance.post("auth/local", payload);
-        console.log({ respose: res.data });
-        const { id, email, username } = res?.data?.user;
-        const userObj = { id, email, name: username };
 
-        return userObj;
+        return {
+          ...res.data.user,
+          name: res.data.user.username,
+          id: res.data.user.id,
+          access_token: res.data.jwt,
+        };
       },
     }),
     // ...add more providers here
@@ -39,12 +41,10 @@ export default NextAuth({
   },
   callbacks: {
     jwt({ token, user, account }) {
-      console.log({ token, user, account }, "jwt");
-
       if (account && user) {
         return {
           ...token,
-          accessToken: user?.data?.access_token,
+          accessToken: user?.access_token,
           // roles: user?.data?.user?.roles,
         };
       }
@@ -53,9 +53,7 @@ export default NextAuth({
       // return { ...token, ...user, ...account };
     },
     session({ session, token, user }) {
-      console.log({ session, token, user }, "{ session, token, user }");
       session.user.accessToken = token.accessToken || token.jti;
-      session.user.roles = token.roles;
       return session;
     },
   },

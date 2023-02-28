@@ -40,7 +40,7 @@ const data = [
 export default function Page(props) {
   // function onClick() {}
   return (
-    <div className="h-full pb-44">
+    <div className="h-full pb-44 overflow-hidden">
       <HomePage {...props} />
     </div>
   );

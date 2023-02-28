@@ -37,7 +37,7 @@ const SignIn = () => {
   }
 
   return (
-    <div>
+    <div className="">
       {/* <Button onClick={toggleModal} as={Link} href="">
         Open
       </Button> */}

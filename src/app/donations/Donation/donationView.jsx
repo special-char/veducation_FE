@@ -57,10 +57,7 @@ const DonationView = async () => {
           .split("")
           ?.filter((x) => x !== ",")
           .join("");
-        console.log({
-          progressValue: progressValue,
-          progressMax: progressMax,
-        });
+
         return (
           <div className={styles.main__donationInfo} key={val.id}>
             <div className={styles.main__donationdata}>

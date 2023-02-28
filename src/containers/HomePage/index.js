@@ -1,4 +1,4 @@
-import CartPage from "@/app/cartpage/cartPage";
+import CartPage from "@/app/cart/cart";
 import AllBooks from "@/components/AllBooks";
 import CourseDetails from "@/components/CourseDetails";
 import DonationCard2 from "@/components/DonationCard";
