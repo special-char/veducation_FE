@@ -1,15 +1,24 @@
-"use client";
-import Link from "next/link";
-import React, { useState } from "react";
-import Button from "../Button";
-import Dropdown from "../DropDown Component/DropDown";
-import FormikForm from "../FormikComponent/FormikForm";
-import Input2 from "../input/InputComponent";
-import { billingFields, billingInitValue } from "./Fields";
+import Input from "@/components/InputComponent";
+import SearchIcon from "public/icons/Search.svg";
+import Dropdown from "../DropDown Component/Dropdown";
 
-const fields = [
+export const billingInitValue = {
+  firstname: "",
+  lastname: "",
+  email: "",
+  phone: "",
+  street: "",
+  phone: "",
+  street: "",
+  postcode: "",
+  country: "",
+  city: "",
+  ordernote: "",
+};
+
+export const billingFields = [
   {
-    component: Input2,
+    component: Input,
     id: "firstname",
     label: "FIRST NAME",
     placeholder: "Tam",
@@ -24,7 +33,7 @@ const fields = [
   },
 
   {
-    component: Input2,
+    component: Input,
     id: "lastname",
     label: "LAST NAME",
     placeholder: "Firsr name",
@@ -38,7 +47,7 @@ const fields = [
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "email-address",
     label: "EMAIL",
     placeholder: "tam@uf.net",
@@ -54,7 +63,7 @@ const fields = [
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "phone",
     label: "PHONE",
     placeholder: "232-085-5458",
@@ -68,7 +77,7 @@ const fields = [
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "street",
     label: "STREET",
     placeholder: "179 Kaylie Crossroad",
@@ -82,7 +91,7 @@ const fields = [
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "postcode",
     label: "POSTCODE",
     placeholder: "+800000",
@@ -118,7 +127,7 @@ const fields = [
   },
 
   {
-    component: Input2,
+    component: Input,
     id: "city",
     label: "CITY",
     placeholder: "Soutn Mathiasmouth",
@@ -133,7 +142,7 @@ const fields = [
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "ordernote",
     label: "ORDERNOTE",
     placeholder: "Special notes for delivery",
@@ -147,32 +156,3 @@ const fields = [
     },
   },
 ];
-
-const onSubmit = (values) => {
-  console.log("Form data", values);
-};
-
-const BillingDetails = () => {
-  return (
-    <div className="px-container ">
-      <p className="text-2xl font-bold text-neutral-950 my-6">
-        Shipping Details
-      </p>
-      <div>
-        <FormikForm
-          fields={billingFields}
-          initialValues={billingInitValue}
-          onSubmit={(values) => {
-            try {
-              console.log(values);
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-        />
-      </div>
-    </div>
-  );
-};
-
-export default BillingDetails;
