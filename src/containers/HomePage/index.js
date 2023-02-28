@@ -11,6 +11,7 @@ import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
 import Imag1 from "public/img1.png";
 import FeatureDonations from "../home/FeaturDonations";
 import SignIn from "../SignIn";
+import SignUpDetails from "../SignUpDetails";
 
 const HomePage = async (props) => {
   // const {
@@ -28,6 +29,7 @@ const HomePage = async (props) => {
     <section>
       <SocialLinks />
       <SignIn />
+      <SignUpDetails />
       <HomeBanner />
       <Productlist id={1} />
       <FeatureDonations />

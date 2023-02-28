@@ -1,0 +1,16 @@
+.main {
+  @apply text-neutral-150 text-xs;
+  & > label {
+    @apply text-neutral-150;
+  }
+  &__inputcontainer {
+    @apply flex gap-2 text-neutral-150;
+  }
+  &__container {
+    @apply flex items-center gap-1;
+
+    & > label {
+      @apply text-neutral-150 font-normal;
+    }
+  }
+}
