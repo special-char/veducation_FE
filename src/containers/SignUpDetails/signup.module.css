@@ -1,0 +1,11 @@
+.signup {
+  fieldset {
+    @apply flex gap-2 text-xs font-bold text-neutral-150 bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md;
+    & > div {
+      @apply flex gap-2 items-center text-xs;
+    }
+    & > div > label {
+      @apply text-neutral-150 mb-0;
+    }
+  }
+}

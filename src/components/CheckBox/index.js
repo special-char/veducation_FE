@@ -1,27 +1,40 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 
-function Checkbox(props) {
-  const [isChecked, setIsChecked] = useState(props.checked);
-
-  function handleCheckboxChange() {
-    setIsChecked(!isChecked);
-    if (props.onChange) {
-      props.onChange(!isChecked);
-    }
-  }
-
+const Checkbox = ({
+  field: { name, value },
+  form: { touched, errors, setFieldValue, setFieldTouched },
+  options,
+  label,
+}) => {
   return (
-    <label>
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-        name={props.name}
-        value={props.value}
-        disabled={props.disabled}
-      />
-      {props.label}
-    </label>
+    <div>
+      <label htmlFor="" className="text-xs text-neutral-150">
+        {label}
+      </label>
+      <fieldset>
+        {/* <legend>{label}</legend> */}
+
+        {options.map((x) => (
+          <div key={x.id}>
+            <input
+              type="radio"
+              name={name}
+              id={x.id}
+              checked={value === x.id}
+              onChange={() => {
+                setFieldValue(name, x.id);
+                setFieldTouched(name, true);
+              }}
+            />
+            <label htmlFor={x.id}>{x.text}</label>
+          </div>
+        ))}
+        {touched && errors && !!touched[name] && !!errors[name] && (
+          <p className="text-sm text-error font-semibold">{errors[name]}</p>
+        )}
+      </fieldset>
+    </div>
   );
-}
+};
+
+export default Checkbox;
