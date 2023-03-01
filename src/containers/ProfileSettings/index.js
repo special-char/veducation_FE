@@ -8,11 +8,13 @@ const Btndata = [
     id: 1,
     icon: <Eye width="20" />,
     title: "Edit Profile",
+    href: "/editprofile",
   },
   {
     id: 2,
     icon: <Edit width="20" />,
     title: "Change Password",
+    href: "/editprofile",
   },
 ];
 
@@ -22,7 +24,7 @@ const ProfileSetting = () => {
       {Btndata.map((val) => {
         return (
           <Btnnavigator
-            href="/profilesettings"
+            href={val.href}
             key={val.id}
             icon={val.icon}
             title={val.title}
