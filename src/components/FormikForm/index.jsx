@@ -7,7 +7,7 @@ const FormikForm = ({ fields, ...prpos }) => {
   return (
     <Formik {...prpos}>
       {() => (
-        <Form className="flex flex-col gap-5">
+        <Form className="flex flex-col gap-5 ">
           {fields.map((x) => (
             <FastField key={x.name} {...x} />
           ))}
@@ -18,7 +18,7 @@ const FormikForm = ({ fields, ...prpos }) => {
             size="small"
             className={"w-full"}
           >
-            Continue
+           Continue
           </Button>
         </Form>
       )}

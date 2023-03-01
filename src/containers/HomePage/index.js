@@ -4,6 +4,7 @@ import CourseDetails from "@/components/CourseDetails";
 import DonationCard2 from "@/components/DonationCard";
 import HomeBanner from "@/components/HomeBanner";
 import Productlist from "@/components/ProductList";
+import InviteUs from "@/components/SendInvitation";
 import SocialLinks from "@/components/SocialLinks";
 import SocialIcon from "@/components/SocialLinks/SocialIcon";
 import { ProductContext } from "@/context/ProductContextProvider";
@@ -28,9 +29,10 @@ const HomePage = async (props) => {
     <section>
       <SocialLinks />
       <SignIn />
-      <HomeBanner />
+      <InviteUs/>
+      {/* <HomeBanner />
       <Productlist id={1} />
-      <FeatureDonations />
+      <FeatureDonations /> */}
     </section>
   );
 };
