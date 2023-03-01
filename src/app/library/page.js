@@ -1,12 +1,10 @@
+import Library from "@/containers/Library";
 import React from "react";
-import FeaturedBook from "./FeaturedBook";
-import UpcomingBooks from "./UpcomingBooks";
 
-const Page = () => {
+const Page = (props) => {
   return (
-    <div className="h-screen pt-5 pb-40 px-container">
-      <FeaturedBook />
-      <UpcomingBooks />
+    <div>
+      <Library {...props} />
     </div>
   );
 };

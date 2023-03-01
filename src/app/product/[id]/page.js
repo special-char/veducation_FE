@@ -1,5 +1,3 @@
-// "use client";
-import Image from "next/image";
 import React from "react";
 import Tshirt from "public/icons/tshirt.png";
 import Reviews from "../../../components/Reviews";
@@ -7,13 +5,17 @@ import Button from "../../../components/Button";
 import Link from "next/link";
 import styles from "./product.module.css";
 import { getProductData } from "@/lib/getHomeProductData";
+import Image from "next/image";
+import AddBuy from "../AddBuy";
+import { getUser } from "@/lib/getUser";
+import { getCartItems } from "@/lib/getCartItems";
 
 const Page = async (props) => {
   const productData = await getProductData(props?.params?.id);
-  console.log({ data: productData?.data?.attributes });
+  const user = await getUser();
+  const cartItems = await getCartItems();
   const { title, name, posterImageUrl, price, description } =
     productData?.data?.attributes;
-
   return (
     <section className={styles.ProductPage}>
       <div className={styles.ProductPage__image}>
@@ -25,11 +27,11 @@ const Page = async (props) => {
             Delivery by Monday, 23 January
           </p>
           <h3>{title}</h3>
-          <Reviews rate={4} count={"25k"} />
+          <Reviews rate={4} count={"25k"} height={22} width={22} />
         </div>
         <div className={styles.ProductPage__title}>
           <p className={styles.ProductPage__price}>{price}</p>
-          <div className={styles.ProductPage__count}>
+          {/* <div className={styles.ProductPage__count}>
             <Button
               as={Link}
               href=""
@@ -49,25 +51,28 @@ const Page = async (props) => {
             >
               -
             </Button>
-          </div>
+          </div> */}
         </div>
         <p>{description}</p>
-        <div className={styles.ProductPage__btn}>
+        <AddBuy
+          id={props?.params?.id}
+          users={user}
+          cartItems={cartItems?.data}
+        />
+        {/* <div className={styles.ProductPage__btn}>
           <Button
-            as={Link}
-            href=""
-            className={" md:flex md:justify-center"}
-            prefetch={false}
+            as="button"
+            className="md:flex md:justify-center"
             variant={"secondary"}
             size={"large"}
             // onClick={() => {
-            //   console.log("add to cart");
+            //   alert("hello");
             // }}
           >
             Add to cart
           </Button>
           <Button
-            as={Link}
+            as="button"
             className={" md:flex md:justify-center"}
             href=""
             prefetch={false}
@@ -76,7 +81,7 @@ const Page = async (props) => {
           >
             Buy now
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -50,6 +50,8 @@ const CourseCart = () => {
         <div>
           <Input
             type="text"
+            field={{ name: "search", error: "search" }}
+            form={{ touched: {}, errors: {} }}
             placeholder="Enter your promoCode"
             value={searchValue}
             onChange={(x) => setSearchValue(x.target.value)}
@@ -80,7 +82,7 @@ const CourseCart = () => {
         {/* <button className={styles.main__button}>Check out</button> */}
         <Button
           as={Link}
-          href=""
+          href="/billingdetails"
           variant="primary"
           className="w-full p-3"
           size={"large"}

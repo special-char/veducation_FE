@@ -14,7 +14,6 @@ const Header = () => {
   const {
     state: { cartItems, notifications },
   } = useContext(ProductContext);
-  console.log({ cartItems, notifications });
   return (
     <ProductContextProvider>
       <nav className={styles.headerRoot}>

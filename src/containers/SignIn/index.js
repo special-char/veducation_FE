@@ -9,8 +9,13 @@ import Input from "@/components/InputComponent";
 import Google from "public/icons/google.svg";
 import Facebook from "public/icons/facebook.svg";
 import { ProductContext } from "@/context/ProductContextProvider";
+import FormikForm from "@/components/FormikForm";
+import { signInFields, signInInitValue } from "./signInFields";
+import { signIn, signOut, useSession } from "next-auth/react";
+import PopupModal from "@/components/popupModal";
 
 const SignIn = () => {
+  const auth = useSession();
   const {
     state: { signIn: open },
     dispatch,
@@ -19,8 +24,20 @@ const SignIn = () => {
     dispatch({ signIn: false });
   }
 
+  if (auth?.data !== null) {
+    return (
+      <PopupModal
+        open={open}
+        onClose={toggleModal}
+        className="justify-center items-center"
+      >
+        <button onClick={signOut}>SignOut</button>
+      </PopupModal>
+    );
+  }
+
   return (
-    <div>
+    <div className="">
       {/* <Button onClick={toggleModal} as={Link} href="">
         Open
       </Button> */}
@@ -34,25 +51,23 @@ const SignIn = () => {
           <Veducation />
         </span>
         <h4 className=" text-background2">Sign in</h4>
-        <div className="flex flex-col gap-5">
-          <div>
-            <p className="text-neutral-300 text-sm">Email/Phone</p>
-            <Input
-              // label="Email/Phone"
-              placeholder="Enter Mobile Number"
-              className="w-full"
-            />
-          </div>
-          <Button
-            as={Link}
-            href=""
-            variant="primary"
-            size="small"
-            className={"w-full"}
-          >
-            Continue
-          </Button>
-        </div>
+        <FormikForm
+          fields={signInFields}
+          initialValues={signInInitValue}
+          onSubmit={async (values, { setSubmitting }) => {
+            try {
+              const res = await signIn("credentials", {
+                redirect: false,
+                email: values.email,
+                password: values.password,
+                callbackUrl: "/",
+              });
+              toggleModal();
+            } catch (error) {
+              console.log(error);
+            }
+          }}
+        />
         <div className="text-center flex justify-center items-center gap-3 py-4">
           <div className="w-16 h-[1px] bg-neutral-150"></div>
           <p className="small">Or continue with</p>
@@ -61,7 +76,7 @@ const SignIn = () => {
         <div className="flex gap-2">
           <Button
             as={Link}
-            href="https://0a47-2401-4900-1f3f-4063-a44e-2d37-8d43-11ed.in.ngrok.io/api/connect/google"
+            href="https://466d-2401-4900-1f3f-9520-3d0f-c90c-cb1e-f60.in.ngrok.io/api/connect/google"
             variant="secondary2"
             size="small"
             className={

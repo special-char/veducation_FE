@@ -18,9 +18,16 @@ const Btndata = [
 
 const ProfileSetting = () => {
   return (
-    <div className="pt-4">
+    <div className="pt-4 px-container md:p-0">
       {Btndata.map((val) => {
-        return <Btnnavigator key={val.id} icon={val.icon} title={val.title} />;
+        return (
+          <Btnnavigator
+            href="/profilesettings"
+            key={val.id}
+            icon={val.icon}
+            title={val.title}
+          />
+        );
       })}
     </div>
   );

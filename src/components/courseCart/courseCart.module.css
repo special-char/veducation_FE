@@ -1,6 +1,4 @@
 .main {
-  @apply mt-5  px-container;
-
   &__detail {
     @apply flex gap-5 border-b-2  border-[#EED9BC]  p-2 mb-16;
   }
@@ -52,9 +50,9 @@
   &__orderData {
     @apply text-[#808080];
   }
-  &__orderDetail {
+  /* &__orderDetail {
     @apply pb-10;
-  }
+  } */
   &__button {
     @apply bg-primary text-neutral-100 rounded-lg w-full h-9  text-lg font-bold;
   }
