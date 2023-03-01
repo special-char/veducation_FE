@@ -13,9 +13,9 @@ export const addToCart = async (id, userId, items = 0) => {
       method: "POST",
       body: JSON.stringify({
         data: {
-          productId: `${id}`,
-          userId: `${userId}`,
-          noOfItems: items,
+          products: [`${id}`],
+          user_id: `${userId}`,
+          quantity: items,
         },
       }),
       headers: {
@@ -23,7 +23,6 @@ export const addToCart = async (id, userId, items = 0) => {
         Accept: "application/json",
       },
     });
-    alert("json.message");
     const json = await response.json();
     return json;
   } catch (error) {
