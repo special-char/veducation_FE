@@ -3,6 +3,7 @@ import Input from "@/components/InputComponent";
 import SearchIcon from "public/icons/Search.svg";
 
 export const signupInitValue = {
+  username: "",
   email: "",
   password: "",
   gender: [],
@@ -26,8 +27,8 @@ export const signupFields = [
   },
   {
     component: Input,
-    id: "name",
-    name: "name",
+    id: "username",
+    name: "username",
     type: "text",
     autoComplete: "text",
     label: "Name",
@@ -70,4 +71,21 @@ export const signupFields = [
       return "";
     },
   },
+  // {
+  //   component: Input,
+  //   id: "confirmpassword",
+  //   name: "confirmpassword",
+  //   type: "password",
+  //   label: "Confirm Password",
+  //   autoComplete: "current-password",
+  //   placeholder: "Please enter Password..",
+  //   // icon: () => <SearchIcon height={24} width={24} />,
+  //   validate: (value) => {
+  //     console.log("Confirm value:", value);
+  //     if (!value) {
+  //       return "Please Enter Password";
+  //     }
+  //     return "";
+  //   },
+  // },
 ];

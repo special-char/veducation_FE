@@ -2,13 +2,14 @@
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Veducation from "public/VEDUCATION.svg";
 import Icon from "public/veducationIcon.svg";
 import FormikForm from "@/components/FormikForm";
 import { signupFields, signupInitValue } from "./signupFields";
 import styles from "./signup.module.css";
 import { ProductContext } from "@/context/ProductContextProvider";
+import { authSignup } from "@/lib/authSignup";
 
 const SignUpDetails = () => {
   function toggleModal() {
@@ -36,9 +37,14 @@ const SignUpDetails = () => {
           <FormikForm
             fields={signupFields}
             initialValues={signupInitValue}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={async (values, { setSubmitting }) => {
               try {
-                console.log(values);
+                const res = await authSignup({
+                  username: values.username,
+                  email: values.email,
+                  password: values.password,
+                });
+                console.log("authSignup:", res);
               } catch (error) {
                 console.log(error);
               }

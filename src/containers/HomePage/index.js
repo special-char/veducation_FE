@@ -29,7 +29,7 @@ const HomePage = async (props) => {
     <section>
       <SocialLinks />
       <SignIn />
-      {/* <SignUpDetails /> */}
+      <SignUpDetails />
       <HomeBanner />
       <Productlist id={1} />
       <FeatureDonations />
