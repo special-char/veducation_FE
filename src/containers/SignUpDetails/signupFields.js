@@ -11,6 +11,7 @@ export const signupInitValue = {
 export const signupFields = [
   {
     component: Checkbox,
+
     label: "Gender",
     options: [
       {

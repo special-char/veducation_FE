@@ -19,13 +19,6 @@ export const editProfileInitValue = {
 export const editProfileFields = [
   {
     component: Input,
-    id: "file",
-    className: "",
-    name: "file",
-    type: "file",
-  },
-  {
-    component: Input,
     id: "firstname",
     label: "FIRST NAME",
     placeholder: "Tam",
