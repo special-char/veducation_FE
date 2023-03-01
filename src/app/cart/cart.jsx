@@ -3,6 +3,8 @@ import ProductConfirm from "../../components/ProductConfirm/productConfirm";
 import Tshirt from "public/tshirt.png";
 import CourseCart from "@/components/courseCart/courseCart";
 import { getProductData } from "@/lib/getHomeProductData";
+import { getUser } from "@/lib/getUser";
+import { getBillingDetails } from "@/lib/getBillingDetails";
 
 // const item = [
 //   // {
@@ -37,7 +39,10 @@ const data = {
   price: "55$",
 };
 
-const CartPage = () => {
+const CartPage = async () => {
+  const user = await getUser();
+  const billingData = await getBillingDetails();
+
   const items = [];
   return (
     <div className=" flex flex-col gap-2 h-screen">
@@ -52,6 +57,8 @@ const CartPage = () => {
         ))}
       </div>
       <CourseCart
+        users={user}
+        data={billingData}
         title={data.title}
         price={data.price}
         orderPrice={data.orderPrice}

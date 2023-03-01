@@ -1,33 +1,31 @@
 import Input from "@/components/InputComponent";
 import SearchIcon from "public/icons/Search.svg";
-import Dropdown from "../DropDown Component/Dropdown";
+import Dropdown from "../../components/DropDown Component/Dropdown";
 
 export const billingInitValue = {
-  firstname: "",
+  name: "",
   lastname: "",
   email: "",
-  phone: "",
-  street: "",
   phone: "",
   street: "",
   postcode: "",
   country: "",
   city: "",
-  ordernote: "",
+  orderNote: "",
 };
 
 export const billingFields = [
   {
     component: Input,
-    id: "firstname",
+    id: "name",
     label: "FIRST NAME",
     placeholder: "Tam",
-    name: "firstname",
+    name: "name",
     className: "w-full mr-0 text-sm p-0",
     autoComplete: "irst name",
     type: "text",
     validate: (value) => {
-      if (!value) return "Required...";
+      if (!value) return "Name is required";
       return "";
     },
   },
@@ -42,7 +40,7 @@ export const billingFields = [
     className: "w-full mr-0 ",
     autoComplete: "last name",
     validate: (value) => {
-      if (!value) return "Required...";
+      if (!value) return "Last name is required";
       return "";
     },
   },
@@ -56,7 +54,7 @@ export const billingFields = [
     className: "w-full mr-0 ",
     autoComplete: "email",
     validate: (value) => {
-      if (!value) return "Required...";
+      if (!value) return "Email is required";
       if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value))
         return "Please Enter Valid Email";
       return "";
@@ -143,13 +141,13 @@ export const billingFields = [
   },
   {
     component: Input,
-    id: "ordernote",
+    id: "orderNote",
     label: "ORDERNOTE",
     placeholder: "Special notes for delivery",
-    name: "ordernote",
+    name: "orderNote",
     type: "text",
     className: "w-full mr-0 ",
-    autoComplete: "ordernote",
+    autoComplete: "orderNote",
     validate: (value) => {
       if (!value) return "Required...";
       return "";

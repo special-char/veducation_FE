@@ -9,18 +9,33 @@ import Delete from "public/delete.svg";
 import Button from "@/components/Button";
 import Link from "next/link";
 import Input from "@/components/InputComponent";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const data = {
   orderPrice: "75",
   totalAmount: "95",
 };
 
-const CourseCart = () => {
+const CourseCart = ({ users, data: { data } }) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = () => {
     setSearchValue("");
   };
+
+  const userSession = useSession();
+  const navigate = useRouter();
+  const user = users?.find(
+    (item) => item.email === userSession?.data?.user?.email
+  );
+  const shippingDetail = data?.find((shipping) => {
+    return shipping?.attributes?.user_id?.data?.id === user?.id;
+  });
+  console.log(shippingDetail);
+  // if (shippingDetail) {
+  //   navigate.push("/orderconfirmed");
+  // }
 
   return (
     <div className={styles.main}>
@@ -82,7 +97,7 @@ const CourseCart = () => {
         {/* <button className={styles.main__button}>Check out</button> */}
         <Button
           as={Link}
-          href="/billingdetails"
+          href={shippingDetail ? "/orderconfirmed" : "/billingdetails"}
           variant="primary"
           className="w-full p-3"
           size={"large"}
