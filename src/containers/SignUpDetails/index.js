@@ -2,28 +2,30 @@
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Veducation from "public/VEDUCATION.svg";
 import Icon from "public/veducationIcon.svg";
 import FormikForm from "@/components/FormikForm";
 import { signupFields, signupInitValue } from "./signupFields";
 import styles from "./signup.module.css";
+import { ProductContext } from "@/context/ProductContextProvider";
 
 const SignUpDetails = () => {
-  const [open, setOpen] = useState(false);
   function toggleModal() {
-    setOpen((prev) => !prev);
+    dispatch({ signUp: false });
   }
+
+  const {
+    state: { signUp },
+    dispatch,
+  } = useContext(ProductContext);
 
   return (
     <div className={styles.signup}>
-      <Button onClick={toggleModal} as={Link} href="">
-        Details
-      </Button>
       <Modal
-        open={open}
+        open={signUp}
         onClose={toggleModal}
-        className="flex-1 flex flex-col gap-3 py-5 px-3"
+        className=" flex-col gap-3 py-5 px-3 pb-14"
       >
         <span className="flex justify-center items-center">
           <Icon />

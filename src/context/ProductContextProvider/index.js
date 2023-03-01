@@ -6,6 +6,7 @@ const initialState = {
   notifications: 0,
   signIn: false,
   cart: [],
+  signUp: false,
   authToken: "",
 };
 
