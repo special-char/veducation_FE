@@ -14,9 +14,9 @@ const Input = ({
   ...props
 }) => {
   const [type, setType] = useState(props.type);
-  if (props.type === "checkbox") {
-    return <Checkbox {...props} />;
-  }
+  // if (props.type === "checkbox") {
+  //   return <Checkbox {...props} />;
+  // }
   return (
     <div className={styles.section}>
       <label htmlFor={id} className="body">

@@ -10,20 +10,19 @@ export const signupInitValue = {
 
 export const signupFields = [
   {
-    component: Input,
-    id: "male",
-    type: "checkbox",
-    name: "gender",
-    value: "male",
+    component: Checkbox,
     label: "Gender",
-  },
-  {
-    component: Input,
-    id: "female",
-    type: "checkbox",
+    options: [
+      {
+        id: "male",
+        text: "Male",
+      },
+      {
+        id: "female",
+        text: "Female",
+      },
+    ],
     name: "gender",
-    value: "female",
-    label: "Gender",
   },
   {
     component: Input,
