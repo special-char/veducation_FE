@@ -8,23 +8,23 @@ import Image from "next/image";
 import styles from "./editprofile.module.css";
 
 const EditProfile = () => {
-  const hiddenFileInput = useRef(null);
+  // const hiddenFileInput = useRef(null);
 
-  const handleChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      const i = event.target.files[0];
-      const body = new FormData();
-      body.append("image", i);
-      console.log({ i });
-    }
-  };
+  // const handleChange = (event) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const i = event.target.files[0];
+  //     const body = new FormData();
+  //     body.append("image", i);
+  //     console.log({ i });
+  //   }
+  // };
 
-  const handleClick = (event) => {
-    hiddenFileInput.current.click();
-  };
+  // const handleClick = (event) => {
+  //   hiddenFileInput.current.click();
+  // };
   return (
     <section className={styles.editprofile}>
-      <div className="pb-4">
+      {/* <div className="pb-4">
         <input
           type="file"
           ref={hiddenFileInput}
@@ -43,7 +43,7 @@ const EditProfile = () => {
           />
           <Edit className="w-12 absolute -bottom-3 -right-3" />
         </div>
-      </div>
+      </div> */}
       <FormikForm
         fields={editProfileFields}
         initialValues={editProfileInitValue}

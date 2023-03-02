@@ -1,8 +1,10 @@
 import Checkbox from "@/components/CheckBox";
 import Dropdown from "@/components/DropDown Component/Dropdown";
 import Input from "@/components/InputComponent";
+import UploadImage from "@/components/UploadImage";
 
 export const editProfileInitValue = {
+  file: null,
   name: "",
   email: "",
   phone: "",
@@ -15,6 +17,17 @@ export const editProfileInitValue = {
 };
 
 export const editProfileFields = [
+  {
+    component: UploadImage,
+    id: "file",
+    name: "file",
+    className: "",
+    type: "file",
+    validate: (value) => {
+      if (!value) return "Required...";
+      return "";
+    },
+  },
   {
     component: Checkbox,
 
