@@ -5,6 +5,7 @@ import React, { useRef } from "react";
 import { editProfileFields, editProfileInitValue } from "./editProfileFields";
 import Edit from "public/icons/editprofile.svg";
 import Image from "next/image";
+import styles from "./editprofile.module.css";
 
 const EditProfile = () => {
   const hiddenFileInput = useRef(null);
@@ -22,7 +23,7 @@ const EditProfile = () => {
     hiddenFileInput.current.click();
   };
   return (
-    <section className="pb-24 pt-4 px-container">
+    <section className={styles.editprofile}>
       <div className="pb-4">
         <input
           type="file"

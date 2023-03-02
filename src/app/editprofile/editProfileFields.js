@@ -1,10 +1,9 @@
+import Checkbox from "@/components/CheckBox";
 import Dropdown from "@/components/DropDown Component/Dropdown";
 import Input from "@/components/InputComponent";
 
 export const editProfileInitValue = {
-  file: "",
-  firstname: "",
-  lastname: "",
+  name: "",
   email: "",
   phone: "",
   street: "",
@@ -13,18 +12,33 @@ export const editProfileInitValue = {
   postcode: "",
   country: "",
   city: "",
-  ordernote: "",
 };
 
 export const editProfileFields = [
   {
+    component: Checkbox,
+
+    label: "Gender",
+    options: [
+      {
+        id: "male",
+        text: "Male",
+      },
+      {
+        id: "female",
+        text: "Female",
+      },
+    ],
+    name: "gender",
+  },
+  {
     component: Input,
-    id: "firstname",
-    label: "FIRST NAME",
-    placeholder: "Tam",
-    name: "firstname",
+    id: "name",
+    label: "NAME",
+    placeholder: "Full Name",
+    name: "name",
     className: "w-full mr-0 text-sm p-0",
-    autoComplete: "irst name",
+    autoComplete: "name",
     type: "text",
     validate: (value) => {
       if (!value) return "Required...";
@@ -32,20 +46,6 @@ export const editProfileFields = [
     },
   },
 
-  {
-    component: Input,
-    id: "lastname",
-    label: "LAST NAME",
-    placeholder: "Firsr name",
-    name: "lastname",
-    type: "text",
-    className: "w-full mr-0 ",
-    autoComplete: "last name",
-    validate: (value) => {
-      if (!value) return "Required...";
-      return "";
-    },
-  },
   {
     component: Input,
     id: "email-address",
