@@ -1,28 +1,27 @@
 "use client";
 import Button from "@/components/Button";
+import { useAppContext } from "@/context/AppContextProvider";
 import { useCartProvider } from "@/context/CartContextProvider";
-import { useProductsContext } from "@/context/ProductContextProvider";
-import { getCartItems } from "@/lib/getCartItems";
-import { addToCart } from "@/lib/updateCart";
+import { addToCart, updateCart } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { use, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "../[id]/product.module.css";
 
 const AddBuy = ({ id, users }) => {
   const data = useSession();
+
   const navigate = useRouter();
+
   const user = users?.find((item) => item.email === data?.data?.user?.email);
+
   const {
     addItem,
     cartState: { cart },
   } = useCartProvider();
 
-  let currentCart = cart?.find((item) => {
-    if (
-      item?.attributes?.product?.data?.id === Number(id) &&
-      item?.attributes?.user_id?.data?.id === user?.id
-    ) {
+  const currentCart = cart?.find((item) => {
+    if (item?.attributes?.product?.data?.id == id) {
       return item;
     }
   });
@@ -37,13 +36,23 @@ const AddBuy = ({ id, users }) => {
       );
       if (res.data) {
         addItem(res.data);
-        // cartItems.attributes.quantity = res.data.attributes.quantity + 1;
-        // const items = use(getCartItems());
+        navigate.navigate.replace(`/product/${id}`);
       }
     } catch (error) {
       console.log(error);
     }
   }
+
+  function onUpdateCart() {
+    try {
+      updateCart(currentCart?.id, {
+        quantity: currentCart?.attributes?.quantity + 1,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className={styles.ProductPage__btn}>
       <Button
@@ -51,9 +60,21 @@ const AddBuy = ({ id, users }) => {
         className="md:flex md:justify-center"
         variant={"secondary"}
         size={"large"}
-        onClick={onAddToCart}
+        onClick={() => {
+          if (!data?.data?.user) {
+            const response = confirm("Please Sign up or login to continue");
+            if (response) navigate.push("/");
+            return;
+          }
+          if (currentCart?.id) {
+            const res = confirm("Item is already in the cart");
+            if (res) navigate.push("/cart");
+            return;
+          }
+          onAddToCart();
+        }}
       >
-        {currentCart?.id ? "Add another to cart" : "Add to cart"}
+        {currentCart?.id ? "Added to cart" : "Add to cart"}
       </Button>
       <Button
         as="button"
@@ -62,6 +83,9 @@ const AddBuy = ({ id, users }) => {
         prefetch={false}
         variant={"primary"}
         size={"large"}
+        onClick={() => {
+          navigate.push("/cart");
+        }}
       >
         Buy now
       </Button>

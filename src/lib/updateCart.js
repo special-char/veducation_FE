@@ -1,15 +1,10 @@
 import axiosInstance from "./axiosInstance";
 
-export const addToCart = async (
-  productID,
-  userId,
-  items = 0,
-  cartId,
-  payload
-) => {
+export const addToCart = async (productID, userId, items = 0) => {
   try {
-    if (!cartId) {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/carts`, {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/carts?populate=*`,
+      {
         method: "POST",
         body: JSON.stringify({
           data: {
@@ -23,28 +18,34 @@ export const addToCart = async (
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      });
-      const json = await response.json();
-      return json;
-    } else {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/carts/${cartId}`,
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            data: payload,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
-      const json = await response.json();
-      return json;
-    }
+      }
+    );
+    const json = await response.json();
+    return json;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const updateCart = async (cartId, payload) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/carts/${cartId}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          data: payload,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.error(error);
   }
 };
 

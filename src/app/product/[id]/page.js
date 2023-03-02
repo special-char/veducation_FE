@@ -9,13 +9,18 @@ import Image from "next/image";
 import AddBuy from "../AddBuy";
 import { getUser } from "@/lib/getUser";
 import { getCartItems } from "@/lib/getCartItems";
+import SignIn from "@/containers/SignIn";
 
 const Page = async (props) => {
   const productData = await getProductData(props?.params?.id);
+
   const user = await getUser();
+
   const cartItems = await getCartItems();
+
   const { title, name, posterImageUrl, price, description } =
     productData?.data?.attributes;
+
   return (
     <section className={styles.ProductPage}>
       <div className={styles.ProductPage__image}>
