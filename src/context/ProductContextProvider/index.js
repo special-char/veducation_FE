@@ -1,8 +1,13 @@
 "use client";
-const { createContext, useReducer } = require("react");
+const {
+  createContext,
+  useReducer,
+  useContext,
+  useCallback,
+  useMemo,
+} = require("react");
 
 const initialState = {
-  cartItems: 0,
   notifications: 0,
   signIn: false,
   cart: [],
@@ -19,11 +24,15 @@ function reducer(state, action) {
 const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const value = useMemo(() => ({ state, dispatch }), []);
+
   return (
-    <ProductContext.Provider value={{ state, dispatch }}>
+    <ProductContext.Provider value={{ state, dispatch, addItemToCart }}>
       {children}
     </ProductContext.Provider>
   );
 };
+
+export const useProductsContext = () => useContext(ProductContext);
 
 export default ProductContextProvider;

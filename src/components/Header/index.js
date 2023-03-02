@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { use, useContext, useEffect } from "react";
 import Icon from "../../../public/veducationIcon.svg";
 import TitleIcon from "../../../public/VEDUCATION.svg";
 import Cart from "../../../public/cart.svg";
@@ -9,11 +9,25 @@ import Link from "next/link";
 import ProductContextProvider, {
   ProductContext,
 } from "@/context/ProductContextProvider";
+import { useCartProvider } from "@/context/CartContextProvider";
+import { getCartItems } from "@/lib/getCartItems";
 
-const Header = () => {
+const Header = (props) => {
   const {
-    state: { cartItems, notifications },
+    state: { notifications },
   } = useContext(ProductContext);
+  const {
+    addItem,
+    cartState: { cart },
+  } = useCartProvider();
+
+  useEffect(() => {
+    // const defaultCartItems = use(getCartItems());
+    addItem(props.data);
+    return () => {};
+  }, []);
+
+  console.log({ props });
   return (
     <ProductContextProvider>
       <nav className={styles.headerRoot}>
@@ -22,14 +36,16 @@ const Header = () => {
           <TitleIcon />
         </Link>
         <div className={styles.headerRoot__rightIcon}>
-          <Cart
-            onClick={() => {
-              console.log("cart");
-            }}
-          />
-          {cartItems !== 0 && (
+          <Link href={"/cart?products"}>
+            <Cart
+              onClick={() => {
+                console.log("cart");
+              }}
+            />
+          </Link>
+          {cart.length !== 0 && (
             <span className={styles.headerRoot__rightIcon__floatNum}>
-              {cartItems}
+              {cart.length}
             </span>
           )}
 

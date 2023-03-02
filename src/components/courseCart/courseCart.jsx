@@ -25,14 +25,12 @@ const CourseCart = ({ users, data: { data } }) => {
   };
 
   const userSession = useSession();
-  const navigate = useRouter();
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
   const shippingDetail = data?.find((shipping) => {
     return shipping?.attributes?.user_id?.data?.id === user?.id;
   });
-  console.log(shippingDetail);
   // if (shippingDetail) {
   //   navigate.push("/orderconfirmed");
   // }

@@ -7,26 +7,40 @@ import Plus from "public/icons/plus.svg";
 import Minus from "public/icons/minus.svg";
 import Delete from "public/icons/delete.svg";
 import OrderdItem from "../oderedItem/orderedItem";
+import { useCartProvider } from "@/context/CartContextProvider";
 
-// const item={
-//   img:Tshirt,
-//   item:"Veducation T Shirt - Mens Tshirt Pure Black",
-//   price:"25.00",
-//   totalpcs:"3pcs",
-//   arriving:"12 june",
-//   deliveredOn:"13 june"
-// }
+const ProductConfirm = ({
+  image,
+  title,
+  price,
+  isCourse,
+  quantity = 0,
+  item,
+  attributes,
+}) => {
+  const {
+    updateCount,
+    cartState: { cart },
+  } = useCartProvider();
 
-const ProductConfirm = ({ image, title, price, isCourse }) => {
-  const [arriving, setArriving] = useState(false);
-  const [count, setCount] = useState(1);
   const incrementCount = () => {
-    setCount(count + 1);
+    console.log({ attributes });
+    updateCount(
+      item.id,
+      quantity + 1,
+      attributes?.product?.data?.id,
+      attributes?.user_id?.data?.id
+    );
   };
 
   const decrementCount = () => {
-    if (count > 0) {
-      setCount(count - 1);
+    if (quantity > 0) {
+      updateCount(
+        item.id,
+        quantity - 1,
+        attributes?.product?.data?.id,
+        attributes?.user_id?.data?.id
+      );
     }
   };
 
@@ -39,7 +53,7 @@ const ProductConfirm = ({ image, title, price, isCourse }) => {
         <div className="flex flex-col place-content-center gap-2">
           <h5 className={styles.main__name}>{title}</h5>
           <div className="flex justify-between">
-            {count > 0 && (
+            {quantity > 0 && (
               <p className={styles.main__price}>
                 {price}
                 {/* | {count} pcs */}
@@ -48,7 +62,7 @@ const ProductConfirm = ({ image, title, price, isCourse }) => {
             {isCourse && (
               <button
                 className={` ${styles.main__dltBtn} ${
-                  count && count ? "block" : "hidden"
+                  quantity && quantity ? "block" : "hidden"
                 }`}
               >
                 <Delete />
@@ -59,7 +73,7 @@ const ProductConfirm = ({ image, title, price, isCourse }) => {
 
           {!isCourse && (
             <div>
-              {count > 0 && (
+              {quantity > 0 && (
                 <div className={styles.main__counter}>
                   <button
                     onClick={decrementCount}
@@ -67,7 +81,7 @@ const ProductConfirm = ({ image, title, price, isCourse }) => {
                   >
                     <Minus className={styles.main__counterSvg} />
                   </button>
-                  <h5 className={styles.main__counterValue}>{count}</h5>
+                  <h5 className={styles.main__counterValue}>{quantity}</h5>
                   <button
                     onClick={incrementCount}
                     className={styles.main__counterBtn}
