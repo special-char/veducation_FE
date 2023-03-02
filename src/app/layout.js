@@ -9,6 +9,8 @@ import ProductContextProvider from "@/context/ProductContextProvider";
 import AuthContext from "@/context/AuthContextProvider";
 import axios from "axios";
 import HideScrollBar from "@/containers/HideScroll";
+import { CartContextProvider } from "@/context/CartContextProvider";
+import { getCartItems } from "@/lib/getCartItems";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -39,6 +41,9 @@ async function getSession(cookie) {
 
 export default async function RootLayout({ children }) {
   const session = await getSession(headers().get("cookie") ?? "");
+  const defaultCartItems = await getCartItems();
+
+  console.log({ defaultCartItems });
 
   return (
     <html
@@ -54,13 +59,14 @@ export default async function RootLayout({ children }) {
       <body style={{}}>
         <AuthContext session={session}>
           <ProductContextProvider>
-            <HideScrollBar />
-
-            <main className="bg-background md:px-container h-full">
-              <Header />
-              {children}
-              <Navbar />
-            </main>
+            <CartContextProvider>
+              <HideScrollBar />
+              <main className="bg-background md:px-container h-full">
+                <Header {...defaultCartItems} />
+                {children}
+                <Navbar />
+              </main>
+            </CartContextProvider>
           </ProductContextProvider>
         </AuthContext>
       </body>
