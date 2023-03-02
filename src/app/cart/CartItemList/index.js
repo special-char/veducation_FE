@@ -1,18 +1,31 @@
 "use client";
 import ProductConfirm from "@/components/ProductConfirm/productConfirm";
 import { useCartProvider } from "@/context/CartContextProvider";
-import React from "react";
+import { useProductsContext } from "@/context/ProductContextProvider";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const CartItemList = () => {
   const {
     cartState: { cart },
   } = useCartProvider();
-  console.log({ cart }, "from cart list ");
+  const { dispatch } = useProductsContext();
+  const user = useSession();
+  const navigate = useRouter();
+  console.log({ userfromItems: user.data });
+  useEffect(() => {
+    if (!user.data) {
+      navigate.push("/");
+      dispatch({ signIn: true });
+    }
+    return () => {};
+  }, []);
+
   const items = [];
   return (
     <div>
       {cart.map(({ attributes: x, ...item }) => {
-        console.log({ x, item });
         return (
           <ProductConfirm
             image={x?.product?.data?.attributes?.posterImageUrl}

@@ -11,23 +11,26 @@ import ProductContextProvider, {
 } from "@/context/ProductContextProvider";
 import { useCartProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
+import { useSession } from "next-auth/react";
 
-const Header = (props) => {
+const Header = ({ data, users }) => {
   const {
-    state: { notifications },
+    state: { notifications, user: u },
+    dispatch,
   } = useContext(ProductContext);
+  const sessionUser = useSession();
   const {
     addItem,
+    cartInit,
     cartState: { cart },
   } = useCartProvider();
-
+  const user = users?.find(
+    (item) => item.email === sessionUser?.data?.user?.email
+  );
   useEffect(() => {
-    // const defaultCartItems = use(getCartItems());
-    addItem(props.data);
+    cartInit(data);
     return () => {};
   }, []);
-
-  console.log({ props });
   return (
     <ProductContextProvider>
       <nav className={styles.headerRoot}>
@@ -36,24 +39,23 @@ const Header = (props) => {
           <TitleIcon />
         </Link>
         <div className={styles.headerRoot__rightIcon}>
-          <Link href={"/cart?products"}>
-            <Cart
-              onClick={() => {
-                console.log("cart");
-              }}
-            />
+          <Link
+            href={!sessionUser?.data?.user ? "" : "/cart?products"}
+            onClick={() => {
+              if (!sessionUser?.data?.user) {
+                dispatch({ signIn: true });
+              }
+            }}
+          >
+            <Cart onClick={() => {}} />
           </Link>
-          {cart.length !== 0 && (
+          {cart.length !== 0 && sessionUser?.data?.user && (
             <span className={styles.headerRoot__rightIcon__floatNum}>
               {cart.length}
             </span>
           )}
 
-          <Bell
-            onClick={() => {
-              console.log("bell");
-            }}
-          />
+          <Bell onClick={() => {}} />
           {notifications !== 0 && (
             <span className={styles.headerRoot__rightIcon__floatNum}>
               {notifications}

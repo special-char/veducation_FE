@@ -12,7 +12,6 @@ const details = {
 };
 
 const AboutPage = ({ data }) => {
-  console.log("AboutPage data:", data);
   return (
     <div className={styles.AboutPage}>
       <div className={styles.AboutPage__Img}>

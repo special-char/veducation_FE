@@ -1,7 +1,9 @@
 "use client";
 import { getCartItems } from "@/lib/getCartItems";
 import { addToCart } from "@/lib/updateCart";
+import { useSession } from "next-auth/react";
 import { createContext, use, useContext, useEffect, useReducer } from "react";
+import { useProductsContext } from "../ProductContextProvider";
 
 const initialState = {
   cart: [],
@@ -15,18 +17,37 @@ function reducer(state, action) {
 
 export const CartContextProvider = ({ children }) => {
   const [cartState, dispatch] = useReducer(reducer, initialState);
+  const userSession = useSession();
+  const {
+    state: { signIn },
+    dispatch: dispatchProduct,
+  } = useProductsContext();
 
-  // console.log(defaultCartItems);
+  function cartInit(item) {
+    // if (!userSession?.data?.user) {
+    //   // console.log({ second: userSession?.data?.user });
+    //   // dispatchProduct({ signIn: true });
+    //   return;
+    // }
+    dispatch({ cart: [...cartState.cart, ...item] });
+  }
 
   function addItem(item) {
-    if (Array.isArray(item)) {
-      dispatch({ cart: [...cartState.cart, ...item] });
+    if (!userSession?.data?.user) {
+      console.log({ first: userSession?.data?.user });
+      dispatchProduct({ signIn: true });
       return;
     }
+
     dispatch({ cart: [...cartState.cart, item] });
   }
 
   async function updateCount(id, count, productId, userId) {
+    if (!userSession?.data?.user) {
+      console.log({ second: userSession?.data?.user });
+      dispatchProduct({ signIn: true });
+      return;
+    }
     const clickedCartIndex = cartState.cart.findIndex((item) => item.id === id);
     const response = await addToCart(productId, userId, count, id);
     const clickedCartItem = cartState.cart.find((item) => item.id === id);
@@ -42,11 +63,10 @@ export const CartContextProvider = ({ children }) => {
         ...cartState?.cart?.slice(clickedCartIndex + 1),
       ],
     });
-    console.log({ clickedCartIndex, clickedCartItem, cart: cartState?.cart });
   }
 
   return (
-    <CartContext.Provider value={{ cartState, addItem, updateCount }}>
+    <CartContext.Provider value={{ cartState, addItem, cartInit, updateCount }}>
       {children}
     </CartContext.Provider>
   );

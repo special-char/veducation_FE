@@ -21,14 +21,13 @@ const SignIn = () => {
   };
   const auth = useSession();
   const {
-    state: { signIn: open },
+    state: { signIn: open, user },
     dispatch,
   } = useContext(ProductContext);
   function toggleModal() {
     dispatch({ signIn: false });
   }
-
-  if (auth?.data !== null) {
+  if (!!auth?.data?.user) {
     return (
       <PopupModal
         open={open}
@@ -66,6 +65,7 @@ const SignIn = () => {
                 password: values.password,
                 callbackUrl: "/",
               });
+              console.log({ authResponse: res });
               toggleModal();
             } catch (error) {
               console.log(error);

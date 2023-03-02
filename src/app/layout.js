@@ -1,5 +1,5 @@
 import "./globals.css";
-import React from "react";
+import React, { Suspense } from "react";
 import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
 import Header from "@/components/Header";
@@ -11,6 +11,8 @@ import axios from "axios";
 import HideScrollBar from "@/containers/HideScroll";
 import { CartContextProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
+import { getUser } from "@/lib/getUser";
+import { getCart } from "@/lib/getCart";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -41,9 +43,9 @@ async function getSession(cookie) {
 
 export default async function RootLayout({ children }) {
   const session = await getSession(headers().get("cookie") ?? "");
-  const defaultCartItems = await getCartItems();
-
-  console.log({ defaultCartItems });
+  const users = await getUser();
+  const user = users.find((item) => item.email === session?.user?.email);
+  const defaultCartItems = await getCartItems(user?.id);
 
   return (
     <html
@@ -61,11 +63,17 @@ export default async function RootLayout({ children }) {
           <ProductContextProvider>
             <CartContextProvider>
               <HideScrollBar />
-              <main className="bg-background md:px-container h-full">
-                <Header {...defaultCartItems} />
-                {children}
-                <Navbar />
-              </main>
+              <Suspense fallback={<loading>loading....</loading>}>
+                <main className="bg-background md:px-container h-full">
+                  <Header
+                    {...defaultCartItems}
+                    session={session}
+                    users={users}
+                  />
+                  {children}
+                  {/* <Navbar /> */}
+                </main>
+              </Suspense>
             </CartContextProvider>
           </ProductContextProvider>
         </AuthContext>

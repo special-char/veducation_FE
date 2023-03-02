@@ -12,7 +12,6 @@ const BillingDetails = ({ user: users }) => {
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
-  console.log({ user });
   return (
     <div className="px-container ">
       <p className="text-2xl font-bold text-neutral-950 my-6">
@@ -47,12 +46,11 @@ const BillingDetails = ({ user: users }) => {
             };
             try {
               const response = await addBillingDetails(formValues);
-              console.log(response);
               if (response.data) {
                 navigate.push("/orderconfirmed");
               }
             } catch (error) {
-              console.log({ error }, "addBillingDetails");
+              console.log(error, "addBillingDetails");
             }
           }}
         />

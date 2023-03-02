@@ -7,7 +7,6 @@ const HideScrollBar = () => {
     state: { signIn, signUp },
   } = useContext(ProductContext);
   const body = document.querySelector("body");
-  console.log({ open: signIn });
   useEffect(() => {
     if (signIn || signUp) {
       body.classList.add("overflow-hidden");
