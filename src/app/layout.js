@@ -12,6 +12,7 @@ import HideScrollBar from "@/containers/HideScroll";
 import { CartContextProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
 import { getUser } from "@/lib/getUser";
+import { getCart } from "@/lib/getCart";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -42,10 +43,9 @@ async function getSession(cookie) {
 
 export default async function RootLayout({ children }) {
   const session = await getSession(headers().get("cookie") ?? "");
-  const defaultCartItems = await getCartItems();
   const users = await getUser();
-
-  console.log({ session, users });
+  const user = users.find((item) => item.email === session?.user?.email);
+  const defaultCartItems = await getCartItems(user?.id);
 
   return (
     <html
@@ -59,11 +59,11 @@ export default async function RootLayout({ children }) {
       <head />
 
       <body style={{}}>
-        <Suspense fallback={<div>loading....</div>}>
-          <AuthContext session={session}>
-            <ProductContextProvider>
-              <CartContextProvider>
-                <HideScrollBar />
+        <AuthContext session={session}>
+          <ProductContextProvider>
+            <CartContextProvider>
+              <HideScrollBar />
+              <Suspense fallback={<loading>loading....</loading>}>
                 <main className="bg-background md:px-container h-full">
                   <Header
                     {...defaultCartItems}
@@ -71,12 +71,12 @@ export default async function RootLayout({ children }) {
                     users={users}
                   />
                   {children}
-                  <Navbar />
+                  {/* <Navbar /> */}
                 </main>
-              </CartContextProvider>
-            </ProductContextProvider>
-          </AuthContext>
-        </Suspense>
+              </Suspense>
+            </CartContextProvider>
+          </ProductContextProvider>
+        </AuthContext>
       </body>
     </html>
   );
