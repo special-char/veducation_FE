@@ -27,7 +27,7 @@ const ProductContextProvider = ({ children }) => {
   const value = useMemo(() => ({ state, dispatch }), []);
 
   return (
-    <ProductContext.Provider value={{ state, dispatch, addItemToCart }}>
+    <ProductContext.Provider value={{ state, dispatch }}>
       {children}
     </ProductContext.Provider>
   );
