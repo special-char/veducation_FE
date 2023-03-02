@@ -24,7 +24,6 @@ const ProductConfirm = ({
   } = useCartProvider();
 
   const incrementCount = () => {
-    console.log({ attributes });
     updateCount(
       item.id,
       quantity + 1,

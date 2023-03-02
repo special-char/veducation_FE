@@ -11,7 +11,6 @@ export const getBillingDetails = async () => {
 
 export const addBillingDetails = async (form) => {
   try {
-    console.log({ addBillingDetails: form });
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/shipping-details`,
       {

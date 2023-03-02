@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useContext, useEffect } from "react";
+import React, { use, useCallback, useContext, useEffect } from "react";
 import Icon from "../../../public/veducationIcon.svg";
 import TitleIcon from "../../../public/VEDUCATION.svg";
 import Cart from "../../../public/cart.svg";
@@ -11,57 +11,63 @@ import ProductContextProvider, {
 } from "@/context/ProductContextProvider";
 import { useCartProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
+import { useSession } from "next-auth/react";
+import { useDispatch } from "@/hooks/useDispatch";
 
-const Header = (props) => {
+const Header = ({ data, users, sessionUser: ss }) => {
   const {
-    state: { notifications },
+    state: { notifications, user: sessionUser },
+    dispatch,
   } = useContext(ProductContext);
   const {
-    addItem,
+    cartInit,
     cartState: { cart },
   } = useCartProvider();
-
-  useEffect(() => {
-    // const defaultCartItems = use(getCartItems());
-    addItem(props.data);
-    return () => {};
-  }, []);
-
-  console.log({ props });
+  const user = users?.find(
+    (item) => item.email === sessionUser?.data?.user?.email
+  );
+  const filteredResponse = data?.filter((item) => {
+    item?.attributes?.user_id?.data?.id === user?.id;
+  });
+  console.log({
+    filter: data?.filter((item) => {
+      item?.attributes?.user_id?.data?.id == user?.id;
+    }),
+    data,
+    sessionUser,
+    user,
+  });
   return (
-    <ProductContextProvider>
-      <nav className={styles.headerRoot}>
-        <Link href="/" className={styles.headerRoot__title}>
-          <Icon />
-          <TitleIcon />
+    <nav className={styles.headerRoot}>
+      <Link href="/" className={styles.headerRoot__title}>
+        <Icon />
+        <TitleIcon />
+      </Link>
+      <div className={styles.headerRoot__rightIcon}>
+        <Link
+          href={!sessionUser?.data?.user ? "" : "/cart?products"}
+          onClick={() => {
+            if (!sessionUser?.data?.user) {
+              dispatch({ signIn: true });
+            }
+          }}
+        >
+          <Cart onClick={() => {}} />
         </Link>
-        <div className={styles.headerRoot__rightIcon}>
-          <Link href={"/cart?products"}>
-            <Cart
-              onClick={() => {
-                console.log("cart");
-              }}
-            />
-          </Link>
-          {cart.length !== 0 && (
-            <span className={styles.headerRoot__rightIcon__floatNum}>
-              {cart.length}
-            </span>
-          )}
+        {cart.length !== 0 && userSession?.data?.user && (
+          <span className={styles.headerRoot__rightIcon__floatNum}>
+            {cart.length}
+          </span>
+        )}
 
-          <Bell
-            onClick={() => {
-              console.log("bell");
-            }}
-          />
-          {notifications !== 0 && (
-            <span className={styles.headerRoot__rightIcon__floatNum}>
-              {notifications}
-            </span>
-          )}
-        </div>
-      </nav>
-    </ProductContextProvider>
+        <Bell onClick={() => {}} />
+        {notifications !== 0 && (
+          <span className={styles.headerRoot__rightIcon__floatNum}>
+            {notifications}
+          </span>
+        )}
+      </div>
+    </nav>
   );
 };
 

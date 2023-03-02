@@ -1,5 +1,5 @@
 import "./globals.css";
-import React from "react";
+import React, { Suspense } from "react";
 import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
 import Header from "@/components/Header";
@@ -11,6 +11,7 @@ import axios from "axios";
 import HideScrollBar from "@/containers/HideScroll";
 import { CartContextProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
+import { getUser } from "@/lib/getUser";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -42,8 +43,9 @@ async function getSession(cookie) {
 export default async function RootLayout({ children }) {
   const session = await getSession(headers().get("cookie") ?? "");
   const defaultCartItems = await getCartItems();
+  const users = await getUser();
 
-  console.log({ defaultCartItems });
+  console.log({ session, users });
 
   return (
     <html
@@ -57,18 +59,24 @@ export default async function RootLayout({ children }) {
       <head />
 
       <body style={{}}>
-        <AuthContext session={session}>
-          <ProductContextProvider>
-            <CartContextProvider>
-              <HideScrollBar />
-              <main className="bg-background md:px-container h-full">
-                <Header {...defaultCartItems} />
-                {children}
-                <Navbar />
-              </main>
-            </CartContextProvider>
-          </ProductContextProvider>
-        </AuthContext>
+        <Suspense fallback={<div>loading....</div>}>
+          <AuthContext session={session}>
+            <ProductContextProvider>
+              <CartContextProvider>
+                <HideScrollBar />
+                <main className="bg-background md:px-container h-full">
+                  <Header
+                    {...defaultCartItems}
+                    session={session}
+                    users={users}
+                  />
+                  {children}
+                  <Navbar />
+                </main>
+              </CartContextProvider>
+            </ProductContextProvider>
+          </AuthContext>
+        </Suspense>
       </body>
     </html>
   );

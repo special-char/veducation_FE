@@ -26,7 +26,6 @@ const AddBuy = ({ id, users }) => {
       return item;
     }
   });
-  console.log({ cart, currentCart });
 
   async function onAddToCart() {
     try {
@@ -40,7 +39,6 @@ const AddBuy = ({ id, users }) => {
         addItem(res.data);
         // cartItems.attributes.quantity = res.data.attributes.quantity + 1;
         // const items = use(getCartItems());
-        console.log({ cartItems });
       }
     } catch (error) {
       console.log(error);

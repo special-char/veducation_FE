@@ -1,11 +1,8 @@
 "use client";
-const {
-  createContext,
-  useReducer,
-  useContext,
-  useCallback,
-  useMemo,
-} = require("react");
+
+import { useSession } from "next-auth/react";
+
+const { createContext, useReducer, useContext, useMemo } = require("react");
 
 const initialState = {
   notifications: 0,
@@ -13,6 +10,7 @@ const initialState = {
   cart: [],
   signUp: false,
   authToken: "",
+  user: {},
 };
 
 export const ProductContext = createContext(initialState);
@@ -23,7 +21,6 @@ function reducer(state, action) {
 
 const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   const value = useMemo(() => ({ state, dispatch }), []);
 
   return (

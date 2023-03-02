@@ -6,7 +6,6 @@ import React from "react";
 
 const About = async () => {
   const aboutData = await getAboutData();
-  console.log(aboutData);
 
   return (
     <section className="px-container pt-3 pb-24">
