@@ -24,11 +24,6 @@ export const CartContextProvider = ({ children }) => {
   } = useProductsContext();
 
   function cartInit(item) {
-    // if (!userSession?.data?.user) {
-    //   // console.log({ second: userSession?.data?.user });
-    //   // dispatchProduct({ signIn: true });
-    //   return;
-    // }
     dispatch({ cart: [...cartState.cart, ...item] });
   }
 
@@ -43,13 +38,24 @@ export const CartContextProvider = ({ children }) => {
   }
 
   async function updateCount(id, count, productId, userId) {
+    const clickedCartIndex = cartState.cart.findIndex((item) => item.id === id);
     if (!userSession?.data?.user) {
       console.log({ second: userSession?.data?.user });
       dispatchProduct({ signIn: true });
       return;
     }
-    const clickedCartIndex = cartState.cart.findIndex((item) => item.id === id);
-    const response = await addToCart(productId, userId, count, id);
+    if (count === 0) {
+      dispatch({
+        cart: [
+          ...cartState?.cart?.slice(0, clickedCartIndex),
+          ...cartState?.cart?.slice(clickedCartIndex + 1),
+        ],
+      });
+    }
+    const response = await addToCart(productId, userId, count, id, {
+      quantity: count,
+      ...(count === 0 && { isRemoved: true }),
+    });
     const clickedCartItem = cartState.cart.find((item) => item.id === id);
     const newCount = response?.data?.attributes?.count;
     console.log({ response }, "response from context");

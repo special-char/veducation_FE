@@ -1,6 +1,12 @@
 import axiosInstance from "./axiosInstance";
 
-export const addToCart = async (productID, userId, items = 0, cartId) => {
+export const addToCart = async (
+  productID,
+  userId,
+  items = 0,
+  cartId,
+  payload
+) => {
   try {
     if (!cartId) {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/carts`, {
@@ -10,6 +16,7 @@ export const addToCart = async (productID, userId, items = 0, cartId) => {
             product: `${productID}`,
             user_id: `${userId}`,
             quantity: items,
+            isRemoved: items === 0 ? true : false,
           },
         }),
         headers: {
@@ -25,11 +32,7 @@ export const addToCart = async (productID, userId, items = 0, cartId) => {
         {
           method: "PUT",
           body: JSON.stringify({
-            data: {
-              product: `${productID}`,
-              user_id: `${userId}`,
-              quantity: items,
-            },
+            data: payload,
           }),
           headers: {
             "Content-Type": "application/json",

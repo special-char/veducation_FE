@@ -4,7 +4,7 @@ import { useCartProvider } from "@/context/CartContextProvider";
 import { useProductsContext } from "@/context/ProductContextProvider";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 const CartItemList = () => {
   const {
@@ -14,13 +14,6 @@ const CartItemList = () => {
   const user = useSession();
   const navigate = useRouter();
   console.log({ userfromItems: user.data });
-  useEffect(() => {
-    if (!user.data) {
-      navigate.push("/");
-      dispatch({ signIn: true });
-    }
-    return () => {};
-  }, []);
 
   const items = [];
   return (

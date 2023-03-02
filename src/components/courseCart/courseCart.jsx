@@ -11,6 +11,7 @@ import Link from "next/link";
 import Input from "@/components/InputComponent";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useCartProvider } from "@/context/CartContextProvider";
 
 const data = {
   orderPrice: "75",
@@ -28,38 +29,27 @@ const CourseCart = ({ users, data: { data } }) => {
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
+  const {
+    cartState: { cart },
+  } = useCartProvider();
+  function calculatePrice(cartItems, rate = 0.7) {
+    const t = cartItems.reduce((p, c) => {
+      console.log(p);
+      return (
+        p + c.attributes.product.data.attributes.price * c.attributes.quantity
+      );
+    }, 0);
+    return { total: t, withTax: t * rate };
+  }
+
+  const totalPrice = calculatePrice(cart, 1.12);
   const shippingDetail = data?.find((shipping) => {
     return shipping?.attributes?.user_id?.data?.id === user?.id;
   });
-  // if (shippingDetail) {
-  //   navigate.push("/orderconfirmed");
-  // }
 
   return (
     <div className={styles.main}>
-      {/* <div className={styles.main__detail} key="items">
-        <div className={styles.main__imgdiv}>
-          <Image src={Img} alt="item" className={styles.main__img} />
-        </div>
-        <div className={styles.main__desc}>
-          <h5 className={styles.main__name}>
-            Veducation T Shirt - Mens Tshirt Pure Black
-          </h5>
-          <div className={styles.main__cart}>
-            <p className={styles.main__price}>$ 55</p>
-            <button className={styles.main__dltBtn}><Delete />Delete</button>
-          </div>
-        </div>
-      </div> */}
-
       <div className={styles.main__textbox}>
-        {/* <input
-          type="text"
-          placeholder="Enter your promoCode"
-          value={searchValue}
-          onChange={(x) => setSearchValue(x.target.value)}
-          className={styles.main__input}
-        /> */}
         <div>
           <Input
             type="text"
@@ -82,17 +72,16 @@ const CourseCart = ({ users, data: { data } }) => {
       <div className={styles.main__orderDetail}>
         <div className={styles.main__order}>
           <h6 className={styles.main__orderData}>Order:</h6>
-          <h6 className={styles.main__orderData}>${data.orderPrice}</h6>
+          <h6 className={styles.main__orderData}>${totalPrice.total}</h6>
         </div>
 
         <div className={styles.main__total}>
           <h3 className={styles.main__orderData}>Total:</h3>
-          <h3>${data.totalAmount}</h3>
+          <h3>${totalPrice.withTax}</h3>
         </div>
       </div>
 
       <div>
-        {/* <button className={styles.main__button}>Check out</button> */}
         <Button
           as={Link}
           href={shippingDetail ? "/orderconfirmed" : "/billingdetails"}

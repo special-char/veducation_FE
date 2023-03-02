@@ -52,12 +52,7 @@ const ProductConfirm = ({
         <div className="flex flex-col place-content-center gap-2">
           <h5 className={styles.main__name}>{title}</h5>
           <div className="flex justify-between">
-            {quantity > 0 && (
-              <p className={styles.main__price}>
-                {price}
-                {/* | {count} pcs */}
-              </p>
-            )}
+            {quantity > 0 && <p className={styles.main__price}>{price}</p>}
             {isCourse && (
               <button
                 className={` ${styles.main__dltBtn} ${
@@ -90,7 +85,14 @@ const ProductConfirm = ({
 
                   <button
                     className={styles.main__dltBtn}
-                    onClick={() => setCount(0)}
+                    onClick={() => {
+                      updateCount(
+                        item.id,
+                        0,
+                        attributes?.product?.data?.id,
+                        attributes?.user_id?.data?.id
+                      );
+                    }}
                   >
                     <Delete />
                     Delete
