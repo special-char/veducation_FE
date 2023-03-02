@@ -30,7 +30,7 @@ const Page = async (props) => {
           <Reviews rate={4} count={"25k"} height={22} width={22} />
         </div>
         <div className={styles.ProductPage__title}>
-          <p className={styles.ProductPage__price}>{price}</p>
+          <p className={styles.ProductPage__price}>{`$${price}`}</p>
         </div>
         <p>{description}</p>
         <AddBuy

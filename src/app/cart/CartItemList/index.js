@@ -23,7 +23,7 @@ const CartItemList = () => {
           <ProductConfirm
             image={x?.product?.data?.attributes?.posterImageUrl}
             title={x?.product?.data?.attributes?.name}
-            price={x?.price}
+            price={`$${x?.product?.data?.attributes?.price}`}
             quantity={x?.quantity}
             key={x?.id}
             item={item}
