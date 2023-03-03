@@ -1,9 +1,9 @@
 import FormikForm from "@/components/FormikForm";
 import React from "react";
-import FeaturedBook from "./FeaturedBook";
-import UpcomingBooks from "./UpcomingBooks";
 import Search from "public/icons/Search.svg";
 import Input from "@/components/InputComponent";
+import FeaturedBook from "./FeaturedBook";
+import UpcomingBooks from "./UpcomingBooks";
 
 const Library = () => {
   return (

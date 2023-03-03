@@ -1,7 +1,6 @@
 import Btnnavigator from "@/components/Buttonnavigator";
 import React from "react";
 import UpcomingBookImg from "public/icons/upcomingbook.svg";
-import Link from "next/link";
 import { getAllBooksData } from "@/lib/getAllBooksData";
 
 const data = [
@@ -29,6 +28,7 @@ const data = [
 
 const UpcomingBooks = async () => {
   const { data } = await getAllBooksData();
+
   return (
     <section className="pt-4">
       {data?.map((val, index) => {
