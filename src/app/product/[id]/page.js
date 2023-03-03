@@ -9,13 +9,18 @@ import Image from "next/image";
 import AddBuy from "../AddBuy";
 import { getUser } from "@/lib/getUser";
 import { getCartItems } from "@/lib/getCartItems";
+import SignIn from "@/containers/SignIn";
 
 const Page = async (props) => {
   const productData = await getProductData(props?.params?.id);
+
   const user = await getUser();
+
   const cartItems = await getCartItems();
+
   const { title, name, posterImageUrl, price, description } =
     productData?.data?.attributes;
+
   return (
     <section className={styles.ProductPage}>
       <div className={styles.ProductPage__image}>
@@ -30,28 +35,7 @@ const Page = async (props) => {
           <Reviews rate={4} count={"25k"} height={22} width={22} />
         </div>
         <div className={styles.ProductPage__title}>
-          <p className={styles.ProductPage__price}>{price}</p>
-          {/* <div className={styles.ProductPage__count}>
-            <Button
-              as={Link}
-              href=""
-              prefetch={false}
-              variant={"count"}
-              size={"count"}
-            >
-              +
-            </Button>
-            <p className={styles.ProductPage__item}>01</p>
-            <Button
-              as={Link}
-              href=""
-              prefetch={false}
-              variant={"count"}
-              size={"count"}
-            >
-              -
-            </Button>
-          </div> */}
+          <p className={styles.ProductPage__price}>{`$${price}`}</p>
         </div>
         <p>{description}</p>
         <AddBuy
@@ -59,29 +43,6 @@ const Page = async (props) => {
           users={user}
           cartItems={cartItems?.data}
         />
-        {/* <div className={styles.ProductPage__btn}>
-          <Button
-            as="button"
-            className="md:flex md:justify-center"
-            variant={"secondary"}
-            size={"large"}
-            // onClick={() => {
-            //   alert("hello");
-            // }}
-          >
-            Add to cart
-          </Button>
-          <Button
-            as="button"
-            className={" md:flex md:justify-center"}
-            href=""
-            prefetch={false}
-            variant={"primary"}
-            size={"large"}
-          >
-            Buy now
-          </Button>
-        </div> */}
       </div>
     </section>
   );

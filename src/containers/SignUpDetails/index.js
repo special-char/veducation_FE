@@ -2,28 +2,31 @@
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Veducation from "public/VEDUCATION.svg";
 import Icon from "public/veducationIcon.svg";
-import Input from "@/components/InputComponent";
-import Google from "public/icons/google.svg";
-import Facebook from "public/icons/facebook.svg";
+import FormikForm from "@/components/FormikForm";
+import { signupFields, signupInitValue } from "./signupFields";
+import styles from "./signup.module.css";
+import { AppContext } from "@/context/AppContextProvider";
+import { authSignup } from "@/lib/authSignup";
 
 const SignUpDetails = () => {
-  const [open, setOpen] = useState(false);
   function toggleModal() {
-    setOpen((prev) => !prev);
+    dispatch({ signUp: false });
   }
 
+  const {
+    state: { signUp },
+    dispatch,
+  } = useContext(AppContext);
+
   return (
-    <div>
-      <Button onClick={toggleModal} as={Link} href="">
-        Details
-      </Button>
+    <div className={styles.signup}>
       <Modal
-        open={open}
+        open={signUp}
         onClose={toggleModal}
-        className="flex-1 flex flex-col gap-3 py-5 px-3"
+        className=" flex-col gap-3 py-5 px-3 pb-14"
       >
         <span className="flex justify-center items-center">
           <Icon />
@@ -31,41 +34,23 @@ const SignUpDetails = () => {
         </span>
         <h4 className=" text-background2">Fill Your Details</h4>
         <div className="flex flex-col gap-5">
-          <div>
-            <p className="text-neutral-300 text-sm">Name</p>
-            <Input
-              // label="Email/Phone"
-              placeholder="Enter Your Name"
-              className="w-full"
-            />
-          </div>
-          <div>
-            <p className="text-neutral-300 text-sm">Email/Phone</p>
-            <Input
-              // label="Email/Phone"
-              placeholder="Enter Your Email"
-              className="w-full"
-            />
-          </div>
-          <div>
-            <p className="text-neutral-300 text-sm">Email/Phone</p>
-            <Input
-              // label="Email/Phone"
-              placeholder="Enter Your password"
-              className="w-full"
-            />
-          </div>
-          <Button
-            as={Link}
-            href=""
-            variant="primary"
-            size="small"
-            className={"w-full"}
-          >
-            Send OTP
-          </Button>
+          <FormikForm
+            fields={signupFields}
+            initialValues={signupInitValue}
+            onSubmit={async (values, { setSubmitting }) => {
+              try {
+                const res = await authSignup({
+                  username: values.username,
+                  email: values.email,
+                  password: values.password,
+                });
+                console.log("authSignup:", res);
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+          />
         </div>
-
         <p className="text-center small pt-4">
           By Signing in , I agree to
           <a className="underline pl-2" href="http://">

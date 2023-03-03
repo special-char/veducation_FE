@@ -7,22 +7,31 @@ import UserSvg from "../../../public/user.svg";
 import SpotifySvg from "../../../public/spotify.svg";
 import FacebookSvg from "../../../public/facebook.svg";
 import Plus from "../../../public/plus.svg";
-import ProductContextProvider, {
-  ProductContext,
-} from "@/context/ProductContextProvider";
+import AppContextProvider, {
+  AppContext,
+  useAppContext,
+} from "@/context/AppContextProvider";
 import { useSession } from "next-auth/react";
 
 const SocialLinks = () => {
   const data = useSession();
   const {
-    state: { signIn },
+    state: { signIn, user },
     dispatch,
-  } = useContext(ProductContext);
+  } = useAppContext();
+  useEffect(() => {
+    if (data?.data?.user?.email) {
+      setTimeout(() => {
+        dispatch({ user: data });
+      }, 1000);
+    }
+    return () => {};
+  }, [data?.data?.user?.email]);
   const socials = [
     {
       variant: "user",
       Icon: () => <UserSvg />,
-      name: data?.data?.user?.name ?? "Signup/Login",
+      name: user?.data?.user?.name ?? "Signup/Login",
     },
     {
       variant: "social",

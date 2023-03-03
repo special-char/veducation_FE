@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styles from "../InputComponent/input.module.css";
 import clsx from "classnames";
+import Checkbox from "../CheckBox";
 
 const Input = ({
   field, // { name, value, onChange, onBlur }
@@ -13,6 +14,9 @@ const Input = ({
   ...props
 }) => {
   const [type, setType] = useState(props.type);
+  // if (props.type === "checkbox") {
+  //   return <Checkbox {...props} />;
+  // }
   return (
     <div className={styles.section}>
       <label htmlFor={id} className="body">

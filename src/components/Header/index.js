@@ -1,43 +1,65 @@
 "use client";
-import React, { useContext } from "react";
+import React, { use, useContext, useEffect } from "react";
 import Icon from "../../../public/veducationIcon.svg";
 import TitleIcon from "../../../public/VEDUCATION.svg";
 import Cart from "../../../public/cart.svg";
 import Bell from "../../../public/bell.svg";
 import styles from "./header.module.css";
 import Link from "next/link";
-import ProductContextProvider, {
-  ProductContext,
-} from "@/context/ProductContextProvider";
+import AppContextProvider, {
+  AppContext,
+  useAppContext,
+} from "@/context/AppContextProvider";
+import { useCartProvider } from "@/context/CartContextProvider";
+import { getCartItems } from "@/lib/getCartItems";
+import { useSession } from "next-auth/react";
 
-const Header = () => {
+const Header = ({ data, users }) => {
   const {
-    state: { cartItems, notifications },
-  } = useContext(ProductContext);
+    state: { notifications },
+    dispatch,
+  } = useAppContext();
+
+  const sessionUser = useSession();
+
+  const {
+    cartInit,
+    cartState: { cart },
+  } = useCartProvider();
+  // const user = users?.find(
+  //   (item) => item.email === sessionUser?.data?.user?.email
+  // );
+
+  useEffect(() => {
+    cartInit(data);
+    return () => {};
+  }, []);
+
   return (
-    <ProductContextProvider>
+    <AppContextProvider>
       <nav className={styles.headerRoot}>
         <Link href="/" className={styles.headerRoot__title}>
           <Icon />
           <TitleIcon />
         </Link>
         <div className={styles.headerRoot__rightIcon}>
-          <Cart
+          <Link
+            href={!sessionUser?.data?.user ? "" : "/cart?products"}
             onClick={() => {
-              console.log("cart");
+              if (!sessionUser?.data?.user) {
+                dispatch({ signIn: true });
+              }
             }}
-          />
-          {cartItems !== 0 && (
+          >
+            <Cart onClick={() => {}} />
+          </Link>
+          {cart.length !== 0 && sessionUser?.data?.user && (
             <span className={styles.headerRoot__rightIcon__floatNum}>
-              {cartItems}
+              {cart.length}
             </span>
           )}
 
-          <Bell
-            onClick={() => {
-              console.log("bell");
-            }}
-          />
+          <Bell onClick={() => {}} />
           {notifications !== 0 && (
             <span className={styles.headerRoot__rightIcon__floatNum}>
               {notifications}
@@ -45,7 +67,7 @@ const Header = () => {
           )}
         </div>
       </nav>
-    </ProductContextProvider>
+    </AppContextProvider>
   );
 };
 

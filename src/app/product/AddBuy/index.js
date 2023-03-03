@@ -1,23 +1,58 @@
 "use client";
 import Button from "@/components/Button";
-import { addToCart } from "@/lib/updateCart";
+import { useAppContext } from "@/context/AppContextProvider";
+import { useCartProvider } from "@/context/CartContextProvider";
+import { addToCart, updateCart } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../[id]/product.module.css";
 
-const AddBuy = ({ id, users, cartItems }) => {
+const AddBuy = ({ id, users }) => {
   const data = useSession();
-  console.log({ data: data.data.user.accessToken });
+
   const navigate = useRouter();
+
   const user = users?.find((item) => item.email === data?.data?.user?.email);
+
+  const {
+    addItem,
+    cartState: { cart },
+  } = useCartProvider();
+
+  const currentCart = cart?.find((item) => {
+    if (item?.attributes?.product?.data?.id == id) {
+      return item;
+    }
+  });
+
   async function onAddToCart() {
     try {
-      const res = await addToCart(id, user.id);
+      const res = await addToCart(
+        id,
+        user.id,
+        currentCart?.id ? currentCart.attributes.quantity + 1 : 1,
+        currentCart?.id
+      );
+      if (res.data) {
+        addItem(res.data);
+        navigate.navigate.replace(`/product/${id}`);
+      }
     } catch (error) {
       console.log(error);
     }
   }
+
+  function onUpdateCart() {
+    try {
+      updateCart(currentCart?.id, {
+        quantity: currentCart?.attributes?.quantity + 1,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className={styles.ProductPage__btn}>
       <Button
@@ -25,9 +60,21 @@ const AddBuy = ({ id, users, cartItems }) => {
         className="md:flex md:justify-center"
         variant={"secondary"}
         size={"large"}
-        onClick={onAddToCart}
+        onClick={() => {
+          if (!data?.data?.user) {
+            const response = confirm("Please Sign up or login to continue");
+            if (response) navigate.push("/");
+            return;
+          }
+          if (currentCart?.id) {
+            const res = confirm("Item is already in the cart");
+            if (res) navigate.push("/cart");
+            return;
+          }
+          onAddToCart();
+        }}
       >
-        Add to cart
+        {currentCart?.id ? "Added to cart" : "Add to cart"}
       </Button>
       <Button
         as="button"
@@ -36,6 +83,9 @@ const AddBuy = ({ id, users, cartItems }) => {
         prefetch={false}
         variant={"primary"}
         size={"large"}
+        onClick={() => {
+          navigate.push("/cart");
+        }}
       >
         Buy now
       </Button>

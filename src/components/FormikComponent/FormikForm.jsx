@@ -6,9 +6,9 @@ const FormikForm = ({ btnText, fields, children, ...rest }) => {
   return (
     <Formik
       {...rest}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
+      // onSubmit={(values) => {
+      //   console.log(values);
+      // }}
     >
       {({ errors }) => (
         <Form className="">

@@ -8,23 +8,26 @@ import Icon from "public/veducationIcon.svg";
 import Input from "@/components/InputComponent";
 import Google from "public/icons/google.svg";
 import Facebook from "public/icons/facebook.svg";
-import { ProductContext } from "@/context/ProductContextProvider";
+import { AppContext } from "@/context/AppContextProvider";
 import FormikForm from "@/components/FormikForm";
 import { signInFields, signInInitValue } from "./signInFields";
 import { signIn, signOut, useSession } from "next-auth/react";
 import PopupModal from "@/components/popupModal";
 
 const SignIn = () => {
+  const handleSignupClick = () => {
+    toggleModal();
+    dispatch({ signUp: true });
+  };
   const auth = useSession();
   const {
-    state: { signIn: open },
+    state: { signIn: open, user },
     dispatch,
-  } = useContext(ProductContext);
+  } = useContext(AppContext);
   function toggleModal() {
     dispatch({ signIn: false });
   }
-
-  if (auth?.data !== null) {
+  if (!!auth?.data?.user) {
     return (
       <PopupModal
         open={open}
@@ -44,7 +47,7 @@ const SignIn = () => {
       <Modal
         open={open}
         onClose={toggleModal}
-        className="flex-1 flex flex-col gap-3 py-5 px-3"
+        className="flex-1 flex flex-col gap-3 py-5 px-3 pb-14"
       >
         <span className="flex justify-center items-center">
           <Icon />
@@ -62,6 +65,7 @@ const SignIn = () => {
                 password: values.password,
                 callbackUrl: "/",
               });
+              console.log({ authResponse: res });
               toggleModal();
             } catch (error) {
               console.log(error);
@@ -99,11 +103,11 @@ const SignIn = () => {
             Facebook
           </Button>
         </div>
-        <p className="text-center small">
-          Already have an account?
-          <a className="text-primary" href="http://">
-            Login
-          </a>
+        <p className="text-center small ">
+          Don't have an account ?
+          <button onClick={handleSignupClick} className="text-primary pl-1">
+            Sign Up
+          </button>
         </p>
       </Modal>
     </div>

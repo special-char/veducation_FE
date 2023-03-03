@@ -1,9 +1,10 @@
-import axiosInstance from "./axiosInstance";
+const { default: axiosInstance } = require("./axiosInstance");
 
 export const getAboutData = async () => {
   try {
-    const respose = await axiosInstance.get("/about-page");
-    return respose.data;
+    const response = await axiosInstance.get("/about-page");
+    // setList(response.data);
+    return response.data;
   } catch (error) {
     console.log(error);
   }

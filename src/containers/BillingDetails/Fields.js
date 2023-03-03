@@ -1,29 +1,37 @@
-"use client";
-import Link from "next/link";
-import React, { useState } from "react";
-import Button from "../Button";
-import Dropdown from "../DropDown Component/DropDown";
-import FormikForm from "../FormikComponent/FormikForm";
-import Input2 from "../input/InputComponent";
+import Input from "@/components/InputComponent";
+import SearchIcon from "public/icons/Search.svg";
+import Dropdown from "../../components/DropDown Component/Dropdown";
 
-const fields = [
+export const billingInitValue = {
+  name: "",
+  lastname: "",
+  email: "",
+  phone: "",
+  street: "",
+  postcode: "",
+  country: "",
+  city: "",
+  orderNote: "",
+};
+
+export const billingFields = [
   {
-    component: Input2,
-    id: "firstname",
+    component: Input,
+    id: "name",
     label: "FIRST NAME",
     placeholder: "Tam",
-    name: "firstname",
+    name: "name",
     className: "w-full mr-0 text-sm p-0",
     autoComplete: "irst name",
     type: "text",
     validate: (value) => {
-      if (!value) return "Required...";
+      if (!value) return "Name is required";
       return "";
     },
   },
 
   {
-    component: Input2,
+    component: Input,
     id: "lastname",
     label: "LAST NAME",
     placeholder: "Firsr name",
@@ -32,12 +40,12 @@ const fields = [
     className: "w-full mr-0 ",
     autoComplete: "last name",
     validate: (value) => {
-      if (!value) return "Required...";
+      if (!value) return "Last name is required";
       return "";
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "email-address",
     label: "EMAIL",
     placeholder: "tam@uf.net",
@@ -46,14 +54,14 @@ const fields = [
     className: "w-full mr-0 ",
     autoComplete: "email",
     validate: (value) => {
-      if (!value) return "Required...";
+      if (!value) return "Email is required";
       if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value))
         return "Please Enter Valid Email";
       return "";
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "phone",
     label: "PHONE",
     placeholder: "232-085-5458",
@@ -67,7 +75,7 @@ const fields = [
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "street",
     label: "STREET",
     placeholder: "179 Kaylie Crossroad",
@@ -81,7 +89,7 @@ const fields = [
     },
   },
   {
-    component: Input2,
+    component: Input,
     id: "postcode",
     label: "POSTCODE",
     placeholder: "+800000",
@@ -117,7 +125,7 @@ const fields = [
   },
 
   {
-    component: Input2,
+    component: Input,
     id: "city",
     label: "CITY",
     placeholder: "Soutn Mathiasmouth",
@@ -132,49 +140,17 @@ const fields = [
     },
   },
   {
-    component: Input2,
-    id: "ordernote",
+    component: Input,
+    id: "orderNote",
     label: "ORDERNOTE",
     placeholder: "Special notes for delivery",
-    name: "ordernote",
+    name: "orderNote",
     type: "text",
     className: "w-full mr-0 ",
-    autoComplete: "ordernote",
+    autoComplete: "orderNote",
     validate: (value) => {
       if (!value) return "Required...";
       return "";
     },
   },
 ];
-
-const onSubmit = (values) => {
-  console.log("Form data", values);
-};
-
-const BillingDetails = () => {
-  return (
-    <div className="px-container ">
-      <p className="text-2xl font-bold text-neutral-950 my-6">
-        Shipping Details
-      </p>
-      <div>
-        <FormikForm
-          onsubmit={onSubmit}
-          fields={fields}
-          initialValues={{
-            firstname: "",
-            lastname: "",
-            email: "",
-            phone: "",
-            street: "",
-            country: "",
-            city: "",
-            ordernote: "",
-          }}
-        />
-      </div>
-    </div>
-  );
-};
-
-export default BillingDetails;

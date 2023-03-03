@@ -1,21 +1,20 @@
 "use client";
-import { ProductContext } from "@/context/ProductContextProvider";
+import { AppContext } from "@/context/AppContextProvider";
 import React, { useContext, useEffect, useRef } from "react";
 
 const HideScrollBar = () => {
   const {
-    state: { signIn },
-  } = useContext(ProductContext);
+    state: { signIn, signUp },
+  } = useContext(AppContext);
   const body = document.querySelector("body");
-  console.log({ open: signIn });
   useEffect(() => {
-    if (signIn) {
+    if (signIn || signUp) {
       body.classList.add("overflow-hidden");
     } else {
       body.classList.remove("overflow-hidden");
     }
     return () => {};
-  }, [signIn]);
+  }, [signIn, signUp]);
 
   // configure the MutationObserver to observe changes to the 'open' attribute
 

@@ -1,14 +1,18 @@
 import "./globals.css";
-import React from "react";
+import React, { Suspense } from "react";
 import localFont from "@next/font/local";
 import { Flow_Block } from "@next/font/google";
 import Header from "@/components/Header";
 import { headers } from "next/headers";
 import Navbar from "@/components/Navbar/navbar";
-import ProductContextProvider from "@/context/ProductContextProvider";
+import AppContextProvider from "@/context/AppContextProvider";
 import AuthContext from "@/context/AuthContextProvider";
 import axios from "axios";
 import HideScrollBar from "@/containers/HideScroll";
+import { CartContextProvider } from "@/context/CartContextProvider";
+import { getCartItems } from "@/lib/getCartItems";
+import { getUser } from "@/lib/getUser";
+import { getCart } from "@/lib/getCart";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -39,6 +43,9 @@ async function getSession(cookie) {
 
 export default async function RootLayout({ children }) {
   const session = await getSession(headers().get("cookie") ?? "");
+  const users = await getUser();
+  const user = users?.find((item) => item?.email === session?.user?.email);
+  const defaultCartItems = await getCartItems(user?.id);
 
   return (
     <html
@@ -53,15 +60,22 @@ export default async function RootLayout({ children }) {
 
       <body style={{}}>
         <AuthContext session={session}>
-          <ProductContextProvider>
-            <HideScrollBar />
-
-            <main className="bg-background md:px-container h-full">
-              <Header />
-              {children}
-              <Navbar />
-            </main>
-          </ProductContextProvider>
+          <AppContextProvider>
+            <CartContextProvider>
+              <HideScrollBar />
+              <Suspense fallback={<loading>loading....</loading>}>
+                <main className="bg-background md:px-container h-full">
+                  <Header
+                    {...defaultCartItems}
+                    session={session}
+                    users={users}
+                  />
+                  {children}
+                  <Navbar />
+                </main>
+              </Suspense>
+            </CartContextProvider>
+          </AppContextProvider>
         </AuthContext>
       </body>
     </html>
