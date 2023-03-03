@@ -13,12 +13,17 @@ import AppContextProvider, {
 import { useCartProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
 import { useSession } from "next-auth/react";
+import { useRatingContext } from "@/context/RatingContext";
 
-const Header = ({ data, users }) => {
+const Header = ({ data, users, ratings }) => {
   const {
     state: { notifications },
     dispatch,
   } = useAppContext();
+
+  const { initAdd, rateState } = useRatingContext();
+
+  console.log({ rateState });
 
   const sessionUser = useSession();
 
@@ -32,6 +37,7 @@ const Header = ({ data, users }) => {
 
   useEffect(() => {
     cartInit(data);
+    initAdd(ratings);
     return () => {};
   }, []);
 

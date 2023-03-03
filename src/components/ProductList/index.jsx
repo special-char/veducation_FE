@@ -9,6 +9,7 @@ import { getCategoryData } from "@/lib/getHomeProductData";
 
 export const ProductItem = async ({
   attributes: { posterImageUrl, title, name, author, subtitle },
+  id,
 }) => {
   return (
     <div className={styles.product_item}>
@@ -33,6 +34,7 @@ export const ProductItem = async ({
         <Reviews
           notDisabled={true}
           height={20}
+          id={id}
           width={20}
           rate={3.5}
           count={100}

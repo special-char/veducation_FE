@@ -8,11 +8,12 @@ import Navbar from "@/components/Navbar/navbar";
 import AppContextProvider from "@/context/AppContextProvider";
 import AuthContext from "@/context/AuthContextProvider";
 import axios from "axios";
-import HideScrollBar from "@/containers/HideScroll";
 import { CartContextProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
 import { getUser } from "@/lib/getUser";
 import { getCart } from "@/lib/getCart";
+import { RatingContextProvider } from "@/context/RatingContext";
+import { getAllRatings, getRating } from "@/lib/getRatings";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -46,6 +47,9 @@ export default async function RootLayout({ children }) {
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
   const defaultCartItems = await getCartItems(user?.id);
+  const ratings = await getAllRatings(user?.id);
+
+  console.log(ratings);
 
   return (
     <html
@@ -58,23 +62,25 @@ export default async function RootLayout({ children }) {
       */}
       <head />
 
-      <body style={{}}>
+      <body>
         <AuthContext session={session}>
-          <AppContextProvider>
-            <CartContextProvider>
-              {/* <HideScrollBar /> */}
-              <Suspense fallback={<loading>loading....</loading>}>
-                <main className="bg-background md:px-container h-full scroll-pb-8">
-                  <Header
-                    {...defaultCartItems}
-                    session={session}
-                    users={users}
-                  />
-                  {children}
-                  <Navbar />
-                </main>
-              </Suspense>
-            </CartContextProvider>
+          <AppContextProvider user={user}>
+            <RatingContextProvider>
+              <CartContextProvider>
+                <Suspense fallback={<loading>loading....</loading>}>
+                  <main className="bg-background md:px-container h-full scroll-pb-8">
+                    <Header
+                      {...defaultCartItems}
+                      ratings={ratings}
+                      session={session}
+                      users={users}
+                    />
+                    {children}
+                    <Navbar />
+                  </main>
+                </Suspense>
+              </CartContextProvider>
+            </RatingContextProvider>
           </AppContextProvider>
         </AuthContext>
       </body>

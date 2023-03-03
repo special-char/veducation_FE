@@ -4,6 +4,7 @@ import { updateCart } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
 import { createContext, use, useContext, useEffect, useReducer } from "react";
 import { useAppContext } from "../AppContextProvider";
+import { useRatingContext } from "../RatingContext";
 
 const initialState = {
   cart: [],

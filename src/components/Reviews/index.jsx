@@ -5,7 +5,15 @@ import Star from "public/icons/star.svg";
 import StarHalf from "public/icons/star_half.svg";
 import ReviewStar from "./ReviewStar";
 
-const Reviews = ({ rate, count, width, height, notDisabled = false }) => {
+const Reviews = ({
+  rate,
+  count,
+  width,
+  height,
+  notDisabled = false,
+  id,
+  slug = "product" | "course" | "book",
+}) => {
   const start = [1, 2, 3, 4, 5];
   return (
     <div className={styles.reviews}>
@@ -13,7 +21,9 @@ const Reviews = ({ rate, count, width, height, notDisabled = false }) => {
         if (rate >= i) {
           return (
             <ReviewStar
+              slug={slug}
               className={styles.reviews__rating}
+              id={id}
               key={i}
               value={i}
               notDisabled={notDisabled}
@@ -30,7 +40,9 @@ const Reviews = ({ rate, count, width, height, notDisabled = false }) => {
         if (i - 0.5 === rate) {
           return (
             <ReviewStar
+              slug={slug}
               className={styles.reviews__rating}
+              id={id}
               key={i}
               value={i}
               notDisabled={notDisabled}
@@ -46,7 +58,9 @@ const Reviews = ({ rate, count, width, height, notDisabled = false }) => {
         }
         return (
           <ReviewStar
+            slug={slug}
             className={styles.reviews__rating}
+            id={id}
             key={i}
             value={i}
             notDisabled={notDisabled}

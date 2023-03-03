@@ -64,7 +64,7 @@ const rating = {
 };
 
 const CourseDetails = (props) => {
-  // console.log("props:", props);
+  console.log("props:", props?.params?.id);
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
@@ -73,7 +73,16 @@ const CourseDetails = (props) => {
       </div>
       <div className={styles.coursedetails__datails}>
         <h3 className="mb-0">Brahmacharya</h3>
-        <Reviews className="" rate={3} count={23} width={20} height={20} />
+        <Reviews
+          className=""
+          slug={"course"}
+          id={props?.params?.id}
+          rate={3}
+          count={23}
+          notDisabled={true}
+          width={20}
+          height={20}
+        />
         <span className="font-bold">
           {data.time} | {data.lesson}
         </span>
@@ -100,7 +109,14 @@ const CourseDetails = (props) => {
       </div>
       <div className={styles.coursedetails__rateing}>
         <div className={styles.coursedetails__star}>{rating.number}</div>
-        <Reviews count={24} rate={4} width={22} height={22} />
+        <Reviews
+          slug={"course"}
+          id={props?.params?.id}
+          count={24}
+          rate={4}
+          width={22}
+          height={22}
+        />
       </div>
       <div className={styles.coursedetails__reviewinfo}>
         <h5 className="font-bold">Top Reviews</h5>
