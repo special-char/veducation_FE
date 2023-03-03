@@ -36,7 +36,7 @@ const AddBuy = ({ id, users }) => {
       );
       if (res.data) {
         addItem(res.data);
-        navigate.navigate.replace(`/product/${id}`);
+        // navigate.navigate.replace(`/product/${id}`);
       }
     } catch (error) {
       console.log(error);

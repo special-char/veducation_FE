@@ -18,8 +18,11 @@ function reducer(state, action) {
   return { ...state, ...action };
 }
 
-const AppContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const AppContextProvider = ({ children, user }) => {
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    user: { ...user },
+  });
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

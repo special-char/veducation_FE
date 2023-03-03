@@ -1,15 +1,12 @@
 import React from "react";
-import Tshirt from "public/icons/tshirt.png";
 import Reviews from "../../../components/Reviews";
-import Button from "../../../components/Button";
-import Link from "next/link";
 import styles from "./product.module.css";
 import { getProductData } from "@/lib/getHomeProductData";
 import Image from "next/image";
 import AddBuy from "../AddBuy";
 import { getUser } from "@/lib/getUser";
 import { getCartItems } from "@/lib/getCartItems";
-import SignIn from "@/containers/SignIn";
+import { getRating } from "@/lib/getRatings";
 
 const Page = async (props) => {
   const productData = await getProductData(props?.params?.id);
@@ -20,6 +17,9 @@ const Page = async (props) => {
 
   const { title, name, posterImageUrl, price, description } =
     productData?.data?.attributes;
+
+  const ratingId = productData?.data?.attributes?.ratings?.data[0]?.id;
+  const rating = await getRating(ratingId);
 
   return (
     <section className={styles.ProductPage}>
@@ -32,7 +32,14 @@ const Page = async (props) => {
             Delivery by Monday, 23 January
           </p>
           <h3>{title}</h3>
-          <Reviews rate={4} count={"25k"} height={22} width={22} />
+          <Reviews
+            slug={"product"}
+            id={props?.params?.id}
+            rate={rating?.data?.attributes?.rating}
+            count={"25k"}
+            height={22}
+            width={22}
+          />
         </div>
         <div className={styles.ProductPage__title}>
           <p className={styles.ProductPage__price}>{`$${price}`}</p>

@@ -1,8 +1,7 @@
 export const authSignup = async (form) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/local/register` ??
-        "http://localhost:1337/api/auth/local/register",
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/local/register`,
       {
         method: "POST",
         body: JSON.stringify(form),
