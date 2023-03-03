@@ -5,7 +5,7 @@ import { Flow_Block } from "@next/font/google";
 import Header from "@/components/Header";
 import { headers } from "next/headers";
 import Navbar from "@/components/Navbar/navbar";
-import ProductContextProvider from "@/context/ProductContextProvider";
+import AppContextProvider from "@/context/AppContextProvider";
 import AuthContext from "@/context/AuthContextProvider";
 import axios from "axios";
 import HideScrollBar from "@/containers/HideScroll";
@@ -44,7 +44,7 @@ async function getSession(cookie) {
 export default async function RootLayout({ children }) {
   const session = await getSession(headers().get("cookie") ?? "");
   const users = await getUser();
-  const user = users.find((item) => item.email === session?.user?.email);
+  const user = users?.find((item) => item?.email === session?.user?.email);
   const defaultCartItems = await getCartItems(user?.id);
 
   return (
@@ -60,7 +60,7 @@ export default async function RootLayout({ children }) {
 
       <body style={{}}>
         <AuthContext session={session}>
-          <ProductContextProvider>
+          <AppContextProvider>
             <CartContextProvider>
               <HideScrollBar />
               <Suspense fallback={<loading>loading....</loading>}>
@@ -71,11 +71,11 @@ export default async function RootLayout({ children }) {
                     users={users}
                   />
                   {children}
-                  {/* <Navbar /> */}
+                  <Navbar />
                 </main>
               </Suspense>
             </CartContextProvider>
-          </ProductContextProvider>
+          </AppContextProvider>
         </AuthContext>
       </body>
     </html>

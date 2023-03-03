@@ -8,7 +8,7 @@ import Icon from "public/veducationIcon.svg";
 import FormikForm from "@/components/FormikForm";
 import { signupFields, signupInitValue } from "./signupFields";
 import styles from "./signup.module.css";
-import { ProductContext } from "@/context/ProductContextProvider";
+import { AppContext } from "@/context/AppContextProvider";
 import { authSignup } from "@/lib/authSignup";
 
 const SignUpDetails = () => {
@@ -19,7 +19,7 @@ const SignUpDetails = () => {
   const {
     state: { signUp },
     dispatch,
-  } = useContext(ProductContext);
+  } = useContext(AppContext);
 
   return (
     <div className={styles.signup}>

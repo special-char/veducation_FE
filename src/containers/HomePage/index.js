@@ -6,7 +6,7 @@ import HomeBanner from "@/components/HomeBanner";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
 import SocialIcon from "@/components/SocialLinks/SocialIcon";
-import { ProductContext } from "@/context/ProductContextProvider";
+import { AppContext } from "@/context/AppContextProvider";
 import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
 import Imag1 from "public/img1.png";
 import FeatureDonations from "../home/FeaturDonations";
@@ -17,7 +17,7 @@ const HomePage = async (props) => {
   // const {
   //   state: { authToken },
   //   dispatch,
-  // } = useContext(ProductContext);
+  // } = useContext(AppContext);
   const token = props?.searchParams.access_token;
   // const token = `${new URLSearchParams(props?.searchParams.access_token).toString()}`;
 

@@ -1,11 +1,11 @@
 "use client";
-import { ProductContext } from "@/context/ProductContextProvider";
+import { AppContext } from "@/context/AppContextProvider";
 import React, { useContext, useEffect, useRef } from "react";
 
 const HideScrollBar = () => {
   const {
     state: { signIn, signUp },
-  } = useContext(ProductContext);
+  } = useContext(AppContext);
   const body = document.querySelector("body");
   useEffect(() => {
     if (signIn || signUp) {

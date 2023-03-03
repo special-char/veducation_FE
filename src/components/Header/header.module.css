@@ -7,7 +7,7 @@
   &__rightIcon{
     @apply flex flex-row gap-4 items-center relative;  
     &__floatNum{
-      @apply text-xs bg-notification text-white max-h-[14px] max-w-[14px] p-[9px] rounded-full justify-center items-center flex absolute top-[-10%] border-[2px];
+      @apply text-xs bg-notification text-white max-h-[14px] max-w-[14px] p-[9px] rounded-full justify-center items-center flex absolute top-[-10%] border-[2px] border-background;
        &:nth-last-child(1) {
         @apply right-[-8%]  ;
       };

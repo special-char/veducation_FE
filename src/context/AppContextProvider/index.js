@@ -7,29 +7,27 @@ const { createContext, useReducer, useContext, useMemo } = require("react");
 const initialState = {
   notifications: 0,
   signIn: false,
-  cart: [],
   signUp: false,
   authToken: "",
   user: {},
 };
 
-export const ProductContext = createContext(initialState);
+export const AppContext = createContext(initialState);
 
 function reducer(state, action) {
   return { ...state, ...action };
 }
 
-const ProductContextProvider = ({ children }) => {
+const AppContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const value = useMemo(() => ({ state, dispatch }), []);
 
   return (
-    <ProductContext.Provider value={{ state, dispatch }}>
+    <AppContext.Provider value={{ state, dispatch }}>
       {children}
-    </ProductContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export const useProductsContext = () => useContext(ProductContext);
+export const useAppContext = () => useContext(AppContext);
 
-export default ProductContextProvider;
+export default AppContextProvider;

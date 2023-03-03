@@ -1,9 +1,9 @@
 "use client";
 import { getCartItems } from "@/lib/getCartItems";
-import { addToCart } from "@/lib/updateCart";
+import { updateCart } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
 import { createContext, use, useContext, useEffect, useReducer } from "react";
-import { useProductsContext } from "../ProductContextProvider";
+import { useAppContext } from "../AppContextProvider";
 
 const initialState = {
   cart: [],
@@ -18,10 +18,7 @@ function reducer(state, action) {
 export const CartContextProvider = ({ children }) => {
   const [cartState, dispatch] = useReducer(reducer, initialState);
   const userSession = useSession();
-  const {
-    state: { signIn },
-    dispatch: dispatchProduct,
-  } = useProductsContext();
+  const { dispatch: dispatchProduct } = useAppContext();
 
   function cartInit(item) {
     dispatch({ cart: [...cartState.cart, ...item] });
@@ -33,18 +30,39 @@ export const CartContextProvider = ({ children }) => {
       dispatchProduct({ signIn: true });
       return;
     }
-
     dispatch({ cart: [...cartState.cart, item] });
   }
 
   async function updateCount(id, count, productId, userId) {
-    const clickedCartIndex = cartState.cart.findIndex((item) => item.id === id);
     if (!userSession?.data?.user) {
       console.log({ second: userSession?.data?.user });
       dispatchProduct({ signIn: true });
       return;
     }
-    if (count === 0) {
+
+    const clickedCartIndex = cartState.cart.findIndex((item) => item.id === id);
+
+    const response = await updateCart(id, {
+      quantity: count,
+      ...(count === 0 && { isRemoved: true }),
+    });
+    console.log(response);
+    const clickedCartItem = cartState.cart.find((item) => item.id === id);
+    if (count) {
+      dispatch({
+        cart: [
+          ...cartState?.cart?.slice(0, clickedCartIndex),
+          {
+            ...clickedCartItem,
+            attributes: {
+              ...clickedCartItem.attributes,
+              quantity: response?.data?.attributes?.quantity ?? count,
+            },
+          },
+          ...cartState?.cart?.slice(clickedCartIndex + 1),
+        ],
+      });
+    } else {
       dispatch({
         cart: [
           ...cartState?.cart?.slice(0, clickedCartIndex),
@@ -52,23 +70,6 @@ export const CartContextProvider = ({ children }) => {
         ],
       });
     }
-    const response = await addToCart(productId, userId, count, id, {
-      quantity: count,
-      ...(count === 0 && { isRemoved: true }),
-    });
-    const clickedCartItem = cartState.cart.find((item) => item.id === id);
-    const newCount = response?.data?.attributes?.count;
-    console.log({ response }, "response from context");
-    dispatch({
-      cart: [
-        ...cartState?.cart?.slice(0, clickedCartIndex),
-        {
-          ...clickedCartItem,
-          attributes: { ...clickedCartItem.attributes, quantity: count },
-        },
-        ...cartState?.cart?.slice(clickedCartIndex + 1),
-      ],
-    });
   }
 
   return (

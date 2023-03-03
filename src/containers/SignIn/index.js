@@ -8,7 +8,7 @@ import Icon from "public/veducationIcon.svg";
 import Input from "@/components/InputComponent";
 import Google from "public/icons/google.svg";
 import Facebook from "public/icons/facebook.svg";
-import { ProductContext } from "@/context/ProductContextProvider";
+import { AppContext } from "@/context/AppContextProvider";
 import FormikForm from "@/components/FormikForm";
 import { signInFields, signInInitValue } from "./signInFields";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -23,7 +23,7 @@ const SignIn = () => {
   const {
     state: { signIn: open, user },
     dispatch,
-  } = useContext(ProductContext);
+  } = useContext(AppContext);
   function toggleModal() {
     dispatch({ signIn: false });
   }
