@@ -3,6 +3,7 @@ import AllBooks from "@/components/AllBooks";
 import CourseDetails from "@/components/CourseDetails";
 import DonationCard2 from "@/components/DonationCard";
 import HomeBanner from "@/components/HomeBanner";
+import InviteUs from "@/components/Invitationmodal";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
 import SocialIcon from "@/components/SocialLinks/SocialIcon";
@@ -29,10 +30,9 @@ const HomePage = async (props) => {
     <section>
       <SocialLinks />
       <SignIn />
-      <SignUpDetails />
       <HomeBanner />
       <Productlist id={1} />
-      <FeatureDonations />
+      <FeatureDonations /> */}
     </section>
   );
 };
