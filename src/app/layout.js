@@ -62,9 +62,9 @@ export default async function RootLayout({ children }) {
         <AuthContext session={session}>
           <AppContextProvider>
             <CartContextProvider>
-              <HideScrollBar />
+              {/* <HideScrollBar /> */}
               <Suspense fallback={<loading>loading....</loading>}>
-                <main className="bg-background md:px-container h-full">
+                <main className="bg-background md:px-container h-full scroll-pb-8">
                   <Header
                     {...defaultCartItems}
                     session={session}

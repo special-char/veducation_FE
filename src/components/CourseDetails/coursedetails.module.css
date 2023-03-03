@@ -23,7 +23,7 @@
     @apply text-base pb-2 text-neutral-150 font-medium;
   }
   &__faqpage {
-    @apply pt-3 pb-8;
+    @apply pt-3;
   }
   &__faqheader {
     @apply text-neutral-800 font-bold;

@@ -8,7 +8,7 @@ const About = async () => {
   const aboutData = await getAboutData();
 
   return (
-    <section className="px-container pt-3 pb-24">
+    <section className="px-container pt-3">
       <AboutPage data={aboutData.data} />
     </section>
   );

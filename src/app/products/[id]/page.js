@@ -8,7 +8,7 @@ const Page = async (props) => {
   const productData = await getCategoryData(props.params.id);
   const { name, products } = productData?.data?.attributes;
   return (
-    <div className="flex  flex-col h-full w-full bg-background xs:px-container lg:px-0 pb-24">
+    <div className="flex  flex-col h-full w-full bg-background xs:px-container lg:px-0">
       <ProductTitle title={name} link="" />
       <div className="grid grid-cols-2 md:grid-cols-3 md:mx-auto gap-3 ">
         {/* <div className="grid grid-cols-2 xs:gap-3 "> */}

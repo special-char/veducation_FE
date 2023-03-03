@@ -10,7 +10,7 @@ const Page = async () => {
   // const billingData = await getBillingDetails();
   // console.log(billingData.data, "billingDetails");
   return (
-    <section className="pb-24">
+    <section className="">
       <BillingDetails user={user} />
     </section>
   );

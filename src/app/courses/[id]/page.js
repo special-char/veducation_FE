@@ -4,7 +4,7 @@ import React from "react";
 
 const Page = (props) => {
   return (
-    <section className="pb-20">
+    <section className="">
       <CourseDetails {...props} />
     </section>
   );
