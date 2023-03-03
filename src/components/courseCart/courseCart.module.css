@@ -50,9 +50,6 @@
   &__orderData {
     @apply text-[#808080];
   }
-  /* &__orderDetail {
-    @apply pb-10;
-  } */
   &__button {
     @apply bg-primary text-neutral-100 rounded-lg w-full h-9  text-lg font-bold;
   }

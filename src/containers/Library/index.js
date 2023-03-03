@@ -7,7 +7,7 @@ import Input from "@/components/InputComponent";
 
 const Library = () => {
   return (
-    <div className="h-screen pt-5 pb-40 px-container flex flex-col gap-2">
+    <div className="h-screen pt-5 px-container flex flex-col gap-2">
       <div className="relative">
         <Input
           field={{ name: "search", error: "search" }}

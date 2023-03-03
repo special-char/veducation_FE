@@ -42,7 +42,7 @@ const details = {
 
 const Page = () => {
   return (
-    <section className="px-container md:p-0 pb-24 pt-4 flex flex-col gap-5">
+    <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
       <OrderSucess />
       <div>
         {items.map((x) => (
