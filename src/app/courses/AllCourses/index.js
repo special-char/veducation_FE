@@ -66,7 +66,7 @@ import Link from "next/link";
 const AllCourses = async () => {
   const productCourses = await getCourses();
   return (
-    <section className="pb-24">
+    <section className="">
       <div className="flex flex-col gap-3">
         {productCourses?.data.map((val) => {
           return <Coursecard key={val.id} {...val} />;

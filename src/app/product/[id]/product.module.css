@@ -1,5 +1,5 @@
 .ProductPage {
-  @apply xs:px-container lg:px-0 py-4 h-full pb-24;
+  @apply xs:px-container lg:px-0 py-4 h-full;
 
   &__image {
     @apply relative aspect-image max-w-[200px] mx-auto;

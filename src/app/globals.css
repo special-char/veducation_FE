@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply min-h-screen font-sans text-lg text-neutral-600;
+    @apply min-h-screen bg-background font-sans text-lg text-neutral-600 pb-[6rem] ;
 
     /* display: grid;
     grid-template-columns: min-content [stack] 1fr;

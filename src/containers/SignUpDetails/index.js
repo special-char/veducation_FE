@@ -23,11 +23,7 @@ const SignUpDetails = () => {
 
   return (
     <div className={styles.signup}>
-      <Modal
-        open={signUp}
-        onClose={toggleModal}
-        className=" flex-col gap-3 py-5 px-3 pb-14"
-      >
+      <Modal open={signUp} onClose={toggleModal} className=" gap-3 py-5 px-3">
         <span className="flex justify-center items-center">
           <Icon />
           <Veducation />

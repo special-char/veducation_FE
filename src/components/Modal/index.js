@@ -5,22 +5,20 @@ const Modal = ({ open, onClose, className, ...props }) => {
   return (
     <dialog
       id="dialog"
-      className={clx(
-        "flex-col p-0 m-0 z-30 backdrop-blur-sm backdrop-brightness-50 ",
-        {
-          "flex absolute top-0 h-screen w-screen bg-transparent ": open,
-        }
-      )}
+      className={clx({
+        "flex fixed h-full pt-24 bottom-0 w-screen bg-transparent flex-col p-0 m-0 z-20 backdrop-blur-sm backdrop-brightness-50 ":
+          open,
+      })}
       open={open}
       onClose={() => {
         onClose;
       }}
       {...props}
     >
-      <div className={clx(" w-full flex-1")} onClick={onClose} />
+      <div className={clx("flex-[0.5]")} onClick={onClose} />
       <section
         className={clx(
-          "rounded-t-xl w-screen flex-[1] bg-background shadow-dark ",
+          "rounded-t-xl w-screen flex flex-col flex-1 pb-8 bg-background shadow-dark ",
           className
         )}
       >
