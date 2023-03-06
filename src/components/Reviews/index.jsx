@@ -4,6 +4,7 @@ import StarFull from "public/icons/star_fill.svg";
 import Star from "public/icons/star.svg";
 import StarHalf from "public/icons/star_half.svg";
 import ReviewStar from "./ReviewStar";
+import clx from "classnames";
 
 const Reviews = ({
   rate,
@@ -13,6 +14,7 @@ const Reviews = ({
   disabled = false,
   id,
   slug = "product" | "course" | "book",
+  isCourse = false,
 }) => {
   const start = [1, 2, 3, 4, 5];
   return (
@@ -74,7 +76,14 @@ const Reviews = ({
           </ReviewStar>
         );
       })}
-      <p className="reviews__count m-0 text-base text-white mb-0 font-bold">{`(${count})`}</p>
+      <p
+        className={clx(
+          `reviews__count m-0 text-base mb-0 text-[#222] font-bold`,
+          {
+            "text-[#fff]": isCourse,
+          }
+        )}
+      >{`(${count})`}</p>
     </div>
   );
 };
