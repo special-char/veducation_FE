@@ -96,7 +96,7 @@ const SignIn = () => {
         </Button>
       </div>
       <p className="text-center small ">
-        Don't have an account ?
+        {"Don't have an account ?"}
         <button onClick={handleSignupClick} className="text-primary pl-1">
           Sign Up
         </button>
