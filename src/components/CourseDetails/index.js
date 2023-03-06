@@ -9,6 +9,7 @@ import Button from "../Button";
 import Link from "next/link";
 import styles from "../coursedetails/coursedetails.module.css";
 import { getCourseDetails } from "@/lib/getCourseDetails";
+import SwitchSection from "./SwitchSection";
 
 const data1 = [
   {
@@ -101,65 +102,11 @@ const CourseDetails = async (props) => {
           }).format(data?.data?.attributes?.price)}
         </div>
       </div>
-      <div className="py-4">
-        <div className={styles.coursedetails__imformation}>
-          <div className=" flex flex-col">
-            <h5>Description</h5>
-            <div className={styles.coursedetails__underline}></div>
-          </div>
-          <p className={styles.coursedetails__review}>Reviews</p>
-        </div>
-        <p className="text-base">{data?.data?.attributes?.description}</p>
-      </div>
-      <div className={styles.coursedetails__faqpage}>
-        <h5 className={styles.coursedetails__faqheader}>Topics Covered</h5>
-        <Accordian data={data?.data?.attributes?.lesson} />
-      </div>
-      <div className={styles.coursedetails__rateing}>
-        <div className={styles.coursedetails__star}>{rating.number}</div>
-        <Reviews
-          slug={"course"}
-          id={props?.params?.id}
-          count={24}
-          rate={4}
-          width={22}
-          height={22}
-        />
-      </div>
-      <div className={styles.coursedetails__reviewinfo}>
-        <h5 className="font-bold">Top Reviews</h5>
-        <p className={styles.coursedetails__viewall}>View All</p>
-      </div>
-
-      <div className={styles.coursedetails__reviewpage}>
-        {reviewdata.map((val) => {
-          return (
-            <>
-              <div key={val.id} className={styles.coursedetails__commentpage}>
-                <div className={styles.coursedetails__ratingstar}>
-                  <Reviews
-                    count={val.count}
-                    rate={val.rate}
-                    width={18}
-                    height={18}
-                  />
-                  <p className={styles.coursedetails__reviewerdate}>
-                    {`By ${val.reviewer} - ${val.date}`}
-                  </p>
-                </div>
-                <p className="text-base">{val.desc}</p>
-              </div>
-            </>
-          );
-        })}
-      </div>
-      <div className={styles.coursedetails__faqpage}>
-        <h5 className={styles.coursedetails__faqheader}>
-          Frequently Asked Questions
-        </h5>
-        <Accordian data={data?.data?.attributes?.faq} />
-        {/* <Accordian data={data1} /> */}
-      </div>
+      <SwitchSection
+        data={data}
+        id={props?.params?.id}
+        reviewData={reviewdata}
+      />
       <Button
         as={Link}
         href="/cart?course"

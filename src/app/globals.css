@@ -163,8 +163,8 @@
       }
 
       &::before {
-        content: "\2304";
-        @apply absolute right-0 text-center items-center text-sm font-bold text-secondary;
+        content: "\2303";
+        @apply absolute right-0 text-center items-center text-sm font-bold text-secondary rotate-180;
       }
     }
     & > div:last-child {
@@ -187,7 +187,7 @@
 
       &::before {
         content: "\2303";
-        @apply aspect-square text-secondary  text-center text-sm font-bold absolute right-0;
+        @apply aspect-square text-secondary  text-center text-sm font-bold absolute right-0 rotate-0;
       }
     }
   }
@@ -435,7 +435,7 @@
 
   .carousal {
     @apply relative mb-10 grid md:mb-14;
-    /* --_carousel-gutters: max(1rem, calc((100vw - calc(1280px - 1rem * 2)) / 2)); */
+    /* --_carousel-gutters: max(0.1rem, calc((100vw - calc(1280px - 0.1rem * 2)) / 2)); */
     grid-template-columns: auto 1fr auto;
     grid-template-rows:
       [carousel-scroller] 1fr
