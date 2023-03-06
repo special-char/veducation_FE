@@ -38,7 +38,7 @@ const data = [
   {
     id: 5,
     svg: ({ fill }) => <Menubar fill={fill} />,
-    desc: "more",
+    desc: "More",
     href: "/more",
   },
 ];

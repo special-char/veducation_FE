@@ -7,6 +7,7 @@ import InviteUs from "@/components/Invitationmodal";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
 import SocialIcon from "@/components/SocialLinks/SocialIcon";
+import SuccessModal from "@/components/SuccessModal";
 import { AppContext } from "@/context/AppContextProvider";
 import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
 import Imag1 from "public/img1.png";
