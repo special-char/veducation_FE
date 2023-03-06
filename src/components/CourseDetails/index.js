@@ -8,6 +8,7 @@ import { Space_Mono } from "@next/font/google";
 import Button from "../Button";
 import Link from "next/link";
 import styles from "../coursedetails/coursedetails.module.css";
+import { getCourseDetails } from "@/lib/getCourseDetails";
 
 const data1 = [
   {
@@ -63,15 +64,23 @@ const rating = {
   number: "4.7",
 };
 
-const CourseDetails = (props) => {
+const CourseDetails = async (props) => {
+  console.log("props:", props?.params?.id);
+
+  const data = await getCourseDetails(props?.params?.id);
+  console.log("getCourseDetails:", data);
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
-        <Image src={VideoPic} alt={"videoprofile image"} fill />
+        <Image
+          src={data?.data?.attributes?.img}
+          alt={"videoprofile image"}
+          fill
+        />
         <PlayIcon className={styles.coursedetails__playicon} />
       </div>
       <div className={styles.coursedetails__datails}>
-        <h3 className="mb-0">Brahmacharya</h3>
+        <h3 className="mb-0">{data?.data?.attributes?.title}</h3>
         <Reviews
           className=""
           slug={"course"}
@@ -83,9 +92,14 @@ const CourseDetails = (props) => {
           height={20}
         />
         <span className="font-bold">
-          {data.time} | {data.lesson}
+          {data?.data?.attributes?.duration} | {data?.data?.attributes?.lessons}
         </span>
-        <div className={styles.coursedetails__prize}>{prize.rate}</div>
+        <div className={styles.coursedetails__prize}>
+          {new Intl.NumberFormat("en-US", {
+            currency: "USD",
+            style: "currency",
+          }).format(data?.data?.attributes?.price)}
+        </div>
       </div>
       <div className="py-4">
         <div className={styles.coursedetails__imformation}>
@@ -95,16 +109,11 @@ const CourseDetails = (props) => {
           </div>
           <p className={styles.coursedetails__review}>Reviews</p>
         </div>
-        <p className="text-base">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.{" "}
-        </p>
+        <p className="text-base">{data?.data?.attributes?.description}</p>
       </div>
       <div className={styles.coursedetails__faqpage}>
         <h5 className={styles.coursedetails__faqheader}>Topics Covered</h5>
-        <Accordian data={data1} />
+        <Accordian data={data?.data?.attributes?.lesson} />
       </div>
       <div className={styles.coursedetails__rateing}>
         <div className={styles.coursedetails__star}>{rating.number}</div>
@@ -148,7 +157,8 @@ const CourseDetails = (props) => {
         <h5 className={styles.coursedetails__faqheader}>
           Frequently Asked Questions
         </h5>
-        <Accordian data={data1} />
+        <Accordian data={data?.data?.attributes?.faq} />
+        {/* <Accordian data={data1} /> */}
       </div>
       <Button
         as={Link}
