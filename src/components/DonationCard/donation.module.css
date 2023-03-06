@@ -1,5 +1,4 @@
 .donationcard {
-  @apply p-2;
   &__main {
     display: grid;
     grid-template-columns: 2fr 3fr;

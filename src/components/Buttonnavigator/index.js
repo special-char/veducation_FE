@@ -48,9 +48,11 @@ const btndata = [
   },
 ];
 
-const Btnnavigator = ({ icon, title, desc, href }) => {
+const Btnnavigator = (props) => {
+  const { icon, title, desc, component: Component, ...linkProps } = props;
+  // const Component = () => component;
   return (
-    <Link href={href} className="flex flex-col gap-2">
+    <Component {...linkProps} className="flex flex-col gap-2 flex-1">
       <div className={styles.navRoot}>
         <span className={styles.navRoot__body}>
           {icon}
@@ -61,7 +63,7 @@ const Btnnavigator = ({ icon, title, desc, href }) => {
         </span>
         <Arrow />
       </div>
-    </Link>
+    </Component>
   );
 };
 

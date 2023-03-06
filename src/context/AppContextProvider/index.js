@@ -8,6 +8,7 @@ const initialState = {
   notifications: 0,
   signIn: false,
   signUp: false,
+  inviteUs: false,
   authToken: "",
   user: {},
 };

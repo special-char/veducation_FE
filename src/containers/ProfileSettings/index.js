@@ -2,6 +2,7 @@ import Btnnavigator from "@/components/Buttonnavigator";
 import React from "react";
 import Eye from "public/icons/eye.svg";
 import Edit from "public/icons/edit.svg";
+import Link from "next/link";
 
 const Btndata = [
   {
@@ -28,6 +29,7 @@ const ProfileSetting = () => {
             key={val.id}
             icon={val.icon}
             title={val.title}
+            component={Link}
           />
         );
       })}

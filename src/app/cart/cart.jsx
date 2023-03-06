@@ -20,7 +20,7 @@ const CartPage = async () => {
 
   const items = [];
   return (
-    <div className=" flex flex-col gap-2 h-screen">
+    <div className=" flex flex-col gap-2 h-full justify-between">
       <div className="flex flex-col ">
         <CartItemList />
       </div>
