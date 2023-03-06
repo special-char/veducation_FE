@@ -12,12 +12,14 @@ const DonationCard2 = ({ img, title, desc, btnText, btnLink }) => {
         <h5>Donations</h5> <a href="/donations">View all</a>
       </div>
       <div className={styles.donationcard__main}>
-        <div className="relative aspect-square h-full w-full">
-          <Image src={img} fill className="" />
+        <div className={styles.donationcard__imagehead}>
+          <Image src={img} fill alt="cow pics" />
         </div>
-        <div className="flex flex-col justify-center">
-          <h3 className="font-bold mb-0 ">{title}</h3>
-          <p className="text-xs">{desc}</p>
+        <div className={styles.donationcard__details}>
+          <div className="pb-4">
+            <h3 className="font-bold mb-0 ">{title}</h3>
+            <p className="text-xs">{desc}</p>
+          </div>
           <Button
             as={Link}
             variant="primary"

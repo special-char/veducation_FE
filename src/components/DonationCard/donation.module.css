@@ -5,5 +5,14 @@
     grid-template-columns: 2fr 3fr;
     gap: 10px;
     @apply p-2 border border-neutral-250 rounded-md;
+    /* @media screen and (min-width: 425px) {
+      grid-template-columns: 1fr 2fr;
+    } */
+  }
+  &__imagehead {
+    @apply relative  aspect-auto;
+  }
+  &__details {
+    @apply flex flex-col justify-center;
   }
 }

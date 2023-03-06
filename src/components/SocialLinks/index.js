@@ -37,21 +37,25 @@ const SocialLinks = () => {
       variant: "social",
       Icon: () => <YoutubeSvg />,
       name: "Youtube",
+      href: "https://www.youtube.com",
     },
     {
       variant: "social",
       Icon: () => <InstagramSvg />,
       name: "Instagram",
+      href: "https://www.instagram.com/",
     },
     {
       variant: "social",
       Icon: () => <SpotifySvg />,
       name: "Spotify",
+      href: "https://open.spotify.com/",
     },
     {
       variant: "social",
       Icon: () => <FacebookSvg />,
       name: "Facebook",
+      href: "https://www.facebook.com/",
     },
   ];
 
