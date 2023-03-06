@@ -7,8 +7,6 @@ import { getUser } from "@/lib/getUser";
 
 const Page = async () => {
   const user = await getUser();
-  // const billingData = await getBillingDetails();
-  // console.log(billingData.data, "billingDetails");
   return (
     <section className="">
       <BillingDetails user={user} />

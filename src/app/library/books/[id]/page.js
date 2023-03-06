@@ -11,7 +11,6 @@ const Page = async (props) => {
       },
     },
   } = await getAllBooksData(props.params.id);
-  console.log(props.params.id, data);
   return (
     <section className=" h-screen px-container md:p-0 flex flex-col gap-2">
       <div className="relative">

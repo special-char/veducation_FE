@@ -64,7 +64,6 @@ const rating = {
 };
 
 const CourseDetails = (props) => {
-  console.log("props:", props?.params?.id);
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>

@@ -36,7 +36,6 @@ const ReviewStar = ({
         rating: value,
       });
       console.log({ ratingResponse: response });
-      // console.log(value, id, user_id);
     } catch (error) {
       console.error(error);
     }

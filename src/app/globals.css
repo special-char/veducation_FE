@@ -435,7 +435,7 @@
 
   .carousal {
     @apply relative mb-10 grid md:mb-14;
-    --_carousel-gutters: max(1rem, calc((100vw - calc(1280px - 1rem * 2)) / 2));
+    /* --_carousel-gutters: max(1rem, calc((100vw - calc(1280px - 1rem * 2)) / 2)); */
     grid-template-columns: auto 1fr auto;
     grid-template-rows:
       [carousel-scroller] 1fr

@@ -49,8 +49,6 @@ export default async function RootLayout({ children }) {
   const defaultCartItems = await getCartItems(user?.id);
   const ratings = await getAllRatings(user?.id);
 
-  console.log(ratings);
-
   return (
     <html
       lang="en"

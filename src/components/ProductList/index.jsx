@@ -42,8 +42,6 @@ export const ProductItem = async ({
 // export const Item = async ({
 //   attributes: { posterImageUrl, title, name, author, subtitle },
 // }) => {
-//   console.log("props", title);
-
 //   return (
 //     <div
 //       className={
