@@ -22,12 +22,11 @@ export const CartContextProvider = ({ children }) => {
   const { dispatch: dispatchProduct } = useAppContext();
 
   function cartInit(item) {
-    dispatch({ cart: [...cartState.cart, ...item] });
+    if (Array.isArray(item)) dispatch({ cart: [...cartState.cart, ...item] });
   }
 
   function addItem(item) {
     if (!userSession?.data?.user) {
-      console.log({ first: userSession?.data?.user });
       dispatchProduct({ signIn: true });
       return;
     }
@@ -36,7 +35,6 @@ export const CartContextProvider = ({ children }) => {
 
   async function updateCount(id, count, productId, userId) {
     if (!userSession?.data?.user) {
-      console.log({ second: userSession?.data?.user });
       dispatchProduct({ signIn: true });
       return;
     }
@@ -47,7 +45,6 @@ export const CartContextProvider = ({ children }) => {
       quantity: count,
       ...(count === 0 && { isRemoved: true }),
     });
-    console.log(response);
     const clickedCartItem = cartState.cart.find((item) => item.id === id);
     if (count) {
       dispatch({

@@ -87,7 +87,7 @@ const CourseDetails = async (props) => {
           id={props?.params?.id}
           rate={3}
           count={23}
-          notDisabled={true}
+          disabled={false}
           width={20}
           height={20}
         />

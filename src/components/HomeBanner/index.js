@@ -26,7 +26,6 @@ import Link from "next/link";
 
 const HomeBanner = async () => {
   const data = await getCourses();
-  //console.log("HomeBannerData:", data);
   return (
     <div className="flex flex-col py-4 gap-2">
       <Carousal>

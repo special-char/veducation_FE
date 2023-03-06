@@ -1,5 +1,5 @@
 .navBar {
-  @apply flex justify-evenly xl:justify-between gap-3  pt-4   w-full  max-w-[1248px];
+  @apply flex justify-evenly xl:justify-between gap-3 z-30 pt-4 max-w-[1248px];
 
   &__navItem {
     @apply flex flex-1 w-full max-w-[50px] flex-col items-center;

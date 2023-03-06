@@ -50,18 +50,13 @@ const SignIn = () => {
         fields={signInFields}
         initialValues={signInInitValue}
         onSubmit={async (values, { setSubmitting }) => {
-          try {
-            const res = await signIn("credentials", {
-              redirect: false,
-              email: values.email,
-              password: values.password,
-              callbackUrl: "/",
-            });
-            console.log({ authResponse: res });
-            toggleModal();
-          } catch (error) {
-            console.log(error);
-          }
+          const res = await signIn("credentials", {
+            redirect: false,
+            email: values.email,
+            password: values.password,
+            callbackUrl: "/",
+          });
+          toggleModal();
         }}
       />
       <div className="text-center flex justify-center items-center gap-3 py-4">

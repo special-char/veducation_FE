@@ -14,16 +14,16 @@ import { useCartProvider } from "@/context/CartContextProvider";
 import { getCartItems } from "@/lib/getCartItems";
 import { useSession } from "next-auth/react";
 import { useRatingContext } from "@/context/RatingContext";
+import { useRouter } from "next/navigation";
 
 const Header = ({ data, users, ratings }) => {
   const {
     state: { notifications },
-    dispatch,
   } = useAppContext();
 
   const { initAdd, rateState } = useRatingContext();
 
-  console.log({ rateState });
+  const navigate = useRouter();
 
   const sessionUser = useSession();
 
@@ -53,7 +53,10 @@ const Header = ({ data, users, ratings }) => {
             href={!sessionUser?.data?.user ? "" : "/cart?products"}
             onClick={() => {
               if (!sessionUser?.data?.user) {
-                dispatch({ signIn: true });
+                const response = confirm("Please sign in to continue");
+                if (response) {
+                  navigate.replace("/");
+                }
               }
             }}
           >

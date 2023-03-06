@@ -28,7 +28,7 @@ export const ProductItem = async ({
         {/* <p className={styles.product_item__author}>{weight && weight}</p>
         <p className={styles.product_item__author}>{content && content}</p> */}
         <Reviews
-          notDisabled={true}
+          disabled={true}
           height={20}
           id={id}
           width={20}
@@ -42,8 +42,6 @@ export const ProductItem = async ({
 // export const Item = async ({
 //   attributes: { posterImageUrl, title, name, author, subtitle },
 // }) => {
-//   console.log("props", title);
-
 //   return (
 //     <div
 //       className={

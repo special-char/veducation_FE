@@ -4,7 +4,7 @@ import AllCourses from "./AllCourses";
 
 const Page = () => {
   return (
-    <div className="h-full px-container pt-5 ">
+    <div className="h-full px-container md:px-0 pt-5">
       <AllCourses />
     </div>
   );
