@@ -19,18 +19,31 @@ const SwitchSection = ({ data, id, reviewData }) => {
             >
               Description
             </h5>
-            <div className={styles.coursedetails__underline}></div>
+            <div
+              className={clx(styles.coursedetails__underline, {
+                hidden: switchedTo === "review",
+                ["flex"]: true,
+              })}
+            ></div>
           </div>
-          <h5
-            onClick={() => {
-              setSwitchedTo("review");
-            }}
-            className={clx(styles.coursedetails__review, {
-              "font-bold": switchedTo === "review",
-            })}
-          >
-            Reviews
-          </h5>
+          <div className=" flex flex-col">
+            <h5
+              onClick={() => {
+                setSwitchedTo("review");
+              }}
+            >
+              Review
+            </h5>
+            {/* {switchedTo === "review" && (
+              <div className={styles.coursedetails__underline}></div>
+            )} */}
+            <div
+              className={clx(styles.coursedetails__underline, {
+                hidden: switchedTo === "desc",
+                ["flex"]: true,
+              })}
+            ></div>
+          </div>
         </div>
         <p className="text-base">{data?.data?.attributes?.description}</p>
       </div>
