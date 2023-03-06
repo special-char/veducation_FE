@@ -7,7 +7,7 @@ import UpcomingBooks from "./UpcomingBooks";
 
 const Library = () => {
   return (
-    <div className="h-screen pt-5 px-container flex flex-col gap-2">
+    <div className="h-screen pt-5 xs:px-container md:px-0 flex flex-col gap-2">
       <div className="relative">
         <Input
           field={{ name: "search", error: "search" }}

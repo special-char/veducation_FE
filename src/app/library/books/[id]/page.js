@@ -12,7 +12,7 @@ const Page = async (props) => {
     },
   } = await getAllBooksData(props.params.id);
   return (
-    <section className=" h-screen px-container md:p-0 flex flex-col gap-2">
+    <section className=" h-screen xs:px-container md:p-0 flex flex-col gap-2">
       <div className="relative">
         {/* <Input placeholder="Find in veducation library" className="px-10" /> */}
         {/* <Search className="absolute top-5 left-4" /> */}

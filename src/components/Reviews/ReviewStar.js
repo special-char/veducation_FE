@@ -1,14 +1,15 @@
 "use client";
 import { useAppContext } from "@/context/AppContextProvider";
 import { addRatings } from "@/lib/getRatings";
-import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const ReviewStar = ({
   children,
   value,
   className,
-  notDisabled,
+  disabled,
   id,
   slug = "course" | "product" | "book",
 }) => {
@@ -20,16 +21,15 @@ const ReviewStar = ({
       user: { id: user_id },
     },
   } = app;
-  console.log(
-    {
-      user_id: user_id,
-      ...(slug && { ...payloadObj }),
-      rating: value,
-    },
-    payloadObj
-  );
+  const user = useSession();
+  const navigate = useRouter();
   const onRatingClick = async () => {
     try {
+      if (!user?.data?.user) {
+        confirm("Please sign in to continue");
+        // if (response) navigate.push("/");
+        return;
+      }
       const response = await addRatings({
         user_id: user_id,
         ...(slug && { ...payloadObj }),
@@ -40,12 +40,11 @@ const ReviewStar = ({
       console.error(error);
     }
   };
+
+  const isDisabled = user?.data?.user && disabled;
+
   return (
-    <button
-      className={className}
-      disabled={notDisabled}
-      onClick={onRatingClick}
-    >
+    <button className={className} disabled={isDisabled} onClick={onRatingClick}>
       {children}
     </button>
   );

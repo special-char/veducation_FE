@@ -22,7 +22,7 @@ export const CartContextProvider = ({ children }) => {
   const { dispatch: dispatchProduct } = useAppContext();
 
   function cartInit(item) {
-    dispatch({ cart: [...cartState.cart, ...item] });
+    if (Array.isArray(item)) dispatch({ cart: [...cartState.cart, ...item] });
   }
 
   function addItem(item) {

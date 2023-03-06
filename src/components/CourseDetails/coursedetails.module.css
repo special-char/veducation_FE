@@ -1,5 +1,5 @@
 .coursedetails {
-  @apply pt-5 py-16 h-full px-container;
+  @apply pt-5 py-16 h-full xs:px-container md:px-0;
 
   &__imagebody {
     @apply relative aspect-h-image   bg-primary rounded-md;
