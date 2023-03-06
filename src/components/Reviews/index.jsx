@@ -74,7 +74,7 @@ const Reviews = ({
           </ReviewStar>
         );
       })}
-      <p className="reviews__count m-0 text-base">{`(${count})`}</p>
+      <p className="reviews__count m-0 text-base text-white mb-0 font-bold">{`(${count})`}</p>
     </div>
   );
 };

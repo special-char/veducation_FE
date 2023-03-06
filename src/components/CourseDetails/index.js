@@ -95,7 +95,10 @@ const CourseDetails = async (props) => {
           {data?.data?.attributes?.duration} | {data?.data?.attributes?.lessons}
         </span>
         <div className={styles.coursedetails__prize}>
-          {`$${data?.data?.attributes?.price}`}
+          {new Intl.NumberFormat("en-US", {
+            currency: "USD",
+            style: "currency",
+          }).format(data?.data?.attributes?.price)}
         </div>
       </div>
       <div className="py-4">
