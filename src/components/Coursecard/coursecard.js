@@ -6,21 +6,11 @@ import styles from "./card.module.css";
 import Link from "next/link";
 
 const Coursecard = ({
-  attributes: {
-    title,
-    rating,
-    duration,
-    description,
-    lessons,
-    img,
-    count,
-    ...att
-  },
+  attributes: { title, rating, duration, description, lessons, img, count },
   ...val
 }) =>
   // props
   {
-    console.log({ att });
     return (
       <Link href={`/courses/${val.id}`}>
         <div className={styles.cardRoot}>
@@ -35,6 +25,7 @@ const Coursecard = ({
               height={22}
               count={count ?? 1}
               rate={rating}
+              isCourse
             />
             <span className="text-xs font-semibold text-white">
               {duration} | {lessons}

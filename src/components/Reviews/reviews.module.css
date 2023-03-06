@@ -1,6 +1,7 @@
 .reviews {
   @apply flex text-center items-center;
   &__rating{
+    /* @apply p-10; */
     & > svg {
       @apply fill-primary2;
     }
