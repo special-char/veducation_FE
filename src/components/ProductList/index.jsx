@@ -24,10 +24,6 @@ export const ProductItem = async ({
       </div>
       <div className={styles.product_item__desc}>
         <p className={styles.product_item__name}>{title}</p>
-        <p className={styles.product_item__author}>
-          {author && `by ${author}`}
-          {subtitle && subtitle}
-        </p>
 
         {/* <p className={styles.product_item__author}>{weight && weight}</p>
         <p className={styles.product_item__author}>{content && content}</p> */}

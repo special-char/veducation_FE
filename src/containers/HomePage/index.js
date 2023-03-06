@@ -32,7 +32,7 @@ const HomePage = async (props) => {
       <SignIn />
       <HomeBanner />
       <Productlist id={1} />
-      <FeatureDonations /> */}
+      <FeatureDonations />
     </section>
   );
 };
