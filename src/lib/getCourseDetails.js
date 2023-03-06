@@ -1,8 +1,8 @@
 const { default: axiosInstance } = require("./axiosInstance");
 
-export const getAboutData = async () => {
+export const getCourseDetails = async (id) => {
   try {
-    const response = await axiosInstance.get("/about-page");
+    const response = await axiosInstance.get(`/courses/${id}?populate=*`);
     // setList(response.data);
     return response.data;
   } catch (error) {

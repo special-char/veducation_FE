@@ -1,5 +1,5 @@
 .coursedetails {
-  @apply pt-5 py-16 h-full px-container;
+  @apply pt-5 py-16 h-full xs:px-container md:px-0;
 
   &__imagebody {
     @apply relative aspect-h-image   bg-primary rounded-md;
@@ -23,7 +23,7 @@
     @apply text-base pb-2 text-neutral-150 font-medium;
   }
   &__faqpage {
-    @apply pt-3 pb-8;
+    @apply pt-3;
   }
   &__faqheader {
     @apply text-neutral-800 font-bold;

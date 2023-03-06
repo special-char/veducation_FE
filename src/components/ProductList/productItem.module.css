@@ -1,13 +1,13 @@
 .product_item {
   /* @apply flex flex-col flex-1 bg-transparent xs:p-2 md:p-3 border border-neutral-250 rounded-md max-w-[123px] ; */
-  @apply flex flex-col gap-2 bg-transparent p-2  border border-neutral-250 rounded-md min-w-[150px];
+  @apply flex flex-col h-full bg-transparent p-2 border border-neutral-250 rounded-md min-w-[150px];
 
   &__image {
-    @apply relative aspect-image min-h-[111px];
+    @apply relative aspect-image;
   }
 
   &__desc {
-    /* @apply; */
+    @apply max-w-[150px] h-[90.11px] flex flex-col justify-between;
   }
 
   &__name {

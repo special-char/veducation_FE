@@ -9,6 +9,7 @@ import { getCategoryData } from "@/lib/getHomeProductData";
 
 export const ProductItem = async ({
   attributes: { posterImageUrl, title, name, author, subtitle },
+  id,
 }) => {
   return (
     <div className={styles.product_item}>
@@ -23,14 +24,17 @@ export const ProductItem = async ({
       </div>
       <div className={styles.product_item__desc}>
         <p className={styles.product_item__name}>{title}</p>
-        <p className={styles.product_item__author}>
-          {author && `by ${author}`}
-          {subtitle && subtitle}
-        </p>
 
         {/* <p className={styles.product_item__author}>{weight && weight}</p>
         <p className={styles.product_item__author}>{content && content}</p> */}
-        <Reviews rate={3.5} count={100} />
+        <Reviews
+          disabled={true}
+          height={20}
+          id={id}
+          width={20}
+          rate={3.5}
+          count={100}
+        />
       </div>
     </div>
   );
@@ -38,8 +42,6 @@ export const ProductItem = async ({
 // export const Item = async ({
 //   attributes: { posterImageUrl, title, name, author, subtitle },
 // }) => {
-//   console.log("props", title);
-
 //   return (
 //     <div
 //       className={

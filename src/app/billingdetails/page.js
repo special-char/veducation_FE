@@ -1,12 +1,15 @@
-import BillingDetails from "@/components/BillingDetails/BillingDetails";
+import BillingDetails from "@/containers/BillingDetails";
 import Button from "@/components/Button";
 import Link from "next/link";
 import React from "react";
+import { getBillingDetails } from "@/lib/getBillingDetails";
+import { getUser } from "@/lib/getUser";
 
-const Page = () => {
+const Page = async () => {
+  const user = await getUser();
   return (
-    <section className="pb-24">
-      <BillingDetails />
+    <section className="">
+      <BillingDetails user={user} />
     </section>
   );
 };

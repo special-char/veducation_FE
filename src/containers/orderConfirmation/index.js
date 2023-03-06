@@ -33,7 +33,7 @@ const OrderConfirm = () => {
   };
 
   return (
-    <div className="flex flex-col gap-9 pb-24">
+    <div className="flex flex-col gap-9">
       <OrderSucess />
       {items.map((x) => (
         <OrderdItem image={x.img} title={x.item} price={x.price} key="df" />

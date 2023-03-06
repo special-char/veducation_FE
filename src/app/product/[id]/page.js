@@ -1,21 +1,26 @@
 import React from "react";
-import Tshirt from "public/icons/tshirt.png";
 import Reviews from "../../../components/Reviews";
-import Button from "../../../components/Button";
-import Link from "next/link";
 import styles from "./product.module.css";
 import { getProductData } from "@/lib/getHomeProductData";
 import Image from "next/image";
 import AddBuy from "../AddBuy";
 import { getUser } from "@/lib/getUser";
 import { getCartItems } from "@/lib/getCartItems";
+import { getRating } from "@/lib/getRatings";
 
 const Page = async (props) => {
   const productData = await getProductData(props?.params?.id);
+
   const user = await getUser();
+
   const cartItems = await getCartItems();
+
   const { title, name, posterImageUrl, price, description } =
     productData?.data?.attributes;
+
+  const ratingId = productData?.data?.attributes?.ratings?.data[0]?.id;
+  const rating = await getRating(ratingId);
+
   return (
     <section className={styles.ProductPage}>
       <div className={styles.ProductPage__image}>
@@ -27,31 +32,17 @@ const Page = async (props) => {
             Delivery by Monday, 23 January
           </p>
           <h3>{title}</h3>
-          <Reviews rate={4} count={"25k"} height={22} width={22} />
+          <Reviews
+            slug={"product"}
+            id={props?.params?.id}
+            rate={rating?.data?.attributes?.rating}
+            count={"25k"}
+            height={22}
+            width={22}
+          />
         </div>
         <div className={styles.ProductPage__title}>
-          <p className={styles.ProductPage__price}>{price}</p>
-          {/* <div className={styles.ProductPage__count}>
-            <Button
-              as={Link}
-              href=""
-              prefetch={false}
-              variant={"count"}
-              size={"count"}
-            >
-              +
-            </Button>
-            <p className={styles.ProductPage__item}>01</p>
-            <Button
-              as={Link}
-              href=""
-              prefetch={false}
-              variant={"count"}
-              size={"count"}
-            >
-              -
-            </Button>
-          </div> */}
+          <p className={styles.ProductPage__price}>{`$${price}`}</p>
         </div>
         <p>{description}</p>
         <AddBuy
@@ -59,29 +50,6 @@ const Page = async (props) => {
           users={user}
           cartItems={cartItems?.data}
         />
-        {/* <div className={styles.ProductPage__btn}>
-          <Button
-            as="button"
-            className="md:flex md:justify-center"
-            variant={"secondary"}
-            size={"large"}
-            // onClick={() => {
-            //   alert("hello");
-            // }}
-          >
-            Add to cart
-          </Button>
-          <Button
-            as="button"
-            className={" md:flex md:justify-center"}
-            href=""
-            prefetch={false}
-            variant={"primary"}
-            size={"large"}
-          >
-            Buy now
-          </Button>
-        </div> */}
       </div>
     </section>
   );

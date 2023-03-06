@@ -5,12 +5,12 @@ import { getFeatureDonations } from "@/lib/getFeaturedDonation";
 
 const FeatureDonations = async () => {
   const data = await getFeatureDonations();
-  const donationData = data?.data?.attributes?.donation?.data?.attributes;
+  const donationData = data?.data?.attributes;
 
   return (
     <div>
       <DonationCard2
-        img={donationData?.image}
+        img={donationData?.thumbnail}
         title={donationData?.title}
         desc={donationData?.description}
         btnText={donationData?.btnText ?? "Donation"}

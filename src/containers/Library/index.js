@@ -1,13 +1,13 @@
 import FormikForm from "@/components/FormikForm";
 import React from "react";
-import FeaturedBook from "./FeaturedBook";
-import UpcomingBooks from "./UpcomingBooks";
 import Search from "public/icons/Search.svg";
 import Input from "@/components/InputComponent";
+import FeaturedBook from "./FeaturedBook";
+import UpcomingBooks from "./UpcomingBooks";
 
 const Library = () => {
   return (
-    <div className="h-screen pt-5 pb-40 px-container flex flex-col gap-2">
+    <div className="h-screen pt-5 xs:px-container md:px-0 flex flex-col gap-2">
       <div className="relative">
         <Input
           field={{ name: "search", error: "search" }}

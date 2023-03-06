@@ -2,29 +2,28 @@
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Veducation from "public/VEDUCATION.svg";
 import Icon from "public/veducationIcon.svg";
 import FormikForm from "@/components/FormikForm";
 import { signupFields, signupInitValue } from "./signupFields";
 import styles from "./signup.module.css";
+import { AppContext } from "@/context/AppContextProvider";
+import { authSignup } from "@/lib/authSignup";
 
 const SignUpDetails = () => {
-  const [open, setOpen] = useState(false);
   function toggleModal() {
-    setOpen((prev) => !prev);
+    dispatch({ signUp: false });
   }
+
+  const {
+    state: { signUp },
+    dispatch,
+  } = useContext(AppContext);
 
   return (
     <div className={styles.signup}>
-      <Button onClick={toggleModal} as={Link} href="">
-        Details
-      </Button>
-      <Modal
-        open={open}
-        onClose={toggleModal}
-        className="flex-1 flex flex-col gap-3 py-5 px-3"
-      >
+      <Modal open={signUp} onClose={toggleModal} className=" gap-3 py-5 px-3">
         <span className="flex justify-center items-center">
           <Icon />
           <Veducation />
@@ -34,9 +33,14 @@ const SignUpDetails = () => {
           <FormikForm
             fields={signupFields}
             initialValues={signupInitValue}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={async (values, { setSubmitting }) => {
               try {
-                console.log(values);
+                const res = await authSignup({
+                  username: values.username,
+                  email: values.email,
+                  password: values.password,
+                });
+                console.log("authSignup:", res);
               } catch (error) {
                 console.log(error);
               }

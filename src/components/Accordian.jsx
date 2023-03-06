@@ -4,6 +4,7 @@ import clsx from "classnames";
 import md from "markdown-it";
 
 const Accordian = ({ data, hasTag }) => {
+  console.log("Accordian data:", data);
   return (
     <>
       {data.map((val) => (
@@ -14,11 +15,11 @@ const Accordian = ({ data, hasTag }) => {
           })}
         >
           <summary className="font-semibold text-base text-secondary">
-            {val.title}
+            {val?.title}
           </summary>
           <div
             dangerouslySetInnerHTML={{
-              __html: md().render(val.description),
+              __html: md().render(val?.description || ""),
             }}
           ></div>
         </details>
