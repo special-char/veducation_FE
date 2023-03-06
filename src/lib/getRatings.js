@@ -40,3 +40,27 @@ export const addRatings = async (
     console.error(error);
   }
 };
+
+export const updateRating = async (
+  payload = { user_id, rating, course, product, book },
+  ratingId
+) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/ratings/${ratingId}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          data: payload,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};

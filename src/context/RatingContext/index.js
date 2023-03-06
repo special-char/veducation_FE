@@ -16,13 +16,38 @@ export const RatingContextProvider = ({ children }) => {
 
   function initAdd(ratings) {
     if (Array.isArray(ratings?.data)) {
-      dispatch({ ratings });
+      dispatch({ ratings: ratings.data });
       return;
     }
   }
 
+  function addRating(payload) {
+    dispatch({ ratings: [...state.ratings, payload] });
+  }
+
+  function updateContextRating(rate) {
+    console.log({ rate });
+    const index = state.ratings.findIndex((r) => r.id === rate.id);
+    const currentRate = state.ratings.find((r) => r.id === rate.id);
+    dispatch({
+      ratings: [
+        ...state.ratings.slice(0, index),
+        {
+          ...currentRate,
+          attributes: {
+            ...currentRate.attributes,
+            rating: currentRate?.attributes?.rating,
+          },
+        },
+        ...state.ratings.slice(index + 1),
+      ],
+    });
+  }
+
   return (
-    <RatingContext.Provider value={{ rateState: state, initAdd }}>
+    <RatingContext.Provider
+      value={{ rateState: state, initAdd, addRating, updateContextRating }}
+    >
       {children}
     </RatingContext.Provider>
   );

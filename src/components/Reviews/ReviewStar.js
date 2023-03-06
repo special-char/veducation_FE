@@ -1,6 +1,7 @@
 "use client";
 import { useAppContext } from "@/context/AppContextProvider";
-import { addRatings } from "@/lib/getRatings";
+import { useRatingContext } from "@/context/RatingContext";
+import { addRatings, updateRating } from "@/lib/getRatings";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -12,10 +13,12 @@ const ReviewStar = ({
   disabled,
   id,
   slug = "course" | "product" | "book",
+  ratingId,
 }) => {
   const payloadObj = {};
   payloadObj[slug] = id;
   const app = useAppContext();
+  const { rateState, addRating, updateContextRating } = useRatingContext();
   const {
     state: {
       user: { id: user_id },
@@ -30,12 +33,24 @@ const ReviewStar = ({
         // if (response) navigate.push("/");
         return;
       }
+
+      if (ratingId) {
+        const response = await updateRating(
+          {
+            rating: value,
+          },
+          ratingId
+        );
+        console.log({ updateRating: response.data });
+        updateContextRating(response?.data);
+        return;
+      }
       const response = await addRatings({
         user_id: user_id,
         ...(slug && { ...payloadObj }),
         rating: value,
       });
-      console.log({ ratingResponse: response });
+      addRating(response?.data);
     } catch (error) {
       console.error(error);
     }

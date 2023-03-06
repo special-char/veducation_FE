@@ -15,6 +15,7 @@ const Reviews = ({
   id,
   slug = "product" | "course" | "book",
   isCourse = false,
+  ratingId,
 }) => {
   const start = [1, 2, 3, 4, 5];
   return (
@@ -28,6 +29,7 @@ const Reviews = ({
               id={id}
               key={i}
               value={i}
+              ratingId={ratingId}
               disabled={disabled}
             >
               <StarFull
@@ -48,6 +50,7 @@ const Reviews = ({
               key={i}
               value={i}
               disabled={disabled}
+              ratingId={ratingId}
             >
               <StarHalf
                 key={i}
@@ -66,6 +69,7 @@ const Reviews = ({
             key={i}
             value={i}
             disabled={disabled}
+            ratingId={ratingId}
           >
             <Star
               key={i}
