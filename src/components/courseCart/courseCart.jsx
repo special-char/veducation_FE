@@ -35,7 +35,8 @@ const CourseCart = ({ users, data: { data } }) => {
   function calculatePrice(cartItems, rate = 0.7) {
     const t = cartItems?.reduce((p, c) => {
       return (
-        p + c.attributes.product.data.attributes.price * c.attributes.quantity
+        p +
+        c?.attributes?.product?.data?.attributes?.price * c.attributes.quantity
       );
     }, 0);
     return { total: t, withTax: t * rate };

@@ -31,19 +31,10 @@ const InviteUs = ({ fields, ...prpos }) => {
         <FormikForm
           fields={InputFields}
           initialValues={Sendinvitationint}
-          // onSubmit={async (values, { setSubmitting }) => {
-          //   try {
-          //     const res = await signIn("credentials", {
-          //       redirect: false,
-          //       email: values.email,
-          //       password: values.password,
-          //       callbackUrl: "/",
-          //     });
-          //     toggleModal();
-          //   } catch (error) {
-          //     console.log(error);
-          //   }
-          // }}
+          onSubmit={(e) => {
+            toggleModal();
+            dispatch({ success: true });
+          }}
         />
       </PopupModal>
     </div>

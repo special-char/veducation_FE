@@ -31,6 +31,7 @@ const HomePage = async (props) => {
     <section>
       <SocialLinks />
       <SignIn />
+      <SignUpDetails />
       <HomeBanner />
       <Productlist id={1} />
       <FeatureDonations />

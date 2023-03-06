@@ -15,6 +15,7 @@ import AppContextProvider, {
 import Button from "@/components/Button";
 import Link from "next/link";
 import InviteUs from "@/components/Invitationmodal";
+import SuccessModal from "@/components/SuccessModal";
 
 const MenuSection = () => {
   const { dispatch } = useAppContext();
@@ -62,6 +63,12 @@ const MenuSection = () => {
   return (
     <section className="pt-4 flex flex-col gap-3">
       <InviteUs />
+      <SuccessModal
+        title="Thanks for inviting"
+        description="we will revert as soon as possible"
+        btnText="Back to Home"
+        href="/"
+      />
       {data.map((val) => {
         return (
           <Btnnavigator

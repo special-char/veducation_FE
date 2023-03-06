@@ -84,6 +84,11 @@ const AddBuy = ({ id, users }) => {
         variant={"primary"}
         size={"large"}
         onClick={() => {
+          if (!data?.data?.user) {
+            const response = confirm("Please Sign up or login to continue");
+            if (response) navigate.push("/");
+            return;
+          }
           navigate.push("/cart");
         }}
       >

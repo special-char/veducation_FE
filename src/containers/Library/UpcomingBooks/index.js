@@ -2,6 +2,7 @@ import Btnnavigator from "@/components/Buttonnavigator";
 import React from "react";
 import UpcomingBookImg from "public/icons/upcomingbook.svg";
 import { getAllBooksData } from "@/lib/getAllBooksData";
+import Link from "next/link";
 
 const data = [
   {
@@ -35,6 +36,7 @@ const UpcomingBooks = async () => {
         return (
           <Btnnavigator
             key={index}
+            component={Link}
             href={`/library/books/${val.id}`}
             icon={<UpcomingBookImg className="w-6" />}
             title={val.attributes?.title}

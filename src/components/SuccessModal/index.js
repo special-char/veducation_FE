@@ -4,20 +4,23 @@ import React, { useState } from "react";
 import Button from "../Button";
 import PopupModal from "../popupModal";
 import SuccessIcon from "public/icons/success.svg";
+import { useAppContext } from "@/context/AppContextProvider";
 
 const SuccessModal = ({ ...props }) => {
-  const [open, setOpen] = useState(false);
+  const {
+    state: { success },
+    dispatch,
+  } = useAppContext();
   function toggleModal() {
-    setOpen((prev) => !prev);
+    dispatch({ success: false });
   }
+
+  console.log({ success });
 
   return (
     <div>
-      <Button onClick={toggleModal} as={Link} href="">
-        Details
-      </Button>
       <PopupModal
-        open={open}
+        open={success}
         onClose={toggleModal}
         className="flex-1 flex flex-col gap-10 py-5 px-3 items-center"
       >

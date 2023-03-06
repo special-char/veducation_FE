@@ -9,6 +9,7 @@ const initialState = {
   signIn: false,
   signUp: false,
   inviteUs: false,
+  success: false,
   authToken: "",
   user: {},
 };

@@ -1,5 +1,6 @@
 import Btnnavigator from "@/components/Buttonnavigator";
 import { getAllBooksData } from "@/lib/getAllBooksData";
+import Link from "next/link";
 import BtnNavigator from "public/icons/navigator.svg";
 import React from "react";
 
@@ -20,6 +21,7 @@ const Page = async (props) => {
       {data?.map(({ attributes: { title, description }, id }) => (
         <Btnnavigator
           key={id}
+          component={Link}
           icon={<BtnNavigator />}
           title={title}
           desc={description}
