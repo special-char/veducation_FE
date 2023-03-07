@@ -64,7 +64,7 @@ const Header = ({ data, users, ratings }) => {
           </Link>
           {cart.length !== 0 && sessionUser?.data?.user && (
             <span className={styles.headerRoot__rightIcon__floatNum}>
-              {cart.length}
+              {cart?.reduce((p, c) => p + c?.attributes?.quantity, 0)}
             </span>
           )}
 

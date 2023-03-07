@@ -28,7 +28,7 @@ export const ProductItem = async ({
         {/* <p className={styles.product_item__author}>{weight && weight}</p>
         <p className={styles.product_item__author}>{content && content}</p> */}
         <Reviews
-          disabled={true}
+          disabled
           height={20}
           id={id}
           width={20}

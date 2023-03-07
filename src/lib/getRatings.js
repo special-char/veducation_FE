@@ -25,16 +25,19 @@ export const addRatings = async (
   payload = { user_id, rating, course, product, book }
 ) => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/ratings`, {
-      method: "POST",
-      body: JSON.stringify({
-        data: payload,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/ratings?populate=*`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          data: payload,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
     return response.json();
   } catch (error) {
     console.error(error);

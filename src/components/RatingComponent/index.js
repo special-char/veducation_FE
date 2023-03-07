@@ -3,16 +3,21 @@ import Reviews from "@/components/Reviews";
 import { useRatingContext } from "@/context/RatingContext";
 import React from "react";
 
-const RatingComponent = ({ rate, ...props }) => {
+const RatingComponent = (props) => {
   const {
     rateState: { ratings },
   } = useRatingContext();
 
-  const currentRating = ratings.find((r) => r.id === props.ratingId);
-  console.log({ currentRating });
+  const rate = ratings.find(
+    (r) => r?.attributes[props.slug]?.data?.id == props?.id
+  );
 
   return (
-    <Reviews {...props} rate={currentRating?.attributes?.rating ?? rate} />
+    <Reviews
+      {...props}
+      ratingId={rate?.id ?? props.ratingId}
+      rate={rate?.attributes?.rating ?? props.rate}
+    />
   );
 };
 

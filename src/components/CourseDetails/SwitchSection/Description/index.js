@@ -37,6 +37,7 @@ const Description = ({ data, id, reviewdata }) => {
                     rate={val.rate}
                     width={18}
                     height={18}
+                    disabled
                   />
                   <p className={styles.coursedetails__reviewerdate}>
                     {`By ${val.reviewer} - ${val.date}`}

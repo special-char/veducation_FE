@@ -26,7 +26,6 @@ export const RatingContextProvider = ({ children }) => {
   }
 
   function updateContextRating(rate) {
-    console.log({ rate });
     const index = state.ratings.findIndex((r) => r.id === rate.id);
     const currentRate = state.ratings.find((r) => r.id === rate.id);
     dispatch({
@@ -36,7 +35,7 @@ export const RatingContextProvider = ({ children }) => {
           ...currentRate,
           attributes: {
             ...currentRate.attributes,
-            rating: currentRate?.attributes?.rating,
+            rating: rate?.attributes?.rating,
           },
         },
         ...state.ratings.slice(index + 1),

@@ -10,7 +10,7 @@ const ReviewStar = ({
   children,
   value,
   className,
-  disabled,
+  notDisabled,
   id,
   slug = "course" | "product" | "book",
   ratingId,
@@ -18,7 +18,11 @@ const ReviewStar = ({
   const payloadObj = {};
   payloadObj[slug] = id;
   const app = useAppContext();
-  const { rateState, addRating, updateContextRating } = useRatingContext();
+  const {
+    rateState: { ratings },
+    addRating,
+    updateContextRating,
+  } = useRatingContext();
   const {
     state: {
       user: { id: user_id },
@@ -26,6 +30,9 @@ const ReviewStar = ({
   } = app;
   const user = useSession();
   const navigate = useRouter();
+
+  // const currentRating = ratings.find((r) => r.id === ratingId);
+
   const onRatingClick = async () => {
     try {
       if (!user?.data?.user) {
@@ -41,7 +48,6 @@ const ReviewStar = ({
           },
           ratingId
         );
-        console.log({ updateRating: response.data });
         updateContextRating(response?.data);
         return;
       }
@@ -56,7 +62,7 @@ const ReviewStar = ({
     }
   };
 
-  const isDisabled = user?.data?.user && disabled;
+  const isDisabled = user?.data?.user && !notDisabled;
 
   return (
     <button className={className} disabled={isDisabled} onClick={onRatingClick}>

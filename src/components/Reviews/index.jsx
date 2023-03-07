@@ -11,7 +11,7 @@ const Reviews = ({
   count,
   width,
   height,
-  disabled = false,
+  notDisabled = false,
   id,
   slug = "product" | "course" | "book",
   isCourse = false,
@@ -30,7 +30,7 @@ const Reviews = ({
               key={i}
               value={i}
               ratingId={ratingId}
-              disabled={disabled}
+              notDisabled={notDisabled}
             >
               <StarFull
                 key={i}
@@ -49,7 +49,7 @@ const Reviews = ({
               id={id}
               key={i}
               value={i}
-              disabled={disabled}
+              notDisabled={notDisabled}
               ratingId={ratingId}
             >
               <StarHalf
@@ -68,7 +68,7 @@ const Reviews = ({
             id={id}
             key={i}
             value={i}
-            disabled={disabled}
+            notDisabled={notDisabled}
             ratingId={ratingId}
           >
             <Star

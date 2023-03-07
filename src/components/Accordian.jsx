@@ -4,7 +4,6 @@ import clsx from "classnames";
 import md from "markdown-it";
 
 const Accordian = ({ data, hasTag }) => {
-  console.log("Accordian data:", data);
   return (
     <>
       {data.map((val) => (

@@ -25,6 +25,7 @@ const Coursecard = ({
               height={22}
               count={count ?? 1}
               rate={rating}
+              disabled
               isCourse
             />
             <span className="text-xs font-semibold text-white">

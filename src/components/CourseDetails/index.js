@@ -10,29 +10,8 @@ import Link from "next/link";
 import styles from "../coursedetails/coursedetails.module.css";
 import { getCourseDetails } from "@/lib/getCourseDetails";
 import SwitchSection from "./SwitchSection";
-
-const data1 = [
-  {
-    id: 1,
-    title: "What will i learn from this course ?",
-    description: "this is description",
-  },
-  {
-    id: 2,
-    title: "What will i learn from this course ?",
-    description: "this is description",
-  },
-  {
-    id: 3,
-    title: "What will i learn from this course ?",
-    description: "this is description",
-  },
-  {
-    id: 4,
-    title: "What will i learn from this course ?",
-    description: "this is description",
-  },
-];
+import RatingComponent from "../RatingComponent";
+import { getRating } from "@/lib/getRatings";
 
 const reviewdata = [
   {
@@ -53,23 +32,15 @@ const reviewdata = [
   },
 ];
 
-const data = {
-  time: "4h 30min",
-  lesson: "12 lessons",
-};
-
-const prize = {
-  rate: "$ 25.00",
-};
-const rating = {
-  number: "4.7",
-};
-
 const CourseDetails = async (props) => {
   console.log("props:", props?.params?.id);
 
   const data = await getCourseDetails(props?.params?.id);
-  console.log("getCourseDetails:", data);
+  const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
+  const rating = await getRating(ratingId);
+  console.log("getCourseDetails:", data?.data?.attributes?.ratings, {
+    rating,
+  });
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
@@ -82,13 +53,13 @@ const CourseDetails = async (props) => {
       </div>
       <div className={styles.coursedetails__datails}>
         <h3 className="mb-0">{data?.data?.attributes?.title}</h3>
-        <Reviews
-          className=""
+        <RatingComponent
+          // className=""
           slug={"course"}
           id={props?.params?.id}
-          rate={3}
+          rate={rating?.data?.attributes?.rating}
           count={23}
-          disabled={false}
+          ratingId={ratingId}
           width={20}
           height={20}
         />

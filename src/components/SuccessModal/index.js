@@ -15,8 +15,6 @@ const SuccessModal = ({ ...props }) => {
     dispatch({ success: false });
   }
 
-  console.log({ success });
-
   return (
     <div>
       <PopupModal
