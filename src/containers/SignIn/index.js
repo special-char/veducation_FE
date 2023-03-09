@@ -32,9 +32,26 @@ const SignIn = () => {
       <PopupModal
         open={open}
         onClose={toggleModal}
-        className="justify-center items-center"
+        className=" flex-[0.7] flex flex-col items-center justify-between p-6 "
       >
-        <button onClick={signOut}>SignOut</button>
+        <span className="flex  justify-center items-center">
+          <Icon />
+          <Veducation />
+        </span>
+        <h4>
+          Help us spread <span className="text-primary">Dharma!</span>
+        </h4>
+        <button
+          className="btn btn--primary w-full  py-3"
+          onClick={() => {
+            const res = confirm("Are you sure you want to signOut");
+            if (res) {
+              signOut();
+            }
+          }}
+        >
+          SignOut
+        </button>
       </PopupModal>
     );
   }
