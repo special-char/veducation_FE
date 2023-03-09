@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply min-h-screen bg-background font-sans text-lg text-neutral-600 pb-[6rem] ;
+    @apply min-h-screen bg-background font-sans text-lg text-neutral-600 pb-[6rem];
 
     /* display: grid;
     grid-template-columns: min-content [stack] 1fr;
@@ -434,7 +434,7 @@
   }
 
   .carousal {
-    @apply relative mb-10 grid md:mb-14;
+    @apply relative mb-2 grid md:mb-14;
     /* --_carousel-gutters: max(0.1rem, calc((100vw - calc(1280px - 0.1rem * 2)) / 2)); */
     grid-template-columns: auto 1fr auto;
     grid-template-rows:

@@ -1,20 +1,20 @@
 .product_item {
   /* @apply flex flex-col flex-1 bg-transparent xs:p-2 md:p-3 border border-neutral-250 rounded-md max-w-[123px] ; */
-  @apply flex flex-col h-full bg-transparent p-2 border border-neutral-250 rounded-md min-w-[150px];
+  @apply flex flex-col h-full bg-transparent justify-between p-2 border border-neutral-250 rounded-md min-w-[150px] md:max-w-[300px];
 
   &__image {
     @apply relative aspect-image;
   }
 
   &__desc {
-    @apply max-w-[150px] h-[90.11px] flex flex-col justify-between;
+    @apply max-w-[150px] pl-[11px] pr-[14px];
   }
 
   &__name {
-    @apply text-neutral-700 text-base m-0 p-0 line-clamp-2;
+    @apply text-neutral-700 text-sm font-medium leading-4 m-0 pt-3  pb-1;
   }
 
   &__author {
-    @apply font-bold text-xs;
+    @apply text-xs font-medium leading-[9.1px];
   }
 }

@@ -18,7 +18,7 @@ const PopupModal = ({ open, onClose, className, ...props }) => {
       <div className={clx(" w-full flex-1")} onClick={onClose} />
       <section
         className={clx(
-          "xs:mx-3 lg:mx-[50vh] rounded-xl flex-1 bg-background shadow-dark",
+          "xs:mx-3 lg:mx-[50vh] rounded-xl  bg-background shadow-dark",
           className
         )}
       >

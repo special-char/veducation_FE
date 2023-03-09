@@ -18,7 +18,7 @@ export const ProductItem = async ({
           src={posterImageUrl}
           fill
           alt="book"
-          className="px-3 py-2"
+          className="px-3 pt-2"
           sizes=""
         />
       </div>
@@ -27,11 +27,14 @@ export const ProductItem = async ({
 
         {/* <p className={styles.product_item__author}>{weight && weight}</p>
         <p className={styles.product_item__author}>{content && content}</p> */}
+        <p className={styles.product_item__author}>{`by ${
+          author && author
+        }`}</p>
         <Reviews
           disabled
-          height={20}
+          height={9.31}
           id={id}
-          width={20}
+          width={8.96}
           rate={3.5}
           count={100}
         />
@@ -82,7 +85,7 @@ const Productlist = async ({ id }) => {
   return (
     <div className="flex flex-col">
       <ProductTitle title={name} link={`/products/${id}`} />
-      <div className="flex overflow-x-scroll no-scrollbar gap-1">
+      <div className="flex overflow-x-scroll no-scrollbar gap-[5px]">
         {products?.data.map((val) => {
           return (
             <Link key={val.id} href={`/product/${val.id}`}>

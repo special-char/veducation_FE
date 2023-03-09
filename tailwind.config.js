@@ -52,9 +52,10 @@ module.exports = {
       cursive: ["var(--font-block)", "cursive"],
     },
     fontSize: {
-      xs: ["7px", "1.5em"],
-      sm: ["15px", "1.6em"],
-      base: ["11px", "1.44em"],
+      xs: ["9px", "1.5em"],
+      sm: ["11px", "1.6em"],
+      sm2: ["12px", "1.6em"],
+      base: ["15px", "1.44em"],
       lg: ["18px", "1.667em"],
       xl: ["20px", "1.5em"],
       xxl: ["22px", "1.5em"],

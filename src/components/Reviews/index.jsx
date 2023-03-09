@@ -82,7 +82,7 @@ const Reviews = ({
       })}
       <p
         className={clx(
-          `reviews__count m-0 text-base mb-0 text-[#222] font-bold`,
+          `reviews__count m-0 text-[8px] mb-0 text-[#222] font-bold`,
           {
             "text-[#fff]": isCourse,
           }

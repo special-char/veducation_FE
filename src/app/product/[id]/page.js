@@ -32,7 +32,7 @@ const Page = async (props) => {
           <p className={styles.ProductPage__ptag}>
             Delivery by Monday, 23 January
           </p>
-          <h3>{title}</h3>
+          <h3 className="text-xxl leading-6 mb-0 pb-2">{title}</h3>
           <RatingComponent
             ratingId={ratingId}
             slug={"product"}
@@ -43,10 +43,8 @@ const Page = async (props) => {
             width={22}
           />
         </div>
-        <div className={styles.ProductPage__title}>
-          <p className={styles.ProductPage__price}>{`$${price}`}</p>
-        </div>
-        <p>{description}</p>
+        <p className={styles.ProductPage__price}>{`$${price}`}</p>
+        <p className="text-[17px] font-normal leading-[23px]">{description}</p>
         <AddBuy
           id={props?.params?.id}
           users={user}

@@ -8,13 +8,13 @@
     @apply flex flex-col pt-8;
   }
   &__ptag {
-    @apply font-bold text-xs py-2;
+    @apply font-bold text-sm2 pt-9 pb-3;
   }
   &__title {
     @apply flex flex-1 items-center justify-between py-6;
   }
   &__price {
-    @apply items-center text-xl font-bold flex;
+    @apply items-center text-xl font-bold flex py-6;
   }
   &__count {
     @apply flex gap-4 text-center;

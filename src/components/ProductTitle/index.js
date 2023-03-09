@@ -3,12 +3,17 @@ import React from "react";
 
 const ProductTitle = ({ title, link }) => {
   return (
-    <section>
-      <div className="flex justify-between items-center py-4 ">
-        <h5 className="mb-0 text-xl font-bold">{title}</h5>
-        {link && <Link href={link}>{"View All"}</Link>}
-      </div>
-    </section>
+    <div className="flex justify-between items-center pt-[17px] pb-[15px]">
+      <h5 className="mb-0  font-bold leading-[120%]">{title}</h5>
+      {link && (
+        <Link
+          className="text-sm2 font-medium leading-[14.4px] border-b border-b-background2"
+          href={link}
+        >
+          {"View All"}
+        </Link>
+      )}
+    </div>
   );
 };
 
