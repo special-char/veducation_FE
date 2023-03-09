@@ -1,19 +1,18 @@
 .AboutPage {
-  @apply  flex-col  ;
+  @apply flex-col;
   &__Img {
-    @apply flex flex-col gap-8 pb-4;
+    @apply flex flex-col gap-[15px] pb-3;
   }
   &__Content {
-    @apply text-xl flex flex-col ;
+    @apply text-xl flex flex-col;
   }
-  &__span{
+  &__span {
     @apply text-primary2 font-bold;
   }
-  &__details{
-    @apply text-sm text-neutral-400 font-normal leading-6 flex flex-col gap-y-5 ;
+  &__details {
+    @apply text-sm text-neutral-400 font-normal leading-6 flex flex-col gap-y-5 pb-[19px];
   }
-  &__button{
-    @apply  bg-primary2 p-1 items-center justify-between text-center rounded-md  ;
+  &__button {
+    @apply bg-primary2 p-1 items-center justify-between text-center rounded-md;
   }
-  
 }

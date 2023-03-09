@@ -3,6 +3,7 @@ import styles from "./AboutPage.module.css";
 import Img from "public/AboutPageImg.png";
 import Image from "next/image";
 import Button from "../Button";
+import md from "markdown-it";
 
 const details = {
   p1: "Learn about vedic science, history, philosophy & culture in details.With Prateeik Prajapati, who has been reading and researching collective psychologies of world civilisations since last 7 years.",
@@ -17,23 +18,30 @@ const AboutPage = ({ data }) => {
       <div className={styles.AboutPage__Img}>
         <Image src={details.img} alt="aboutpage" className="w-full" />
         <div className={styles.AboutPage__Content}>
-          <p className="pb-0 mb-0 text-secondary font-medium">
+          <p className="large text-secondary leading-[32.5px]">
+            {data.attributes.greet}
+          </p>
+          <p className="large pb-0 mb-0 text-primary2  font-bold leading-[32.5px] w-[236px]">
             {data.attributes.title}
           </p>
         </div>
       </div>
-      <div className={styles.AboutPage__details}>
-        <p className={styles.AboutPage__details1}>
-          {data.attributes.description}
-        </p>
-
+      <div className="">
+        {/* <p className="">{data.attributes.desc}</p> */}
+        <div
+          className="text-sm leading-6"
+          style={{ whiteSpace: "pre-line" }}
+          dangerouslySetInnerHTML={{
+            __html: md().render(data.attributes.desc ?? ""),
+          }}
+        ></div>
         <div className={styles.AboutPage__button}>
           <Button
             variant="primary"
             size="large"
             as={"tell"}
             href=""
-            className={"text-[15px] w-full"}
+            className={"text-sm w-full"}
           >
             Tell Me More
           </Button>
