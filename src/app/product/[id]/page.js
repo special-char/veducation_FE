@@ -32,7 +32,9 @@ const Page = async (props) => {
           <p className={styles.ProductPage__ptag}>
             Delivery by Monday, 23 January
           </p>
-          <h3 className="text-xxl leading-6 mb-0 pb-2">{title}</h3>
+          <h3 className="text-xxl leading-6 mb-0 pb-2 text-[#5C5C5C]">
+            {title}
+          </h3>
           <RatingComponent
             ratingId={ratingId}
             slug={"product"}

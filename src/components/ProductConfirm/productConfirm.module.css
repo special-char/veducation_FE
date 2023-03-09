@@ -1,17 +1,16 @@
 .main {
-  
   &__detail {
-    @apply flex gap-2 border-b-2  border-[#EED9BC] justify-start p-2;
+    @apply flex gap-4 border-b-2  border-[#EED9BC] justify-start py-6;
   }
   /* &__img{
     @apply justify-center items-center;
   } */
 
   &__name {
-    @apply text-[#5C5C5C] pb-0 mb-0;
+    @apply text-[#5C5C5C] pb-0 mb-0 text-base;
   }
   &__price {
-    @apply text-[#261818] font-bold;
+    @apply text-[#261818] font-bold text-base;
   }
   &__arriving {
     @apply text-xs text-[#455441];
@@ -20,7 +19,7 @@
     @apply text-[#4CA137];
   }
   &__counter {
-    @apply flex gap-3;
+    @apply flex gap-4;
   }
   &__counterBtn {
     @apply h-7 w-7 rounded-md bg-[#EED9BC];
@@ -28,7 +27,7 @@
   &__dltBtn {
     @apply flex items-center justify-center gap-1 text-[#909090] text-xs border border-[949494] rounded-[4px] h-[30px] px-3  font-normal;
   }
- 
+
   &__counterSvg {
     @apply mx-auto;
   }

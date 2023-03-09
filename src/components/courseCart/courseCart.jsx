@@ -71,8 +71,14 @@ const CourseCart = ({ users, data: { data } }) => {
       </div>
       <div className={styles.main__orderDetail}>
         <div className={styles.main__order}>
-          <h6 className={styles.main__orderData}>Order:</h6>
-          <h6 className={styles.main__orderData}>${totalPrice.total}</h6>
+          <div className="flex justify-between">
+            <h5 className={styles.main__orderData}>Order:</h5>
+            <h5 className={styles.main__orderData}>${totalPrice.total}</h5>
+          </div>
+          <div className="flex justify-between">
+            <h5 className={styles.main__orderData}>Delivery:</h5>
+            <h5 className={styles.main__orderData}>$8</h5>
+          </div>
         </div>
 
         <div className={styles.main__total}>

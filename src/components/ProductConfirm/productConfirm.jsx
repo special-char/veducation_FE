@@ -69,20 +69,21 @@ const ProductConfirm = ({
             <div>
               {quantity > 0 && (
                 <div className={styles.main__counter}>
-                  <button
-                    onClick={decrementCount}
-                    className={styles.main__counterBtn}
-                  >
-                    <Minus className={styles.main__counterSvg} />
-                  </button>
-                  <h5 className={styles.main__counterValue}>{quantity}</h5>
-                  <button
-                    onClick={incrementCount}
-                    className={styles.main__counterBtn}
-                  >
-                    <Plus className={styles.main__counterSvg} />
-                  </button>
-
+                  <div className="flex gap-3">
+                    <button
+                      onClick={decrementCount}
+                      className={styles.main__counterBtn}
+                    >
+                      <Minus className={styles.main__counterSvg} />
+                    </button>
+                    <h5 className={styles.main__counterValue}>{quantity}</h5>
+                    <button
+                      onClick={incrementCount}
+                      className={styles.main__counterBtn}
+                    >
+                      <Plus className={styles.main__counterSvg} />
+                    </button>
+                  </div>
                   <button
                     className={styles.main__dltBtn}
                     onClick={() => {

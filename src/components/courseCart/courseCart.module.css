@@ -42,7 +42,7 @@
   }
 
   &__order {
-    @apply flex justify-between  text-[#808080];
+    @apply flex flex-col  justify-between  text-[#808080];
   }
   &__total {
     @apply flex justify-between;
