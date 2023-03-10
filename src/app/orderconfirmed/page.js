@@ -44,7 +44,7 @@ const details = {
   payment: "Cash on Delivery",
 };
 
-async function getSession(cookie) {
+export async function getSessionUser(cookie) {
   try {
     const response = await axios.get(`http://localhost:3000/api/auth/session`, {
       headers: {
@@ -58,16 +58,16 @@ async function getSession(cookie) {
   }
 }
 
-const Page = async () => {
-  const session = await getSession(headers().get("cookie") ?? "");
+const Page = async (props) => {
+  console.log({ orderConfirmed: props });
+  const session = await getSessionUser(headers().get("cookie") ?? "");
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
-  console.log({ session });
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
       <OrderSucess />
       <div>
-        <PurchasedItems user={user} />
+        <PurchasedItems {...props} user={user} />
       </div>
       <OrderDetails
         orderCode={details.orderCode}

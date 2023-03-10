@@ -3,28 +3,40 @@ import OrderdItem from "@/components/oderedItem/orderedItem";
 import { getPuchasedItems } from "@/lib/getPurchasedItems";
 import React from "react";
 
-const PurchasedItems = async ({ user }) => {
-  console.log({ user });
+const PurchasedItems = async ({ user, myorder, ...props }) => {
+  const currentCartItems = props?.searchParams?.cartItems?.split(",");
   const purchaseData = await getPuchasedItems(user?.id);
   console.log({
-    purchaseData: purchaseData?.data
-      ?.map((item) => item?.attributes?.product)
-      .map((x) => x.data?.attributes),
+    purchaseData: purchaseData?.data?.filter((item) => {
+      return currentCartItems?.map((ci) => {
+        return item?.id == ci;
+      });
+    }),
   });
 
-  const productList = purchaseData?.data
-    ?.map((item) => item?.attributes?.product)
-    .map((x) => x.data?.attributes);
-  console.log("productList data:", productList);
+  const productList = myorder
+    ? purchaseData?.data?.map(
+        (item) => item?.attributes?.product?.data?.attributes
+      )
+    : purchaseData?.data
+        ?.filter((item) => {
+          for (let i = 0; i < currentCartItems?.length; i++) {
+            const ci = currentCartItems[i];
+            if (item?.id == ci) return item;
+          }
+        })
+        .map((x) => x?.attributes?.product?.data?.attributes);
   return (
     <div>
-      {productList.map((x) => (
+      {productList?.map((x) => (
         <OrderdItem
           image={x?.posterImageUrl}
           price={x?.price}
           quantity={x?.items}
           title={x.title}
-          key="v"
+          price={x?.price}
+          quantity={x?.items}
+          key={x?.id}
         />
       ))}
     </div>

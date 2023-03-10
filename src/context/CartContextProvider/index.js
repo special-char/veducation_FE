@@ -1,5 +1,6 @@
 "use client";
 import { updateCart } from "@/lib/updateCart";
+import { currentDate } from "@/utils/constants";
 import { useSession } from "next-auth/react";
 import { createContext, use, useContext, useEffect, useReducer } from "react";
 import { useAppContext } from "../AppContextProvider";
@@ -72,6 +73,7 @@ export const CartContextProvider = ({ children }) => {
     cartIds.map((id) => {
       updateCart(id, {
         isPurchased: true,
+        created: currentDate(),
       });
     });
     dispatch({ cart: [] });

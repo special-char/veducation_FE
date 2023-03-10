@@ -3,6 +3,10 @@ import OrderdItem from "../../components/oderedItem/orderedItem";
 import Tshirt from "public/tshirt.png";
 import styles from "./yourOrderPage.module.css";
 import ProductConfirm from "../../components/ProductConfirm/productConfirm";
+import { getSessionUser } from "../orderconfirmed/page";
+import { headers } from "next/headers";
+import { getUser } from "@/lib/getUser";
+import PurchasedItems from "../orderconfirmed/PurchasedList";
 
 const items = [
   {
@@ -71,17 +75,15 @@ const items = [
   },
 ];
 
-const YourOrderPage = () => {
+const YourOrderPage = async () => {
+  const session = await getSessionUser(headers().get("cookie") ?? "");
+  const users = await getUser();
+  const user = users?.find((item) => item?.email === session?.user?.email);
+  console.log({ session });
   return (
-    <div className="h-full px-container md:p-0">
-      {items.map((x) => (
-        <OrderdItem
-          image={x.img}
-          title={x.item}
-          arriving={x.arriving}
-          key="v"
-        />
-      ))}
+    <div className="h-auto">
+      <h5 className="font-bold text-sm">your Order</h5>
+      <PurchasedItems user={user} myorder />
     </div>
   );
 };
