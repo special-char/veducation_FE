@@ -1,8 +1,8 @@
 .navBar {
-  @apply flex justify-evenly xl:justify-between gap-3 z-30 pt-4 max-w-[1248px];
+  @apply flex justify-evenly xl:justify-between gap-3 z-30 pt-4;
 
   &__navItem {
-    @apply flex flex-1 w-full max-w-[50px] flex-col items-center;
+    @apply flex flex-1 w-full h-16 justify-center flex-col items-center;
 
     &__svg {
       @apply w-5  pb-3;

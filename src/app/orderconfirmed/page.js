@@ -11,24 +11,24 @@ const items = [
     img: Tshirt,
     item: "Veducation T Shirt - Mens Tshirt Pure Black",
     price: "25.00",
-    totalpcs: "3pcs",
-    arriving: "12 june",
+    quantity: "3",
+    // arriving: "12 june",
     deliveredOn: "13 june",
   },
   {
     img: Tshirt,
     item: "Veducation T Shirt - Mens Tshirt Pure Black",
     price: "25.00",
-    totalpcs: "3pcs",
-    arriving: "12 june",
+    quantity: "3",
+    // arriving: "12 june",
     deliveredOn: "13 june",
   },
   {
     img: Tshirt,
     item: "Veducation T Shirt - Mens Tshirt Pure Black",
     price: "25.00",
-    totalpcs: "3pcs",
-    arriving: "12 june",
+    quantity: "3",
+    // arriving: "12 june",
     deliveredOn: "13 june",
   },
 ];
@@ -47,6 +47,8 @@ const Page = () => {
       <div>
         {items.map((x) => (
           <OrderdItem
+            price={x.price}
+            quantity={x.quantity}
             image={x.img}
             title={x.item}
             arriving={x.arriving}

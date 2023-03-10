@@ -7,13 +7,20 @@ import Plus from "public/icons/plus.svg";
 import Minus from "public/icons/minus.svg";
 import Delete from "public/icons/delete.svg";
 
-const OrderdItem = ({ image, title, price, quantity, arriving, deliveredOn }) => {
+const OrderdItem = ({
+  image,
+  title,
+  price,
+  quantity,
+  arriving,
+  deliveredOn,
+}) => {
   // const [arriving, setArriving] = useState(false);
 
   return (
     <div className={styles.main}>
       <div className={styles.main__detail} key="items">
-        <div className="relative aspect-square min-h-[60px]   ">
+        <div className="relative aspect-square min-h-[80px]   ">
           <Image src={image} alt="item" fill className={styles.main__img} />
         </div>
         <div className={styles.main__desc}>
