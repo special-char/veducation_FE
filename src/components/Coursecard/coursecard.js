@@ -20,7 +20,7 @@ const Coursecard = ({
           <div className={styles.cardRoot__body}>
             <h5 className={styles.cardRoot__title}>{title}</h5>
             <Reviews
-              className="text-xs "
+              className="text-base "
               width={22}
               height={22}
               count={count ?? 1}
@@ -28,10 +28,10 @@ const Coursecard = ({
               disabled
               isCourse
             />
-            <span className="text-xs font-semibold text-white">
+            <span className="text-sm font-semibold text-white">
               {duration} | {lessons}
             </span>
-            <br />
+
             <p className={styles.cardRoot__desc}>{description}</p>
           </div>
         </div>

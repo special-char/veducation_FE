@@ -52,7 +52,9 @@ const CourseDetails = async (props) => {
         <PlayIcon className={styles.coursedetails__playicon} />
       </div>
       <div className={styles.coursedetails__datails}>
-        <h3 className="mb-0">{data?.data?.attributes?.title}</h3>
+        <h3 className="mb-0 text-xxl leading-[27.3px]">
+          {data?.data?.attributes?.title}
+        </h3>
         <RatingComponent
           // className=""
           slug={"course"}
@@ -63,7 +65,7 @@ const CourseDetails = async (props) => {
           width={20}
           height={20}
         />
-        <span className="font-bold">
+        <span className="font-bold pt-3 text-sm2">
           {data?.data?.attributes?.duration} | {data?.data?.attributes?.lessons}
         </span>
         <div className={styles.coursedetails__prize}>
@@ -84,7 +86,7 @@ const CourseDetails = async (props) => {
         prefetch={false}
         variant={"primary"}
         size={"small"}
-        className="w-full"
+        className="w-full text-base"
       >
         Enroll Now
       </Button>

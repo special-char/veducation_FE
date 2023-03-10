@@ -1,5 +1,5 @@
 .cardRoot {
-  @apply grid gap-2;
+  @apply grid;
   grid-template-columns: 1fr;
   &__image {
     @apply aspect-video relative w-full;
@@ -10,13 +10,13 @@
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     z-index: 1;
-    @apply my-auto px-4;
+    @apply my-auto px-6;
   }
   &__title {
-    @apply font-bold text-white;
+    @apply mb-0 font-bold text-white leading-6;
   }
   &__desc {
-    @apply line-clamp-2 text-white;
+    @apply text-sm leading-[14.5px] font-normal line-clamp-2 text-white;
   }
 }
 /* .cardRoot {

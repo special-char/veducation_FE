@@ -149,7 +149,7 @@
   }
 
   details {
-    @apply mb-4 max-w-full bg-background px-2 border-b-2 border-primary4 py-3 text-left;
+    @apply mb-4 max-w-full bg-background px-2 border-b-2 border-neutral-1050 py-3 text-left;
 
     & > summary {
       @apply relative flex cursor-pointer list-none items-start justify-start text-2xl font-bold  md:items-center;
@@ -168,7 +168,7 @@
       }
     }
     & > div:last-child {
-      @apply overflow-hidden border-none pt-2 text-left text-sm;
+      @apply overflow-hidden border-none pt-2 text-left text-base font-bold;
     }
   }
 

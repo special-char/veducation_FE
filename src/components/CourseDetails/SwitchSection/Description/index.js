@@ -22,7 +22,7 @@ const Description = ({ data, id, reviewdata }) => {
         />
       </div>
       <div className={styles.coursedetails__reviewinfo}>
-        <h5 className="font-bold">Top Reviews</h5>
+        <h5 className="font-bold text-lg">Top Reviews</h5>
         <p className={styles.coursedetails__viewall}>View All</p>
       </div>
 

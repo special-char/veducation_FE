@@ -13,10 +13,9 @@ const Accordian = ({ data, hasTag }) => {
             "with-tag": hasTag,
           })}
         >
-          <summary className="font-semibold text-base text-secondary">
-            {val?.title}
-          </summary>
+          <summary className="font-semibold text-base ">{val?.title}</summary>
           <div
+            className="text-base text-neutral-150"
             dangerouslySetInnerHTML={{
               __html: md().render(val?.description || ""),
             }}

@@ -13,6 +13,7 @@ const SwitchSection = ({ data, id, reviewData }) => {
         <div className={styles.coursedetails__imformation}>
           <div className=" flex flex-col">
             <h5
+              className="leading-5"
               onClick={() => {
                 setSwitchedTo("desc");
               }}
@@ -45,7 +46,9 @@ const SwitchSection = ({ data, id, reviewData }) => {
             ></div>
           </div>
         </div>
-        <p className="text-base">{data?.data?.attributes?.description}</p>
+        <p className="text-base leading-6">
+          {data?.data?.attributes?.description}
+        </p>
       </div>
       {switchedTo === "desc" ? (
         <Description data={data} id={id} reviewData={reviewData} />
