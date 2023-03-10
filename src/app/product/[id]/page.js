@@ -5,7 +5,7 @@ import { getProductData } from "@/lib/getHomeProductData";
 import Image from "next/image";
 import AddBuy from "../AddBuy";
 import { getUser } from "@/lib/getUser";
-import { getCartItems } from "@/lib/getCartItems";
+import { getCartItems } from "@/lib/updateCart";
 import { getRating } from "@/lib/getRatings";
 import RatingComponent from "../../../components/RatingComponent";
 

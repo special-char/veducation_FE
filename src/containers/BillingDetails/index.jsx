@@ -1,4 +1,5 @@
 "use client";
+import { useCartProvider } from "@/context/CartContextProvider";
 import { addBillingDetails } from "@/lib/getBillingDetails";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -9,6 +10,10 @@ import { billingFields, billingInitValue } from "./Fields";
 const BillingDetails = ({ user: users }) => {
   const userSession = useSession();
   const navigate = useRouter();
+  const {
+    cartState: { cart },
+    emptyCart,
+  } = useCartProvider();
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
@@ -48,6 +53,7 @@ const BillingDetails = ({ user: users }) => {
               const response = await addBillingDetails(formValues);
               if (response.data) {
                 navigate.push("/orderconfirmed");
+                emptyCart(cart.map((c) => c.id));
               }
             } catch (error) {
               console.log(error, "addBillingDetails");

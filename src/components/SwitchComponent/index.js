@@ -16,7 +16,7 @@ const Switch = ({ childs }) => {
           <button
             key={child?.name}
             className={clx("border-b flex-1 font-bold", {
-              "border-b-primary border-b-[3px] z-10 text-primary ":
+              "border-b-primary border-b-[2px] z-10 text-primary ":
                 child?.name === status.component,
             })}
             onClick={() => {

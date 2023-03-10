@@ -3,15 +3,14 @@ import React, { useState } from "react";
 import styles from "./courseCart.module.css";
 import Send from "public/send.svg";
 import Promo from "public/promoCode.svg";
-import Image from "next/image";
-import Img from "public/img.png";
-import Delete from "public/delete.svg";
 import Button from "@/components/Button";
 import Link from "next/link";
 import Input from "@/components/InputComponent";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useCartProvider } from "@/context/CartContextProvider";
+import { addPurchase } from "@/lib/getPurchase";
+import { usePurchaseContext } from "@/context/PurchasContextProvider";
 
 const data = {
   orderPrice: "75",
@@ -20,6 +19,10 @@ const data = {
 
 const CourseCart = ({ users, data: { data } }) => {
   const [searchValue, setSearchValue] = useState("");
+
+  const navigate = useRouter();
+
+  const { addPurchaseItems } = usePurchaseContext();
 
   const handleSearch = () => {
     setSearchValue("");
@@ -31,7 +34,9 @@ const CourseCart = ({ users, data: { data } }) => {
   );
   const {
     cartState: { cart },
+    emptyCart,
   } = useCartProvider();
+
   function calculatePrice(cartItems, rate = 0.7) {
     const t = cartItems?.reduce((p, c) => {
       return (
@@ -39,13 +44,37 @@ const CourseCart = ({ users, data: { data } }) => {
         c?.attributes?.product?.data?.attributes?.price * c.attributes.quantity
       );
     }, 0);
-    return { total: t, withTax: t * rate };
+    return { total: t, withTax: (t * rate).toFixed(2) };
   }
 
   const totalPrice = calculatePrice(cart, 1.12);
   const shippingDetail = data?.find((shipping) => {
     return shipping?.attributes?.user_id?.data?.id === user?.id;
   });
+
+  console.log({ cart: cart.map((c) => `${c.id}`) });
+
+  async function checkout() {
+    try {
+      const response = await addPurchase({
+        cartId: cart.map((c) => c.id),
+        user: user?.id,
+      });
+      if (response.data) {
+        console.log({ purchase: response?.data?.attributes?.cartId?.data });
+        if (shippingDetail) {
+          addPurchaseItems(cart);
+          navigate.push("/orderconfirmed");
+          emptyCart(cart.map((c) => c.id));
+          return;
+        }
+        addPurchaseItems(cart);
+        navigate.push("/billingdetails");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className={styles.main}>
@@ -89,8 +118,9 @@ const CourseCart = ({ users, data: { data } }) => {
 
       <div>
         <Button
-          as={Link}
-          href={shippingDetail ? "/orderconfirmed" : "/billingdetails"}
+          as={"button"}
+          // href={shippingDetail ? "/orderconfirmed" : "/billingdetails"}
+          onClick={checkout}
           variant="primary"
           className="w-full p-3"
           size={"large"}

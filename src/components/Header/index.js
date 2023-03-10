@@ -11,7 +11,7 @@ import AppContextProvider, {
   useAppContext,
 } from "@/context/AppContextProvider";
 import { useCartProvider } from "@/context/CartContextProvider";
-import { getCartItems } from "@/lib/getCartItems";
+import { getCartItems } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
 import { useRatingContext } from "@/context/RatingContext";
 import { useRouter } from "next/navigation";

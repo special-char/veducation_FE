@@ -1,10 +1,14 @@
 import OrderdItem from "@/components/oderedItem/orderedItem";
 import React from "react";
 import OrderSucess from "./OrderConfirm/OrderConfirm";
-import OrderDetails from "./orderdetails";
+import OrderDetails from "./Orderdetails";
 import Tshirt from "public/tshirt.png";
 import Link from "next/link";
 import Button from "@/components/Button";
+import PurchasedItems from "./PurchasedList";
+import { getUser } from "@/lib/getUser";
+import { headers } from "next/headers";
+import axios from "axios";
 
 const items = [
   {
@@ -40,21 +44,30 @@ const details = {
   payment: "Cash on Delivery",
 };
 
-const Page = () => {
+async function getSession(cookie) {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/auth/session`, {
+      headers: {
+        cookie,
+      },
+    });
+
+    return Object.keys(response.data).length > 0 ? response.data : null;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const Page = async () => {
+  const session = await getSession(headers().get("cookie") ?? "");
+  const users = await getUser();
+  const user = users?.find((item) => item?.email === session?.user?.email);
+  console.log({ session });
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
       <OrderSucess />
       <div>
-        {items.map((x) => (
-          <OrderdItem
-            price={x.price}
-            quantity={x.quantity}
-            image={x.img}
-            title={x.item}
-            arriving={x.arriving}
-            key="v"
-          />
-        ))}
+        <PurchasedItems user={user} />
       </div>
       <OrderDetails
         orderCode={details.orderCode}
