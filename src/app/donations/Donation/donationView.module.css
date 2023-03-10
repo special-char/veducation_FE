@@ -17,26 +17,23 @@
     @apply pb-2 rounded-sm w-full;
   }
   &__about {
-    @apply font-bold  text-[#3A3A3A] mb-0 pb-4 pt-2 leading-none;
+    @apply font-bold  mb-0 pb-4 pt-2 leading-4;
   }
   &__value {
-    @apply text-xs text-[#3A3A3A]  pb-0 mb-0;
+    @apply text-sm2 text-[#3A3A3A]  pb-1 mb-0 flex gap-1 items-center;
   }
-  &__infoBtn {
-    @apply text-xs flex pb-4;
+  &__chip_container {
+    @apply text-xs flex items-center pb-4;
   }
-  &__day {
-    @apply bg-[#F7DCBD]  h-5 px-3  leading-none mx-2 rounded font-normal flex  items-center gap-1 py-3;
-  }
-  &__person {
-    @apply bg-[#F7DCBD]  h-5 px-3  leading-none mx-2 rounded font-normal flex items-center gap-1 py-3;
+  &__chip {
+    @apply bg-[#F7DCBD] px-3 text-sm font-bold leading-none mx-2 rounded  flex  items-center gap-1 py-3;
   }
 
   &__span {
-    @apply font-bold;
+    @apply font-bold text-base;
   }
   &__btns {
-    @apply flex  font-bold;
+    @apply flex gap-2 font-bold;
   }
   &__Share {
     @apply text-xs text-[#3F3F3F] w-full h-9 flex-1 bg-[#FFE6C3] mr-2 rounded border border-[#F5D9B1];
