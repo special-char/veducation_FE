@@ -1,32 +1,20 @@
 .details {
-  @apply w-full  left-3;
   &__heading {
-    @apply font-bold text-sm gap-x-11 flex  leading-5 items-center;
-  }
-  &__hText {
-    @apply text-neutral-800 flex gap-x-11; 
+    @apply font-bold leading-[18px];
   }
   &__detail {
-    @apply flex flex-col border-b-2  border-[#E6E8EC];
-  }
-
-  &__border {
-    @apply border-b-2  border-[#E6E8EC] flex flex-col ;
-  }
-  &__noBorder {
     @apply flex flex-col;
   }
-
+  &__border {
+    @apply border-b-2  border-[#E6E8EC] py-3 last:border-none flex flex-col gap-2;
+  }
   &__item {
-    @apply font-medium mt-2 leading-6 items-start flex flex-none order-1 gap-2 flex-grow-0;
+    @apply flex items-center gap-3;
   }
   &__name {
-    @apply text-neutral-200;
-  }
-  &__value {
-    @apply mb-2 font-bold text-sm leading-6 flex items-center flex-none order-1 flex-grow-0;
+    @apply text-neutral-200 text-base leading-6 font-medium;
   }
   &__Text {
-    @apply text-secondary;
+    @apply text-secondary text-base font-bold;
   }
 }
