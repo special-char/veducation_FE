@@ -33,13 +33,13 @@ const OrderdItem = ({
           )}
 
           {arriving && (
-            <p className={styles.main__arriving}>
+            <p className={styles.main__price}>
               Arriving by :<span className={styles.main__date}>{arriving}</span>
             </p>
           )}
 
           {deliveredOn && (
-            <p className={styles.main__arriving}>
+            <p className={styles.main__price}>
               delivery by :
               <span className={styles.main__date}>{deliveredOn}</span>
             </p>

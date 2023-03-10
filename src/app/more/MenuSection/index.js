@@ -23,7 +23,7 @@ const MenuSection = () => {
     {
       icon: <Myorders className="w-5" />,
       title: "My Orders",
-      href: "/myorders",
+      href: "/orders",
       component: Link,
     },
     {

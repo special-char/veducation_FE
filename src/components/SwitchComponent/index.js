@@ -1,36 +1,33 @@
 "use client";
 import React from "react";
-import { useState } from "react";
 import clx from "classnames";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const Switch = ({ childs }) => {
-  const [status, setStatus] = useState({
-    Page: childs[0]?.Page(),
-    component: childs[0]?.name,
-  });
-  const Component = () => status.Page;
+const Switch = ({ childs = [{ name, btnTitle }] }) => {
+  const pathname = usePathname();
+
   return (
     <div>
-      <span className="flex flex-1">
-        {childs.map((child) => (
-          <button
+      <span className="flex flex-1 ">
+        {childs?.map((child) => (
+          <Link
+            href={child.name}
             key={child?.name}
-            className={clx("border-b flex-1 font-bold", {
-              "border-b-primary border-b-[2px] z-10 text-primary ":
-                child?.name === status.component,
+            className={clx("flex-1 font-bold border-b-2 border-[#BABABA]", {
+              "border-b-primary border-b-2": pathname === child.name,
             })}
-            onClick={() => {
-              setStatus((prev) => {
-                return { component: child?.name, Page: child.Page() };
-              });
-            }}
           >
-            {child.btnTitle}
-          </button>
+            <div
+              className={clx("text-center ", {
+                "text-primary ": pathname === child.name,
+              })}
+            >
+              {child?.btnTitle}
+            </div>
+          </Link>
         ))}
       </span>
-
-      <Component />
     </div>
   );
 };

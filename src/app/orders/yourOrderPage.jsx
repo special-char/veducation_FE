@@ -73,8 +73,7 @@ const items = [
 
 const YourOrderPage = () => {
   return (
-    <div className="h-auto">
-      <h5 className="font-bold text-sm">your Order</h5>
+    <div className="h-full px-container md:p-0">
       {items.map((x) => (
         <OrderdItem
           image={x.img}
