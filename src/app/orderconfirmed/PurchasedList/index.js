@@ -15,14 +15,15 @@ const PurchasedItems = async ({ user }) => {
   const productList = purchaseData?.data
     ?.map((item) => item?.attributes?.product)
     .map((x) => x.data?.attributes);
-
+  console.log("productList data:", productList);
   return (
     <div>
       {productList.map((x) => (
         <OrderdItem
           image={x?.posterImageUrl}
+          price={x?.price}
+          quantity={x?.items}
           title={x.title}
-          arriving={x?.arriving ?? "in 3 days"}
           key="v"
         />
       ))}
