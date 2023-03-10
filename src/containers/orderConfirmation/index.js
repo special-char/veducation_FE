@@ -1,6 +1,6 @@
 import OrderdItem from "@/components/oderedItem/orderedItem";
 import OrderSucess from "@/app/orderconfirmed/OrderConfirm/OrderConfirm";
-import OrderDetails from "@/app/orderconfirmed/orderdetails";
+import OrderDetails from "@/app/orderconfirmed/Orderdetails";
 import Tshirt from "public/blacktshirt.png";
 
 import React from "react";
