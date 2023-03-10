@@ -66,7 +66,7 @@ const Page = () => {
         as={Link}
         href="/myorders"
         size="large"
-        className="w-full"
+        className="w-full text-base py-4"
         variant="primary"
       >
         Order History

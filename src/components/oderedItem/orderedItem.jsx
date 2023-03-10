@@ -28,7 +28,7 @@ const OrderdItem = ({
 
           {price && (
             <p className={styles.main__price}>
-              $ {price}| {quantity} pcs
+              $ {price} | {quantity} pcs
             </p>
           )}
 
