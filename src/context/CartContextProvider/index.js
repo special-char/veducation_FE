@@ -1,10 +1,8 @@
 "use client";
-import { getCartItems } from "@/lib/getCartItems";
 import { updateCart } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
 import { createContext, use, useContext, useEffect, useReducer } from "react";
 import { useAppContext } from "../AppContextProvider";
-import { useRatingContext } from "../RatingContext";
 
 const initialState = {
   cart: [],
@@ -70,8 +68,19 @@ export const CartContextProvider = ({ children }) => {
     }
   }
 
+  function emptyCart(cartIds) {
+    cartIds.map((id) => {
+      updateCart(id, {
+        isPurchased: true,
+      });
+    });
+    dispatch({ cart: [] });
+  }
+
   return (
-    <CartContext.Provider value={{ cartState, addItem, cartInit, updateCount }}>
+    <CartContext.Provider
+      value={{ cartState, addItem, cartInit, updateCount, emptyCart }}
+    >
       {children}
     </CartContext.Provider>
   );

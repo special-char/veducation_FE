@@ -9,11 +9,11 @@ import AppContextProvider from "@/context/AppContextProvider";
 import AuthContext from "@/context/AuthContextProvider";
 import axios from "axios";
 import { CartContextProvider } from "@/context/CartContextProvider";
-import { getCartItems } from "@/lib/getCartItems";
+import { getCartItems } from "@/lib/updateCart";
 import { getUser } from "@/lib/getUser";
-import { getCart } from "@/lib/getCart";
 import { RatingContextProvider } from "@/context/RatingContext";
 import { getAllRatings, getRating } from "@/lib/getRatings";
+import { PurchaseContextProvider } from "@/context/PurchasContextProvider";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -65,18 +65,20 @@ export default async function RootLayout({ children }) {
           <AppContextProvider user={user}>
             <RatingContextProvider>
               <CartContextProvider>
-                <Suspense fallback={<loading>loading....</loading>}>
-                  <main className="bg-background md:px-container h-full scroll-pb-8">
-                    <Header
-                      {...defaultCartItems}
-                      ratings={ratings}
-                      session={session}
-                      users={users}
-                    />
-                    {children}
-                    <Navbar />
-                  </main>
-                </Suspense>
+                <PurchaseContextProvider>
+                  <Suspense fallback={<loading>loading....</loading>}>
+                    <main className="bg-background md:px-container h-full scroll-pb-8">
+                      <Header
+                        {...defaultCartItems}
+                        ratings={ratings}
+                        session={session}
+                        users={users}
+                      />
+                      {children}
+                      <Navbar />
+                    </main>
+                  </Suspense>
+                </PurchaseContextProvider>
               </CartContextProvider>
             </RatingContextProvider>
           </AppContextProvider>
