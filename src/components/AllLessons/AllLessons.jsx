@@ -7,27 +7,27 @@ const AllLessons = () => {
   const details = [
     {
       img: coursesImg,
-      p: "Lesson 01: Brahmacharya - The basics you need to understand",
+      title: "Lesson 01: Brahmacharya - The basics you need to understand",
       time: "9:45",
     },
     {
       img: coursesImg,
-      p: "Lesson 01: Brahmacharya - The basics you need to understand",
+      title: "Lesson 01: Brahmacharya - The basics you need to understand",
       time: "9:45",
     },
     {
       img: coursesImg,
-      p: "Lesson 01: Brahmacharya - The basics you need to understand",
+      title: "Lesson 01: Brahmacharya - The basics you need to understand",
       time: "9:45",
     },
     {
       img: coursesImg,
-      p: "Lesson 01: Brahmacharya - The basics you need to understand",
+      title: "Lesson 01: Brahmacharya - The basics you need to understand",
       time: "9:45",
     },
     {
       img: coursesImg,
-      p: "Lesson 01: Brahmacharya - The basics you need to understand",
+      title: "Lesson 01: Brahmacharya - The basics you need to understand",
       time: "9:45",
     },
   ];
@@ -44,7 +44,7 @@ const AllLessons = () => {
             />
           </div>
           <div className={styles.AllLessons__right}>
-            <p className={styles.AllLessons__p}>{x.p}</p>
+            <p className={styles.AllLessons__title}>{x.title}</p>
             <p className={styles.AllLessons__span}>{x.time}</p>
           </div>
         </div>
