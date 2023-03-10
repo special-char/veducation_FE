@@ -64,7 +64,7 @@ const CourseCart = ({ users, data: { data } }) => {
         console.log({ purchase: response?.data?.attributes?.cartId?.data });
         if (shippingDetail) {
           addPurchaseItems(cart);
-          navigate.push("/orderconfirmed");
+          navigate.push(`/orderconfirmed?cartItems=${cart.map((c) => c.id)}`);
           emptyCart(cart.map((c) => c.id));
           return;
         }
