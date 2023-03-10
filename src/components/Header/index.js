@@ -67,8 +67,9 @@ const Header = ({ data, users, ratings }) => {
               {cart?.reduce((p, c) => p + c?.attributes?.quantity, 0)}
             </span>
           )}
-
-          <Bell onClick={() => {}} />
+          <Link href="/notification">
+            <Bell onClick={() => {}} />
+          </Link>
           {notifications !== 0 && (
             <span className={styles.headerRoot__rightIcon__floatNum}>
               {notifications}

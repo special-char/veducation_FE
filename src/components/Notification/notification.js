@@ -6,9 +6,9 @@ const Notification = ({ ...props }) => {
   return (
     <div className={styles.main}>
       <div className={styles.main__page}>
-        <BellSvg className="w-4 h-4" />
+        <BellSvg className="w-5 h-5" />
       </div>
-      <div className={styles.main__body}>
+      <div>
         <h6 className={styles.main__order}>
           {props.title}:
           <p>
