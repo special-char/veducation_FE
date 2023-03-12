@@ -11,7 +11,7 @@ const initialState = {
   inviteUs: false,
   success: false,
   authToken: "",
-  user: {},
+  error: {},
 };
 
 export const AppContext = createContext(initialState);

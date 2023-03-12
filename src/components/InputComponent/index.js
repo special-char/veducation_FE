@@ -11,9 +11,11 @@ const Input = ({
   className,
   id,
   icon: Icon,
+  shown: Shown,
   ...props
 }) => {
   const [type, setType] = useState(props.type);
+  const [shown, setShown] = useState(false);
   // if (props.type === "checkbox") {
   //   return <Checkbox {...props} />;
   // }
@@ -30,7 +32,7 @@ const Input = ({
       >
         <input
           id={id}
-          type={type}
+          type={!shown ? "text" : type}
           className={clsx(
             "w-full p-2 placeholder-secondary  bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base row-span-full col-span-full",
             {
@@ -40,8 +42,21 @@ const Input = ({
           {...field}
           {...props}
         />
-        {props.type === "password"}
-        {Icon && (
+        {props.type === "password" && Icon && (
+          <div
+            role="button"
+            onClick={() => {
+              setShown((p) => !p);
+            }}
+            className="row-span-full px-2"
+            style={{
+              gridColumn: "2 / -1",
+            }}
+          >
+            {shown ? <Shown /> : <Icon />}
+          </div>
+        )}
+        {props.type !== "password" && Icon && (
           <div
             role="button"
             onClick={() => {
