@@ -5,11 +5,11 @@ import React from "react";
 import { getBillingDetails } from "@/lib/getBillingDetails";
 import { getUser } from "@/lib/getUser";
 
-const Page = async () => {
+const Page = async (props) => {
   const user = await getUser();
   return (
     <section className="">
-      <BillingDetails user={user} />
+      <BillingDetails user={user} {...props} />
     </section>
   );
 };

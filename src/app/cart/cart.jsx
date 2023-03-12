@@ -6,6 +6,7 @@ import { getProductData } from "@/lib/getHomeProductData";
 import { getUser } from "@/lib/getUser";
 import { getBillingDetails } from "@/lib/getBillingDetails";
 import CartItemList from "./CartItemList";
+import { getCourseDetails } from "@/lib/getCourseDetails";
 
 const data = {
   orderPrice: "75",
@@ -14,25 +15,52 @@ const data = {
   price: "55$",
 };
 
-const CartPage = async () => {
+const CartPage = async (props) => {
   const user = await getUser();
   const billingData = await getBillingDetails();
+  const course = await getCourseDetails(props?.searchParams?.course);
 
+  console.log(course);
   const items = [];
   return (
     <div className=" flex flex-col gap-2 h-full justify-between">
       <div className="flex flex-col ">
-        <CartItemList />
+        {props?.searchParams?.course ? (
+          <>
+            <ProductConfirm
+              image={course?.data?.attributes?.img}
+              title={course?.data?.attributes?.title}
+              price={`$${course?.data?.attributes?.price}`}
+              quantity={1}
+              // key={x?.id}
+              isCourse
+              attributes={course?.data?.attributes}
+            />
+            <CourseCart
+              users={user}
+              data={billingData}
+              title={data.title}
+              price={data.price}
+              orderPrice={data.orderPrice}
+              totalAmount={data.totalAmount}
+              className="gap-y-16"
+            />
+          </>
+        ) : (
+          <>
+            <CartItemList />
+            <CourseCart
+              users={user}
+              data={billingData}
+              title={data.title}
+              price={data.price}
+              orderPrice={data.orderPrice}
+              totalAmount={data.totalAmount}
+              className="gap-y-16"
+            />
+          </>
+        )}
       </div>
-      <CourseCart
-        users={user}
-        data={billingData}
-        title={data.title}
-        price={data.price}
-        orderPrice={data.orderPrice}
-        totalAmount={data.totalAmount}
-        className="gap-y-16"
-      />
     </div>
   );
 };
