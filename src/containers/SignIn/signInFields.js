@@ -1,5 +1,6 @@
 import Input from "@/components/InputComponent";
-import SearchIcon from "public/icons/Search.svg";
+import Hidden from "public/icons/passwordHidden.svg";
+import Shown from "public/icons/passwordShown.svg";
 
 export const signInInitValue = {
   email: "",
@@ -30,7 +31,8 @@ export const signInFields = [
     label: "Password",
     autoComplete: "current-password",
     placeholder: "Please enter Password..",
-    // icon: () => <SearchIcon height={24} width={24} />,
+    icon: () => <Hidden height={18} width={18} />,
+    shown: () => <Shown height={18} width={18} />,
     validate: (value) => {
       if (!value) {
         return "Please Enter Password";

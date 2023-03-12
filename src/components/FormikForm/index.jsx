@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, FastField, Form } from "formik";
 import Button from "../Button";
 
-const FormikForm = ({ fields, ...prpos }) => {
+const FormikForm = ({ fields, children, ...prpos }) => {
   return (
     <Formik {...prpos}>
       {() => (
@@ -11,6 +11,7 @@ const FormikForm = ({ fields, ...prpos }) => {
           {fields.map((x) => (
             <FastField key={x.name} {...x} />
           ))}
+          {children && children}
           <Button
             as="button"
             type="submit"
