@@ -5,11 +5,14 @@ const SocialIcon = ({ Icon, name, variant }) => {
   return (
     <div className="flex justify-center items-center flex-col">
       <div
-        className={clx({
-          "bg-gradient-to-tr from-[#FECD00] flex rounded-full flex-col h-[67px] w-[67px] justify-center items-center via-[#F9373F] to-[#C913B9]":
+        className={clx(
+          "flex rounded-full flex-col h-[67px] w-[67px] justify-center items-center ",
+          {
+            "bg-gradient-to-tr from-[#FECD00] flex rounded-full flex-col h-[67px] w-[67px] justify-center items-center via-[#F9373F] to-[#C913B9]":
+              variant === "social",
             // "bg-gradient-to-tr from-[#C913B9] flex rounded-full flex-col h-[67px] w-[67px] justify-center items-center via-[#F9373F] to-[#FECD00]":
-            variant === "social",
-        })}
+          }
+        )}
       >
         <div
           className={clx(
@@ -18,14 +21,14 @@ const SocialIcon = ({ Icon, name, variant }) => {
               "bg-secondary  border-2 border-white": variant === "social",
             },
             {
-              "bg-neutral-1000": variant === "user",
+              "bg-neutral-1000 border-2 border-transparent": variant === "user",
             }
           )}
         >
           <Icon />
         </div>
       </div>
-      <p className="text-neutral-100 text-sm">{name}</p>
+      <p className="text-neutral-100 text-sm min-w-max">{name}</p>
     </div>
   );
 };

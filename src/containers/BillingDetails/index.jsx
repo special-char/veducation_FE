@@ -7,9 +7,10 @@ import React from "react";
 import FormikForm from "../../components/FormikComponent/FormikForm";
 import { billingFields, billingInitValue } from "./Fields";
 
-const BillingDetails = ({ user: users }) => {
+const BillingDetails = ({ user: users, ...props }) => {
   const userSession = useSession();
   const navigate = useRouter();
+  const currentCartIds = props?.searchParams?.cartItems?.split(",");
   const {
     cartState: { cart },
     emptyCart,
@@ -17,6 +18,7 @@ const BillingDetails = ({ user: users }) => {
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
+  console.log(props, cart);
   return (
     <div className="px-container ">
       <p className="text-2xl font-bold text-neutral-950 my-6">
@@ -52,8 +54,17 @@ const BillingDetails = ({ user: users }) => {
             try {
               const response = await addBillingDetails(formValues);
               if (response.data) {
-                navigate.push("/orderconfirmed");
-                emptyCart(cart.map((c) => c.id));
+                navigate.push(`/orderconfirmed?cartItems=${currentCartIds}`);
+                emptyCart(
+                  cart.map((c) => c.id),
+                  cart.map((c) => {
+                    return {
+                      id: c?.attributes?.product?.data?.id,
+                      quantity: c?.attributes?.quantity,
+                    };
+                  })
+                  // cart.map((c) => c.attributes.quantity)
+                );
               }
             } catch (error) {
               console.log(error, "addBillingDetails");

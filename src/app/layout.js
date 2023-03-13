@@ -35,7 +35,6 @@ async function getSession(cookie) {
         cookie,
       },
     });
-
     return Object.keys(response.data).length > 0 ? response.data : null;
   } catch (error) {
     console.log(error);

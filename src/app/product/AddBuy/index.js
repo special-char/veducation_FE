@@ -1,11 +1,10 @@
 "use client";
 import Button from "@/components/Button";
-import { useAppContext } from "@/context/AppContextProvider";
 import { useCartProvider } from "@/context/CartContextProvider";
-import { addToCart, updateCart } from "@/lib/updateCart";
+import { addToCart } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useContext } from "react";
+import React from "react";
 import styles from "../[id]/product.module.css";
 
 const AddBuy = ({ id, users }) => {
@@ -26,7 +25,7 @@ const AddBuy = ({ id, users }) => {
     }
   });
 
-  async function onAddToCart() {
+  async function onAddToCartApi() {
     try {
       const res = await addToCart(
         id,
@@ -36,21 +35,39 @@ const AddBuy = ({ id, users }) => {
       );
       if (res.data) {
         addItem(res.data);
-        // navigate.navigate.replace(`/product/${id}`);
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  function onUpdateCart() {
-    try {
-      updateCart(currentCart?.id, {
-        quantity: currentCart?.attributes?.quantity + 1,
-      });
-    } catch (error) {
-      console.log(error);
+  function onCartClick() {
+    if (!data?.data?.user) {
+      const response = confirm("Please Sign up or login to continue");
+      if (response) navigate.push("/");
+      return;
     }
+    if (currentCart?.id) {
+      const res = confirm("Item is already in the cart");
+      if (res) navigate.push("/cart");
+      return;
+    }
+    onAddToCartApi();
+  }
+
+  function onBuyClick() {
+    if (!data?.data?.user) {
+      const response = confirm("Please Sign up or login to continue");
+      if (response) navigate.push("/");
+      return;
+    }
+    if (currentCart?.id) {
+      const res = confirm("Item is already in the cart");
+      if (res) navigate.push("/cart");
+      return;
+    }
+    onAddToCartApi();
+    navigate.push("/cart");
   }
 
   return (
@@ -60,19 +77,7 @@ const AddBuy = ({ id, users }) => {
         className="md:flex md:justify-center"
         variant={"secondary"}
         size={"large"}
-        onClick={() => {
-          if (!data?.data?.user) {
-            const response = confirm("Please Sign up or login to continue");
-            if (response) navigate.push("/");
-            return;
-          }
-          if (currentCart?.id) {
-            const res = confirm("Item is already in the cart");
-            if (res) navigate.push("/cart");
-            return;
-          }
-          onAddToCart();
-        }}
+        onClick={onCartClick}
       >
         {currentCart?.id ? "Added to cart" : "Add to cart"}
       </Button>
@@ -83,14 +88,7 @@ const AddBuy = ({ id, users }) => {
         prefetch={false}
         variant={"primary"}
         size={"large"}
-        onClick={() => {
-          if (!data?.data?.user) {
-            const response = confirm("Please Sign up or login to continue");
-            if (response) navigate.push("/");
-            return;
-          }
-          navigate.push("/cart");
-        }}
+        onClick={onBuyClick}
       >
         Buy now
       </Button>
