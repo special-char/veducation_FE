@@ -10,10 +10,10 @@
     @apply flex flex-col gap-2;
   }
   &__title {
-    @apply text-[13px] font-bold text-neutral-500 leading-5;
+    @apply text-sm2 font-bold text-neutral-500 leading-5;
   }
   &__span {
-    @apply text-[13px] leading-3 text-neutral-400 font-bold font-sans;
+    @apply text-sm leading-3 text-neutral-400 font-bold font-sans;
   }
   &__img {
     @apply aspect-auto content-center   object-cover absolute rounded-sm;
