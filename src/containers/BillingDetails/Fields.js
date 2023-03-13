@@ -21,7 +21,7 @@ export const billingFields = [
     label: "FIRST NAME",
     placeholder: "Tam",
     name: "name",
-    className: "w-full mr-0 text-sm p-0",
+    className: "text-base",
     autoComplete: "irst name",
     type: "text",
     validate: (value) => {

@@ -50,7 +50,7 @@ export const editProfileFields = [
     label: "NAME",
     placeholder: "Full Name",
     name: "name",
-    className: "w-full mr-0 text-sm p-0",
+    className: "w-full mr-0 text-base p-0",
     autoComplete: "name",
     type: "text",
     validate: (value) => {

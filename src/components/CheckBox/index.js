@@ -8,7 +8,7 @@ const Checkbox = ({
 }) => {
   return (
     <div>
-      <label htmlFor="" className="text-xs text-neutral-150">
+      <label htmlFor="" className="text-sm2 text-neutral-150">
         {label}
       </label>
       <fieldset>
@@ -26,7 +26,9 @@ const Checkbox = ({
                 setFieldTouched(name, true);
               }}
             />
-            <label htmlFor={x.id}>{x.text}</label>
+            <label htmlFor={x.id} className="text-base">
+              {x.text}
+            </label>
           </div>
         ))}
         {touched && errors && !!touched[name] && !!errors[name] && (
