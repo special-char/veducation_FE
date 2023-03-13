@@ -11,7 +11,7 @@ const Dropdown = ({
 }) => {
   return (
     <div>
-      <label htmlFor={props.id} className="text-xs">
+      <label htmlFor={props.id} className="text-sm2">
         {props.label}
       </label>
       <select

@@ -16,7 +16,7 @@ const FormikForm = ({ fields, ...prpos }) => {
             type="submit"
             variant="primary"
             size="small"
-            className={"w-full"}
+            className={"w-full text-lg"}
           >
             Continue
           </Button>
