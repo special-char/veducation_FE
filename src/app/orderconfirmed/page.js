@@ -9,6 +9,7 @@ import PurchasedItems from "./PurchasedList";
 import { getUser } from "@/lib/getUser";
 import { headers } from "next/headers";
 import axios from "axios";
+import { getPuchasedItems } from "@/lib/getPurchasedItems";
 
 const items = [
   {
@@ -63,16 +64,38 @@ const Page = async (props) => {
   const session = await getSessionUser(headers().get("cookie") ?? "");
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
+  const currentCartIds = props?.searchParams?.cartItems?.split(",");
+  const purchaseData = await getPuchasedItems(user?.id);
+  const productList = purchaseData?.data
+    ?.filter((item) => {
+      for (let i = 0; i < currentCartIds?.length; i++) {
+        const ci = currentCartIds[i];
+        if (item?.id == ci) return item;
+      }
+    })
+    .map((x) => x?.attributes?.product?.data?.attributes);
+  console.log(
+    productList.reduce((p, c) => {
+      return p + c.price * c.items;
+    }, 0)
+  );
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
       <OrderSucess />
       <div>
-        <PurchasedItems {...props} user={user} />
+        <PurchasedItems
+          {...props}
+          currentCartIds={currentCartIds}
+          purchaseData={purchaseData}
+          user={user}
+        />
       </div>
       <OrderDetails
         orderCode={details.orderCode}
         date={details.date}
-        total={details.total}
+        total={`$ ${productList.reduce((p, c) => {
+          return (p + c.price * c.items) * 1.07;
+        }, 0)}`}
         payment={details.payment}
       />
       <Button

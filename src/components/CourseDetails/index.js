@@ -82,7 +82,7 @@ const CourseDetails = async (props) => {
       />
       <Button
         as={Link}
-        href="/cart?course"
+        href={`/cart?course=${props?.params?.id}`}
         prefetch={false}
         variant={"primary"}
         size={"small"}

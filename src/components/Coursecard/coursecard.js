@@ -18,7 +18,7 @@ const Coursecard = ({
             <Image src={img} fill alt="" className="" />
           </div>
           <div className={styles.cardRoot__body}>
-            <h5 className={styles.cardRoot__title}>{title}</h5>
+            <h4 className={styles.cardRoot__title}>{title}</h4>
             <Reviews
               className="text-base "
               width={22}

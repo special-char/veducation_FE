@@ -6,7 +6,7 @@ export default NextAuth({
   session: {
     strategy: "jwt",
   },
-  // Configure one or more authentication providers
+  
   providers: [
     CredentialsProvider({
       name: "scott-point",
@@ -45,12 +45,10 @@ export default NextAuth({
         return {
           ...token,
           accessToken: user?.access_token,
-          // roles: user?.data?.user?.roles,
         };
       }
 
       return token;
-      // return { ...token, ...user, ...account };
     },
     session({ session, token, user }) {
       session.user.accessToken = token.accessToken || token.jti;

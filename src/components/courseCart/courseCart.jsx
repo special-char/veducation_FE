@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useCartProvider } from "@/context/CartContextProvider";
 import { addPurchase } from "@/lib/getPurchase";
 import { usePurchaseContext } from "@/context/PurchasContextProvider";
+import { calculatePrice } from "@/utils/constants";
 
 const data = {
   orderPrice: "75",
@@ -37,16 +38,6 @@ const CourseCart = ({ users, data: { data } }) => {
     emptyCart,
   } = useCartProvider();
 
-  function calculatePrice(cartItems, rate = 0.7) {
-    const t = cartItems?.reduce((p, c) => {
-      return (
-        p +
-        c?.attributes?.product?.data?.attributes?.price * c.attributes.quantity
-      );
-    }, 0);
-    return { total: t, withTax: (t * rate).toFixed(2) };
-  }
-
   const totalPrice = calculatePrice(cart, 1.12);
   const shippingDetail = data?.find((shipping) => {
     return shipping?.attributes?.user_id?.data?.id === user?.id;
@@ -69,7 +60,7 @@ const CourseCart = ({ users, data: { data } }) => {
           return;
         }
         addPurchaseItems(cart);
-        navigate.push("/billingdetails");
+        navigate.push(`/billingdetails?cartItems=${cart.map((c) => c.id)}`);
       }
     } catch (error) {
       console.log(error);

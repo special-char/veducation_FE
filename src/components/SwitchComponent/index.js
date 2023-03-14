@@ -9,7 +9,11 @@ const Switch = ({ childs = [{ name, btnTitle }] }) => {
 
   return (
     <div>
-      <span className="flex flex-1 ">
+      <span
+        className={clx("flex flex-1 ", {
+          hidden: pathname !== childs[0].name && pathname !== childs[1].name,
+        })}
+      >
         {childs?.map((child) => (
           <Link
             href={child.name}

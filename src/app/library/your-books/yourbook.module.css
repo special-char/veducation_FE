@@ -1,0 +1,8 @@
+.yourbook {
+  @apply h-screen w-full pt-3 pb-0 text-center px-container md:p-0;
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+}

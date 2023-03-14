@@ -1,4 +1,5 @@
 "use client";
+import { updateProduct } from "@/lib/getHomeProductData";
 import { updateCart } from "@/lib/updateCart";
 import { currentDate } from "@/utils/constants";
 import { useSession } from "next-auth/react";
@@ -69,14 +70,18 @@ export const CartContextProvider = ({ children }) => {
     }
   }
 
-  function emptyCart(cartIds) {
-    cartIds.map((id) => {
-      updateCart(id, {
-        isPurchased: true,
-        created: currentDate(),
+  function emptyCart(cartIds, payload) {
+    try {
+      payload.map((product) => {
+        updateProduct(product.id, { items: product.quantity });
       });
-    });
-    dispatch({ cart: [] });
+      cartIds.map((id) => {
+        updateCart(id, {
+          isPurchased: true,
+        });
+      });
+      dispatch({ cart: [] });
+    } catch (error) {}
   }
 
   return (

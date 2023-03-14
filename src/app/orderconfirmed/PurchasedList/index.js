@@ -3,25 +3,21 @@ import OrderdItem from "@/components/oderedItem/orderedItem";
 import { getPuchasedItems } from "@/lib/getPurchasedItems";
 import React from "react";
 
-const PurchasedItems = async ({ user, myorder, ...props }) => {
-  const currentCartItems = props?.searchParams?.cartItems?.split(",");
-  const purchaseData = await getPuchasedItems(user?.id);
-  console.log({
-    purchaseData: purchaseData?.data?.filter((item) => {
-      return currentCartItems?.map((ci) => {
-        return item?.id == ci;
-      });
-    }),
-  });
-
+const PurchasedItems = async ({
+  user,
+  myorder,
+  purchaseData,
+  currentCartIds,
+  ...props
+}) => {
   const productList = myorder
     ? purchaseData?.data?.map(
         (item) => item?.attributes?.product?.data?.attributes
       )
     : purchaseData?.data
         ?.filter((item) => {
-          for (let i = 0; i < currentCartItems?.length; i++) {
-            const ci = currentCartItems[i];
+          for (let i = 0; i < currentCartIds?.length; i++) {
+            const ci = currentCartIds[i];
             if (item?.id == ci) return item;
           }
         })

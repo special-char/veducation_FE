@@ -14,18 +14,18 @@ const FeaturedBook = () => {
           <Image src={FeaturedBookImg} fill className="" />
         </div>
         <div className="flex flex-col justify-center">
-          <h3 className="font-bold mb-0 ">Basics of Sanatan Sanskriti</h3>
+          <h3 className="font-bold mb-0 w-5">Basics of Sanatan Sanskriti</h3>
           <p className="text-xs">
             A Book with the knowledge that all the Sanatani Hindu must know,
             realise and apply in their lives. Get it now in...
           </p>
-          <Reviews rate={4} count={22} width={22} height={22} />
+          <Reviews rate={4} count={22} width={12} height={12} />
           <div className="flex gap-3 py-2">
             <Button
               as={Link}
               variant="primary"
               href="#"
-              className="w-full px-0 py-2"
+              className="w-full px-0 py-2 text-sm"
               size={"small"}
             >
               English
@@ -34,14 +34,14 @@ const FeaturedBook = () => {
               as={Link}
               variant="primary"
               href="#"
-              className="w-full px-0 py-2"
+              className="w-full px-0 py-2 text-sm"
               size={"small"}
             >
               English
             </Button>
           </div>
           <a
-            className="text-sm"
+            className="text-sm underline"
             href="https://docs.google.com/forms/d/e/1FAIpQLSe8XDRWXYeTcDfdZmiVlt8_9yPCs4Q_5V2LuYsn_SlKhpA2Yg/viewform"
           >
             or Buy Directly from Veducation (No Shipping Charges)

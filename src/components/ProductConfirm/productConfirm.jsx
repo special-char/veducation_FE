@@ -8,6 +8,7 @@ import Minus from "public/icons/minus.svg";
 import Delete from "public/icons/delete.svg";
 import OrderdItem from "../oderedItem/orderedItem";
 import { useCartProvider } from "@/context/CartContextProvider";
+import clx from "classnames";
 
 const ProductConfirm = ({
   image,
@@ -46,12 +47,17 @@ const ProductConfirm = ({
   return (
     <div className={styles.main}>
       <div className={styles.main__detail} key="items">
-        <div className="relative aspect-square min-h-[93px] py-3   ">
+        <div
+          className={clx(`relative aspect-square  py-3`, {
+            "aspect-video min-w-[93px] max-h-[66.53px]": isCourse,
+            "min-h-[93px]": !isCourse,
+          })}
+        >
           <Image src={image} alt="item" fill />
         </div>
-        <div className="flex flex-col place-content-center gap-2">
+        <div className="flex flex-1 flex-col place-content-center gap-2">
           <h5 className={styles.main__name}>{title}</h5>
-          <div className="flex justify-between">
+          <div className="flex w-full justify-between">
             {quantity > 0 && <p className={styles.main__price}>{price}</p>}
             {isCourse && (
               <button
