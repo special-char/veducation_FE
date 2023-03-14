@@ -73,7 +73,6 @@ const SignIn = () => {
             password: values.password,
             callbackUrl: "/",
           });
-          console.log({ res });
           if (res.ok) {
             dispatch({ error: null });
             toggleModal();

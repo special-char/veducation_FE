@@ -41,7 +41,7 @@ export const addToCart = async (productID, userId, items = 0) => {
 export const updateCart = async (cartId, payload) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/carts/${cartId}?filters[created][$eq]=${payload.created}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/carts/${cartId}`,
       {
         method: "PUT",
         body: JSON.stringify({
@@ -59,6 +59,3 @@ export const updateCart = async (cartId, payload) => {
     console.error(error);
   }
 };
-
-export const addItem = async (id, count) => {};
-export const removeItem = async (id, count) => {};

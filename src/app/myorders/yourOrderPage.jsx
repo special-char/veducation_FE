@@ -79,7 +79,6 @@ const YourOrderPage = async () => {
   const session = await getSessionUser(headers().get("cookie") ?? "");
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
-  console.log({ session });
   return (
     <div className="h-auto">
       <h5 className="font-bold text-sm">your Order</h5>

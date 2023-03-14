@@ -60,7 +60,6 @@ export async function getSessionUser(cookie) {
 }
 
 const Page = async (props) => {
-  console.log({ orderConfirmed: props });
   const session = await getSessionUser(headers().get("cookie") ?? "");
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
@@ -74,11 +73,7 @@ const Page = async (props) => {
       }
     })
     .map((x) => x?.attributes?.product?.data?.attributes);
-  console.log(
-    productList.reduce((p, c) => {
-      return p + c.price * c.items;
-    }, 0)
-  );
+
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
       <OrderSucess />

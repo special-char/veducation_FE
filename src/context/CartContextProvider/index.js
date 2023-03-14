@@ -81,7 +81,9 @@ export const CartContextProvider = ({ children }) => {
         });
       });
       dispatch({ cart: [] });
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
