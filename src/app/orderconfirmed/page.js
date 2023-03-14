@@ -66,6 +66,7 @@ const Page = async (props) => {
   const user = users?.find((item) => item?.email === session?.user?.email);
   const currentCartIds = props?.searchParams?.cartItems?.split(",");
   const purchaseData = await getPuchasedItems(user?.id);
+  console.log("purchaseData:", purchaseData);
   const productList = purchaseData?.data
     ?.filter((item) => {
       for (let i = 0; i < currentCartIds?.length; i++) {
@@ -79,6 +80,7 @@ const Page = async (props) => {
       return p + c.price * c.items;
     }, 0)
   );
+
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
       <OrderSucess />
@@ -100,7 +102,7 @@ const Page = async (props) => {
       />
       <Button
         as={Link}
-        href="/myorders"
+        href="/orders"
         size="large"
         className="w-full text-base py-4"
         variant="primary"

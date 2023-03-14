@@ -50,7 +50,7 @@ const OrderConfirm = () => {
           variant="primary"
           size="large"
           as={Link}
-          href="/myorders"
+          href="/orders"
           className={"text-base w-full p-2"}
         >
           Order History
