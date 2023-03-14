@@ -1,6 +1,6 @@
 .section {
   & > label {
-    @apply text-xs text-neutral-150;
+    @apply text-sm2 text-neutral-150;
   }
   .body {
     @apply text-xs font-bold text-primary4;

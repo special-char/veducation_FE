@@ -34,7 +34,7 @@ const Input = ({
           id={id}
           type={!shown ? "text" : type}
           className={clsx(
-            "w-full p-2 placeholder-secondary  bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base row-span-full col-span-full",
+            "w-full p-2 placeholder-secondary bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base row-span-full col-span-full",
             {
               [className || ""]: !!className,
             }
