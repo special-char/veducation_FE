@@ -35,7 +35,7 @@ const MenuSection = () => {
     {
       icon: <Call className="w-5" />,
       title: "Book a Consultation Call",
-      href: "/",
+      href: `tel:9016620489 `,
       component: Link,
     },
     {
