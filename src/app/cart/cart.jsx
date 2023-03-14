@@ -20,7 +20,6 @@ const CartPage = async (props) => {
   const billingData = await getBillingDetails();
   const course = await getCourseDetails(props?.searchParams?.course);
 
-  console.log(course);
   const items = [];
   return (
     <div className=" flex flex-col gap-2 h-full justify-between">

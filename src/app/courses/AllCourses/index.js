@@ -65,7 +65,6 @@ import Link from "next/link";
 
 const AllCourses = async () => {
   const productCourses = await getCourses();
-  console.log("productCourses data:", productCourses.data);
   return (
     <section className="">
       <div className="grid md:grid-cols-2 gap-3">

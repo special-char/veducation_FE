@@ -21,7 +21,7 @@ const SignIn = () => {
   };
   const auth = useSession();
   const {
-    state: { signIn: open, user },
+    state: { signIn: open, error },
     dispatch,
   } = useContext(AppContext);
   function toggleModal() {
@@ -73,9 +73,22 @@ const SignIn = () => {
             password: values.password,
             callbackUrl: "/",
           });
-          toggleModal();
+          if (res.ok) {
+            dispatch({ error: null });
+            toggleModal();
+            return;
+          }
+          dispatch({ error: { message: "Invalid credentials" } });
         }}
-      />
+      >
+        {error.message && (
+          <div className="relative">
+            <p className="absolute top-[-10px] text-sm text-error font-semibold">
+              {error.message}
+            </p>
+          </div>
+        )}
+      </FormikForm>
       <div className="text-center flex justify-center items-center gap-3 py-4">
         <div className="w-16 h-[1px] bg-neutral-150"></div>
         <p className="small">Or continue with</p>
@@ -108,7 +121,7 @@ const SignIn = () => {
         </Button>
       </div>
       <p className="text-center small ">
-        Don't have an account ?
+        {"Don't have an account ?"}
         <button onClick={handleSignupClick} className="text-primary pl-1">
           Sign Up
         </button>

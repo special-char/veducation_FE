@@ -15,10 +15,8 @@ export const PurchaseContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialPurchase);
 
   function addPurchaseItems(items) {
-    console.log({ purchaseContext: items });
     if (Array.isArray(items)) dispatch({ purchasedItems: items });
   }
-  console.log({ state });
 
   return (
     <PurchaseContext.Provider

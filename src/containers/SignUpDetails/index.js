@@ -45,14 +45,15 @@ const SignUpDetails = () => {
                 console.log(error);
               }
             }}
-          />
+          >
+            <p className="text-center small py-2">
+              By Signing in , I agree to
+              <a className="underline pl-2" href="#">
+                Terms & Condition
+              </a>
+            </p>
+          </FormikForm>
         </div>
-        <p className="text-center small pt-4">
-          By Signing in , I agree to
-          <a className="underline pl-2" href="http://">
-            Terms & Condition
-          </a>
-        </p>
       </Modal>
     </div>
   );
