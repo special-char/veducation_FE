@@ -22,7 +22,6 @@ const UploadImage = ({
       var i = event.target.files[0];
       const body = new FormData();
       body.append("image", i);
-      console.log("data i:", { i });
     }
   };
 

@@ -43,8 +43,6 @@ const CourseCart = ({ users, data: { data } }) => {
     return shipping?.attributes?.user_id?.data?.id === user?.id;
   });
 
-  console.log({ cart: cart.map((c) => `${c.id}`) });
-
   async function checkout() {
     try {
       const response = await addPurchase({
@@ -52,11 +50,18 @@ const CourseCart = ({ users, data: { data } }) => {
         user: user?.id,
       });
       if (response.data) {
-        console.log({ purchase: response?.data?.attributes?.cartId?.data });
         if (shippingDetail) {
           addPurchaseItems(cart);
+          emptyCart(
+            cart.map((c) => c.id),
+            cart.map((c) => {
+              return {
+                id: c?.attributes?.product?.data?.id,
+                quantity: c?.attributes?.quantity,
+              };
+            })
+          );
           navigate.push(`/orderconfirmed?cartItems=${cart.map((c) => c.id)}`);
-          emptyCart(cart.map((c) => c.id));
           return;
         }
         addPurchaseItems(cart);

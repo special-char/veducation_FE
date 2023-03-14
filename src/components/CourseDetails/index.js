@@ -33,12 +33,10 @@ const reviewdata = [
 ];
 
 const CourseDetails = async (props) => {
-  console.log("props:", props?.params?.id);
 
   const data = await getCourseDetails(props?.params?.id);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
-  console.log("getCourseDetails:", data?.data?.attributes?.ratings, {
     rating,
   });
   return (

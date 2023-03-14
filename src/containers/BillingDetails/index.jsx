@@ -18,7 +18,6 @@ const BillingDetails = ({ user: users, ...props }) => {
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
-  console.log(props, cart);
   return (
     <div className="px-container ">
       <p className="text-2xl font-bold text-neutral-950 my-6">
