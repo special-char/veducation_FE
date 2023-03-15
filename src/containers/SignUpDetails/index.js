@@ -40,6 +40,12 @@ const SignUpDetails = () => {
                   email: values.email,
                   password: values.password,
                 });
+                if (res.user) {
+                  dispatch({ signIn: true });
+                  toggleModal();
+                  return;
+                }
+                dispatch({ error: { message: "Invalid credentials" } });
                 console.log("authSignup:", res);
               } catch (error) {
                 console.log(error);

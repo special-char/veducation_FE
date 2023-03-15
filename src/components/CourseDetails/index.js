@@ -33,12 +33,10 @@ const reviewdata = [
 ];
 
 const CourseDetails = async (props) => {
-
   const data = await getCourseDetails(props?.params?.id);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
-    rating,
-  });
+
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
