@@ -7,18 +7,16 @@ import { updateUser } from "@/lib/updateUser";
 import { useSession } from "next-auth/react";
 import { editProfileFields, editProfileInitValue } from "./editProfileFields";
 
-const UpdateUser = ({ users }) => {
+const UpdateUser = ({ users, userDetails }) => {
   const userSession = useSession();
-  console.log("userSession", userSession);
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
-  console.log("user:", user, users);
   return (
     <section className={styles.editprofile}>
       <FormikForm
         fields={editProfileFields}
-        initialValues={editProfileInitValue}
+        initialValues={user}
         onSubmit={async (values) => {
           const formValues = {
             profileimage: values.file,
