@@ -7,6 +7,8 @@ import { getUser } from "@/lib/getUser";
 import { getBillingDetails } from "@/lib/getBillingDetails";
 import CartItemList from "./CartItemList";
 import { getCourseDetails } from "@/lib/getCourseDetails";
+import { getPromoCode } from "@/lib/getPromoCode";
+import CourseCheckout from "./CourseCheckout";
 
 const data = {
   orderPrice: "75",
@@ -19,6 +21,7 @@ const CartPage = async (props) => {
   const user = await getUser();
   const billingData = await getBillingDetails();
   const course = await getCourseDetails(props?.searchParams?.course);
+  const promocodes = await getPromoCode();
 
   const items = [];
   return (
@@ -35,13 +38,10 @@ const CartPage = async (props) => {
               isCourse
               attributes={course?.data?.attributes}
             />
-            <CourseCart
+            <CourseCheckout
               users={user}
-              data={billingData}
-              title={data.title}
-              price={data.price}
-              orderPrice={data.orderPrice}
-              totalAmount={data.totalAmount}
+              course={course}
+              promocodes={promocodes}
               className="gap-y-16"
             />
           </>
@@ -52,6 +52,7 @@ const CartPage = async (props) => {
               users={user}
               data={billingData}
               title={data.title}
+              promocodes={promocodes}
               price={data.price}
               orderPrice={data.orderPrice}
               totalAmount={data.totalAmount}

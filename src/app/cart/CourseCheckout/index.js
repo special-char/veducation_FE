@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./courseCart.module.css";
+import styles from "./style.module.css";
 import Send from "public/send.svg";
 import Promo from "public/promoCode.svg";
 import Button from "@/components/Button";
@@ -12,15 +12,11 @@ import { useCartProvider } from "@/context/CartContextProvider";
 import { addPurchase } from "@/lib/getPurchase";
 import { usePurchaseContext } from "@/context/PurchasContextProvider";
 import { calculatePrice } from "@/utils/constants";
+import { purchaseCourse } from "@/lib/purchaseCourse";
 
-const data = {
-  orderPrice: "75",
-  totalAmount: "95",
-};
-
-const CourseCart = ({
+const CourseCheckout = ({
   users,
-  data: { data },
+  course,
   promocodes: { data: promocodes },
 }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -52,45 +48,22 @@ const CourseCart = ({
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
-  const {
-    cartState: { cart },
-    emptyCart,
-  } = useCartProvider();
-
-  const totalPrice = calculatePrice(cart, 1.12);
-  const shippingDetail = data?.find((shipping) => {
-    return shipping?.attributes?.user_id?.data?.id === user?.id;
-  });
+  const { emptyCart } = useCartProvider();
 
   async function checkout() {
-    try {
-      const response = await addPurchase({
-        cartId: cart.map((c) => c.id),
-        user: user?.id,
-      });
-      if (response.data) {
-        if (shippingDetail) {
-          addPurchaseItems(cart);
-          emptyCart(
-            cart.map((c) => c.id),
-            cart.map((c) => {
-              return {
-                id: c?.attributes?.product?.data?.id,
-                quantity: c?.attributes?.quantity,
-              };
-            })
-          );
-          navigate.push(`/orderconfirmed?cartItems=${cart.map((c) => c.id)}`);
-          return;
-        }
-        addPurchaseItems(cart);
-        navigate.push(`/billingdetails?cartItems=${cart.map((c) => c.id)}`);
-      }
-    } catch (error) {
-      console.log(error);
+    const response = await purchaseCourse(course?.data?.id, {
+      isPurchased: true,
+    });
+    if (response?.data?.id) {
+      navigate.push(`/orderconfirmed?courseItems=${response?.data?.id}`);
     }
+    // console.log({ course });
   }
 
+  const totalPrice = {
+    total: course.data.attributes.price,
+    withTax: course.data.attributes.price * 1.07,
+  };
   return (
     <div className={styles.main}>
       <div className={styles.main__textbox}>
@@ -141,4 +114,4 @@ const CourseCart = ({
   );
 };
 
-export default CourseCart;
+export default CourseCheckout;
