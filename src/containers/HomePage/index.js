@@ -2,6 +2,7 @@ import HomeBanner from "@/components/HomeBanner";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
 import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
+import { getSocialLinks } from "@/lib/getSocialLinks";
 import FeatureDonations from "../home/FeaturDonations";
 import SignIn from "../SignIn";
 import SignUpDetails from "../SignUpDetails";
@@ -18,9 +19,12 @@ const HomePage = async (props) => {
     const response = await getGoogleSignInRequest(token);
   }
 
+  const socialLinksData = await getSocialLinks();
+  //console.log("socialLinksData:", socialLinksData.data);
+
   return (
     <section>
-      <SocialLinks />
+      <SocialLinks sociallinks={socialLinksData} />
       <SignIn />
       <SignUpDetails />
       <HomeBanner />

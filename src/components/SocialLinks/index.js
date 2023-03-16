@@ -12,8 +12,10 @@ import AppContextProvider, {
   useAppContext,
 } from "@/context/AppContextProvider";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
-const SocialLinks = () => {
+const SocialLinks = ({ sociallinks }) => {
+  //console.log("sociallinks:", sociallinks.data);
   const data = useSession();
   const {
     state: { signIn, user },
@@ -29,52 +31,39 @@ const SocialLinks = () => {
   }, [data?.data?.user?.email]);
   const socials = [
     {
-      variant: "user",
-      Icon: () => <UserSvg />,
-      name: user?.data?.user?.name ?? "Signup/Login",
+      id: 11,
+      attributes: {
+        variant: "user",
+        svg: "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png",
+        title: user?.data?.user?.name ?? "Signup/Login",
+        link: "",
+      },
     },
-    {
-      variant: "social",
-      Icon: () => <YoutubeSvg />,
-      name: "Youtube",
-    },
-    {
-      variant: "social",
-      Icon: () => <InstagramSvg />,
-      name: "Instagram",
-    },
-    {
-      variant: "social",
-      Icon: () => <SpotifySvg />,
-      name: "Spotify",
-    },
-    {
-      variant: "social",
-      Icon: () => <FacebookSvg />,
-      name: "Facebook",
-    },
+    ...sociallinks.data,
   ];
-
+  //console.log("socials data map:", socials);
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">
       {socials.map((social) => {
         return (
           <div
+            key={social?.attributes.name}
             onClick={() => {
-              if (social.variant === "user") {
+              if (social?.attributes.variant === "user") {
                 dispatch({ signIn: true });
                 return;
               }
             }}
-            key={social.name}
             className="relative"
           >
             <SocialIcon
-              variant={social.variant}
-              Icon={social.Icon}
-              name={social.name}
+              variant={social?.attributes.variant}
+              svg={social?.attributes.svg}
+              title={social?.attributes.title}
+              link={social?.attributes.link}
             />
-            {social.variant === "user" && !data?.data?.user && (
+
+            {social?.attributes.variant === "user" && !data?.data?.user && (
               <div className="absolute z-10 bottom-8 right-3">
                 <Plus />
               </div>
