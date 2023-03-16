@@ -6,7 +6,7 @@ import PopupModal from "../popupModal";
 import SuccessIcon from "public/icons/success.svg";
 import { useAppContext } from "@/context/AppContextProvider";
 
-const SuccessModal = ({ ...props }) => {
+const SuccessModal = ({ title, description, href, btnText }) => {
   const {
     state: { success },
     dispatch,
@@ -24,11 +24,11 @@ const SuccessModal = ({ ...props }) => {
       >
         <div className="flex flex-col items-center">
           <SuccessIcon className="w-2/5" />
-          <h3>{props.title}</h3>
-          <p>{props.description}</p>
+          <h3>{title}</h3>
+          <p>{description}</p>
         </div>
-        <Button className="w-full py-3" as={Link} href={props.href}>
-          {props.btnText}
+        <Button className="w-full py-3" as={Link} href={href}>
+          {btnText}
         </Button>
       </PopupModal>
     </div>
