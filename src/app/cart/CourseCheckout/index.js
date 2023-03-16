@@ -12,7 +12,9 @@ import { useCartProvider } from "@/context/CartContextProvider";
 import { addPurchase } from "@/lib/getPurchase";
 import { usePurchaseContext } from "@/context/PurchasContextProvider";
 import { calculatePrice } from "@/utils/constants";
-import { purchaseCourse } from "@/lib/purchaseCourse";
+import { purchaseCourse, updateCourse } from "@/lib/purchaseCourse";
+import { useAppContext } from "@/context/AppContextProvider";
+import SuccessModal from "@/components/SuccessModal";
 
 const CourseCheckout = ({
   users,
@@ -28,20 +30,19 @@ const CourseCheckout = ({
     attributes: { rate: "", amount: null },
   });
 
-  const { addPurchaseItems } = usePurchaseContext();
+  const { dispatch } = useAppContext();
 
   const handleSearch = () => {
     const currentCode = promocodes.find((p) => {
       return p?.attributes?.code === searchValue;
     });
-    // setPromocode({
 
-    // })
     if (!currentCode) {
       confirm("invalid promo code");
     }
     setPromocode(currentCode);
   };
+
   console.log({ promocode });
 
   const userSession = useSession();
@@ -51,13 +52,19 @@ const CourseCheckout = ({
   const { emptyCart } = useCartProvider();
 
   async function checkout() {
-    const response = await purchaseCourse(course?.data?.id, {
-      isPurchased: true,
+    const res = await purchaseCourse(course?.data?.id, {
+      course: course?.data?.id,
+      user: user?.id,
     });
-    if (response?.data?.id) {
-      navigate.push(`/orderconfirmed?courseItems=${response?.data?.id}`);
+    if (res.data.id) {
+      const response = await updateCourse(course?.data?.id, {
+        isPurchased: true,
+      });
+      if (response?.data?.id) {
+        // navigate.push(`/orderconfirmed?courseItems=${response?.data?.id}`);
+        dispatch({ success: true });
+      }
     }
-    // console.log({ course });
   }
 
   const totalPrice = {
@@ -66,6 +73,12 @@ const CourseCheckout = ({
   };
   return (
     <div className={styles.main}>
+      <SuccessModal
+        btnText={"Start Session"}
+        title={"Enrolled Successfully"}
+        description="You successfully enrolled in the course"
+        href={"/startcourse"}
+      />
       <div className={styles.main__textbox}>
         <div>
           <Input
