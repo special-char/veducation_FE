@@ -12,9 +12,11 @@ const StartCourse = async (props) => {
   console.log("All lessons", lessons);
   console.log("Bannerlessons:", Bannerlessons);
   return (
-    <section className="py-4 px-container md:px-0 pt-10">
+    <section className="py-4 px-container md:px-0 pt-10 ">
       <BannerCourses data={Bannerlessons} />
-      <AllLessons data={lessons} />
+      <div className="overflow-y-scroll no-scrollbar">
+        <AllLessons data={lessons} />
+      </div>
     </section>
   );
 };

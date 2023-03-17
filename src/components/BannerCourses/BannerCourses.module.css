@@ -1,5 +1,5 @@
 .BannerCourses {
-  @apply flex flex-col;
+  @apply flex flex-col bg-background z-[2] sticky top-12;
   &__thumbnail {
     @apply bg-primary3 relative;
   }

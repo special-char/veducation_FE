@@ -5,7 +5,9 @@ import React from "react";
 
 const Page = (props) => {
   return (
-    <StartCourse {...props} />
+    <div className="">
+      <StartCourse {...props} />
+    </div>
     // <section className="py-4 px-container md:px-0 pt-10">
     //   <BannerCourses />
     //   <AllLessons />

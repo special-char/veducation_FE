@@ -8,7 +8,7 @@ function reducer(state, action) {
 }
 
 const initialState = {
-  videoUrl: "",
+  video: {},
 };
 
 export const CourseVideoContextProvider = ({ children }) => {

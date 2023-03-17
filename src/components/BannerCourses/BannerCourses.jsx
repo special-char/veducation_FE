@@ -12,12 +12,16 @@ const BannerCourses = ({ data }) => {
 
   const videoRef = createRef();
 
-  const { videoUrl } = videoState;
+  const {
+    video: { link, title, description },
+  } = videoState;
   console.log({ videoState });
   useEffect(() => {
-    videoRef.current.load();
+    videoRef?.current?.load();
     return () => {};
-  }, [videoUrl]);
+  }, [link]);
+
+  console.log(videoRef?.current?.duration);
 
   return (
     <div className={styles.BannerCourses}>
@@ -31,7 +35,7 @@ const BannerCourses = ({ data }) => {
           muted
           className="w-full aspect-video"
           source={{
-            src: videoUrl || data?.link,
+            src: link || data?.link,
             type: "video/mp4",
             controls: true,
           }}
@@ -59,8 +63,10 @@ const BannerCourses = ({ data }) => {
           </> */}
       </div>
       <div className={styles.BannerCourses__content}>
-        <p className={styles.BannerCourses__title}>{data?.title}</p>
-        <p className={styles.BannerCourses__description}>{data?.description}</p>
+        <p className={styles.BannerCourses__title}>{title || data?.title}</p>
+        <p className={styles.BannerCourses__description}>
+          {description || data?.description}
+        </p>
       </div>
     </div>
   );

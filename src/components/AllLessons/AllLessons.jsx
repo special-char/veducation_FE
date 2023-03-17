@@ -2,20 +2,27 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./AllLessons.module.css";
+import clx from "classnames";
 
 import { useCourseVideoContext } from "@/context/CourseVideoContext";
 
 const AllLessons = ({ data }) => {
-  const { videoDispatch } = useCourseVideoContext();
+  const { videoState, videoDispatch } = useCourseVideoContext();
+
+  const {
+    video: { id },
+  } = videoState;
 
   console.log("AllLessons page:", data);
   return (
     <div className={styles.AllLessons}>
       {data?.map((val, key) => (
         <button
-          className=" w-full"
+          className={clx(`w-full`, {
+            "opacity-60": id === val?.id,
+          })}
           onClick={() => {
-            videoDispatch({ videoUrl: val?.link });
+            videoDispatch({ video: val });
           }}
           key={val.id}
         >
@@ -30,6 +37,9 @@ const AllLessons = ({ data }) => {
             </div>
             <div className={styles.AllLessons__right}>
               <p className={styles.AllLessons__title}>{val.title}</p>
+              {id === val?.id && (
+                <p className={styles.AllLessons__title}>is playing</p>
+              )}
               <p className={styles.AllLessons__span}>{val.time}</p>
             </div>
           </div>
