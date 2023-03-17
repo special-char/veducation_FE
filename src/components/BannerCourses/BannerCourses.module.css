@@ -4,7 +4,7 @@
     @apply bg-primary3 relative;
   }
   &__img {
-    @apply object-fill;
+    @apply  aspect-video;
   }
   &__vector {
     @apply absolute top-[42%] left-[46%];

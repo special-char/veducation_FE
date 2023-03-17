@@ -1,32 +1,66 @@
-import React from "react";
+"use client";
+import React, { createRef, useEffect } from "react";
 import styles from "./BannerCourses.module.css";
 import CourseLession from "public/courseLession.png";
-import Image from "next/image";
-import Vector from "public/Vector.svg";
+import VideoComponent from "../videocomponent";
+import { useCourseVideoContext } from "@/context/CourseVideoContext";
 
-const BannerCourses = () => {
-  const details = {
-    img: CourseLession,
-    title: "Lesson 01: Brahmacharya - The basics you need to understand",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  };
+const BannerCourses = ({ data }) => {
+  // const [isPaused, setIsPaused] = useState(true);
+
+  const { videoState, videoDispatch } = useCourseVideoContext();
+
+  const videoRef = createRef();
+
+  const { videoUrl } = videoState;
+  console.log({ videoState });
+  useEffect(() => {
+    videoRef.current.load();
+    return () => {};
+  }, [videoUrl]);
+
   return (
     <div className={styles.BannerCourses}>
-      <div className="relative aspect-h-image min-h-[217px]">
-        <Image
-          src={details.img}
-          alt={"CourseLession"}
-          fill
-          className={styles.BannerCourses__img}
+      <div className="relative">
+        <VideoComponent
+          ref={videoRef}
+          loops
+          poster={data?.thumbnail}
+          controls
+          controlsList="nodownload"
+          muted
+          className="w-full aspect-video"
+          source={{
+            src: videoUrl || data?.link,
+            type: "video/mp4",
+            controls: true,
+          }}
+          // onPause={() => {
+          //   setIsPaused(true);
+          // }}
         />
-        <Vector className={styles.BannerCourses__vector} />
+        {/* {isPaused && (
+          <button
+            onClick={() => {
+              setIsPaused(false);
+            }}
+          >
+            <Vector className={styles.BannerCourses__vector} />
+          </button>
+        )} */}
+        {/* <>
+            <Image
+              src={data?.thumbnail}
+              alt={"CourseLession"}
+              fill
+              className={styles.BannerCourses__img}
+            />
+            
+          </> */}
       </div>
       <div className={styles.BannerCourses__content}>
-        <p className={styles.BannerCourses__title}>{details.title}</p>
-        <p className={styles.BannerCourses__description}>
-          {details.description}
-        </p>
+        <p className={styles.BannerCourses__title}>{data?.title}</p>
+        <p className={styles.BannerCourses__description}>{data?.description}</p>
       </div>
     </div>
   );

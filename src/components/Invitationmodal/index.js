@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Button from "../Button";
 import FormikForm from "../FormikComponent/FormikForm";
+import SuccessModal from "../SuccessModal";
 import { InputFields, Sendinvitationint } from "./Field";
 
 const InviteUs = ({ fields, ...prpos }) => {
@@ -22,6 +23,12 @@ const InviteUs = ({ fields, ...prpos }) => {
 
   return (
     <div>
+      <SuccessModal
+        title="Thanks for inviting"
+        description="we will revert as soon as possible"
+        btnText="Back to Home"
+        href="/"
+      />
       <PopupModal
         open={inviteUs}
         onClose={toggleModal}

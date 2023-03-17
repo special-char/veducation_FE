@@ -1,53 +1,39 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import styles from "./AllLessons.module.css";
-import coursesImg from "public/thumbnail.png";
 
-const AllLessons = () => {
-  const details = [
-    {
-      img: coursesImg,
-      title: "Lesson 01: Brahmacharya - The basics you need to understand",
-      time: "9:45",
-    },
-    {
-      img: coursesImg,
-      title: "Lesson 01: Brahmacharya - The basics you need to understand",
-      time: "9:45",
-    },
-    {
-      img: coursesImg,
-      title: "Lesson 01: Brahmacharya - The basics you need to understand",
-      time: "9:45",
-    },
-    {
-      img: coursesImg,
-      title: "Lesson 01: Brahmacharya - The basics you need to understand",
-      time: "9:45",
-    },
-    {
-      img: coursesImg,
-      title: "Lesson 01: Brahmacharya - The basics you need to understand",
-      time: "9:45",
-    },
-  ];
+import { useCourseVideoContext } from "@/context/CourseVideoContext";
+
+const AllLessons = ({ data }) => {
+  const { videoDispatch } = useCourseVideoContext();
+
+  console.log("AllLessons page:", data);
   return (
     <div className={styles.AllLessons}>
-      {details.map((x, key) => (
-        <div className={styles.AllLessons__card} key="card">
-          <div className="aspect-video w-full h-full relative ">
-            <Image
-              src={x.img}
-              fill
-              alt="thumbnail"
-              className={styles.AllLessons__img}
-            />
+      {data?.map((val, key) => (
+        <button
+          className=" w-full"
+          onClick={() => {
+            videoDispatch({ videoUrl: val?.link });
+          }}
+          key={val.id}
+        >
+          <div className={styles.AllLessons__card}>
+            <div className="aspect-video w-full h-full relative ">
+              <Image
+                src={val.thumbnail}
+                fill
+                alt="thumbnail"
+                className={styles.AllLessons__img}
+              />
+            </div>
+            <div className={styles.AllLessons__right}>
+              <p className={styles.AllLessons__title}>{val.title}</p>
+              <p className={styles.AllLessons__span}>{val.time}</p>
+            </div>
           </div>
-          <div className={styles.AllLessons__right}>
-            <p className={styles.AllLessons__title}>{x.title}</p>
-            <p className={styles.AllLessons__span}>{x.time}</p>
-          </div>
-        </div>
+        </button>
       ))}
     </div>
   );

@@ -26,7 +26,6 @@ const HomePage = async (props) => {
 
   return (
     <section>
-      <VideoComponent />
       <SocialLinks sociallinks={socialLinksData} />
       <SignIn />
       <SignUpDetails />

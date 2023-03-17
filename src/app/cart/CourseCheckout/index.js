@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./courseCart.module.css";
+import styles from "./style.module.css";
 import Send from "public/send.svg";
 import Promo from "public/promoCode.svg";
 import Button from "@/components/Button";
@@ -12,15 +12,13 @@ import { useCartProvider } from "@/context/CartContextProvider";
 import { addPurchase } from "@/lib/getPurchase";
 import { usePurchaseContext } from "@/context/PurchasContextProvider";
 import { calculatePrice } from "@/utils/constants";
+import { purchaseCourse, updateCourse } from "@/lib/purchaseCourse";
+import { useAppContext } from "@/context/AppContextProvider";
+import SuccessModal from "@/components/SuccessModal";
 
-const data = {
-  orderPrice: "75",
-  totalAmount: "95",
-};
-
-const CourseCart = ({
+const CourseCheckout = ({
   users,
-  data: { data },
+  course,
   promocodes: { data: promocodes },
 }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -32,67 +30,57 @@ const CourseCart = ({
     attributes: { rate: "", amount: null },
   });
 
-  const { addPurchaseItems } = usePurchaseContext();
+  const { dispatch } = useAppContext();
 
   const handleSearch = () => {
     const currentCode = promocodes.find((p) => {
       return p?.attributes?.code === searchValue;
     });
-    // setPromocode({
 
-    // })
     if (!currentCode) {
       confirm("invalid promo code");
     }
     setPromocode(currentCode);
   };
+
   console.log({ promocode });
 
   const userSession = useSession();
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
   );
-  const {
-    cartState: { cart },
-    emptyCart,
-  } = useCartProvider();
-
-  const totalPrice = calculatePrice(cart, 1.12);
-  const shippingDetail = data?.find((shipping) => {
-    return shipping?.attributes?.user_id?.data?.id === user?.id;
-  });
+  const { emptyCart } = useCartProvider();
 
   async function checkout() {
-    try {
-      const response = await addPurchase({
-        cartId: cart.map((c) => c.id),
-        user: user?.id,
+    const res = await purchaseCourse(course?.data?.id, {
+      course: course?.data?.id,
+      user: user?.id,
+    });
+    console.log("CourseCheckout:", res);
+    if (res.data.id) {
+      const response = await updateCourse(course?.data?.id, {
+        isPurchased: true,
+        user_id: user?.id,
       });
-      if (response.data) {
-        if (shippingDetail) {
-          addPurchaseItems(cart);
-          emptyCart(
-            cart.map((c) => c.id),
-            cart.map((c) => {
-              return {
-                id: c?.attributes?.product?.data?.id,
-                quantity: c?.attributes?.quantity,
-              };
-            })
-          );
-          navigate.push(`/orderconfirmed?cartItems=${cart.map((c) => c.id)}`);
-          return;
-        }
-        addPurchaseItems(cart);
-        navigate.push(`/billingdetails?cartItems=${cart.map((c) => c.id)}`);
+      if (response?.data?.id) {
+        // navigate.push(`/orderconfirmed?courseItems=${response?.data?.id}`);
+        dispatch({ success: true });
       }
-    } catch (error) {
-      console.log(error);
     }
   }
 
+  const totalPrice = {
+    total: course.data.attributes.price,
+    withTax: course.data.attributes.price * 1.07,
+  };
   return (
     <div className={styles.main}>
+      <SuccessModal
+        btnText={"Start Session"}
+        title={"Enrolled Successfully"}
+        description="You successfully enrolled in the course"
+        href={"/courses/your-course"}
+      />
       <div className={styles.main__textbox}>
         <div>
           <Input
@@ -115,14 +103,8 @@ const CourseCart = ({
       </div>
       <div className={styles.main__orderDetail}>
         <div className={styles.main__order}>
-          <div className="flex justify-between">
-            <h5 className={styles.main__orderData}>Order:</h5>
-            <h5 className={styles.main__orderData}>${totalPrice.total}</h5>
-          </div>
-          <div className="flex justify-between">
-            <h5 className={styles.main__orderData}>Delivery:</h5>
-            <h5 className={styles.main__orderData}>$8</h5>
-          </div>
+          <h6 className={styles.main__orderData}>Order:</h6>
+          <h6 className={styles.main__orderData}>${totalPrice.total}</h6>
         </div>
 
         <div className={styles.main__total}>
@@ -147,4 +129,4 @@ const CourseCart = ({
   );
 };
 
-export default CourseCart;
+export default CourseCheckout;
