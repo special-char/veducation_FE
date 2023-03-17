@@ -5,6 +5,7 @@ import Link from "next/link";
 import BtnNavigator from "public/icons/navigator.svg";
 import React from "react";
 import Search from "public/icons/Search.svg";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const Page = async (props) => {
   const {

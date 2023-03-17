@@ -14,6 +14,7 @@ import { getUser } from "@/lib/getUser";
 import { RatingContextProvider } from "@/context/RatingContext";
 import { getAllRatings, getRating } from "@/lib/getRatings";
 import { PurchaseContextProvider } from "@/context/PurchasContextProvider";
+import { CourseVideoContextProvider } from "@/context/CourseVideoContext";
 
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
@@ -65,18 +66,20 @@ export default async function RootLayout({ children }) {
             <RatingContextProvider>
               <CartContextProvider>
                 <PurchaseContextProvider>
-                  <Suspense fallback={<loading>loading....</loading>}>
-                    <main className="bg-background md:px-container h-full scroll-pb-8">
-                      <Header
-                        {...defaultCartItems}
-                        ratings={ratings}
-                        session={session}
-                        users={users}
-                      />
-                      {children}
-                      <Navbar />
-                    </main>
-                  </Suspense>
+                  <CourseVideoContextProvider>
+                    <Suspense fallback={<loading>loading....</loading>}>
+                      <main className="bg-background md:px-container h-full scroll-pb-8">
+                        <Header
+                          {...defaultCartItems}
+                          ratings={ratings}
+                          session={session}
+                          users={users}
+                        />
+                        {children}
+                        <Navbar />
+                      </main>
+                    </Suspense>
+                  </CourseVideoContextProvider>
                 </PurchaseContextProvider>
               </CartContextProvider>
             </RatingContextProvider>

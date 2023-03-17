@@ -1,11 +1,13 @@
 import AllLessons from "@/components/AllLessons/AllLessons";
 import BannerCourses from "@/components/BannerCourses/BannerCourses";
-import StartCourse from "@/containers/startcourse";
+import StartCourse from "@/containers/Startcourse";
 import React from "react";
 
 const Page = (props) => {
   return (
-    <StartCourse {...props} />
+    <div className="">
+      <StartCourse {...props} />
+    </div>
     // <section className="py-4 px-container md:px-0 pt-10">
     //   <BannerCourses />
     //   <AllLessons />

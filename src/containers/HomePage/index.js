@@ -1,6 +1,8 @@
 import HomeBanner from "@/components/HomeBanner";
 import Productlist from "@/components/ProductList";
 import SocialLinks from "@/components/SocialLinks";
+import VideoComponent from "@/components/videocomponent";
+
 import { getGoogleSignInRequest } from "@/lib/getGoogleSignInRequest";
 import { getSocialLinks } from "@/lib/getSocialLinks";
 import FeatureDonations from "../home/FeaturDonations";

@@ -1,10 +1,10 @@
 .BannerCourses {
-  @apply flex flex-col;
+  @apply flex flex-col bg-background z-[2] sticky top-12;
   &__thumbnail {
     @apply bg-primary3 relative;
   }
   &__img {
-    @apply object-fill;
+    @apply  aspect-video;
   }
   &__vector {
     @apply absolute top-[42%] left-[46%];

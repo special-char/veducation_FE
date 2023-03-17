@@ -10,12 +10,12 @@
     @apply flex flex-col gap-2;
   }
   &__title {
-    @apply text-sm2 font-bold text-neutral-500 leading-5;
+    @apply text-sm2 font-bold text-neutral-500 leading-5 text-left;
   }
   &__span {
     @apply text-sm leading-3 text-neutral-400 font-bold font-sans;
   }
   &__img {
-    @apply aspect-auto content-center   object-cover absolute rounded-sm;
+    @apply aspect-auto content-center object-cover z-[0] rounded-sm;
   }
 }
