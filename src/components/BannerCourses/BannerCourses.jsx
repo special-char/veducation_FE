@@ -3,8 +3,9 @@ import styles from "./BannerCourses.module.css";
 import CourseLession from "public/courseLession.png";
 import Image from "next/image";
 import Vector from "public/Vector.svg";
+import Link from "next/link";
 
-const BannerCourses = () => {
+const BannerCourses = ({ data }) => {
   const details = {
     img: CourseLession,
     title: "Lesson 01: Brahmacharya - The basics you need to understand",
@@ -15,18 +16,19 @@ const BannerCourses = () => {
     <div className={styles.BannerCourses}>
       <div className="relative aspect-h-image min-h-[217px]">
         <Image
-          src={details.img}
+          src={data.thumbnail}
           alt={"CourseLession"}
           fill
           className={styles.BannerCourses__img}
         />
-        <Vector className={styles.BannerCourses__vector} />
+
+        <Link href={data.link}>
+          <Vector className={styles.BannerCourses__vector} />
+        </Link>
       </div>
       <div className={styles.BannerCourses__content}>
-        <p className={styles.BannerCourses__title}>{details.title}</p>
-        <p className={styles.BannerCourses__description}>
-          {details.description}
-        </p>
+        <p className={styles.BannerCourses__title}>{data.title}</p>
+        <p className={styles.BannerCourses__description}>{data.description}</p>
       </div>
     </div>
   );

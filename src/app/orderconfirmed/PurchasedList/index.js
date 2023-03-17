@@ -10,6 +10,7 @@ const PurchasedItems = async ({
   currentCartIds,
   ...props
 }) => {
+  console.log("PurchasedItems:", purchaseData);
   const productList = myorder
     ? purchaseData?.data?.map(
         (item) => item?.attributes?.product?.data?.attributes

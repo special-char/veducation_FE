@@ -1,11 +1,13 @@
 import CourseDetails from "@/components/CourseDetails";
+import { getUser } from "@/lib/getUser";
 import Link from "next/link";
 import React from "react";
 
-const Page = (props) => {
+const Page = async (props) => {
+  const user = await getUser();
   return (
     <section className="">
-      <CourseDetails {...props} />
+      <CourseDetails users={user} {...props} />
     </section>
   );
 };

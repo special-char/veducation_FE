@@ -56,9 +56,11 @@ const CourseCheckout = ({
       course: course?.data?.id,
       user: user?.id,
     });
+    console.log("CourseCheckout:", res);
     if (res.data.id) {
       const response = await updateCourse(course?.data?.id, {
         isPurchased: true,
+        user_id: user?.id,
       });
       if (response?.data?.id) {
         // navigate.push(`/orderconfirmed?courseItems=${response?.data?.id}`);
@@ -77,7 +79,7 @@ const CourseCheckout = ({
         btnText={"Start Session"}
         title={"Enrolled Successfully"}
         description="You successfully enrolled in the course"
-        href={"/startcourse"}
+        href={"/courses/your-course"}
       />
       <div className={styles.main__textbox}>
         <div>

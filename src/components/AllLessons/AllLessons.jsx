@@ -2,8 +2,9 @@ import Image from "next/image";
 import React from "react";
 import styles from "./AllLessons.module.css";
 import coursesImg from "public/thumbnail.png";
+import Link from "next/link";
 
-const AllLessons = () => {
+const AllLessons = ({ data }) => {
   const details = [
     {
       img: coursesImg,
@@ -31,23 +32,26 @@ const AllLessons = () => {
       time: "9:45",
     },
   ];
+  console.log("AllLessons page:", data);
   return (
     <div className={styles.AllLessons}>
-      {details.map((x, key) => (
-        <div className={styles.AllLessons__card} key="card">
-          <div className="aspect-video w-full h-full relative ">
-            <Image
-              src={x.img}
-              fill
-              alt="thumbnail"
-              className={styles.AllLessons__img}
-            />
+      {data.map((val, key) => (
+        <Link href={val.link} key={val.id}>
+          <div className={styles.AllLessons__card}>
+            <div className="aspect-video w-full h-full relative ">
+              <Image
+                src={val.thumbnail}
+                fill
+                alt="thumbnail"
+                className={styles.AllLessons__img}
+              />
+            </div>
+            <div className={styles.AllLessons__right}>
+              <p className={styles.AllLessons__title}>{val.title}</p>
+              <p className={styles.AllLessons__span}>{val.time}</p>
+            </div>
           </div>
-          <div className={styles.AllLessons__right}>
-            <p className={styles.AllLessons__title}>{x.title}</p>
-            <p className={styles.AllLessons__span}>{x.time}</p>
-          </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

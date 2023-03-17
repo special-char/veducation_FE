@@ -81,7 +81,6 @@ const YourOrderPage = async () => {
   console.log("YourOrderPage data:", purchaseData);
   return (
     <div className="h-auto">
-      <h5 className="font-bold text-sm">your Order</h5>
       <PurchasedItems purchaseData={purchaseData} user={user} myorder />
     </div>
   );

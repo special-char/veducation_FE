@@ -12,6 +12,7 @@ import { getCourseDetails } from "@/lib/getCourseDetails";
 import SwitchSection from "./SwitchSection";
 import RatingComponent from "../RatingComponent";
 import { getRating } from "@/lib/getRatings";
+import { useSession } from "next-auth/react";
 
 const reviewdata = [
   {
@@ -32,11 +33,26 @@ const reviewdata = [
   },
 ];
 
-const CourseDetails = async (props) => {
+const CourseDetails = async (props, users) => {
+  const user = users?.find((item) => item.email === data?.data?.user?.email);
   const data = await getCourseDetails(props?.params?.id);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
-
+  console.log("CourseDetails:", user);
+  function onBuyClick() {
+    if (!data?.data?.user) {
+      const response = confirm("Please Sign up or login to continue");
+      if (response) navigate.push("/");
+      return;
+    }
+    if (currentCart?.id) {
+      const res = confirm("Item is already in the cart");
+      if (res) navigate.push("/cart");
+      return;
+    }
+    onAddToCartApi();
+    navigate.push("/cart");
+  }
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
@@ -83,6 +99,7 @@ const CourseDetails = async (props) => {
         variant={"primary"}
         size={"small"}
         className="w-full text-base"
+        // onClick={onBuyClick}
       >
         Enroll Now
       </Button>
