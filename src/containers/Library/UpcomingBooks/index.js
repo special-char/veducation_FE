@@ -27,23 +27,32 @@ const data = [
   },
 ];
 
-const UpcomingBooks = async () => {
-  const { data } = await getAllBooksData();
-
+const UpcomingBooks = ({ data, search }) => {
+  //const { data } = await getAllBooksData();
+  // console.log("UpcomingBooks", data.data);
+  console.log("search", search);
+  const allbooks = data.data;
+  // console.log("UpcomingBooks allbooks", allbooks);
   return (
     <section className="pt-1 flex flex-col gap-2">
-      {data?.map((val, index) => {
-        return (
-          <Btnnavigator
-            key={index}
-            component={Link}
-            href={`/library/books/${val.id}`}
-            icon={<UpcomingBookImg className="w-6" />}
-            title={val.attributes?.title}
-            desc={val.attributes?.description}
-          />
-        );
-      })}
+      {allbooks
+        .filter((val) => {
+          return search.toLowerCase() === ""
+            ? val
+            : val.title.toLowerCase().includes(search);
+        })
+        .map((val, index) => {
+          return (
+            <Btnnavigator
+              key={index}
+              component={Link}
+              href={`/library/books/${val.id}`}
+              icon={<UpcomingBookImg className="w-6" />}
+              title={val.attributes?.title}
+              desc={val.attributes?.description}
+            />
+          );
+        })}
     </section>
   );
 };

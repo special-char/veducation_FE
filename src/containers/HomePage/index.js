@@ -23,7 +23,6 @@ const HomePage = async (props) => {
 
   const socialLinksData = await getSocialLinks();
   //console.log("socialLinksData:", socialLinksData.data);
-
   return (
     <section>
       <SocialLinks sociallinks={socialLinksData} />

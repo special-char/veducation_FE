@@ -1,10 +1,12 @@
 import Library from "@/containers/Library";
+import { getAllBooksData } from "@/lib/getAllBooksData";
 import React from "react";
 
-const Page = (props) => {
+const Page = async (props) => {
+  const allbooks = await getAllBooksData();
   return (
     <div>
-      <Library {...props} />
+      <Library {...props} allbooks={allbooks} />
     </div>
   );
 };
