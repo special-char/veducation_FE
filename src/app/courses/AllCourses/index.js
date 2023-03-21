@@ -4,6 +4,9 @@ import CourseImage2 from "public/courseImg2.png";
 import React from "react";
 import { getCourses } from "@/lib/getCourses";
 import Link from "next/link";
+import { getUser } from "@/lib/getUser";
+import { headers } from "next/headers";
+import { getSessionUser } from "@/app/orderconfirmed/page";
 
 // const data = [
 //   {
@@ -65,11 +68,15 @@ import Link from "next/link";
 
 const AllCourses = async () => {
   const productCourses = await getCourses();
+  const session = await getSessionUser(headers().get("cookie") ?? "");
+  const users = await getUser();
+  const user = users?.find((item) => item?.email === session?.user?.email);
+  // console.log("AllCourses users:", users);
   return (
     <section className="">
       <div className="grid md:grid-cols-2 gap-3">
         {productCourses?.data.map((val) => {
-          return <Coursecard key={val.id} {...val} />;
+          return <Coursecard users={user} key={val.id} {...val} />;
         })}
       </div>
     </section>

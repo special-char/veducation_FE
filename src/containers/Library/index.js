@@ -40,7 +40,7 @@ const Library = ({ allbooks }) => {
       </div>
       <FeaturedBook />
       {/* <UpcomingBooks search={search} data={allbooks} /> */}
-      <div>
+      <div className="flex flex-col gap-1">
         {allbooksdata
           .filter((val) => {
             return search.toLowerCase() === ""
@@ -52,7 +52,7 @@ const Library = ({ allbooks }) => {
               <Btnnavigator
                 key={index}
                 component={Link}
-                href={`/library/books/${val.id}`}
+                href={""}
                 icon={<UpcomingBookImg className="w-6" />}
                 title={val.attributes?.title}
                 desc={val.attributes?.description}
@@ -65,3 +65,5 @@ const Library = ({ allbooks }) => {
 };
 
 export default Library;
+
+// href={`/library/books/${val.id}`}
