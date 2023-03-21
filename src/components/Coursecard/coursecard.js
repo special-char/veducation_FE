@@ -24,22 +24,22 @@ const Coursecard = ({
   ...val
 }) => {
   const data = useSession();
-  console.log("user_id:::", user_id);
-  console.log("useSession:", data);
-  console.log("users...:", users);
+  // console.log("user_id:::", user_id);
+  // console.log("useSession:", data);
+  // console.log("users...:", users);
   // const user = users.email === data?.user?.email;
-  console.log("user_id?.data?.id:", user_id?.data?.id);
-  const user = users[user_id?.data?.id - 1];
-  console.log("rest:", rest);
-  console.log("user_id:", user_id?.data?.attributes?.email);
-  console.log("user:::", user?.email);
-  console.log("user_email_session:", user);
+  // console.log("user_id?.data?.id:", user_id?.data?.id);
+  const user = users;
+  // console.log("rest:", rest);
+  // console.log("user_id:", user_id?.data?.attributes?.email);
+  // console.log("user:::", user?.email);
+  // console.log("user_email_session:", user);
   return (
     <Link
       href={
         user_id?.data?.attributes?.email === user?.email
-          ? `/courses/${val.id}`
-          : `/startcourse/${val.id}`
+          ? `/startcourse/${val.id}`
+          : `/courses/${val.id}`
       }
     >
       {/* <Link href={`/courses/${val.id}`}> */}

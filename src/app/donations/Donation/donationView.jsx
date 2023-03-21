@@ -44,7 +44,7 @@ const DonationView = async () => {
   const data = donations.data;
   return (
     <div className={styles.main} id="View">
-      <h5 className={styles.main__heading}>Donations</h5>
+      <h5 className="">Donations</h5>
       {data.map((val, i) => {
         const progressValue = val.attributes?.raised
           ?.split("")
