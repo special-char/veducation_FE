@@ -43,7 +43,7 @@ export const InputFields = [
     component: Input,
     id: "phone",
     name: "phone",
-    type: "number",
+    type: "text",
     autoComplete: "phone",
     label: "Phone",
     placeholder: "Please enter Phone",
@@ -54,18 +54,18 @@ export const InputFields = [
       return "";
     },
   },
-  // {
-  //   component: Textarea,
-  //   id: "Invitationdetails",
-  //   name: "invitationdetails",
-  //   type: "textarea",
-  //   label: "Invitation Details",
-  //   placeholder: "Please enter details..",
-  //   validate: (value) => {
-  //     if (!value) {
-  //       return "Please Enter details";
-  //     }
-  //     return "";
-  //   },
-  // },
+  {
+    component: Input,
+    id: "Invitationdetails",
+    name: "invitationdetails",
+    type: "textarea",
+    label: "Invitation Details",
+    placeholder: "Please enter details..",
+    validate: (value) => {
+      if (!value) {
+        return "Please Enter details";
+      }
+      return "";
+    },
+  },
 ];

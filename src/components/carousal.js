@@ -15,6 +15,11 @@ const Carousal = ({ children }) => {
   const [element, setElement] = useState(null);
   const [index, setIndex] = useState(0);
 
+  console.log({
+    scroll: scrollerRef?.current?.children,
+    element: element,
+  });
+
   useEffect(() => {
     const scrollPort = scrollerRef.current;
     if (scrollPort) {
@@ -53,36 +58,46 @@ const Carousal = ({ children }) => {
     }
   }, [element]);
 
-  const moveToIndex = useCallback(() => {
-    const scrollport = scrollerRef.current;
-    setIndex(index);
-    if (scrollport) {
-      const element = scrollport.children[index];
+  const moveToIndex = useCallback(
+    (i) => {
+      const scrollport = scrollerRef?.current;
+      setIndex(i);
+      setElement(scrollport?.children[i]);
+      console.log("move to index", i);
+      if (scrollport) {
+        const element = scrollport.children[i];
 
-      const delta = Math.abs(scrollport.offsetLeft - element.offsetLeft);
-      const scrollerPadding = parseInt(
-        getComputedStyle(scrollport)["padding-left"]
-      );
+        const delta = Math.abs(scrollport.offsetLeft - element.offsetLeft);
+        const scrollerPadding = parseInt(
+          getComputedStyle(scrollport)["padding-left"]
+        );
 
-      const pos =
-        scrollport.clientWidth / 2 > delta
-          ? delta - scrollerPadding
-          : delta + scrollerPadding;
+        const pos =
+          scrollport.clientWidth / 2 > delta
+            ? delta - scrollerPadding
+            : delta + scrollerPadding;
 
-      scrollport.scrollTo({
-        left: pos,
-        behavior: "smooth",
-      });
-    }
-  }, [index]);
+        scrollport.scrollTo({
+          left: pos,
+          behavior: "smooth",
+        });
+      }
+    },
+    [index]
+  );
   return (
     <div className="carousal">
       <ul ref={scrollerRef} className="carousal__scroller">
-        {React.Children.map(children, (child) => {
+        {React.Children.map(children, (child, index) => {
           const item = child;
           const { style, ...props } = item.props;
           return (
-            <li className="carousal__items " style={style}>
+            <li
+              key={index}
+              id={index}
+              className="carousal__items "
+              style={style}
+            >
               {React.cloneElement(item, { ...props })}
             </li>
           );
@@ -93,12 +108,12 @@ const Carousal = ({ children }) => {
         <div className=" absolute mx-auto  flex w-full items-center justify-center gap-3">
           {React.Children.map(children, (child, i) => {
             return (
-              <div
+              <button
                 onClick={() => moveToIndex(i)}
                 className={clsx("h-2 w-2 rounded-full bg-neutral-400", {
                   "bg-primary duration-200": i === index,
                 })}
-              ></div>
+              ></button>
             );
           })}
         </div>

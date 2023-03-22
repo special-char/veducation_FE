@@ -1,6 +1,7 @@
 "use client";
 import PopupModal from "@/components/popupModal";
 import { useAppContext } from "@/context/AppContextProvider";
+import { sendInvitation } from "@/lib/sendInvitation";
 import { Formik, Field, Form, FastField } from "formik";
 import Link from "next/link";
 import { useState } from "react";
@@ -38,10 +39,45 @@ const InviteUs = ({ fields, ...prpos }) => {
         <FormikForm
           fields={InputFields}
           initialValues={Sendinvitationint}
-          onSubmit={(e) => {
-            toggleModal();
-            dispatch({ success: true });
+          onSubmit={async (values) => {
+            const formValues = {
+              name: values.name,
+              email: values.email,
+              phone: values.phone,
+              invitationdetails: values.invitationdetails,
+            };
+            try {
+              console.log("formvalues", formValues);
+              const res = await sendInvitation(formValues);
+              if (res.ok) {
+                dispatch({ error: null });
+                toggleModal();
+                return;
+              }
+              dispatch({ error: { message: "Invalid credentials" } });
+              toggleModal();
+              console.log("values:", values);
+              dispatch({ success: true });
+            } catch (error) {
+              console.log(error);
+            }
           }}
+          // onSubmit={async (values, { setSubmitting }) => {
+          //   const res = await ("credentials", {
+          //     redirect: false,
+          //     email: values.email,
+          //     password: values.password,
+          //     callbackUrl: "/",
+          //   });
+          //   if (res.ok) {
+          //     dispatch({ error: null });
+          //     toggleModal();
+          //     return;
+          //   }
+          //   dispatch({ error: { message: "Invalid credentials" } });
+          //   // toggleModal();
+          //   // dispatch({ success: true });
+          // }}
         />
       </PopupModal>
     </div>

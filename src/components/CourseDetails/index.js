@@ -13,6 +13,7 @@ import SwitchSection from "./SwitchSection";
 import RatingComponent from "../RatingComponent";
 import { getRating } from "@/lib/getRatings";
 import { useSession } from "next-auth/react";
+import EnrollCourse from "../EnrollCourse";
 
 const reviewdata = [
   {
@@ -39,20 +40,20 @@ const CourseDetails = async (props, users) => {
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
   console.log("CourseDetails:", user);
-  function onBuyClick() {
-    if (!data?.data?.user) {
-      const response = confirm("Please Sign up or login to continue");
-      if (response) navigate.push("/");
-      return;
-    }
-    if (currentCart?.id) {
-      const res = confirm("Item is already in the cart");
-      if (res) navigate.push("/cart");
-      return;
-    }
-    onAddToCartApi();
-    navigate.push("/cart");
-  }
+  // function onBuyClick() {
+  //   if (!data?.data?.user) {
+  //     const response = confirm("Please Sign up or login to continue");
+  //     if (response) navigate.push("/");
+  //     return;
+  //   }
+  //   if (currentCart?.id) {
+  //     const res = confirm("Item is already in the cart");
+  //     if (res) navigate.push("/cart");
+  //     return;
+  //   }
+  //   onAddToCartApi();
+  //   navigate.push("/cart");
+  // }
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
@@ -92,7 +93,8 @@ const CourseDetails = async (props, users) => {
         id={props?.params?.id}
         reviewData={reviewdata}
       />
-      <Button
+      <EnrollCourse {...props} />
+      {/* <Button
         as={Link}
         href={`/cart?course=${props?.params?.id}`}
         prefetch={false}
@@ -102,7 +104,7 @@ const CourseDetails = async (props, users) => {
         // onClick={onBuyClick}
       >
         Enroll Now
-      </Button>
+      </Button> */}
       {/* <video className="aspect-square min-h-[100px] w-full mr-0" controls>
           <source
             src="https://www.youtube.com/watch?v=Cn-dT20uHRg&ab_channel=TajAgroProducts"
