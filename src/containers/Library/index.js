@@ -36,7 +36,7 @@ const Library = ({ allbooks }) => {
           /> */}
         </form>
         {/* <FormikForm fields={searchField} initialValues={searchInitValue} /> */}
-        <Search className="absolute top-4 left-4" />
+        <Search className="absolute top-3 left-4" />
       </div>
       <FeaturedBook />
       {/* <UpcomingBooks search={search} data={allbooks} /> */}

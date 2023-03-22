@@ -2,7 +2,7 @@
   @apply pt-5 h-full xs:px-container md:px-0;
 
   &__imagebody {
-    @apply relative aspect-h-image bg-primary rounded-md;
+    @apply relative aspect-video rounded-md;
   }
   &__playicon {
     @apply flex h-12 absolute top-[40%] right-[45%];

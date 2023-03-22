@@ -37,9 +37,11 @@ const reviewdata = [
 const CourseDetails = async (props, users) => {
   const user = users?.find((item) => item.email === data?.data?.user?.email);
   const data = await getCourseDetails(props?.params?.id);
+  console.log("CourseDetails:", data);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
   console.log("CourseDetails:", user);
+  console.log("lesson:", data?.data?.attributes?.lesson[0].link);
   // function onBuyClick() {
   //   if (!data?.data?.user) {
   //     const response = confirm("Please Sign up or login to continue");
@@ -57,12 +59,18 @@ const CourseDetails = async (props, users) => {
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
-        <Image
+        <video className="w-full h-full" controls>
+          <source
+            src={data?.data?.attributes?.lesson[0].link}
+            type="video/mp4"
+          />
+        </video>
+        {/* <Image
           src={data?.data?.attributes?.img}
           alt={"videoprofile image"}
           fill
         />
-        <PlayIcon className={styles.coursedetails__playicon} />
+        <PlayIcon className={styles.coursedetails__playicon} /> */}
       </div>
       <div className={styles.coursedetails__datails}>
         <h3 className="mb-0 text-xxl leading-[27.3px]">
