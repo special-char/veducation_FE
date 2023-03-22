@@ -21,7 +21,7 @@ const Btndata = [
 
 const ProfileSetting = () => {
   return (
-    <div className="pt-4 px-container md:p-0">
+    <div className="pt-4 px-container md:p-0 flex flex-col gap-2">
       {Btndata.map((val) => {
         return (
           <Btnnavigator
