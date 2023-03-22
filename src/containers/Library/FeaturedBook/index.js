@@ -19,7 +19,7 @@ const FeaturedBook = () => {
             A Book with the knowledge that all the Sanatani Hindu must know,
             realise and apply in their lives. Get it now in...
           </p>
-          <Reviews rate={4} count={22} width={12} height={12} />
+          <Reviews rate={4} width={12} height={12} />
           <div className="flex gap-3 py-2">
             <Button
               as={Link}
@@ -37,7 +37,7 @@ const FeaturedBook = () => {
               className="w-full px-0 py-2 text-sm"
               size={"small"}
             >
-              English
+              Hindi
             </Button>
           </div>
           <a

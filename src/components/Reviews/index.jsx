@@ -87,7 +87,9 @@ const Reviews = ({
             "text-[#fff]": isCourse,
           }
         )}
-      >{`(${count})`}</p>
+      >
+        {count && `(${count})`}
+      </p>
     </div>
   );
 };
