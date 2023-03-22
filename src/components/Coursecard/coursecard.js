@@ -51,8 +51,8 @@ const Coursecard = ({
           <h4 className={styles.cardRoot__title}>{title}</h4>
           <Reviews
             className="text-base "
-            width={22}
-            height={22}
+            width={14}
+            height={15}
             count={count ?? 1}
             rate={rating}
             disabled
