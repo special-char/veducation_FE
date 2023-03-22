@@ -14,6 +14,7 @@ import RatingComponent from "../RatingComponent";
 import { getRating } from "@/lib/getRatings";
 import { useSession } from "next-auth/react";
 import EnrollCourse from "../EnrollCourse";
+import Videocomponent from "../videocomponent";
 
 const reviewdata = [
   {
@@ -40,8 +41,8 @@ const CourseDetails = async (props, users) => {
   console.log("CourseDetails:", data);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
-  console.log("CourseDetails:", user);
-  console.log("lesson:", data?.data?.attributes?.lesson[0].link);
+  // console.log("CourseDetails:", user);
+  // console.log("lesson:", data?.data?.attributes?.lesson[0]);
   // function onBuyClick() {
   //   if (!data?.data?.user) {
   //     const response = confirm("Please Sign up or login to continue");
@@ -59,12 +60,24 @@ const CourseDetails = async (props, users) => {
   return (
     <section id="CourseDetails" className={styles.coursedetails}>
       <div className={styles.coursedetails__imagebody}>
-        <video className="w-full h-full" controls>
+        <Videocomponent
+          loops
+          poster={data?.data?.attributes?.lesson[0].thumbnail}
+          controls
+          controlsList="nodownload"
+          className="w-full aspect-video"
+          source={{
+            src: data?.data?.attributes?.lesson[0].link,
+            type: "video/mp4",
+            controls: true,
+          }}
+        />
+        {/* <video className="w-full h-full" controls>
           <source
             src={data?.data?.attributes?.lesson[0].link}
             type="video/mp4"
           />
-        </video>
+        </video> */}
         {/* <Image
           src={data?.data?.attributes?.img}
           alt={"videoprofile image"}
