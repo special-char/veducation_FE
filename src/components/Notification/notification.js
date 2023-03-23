@@ -9,16 +9,15 @@ const Notification = ({ ...props }) => {
         <BellSvg className="w-4 h-4" />
       </div>
       <div className={styles.main__body}>
-        <h6 className={styles.main__order}>
+        <h6 className="text-base">
           {props.title}:
-          <p>
-            {" "}
+          <p className="text-sm2">
             Your Veducation Order
             <span className="text-primary2"> {props.code} </span>has been{" "}
             {props.msg}
           </p>
         </h6>
-        <p className="text-[12px]">{props.duration}</p>
+        <p className="text-sm2">{props.duration}</p>
       </div>
     </div>
   );

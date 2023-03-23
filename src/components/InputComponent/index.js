@@ -34,7 +34,7 @@ const Input = ({
           id={id}
           type={!shown ? "text" : type}
           className={clsx(
-            "w-full p-2 placeholder-secondary bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base row-span-full col-span-full",
+            "w-full p-2 placeholder-secondary bg-[#FCE9CF] border border-[#F5D9B1] px-3 py-3 rounded-md text-base row-span-full col-span-full focus:outline-none",
             {
               [className || ""]: !!className,
             }
@@ -47,8 +47,14 @@ const Input = ({
             role="button"
             onClick={() => {
               setShown((p) => !p);
+              var x = document.getElementById(id);
+              if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
             }}
-            className="row-span-full px-2"
+            className="row-span-full px-2 "
             style={{
               gridColumn: "2 / -1",
             }}

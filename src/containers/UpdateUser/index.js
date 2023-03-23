@@ -16,7 +16,7 @@ const UpdateUser = ({ users, userDetails }) => {
     <section className={styles.editprofile}>
       <FormikForm
         fields={editProfileFields}
-        initialValues={user}
+        initialValues={editProfileInitValue}
         onSubmit={async (values) => {
           const formValues = {
             profileimage: values.file,

@@ -3,19 +3,19 @@ import React from "react";
 
 const data = [
   {
-    title: "Order Shipped:",
+    title: "Order Shipped",
     msg: "Your Veducation Order has been dispatched",
     code: "#242424",
     duration: "2 hours Ago",
   },
   {
-    title: "Order Canclled:",
+    title: "Order Canclled",
     msg: "Your Veducation Order has been dispatched",
     code: "#242424",
     duration: "2 hours Ago",
   },
   {
-    title: "Order Shipped:",
+    title: "Order Shipped",
     msg: "Your Veducation Order has been dispatched",
     code: "#242424",
     duration: "2 hours Ago",

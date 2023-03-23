@@ -5,7 +5,7 @@ import UploadImage from "@/components/UploadImage";
 
 export const editProfileInitValue = {
   file: null,
-  name: "",
+  username: "",
   email: "",
   phone: "",
   street: "",
@@ -49,7 +49,7 @@ export const editProfileFields = [
     id: "name",
     label: "NAME",
     placeholder: "Full Name",
-    name: "name",
+    name: "username",
     className: "w-full mr-0 text-sm p-0",
     autoComplete: "name",
     type: "text",
