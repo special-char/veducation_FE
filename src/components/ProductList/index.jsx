@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./productItem.module.css";
 import Image from "next/image";
-import Book from "public/book.png";
 import Reviews from "../Reviews";
 import ProductTitle from "../ProductTitle";
 import Link from "next/link";

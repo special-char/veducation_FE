@@ -1,5 +1,4 @@
-import Book from "public/book.png";
-
+import React from "react";
 import HomePage from "@/containers/HomePage";
 
 export default function Page(props) {

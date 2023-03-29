@@ -7,10 +7,20 @@ const nextConfig = {
     appDir: true,
   },
   webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
+    config.module.rules.push(
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
+      {
+        test: /\.pdf$/,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      }
+    );
     config.resolve.alias.canvas = false;
     config.resolve.alias.encoding = false;
 

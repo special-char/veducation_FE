@@ -20,7 +20,7 @@ const Library = ({ allbooks }) => {
       <div className="relative">
         <form>
           <input
-            className="w-full relative text-[#6C5A4A] text-base focus:outline-none rounded-md py-2 px-10 border bg-[#FCE9CF] border-[#F5D9B1]"
+            className="w-full relative text-[#6C5A4A] text-base focus:outline-none rounded-md py-3 px-10 border bg-[#FCE9CF] border-[#F5D9B1]"
             onChange={(e) => setsearch(e.target.value)}
             type="text"
             placeholder="Find in veducation library"
@@ -36,7 +36,7 @@ const Library = ({ allbooks }) => {
           /> */}
         </form>
         {/* <FormikForm fields={searchField} initialValues={searchInitValue} /> */}
-        <Search className="absolute top-3 left-4" />
+        <Search className="absolute top-4 left-4" />
       </div>
       <FeaturedBook />
       {/* <UpcomingBooks search={search} data={allbooks} /> */}

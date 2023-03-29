@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import styles from "./upload.module.css";
 import Image from "next/image";
 import Edit from "public/icons/editprofile.svg";
-import Book from "public/book.png";
 
 const UploadImage = ({
   field, // { name, value, onChange, onBlur }

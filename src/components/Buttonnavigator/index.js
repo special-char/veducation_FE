@@ -61,7 +61,7 @@ const Btnnavigator = (props) => {
             <p className="text-sm font-medium">{desc && desc}</p>
           </span>
         </span>
-        <Arrow />
+        <Arrow className="w-2" />
       </div>
     </Component>
   );
