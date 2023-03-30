@@ -10,6 +10,7 @@ import { signupFields, signupInitValue } from "./signupFields";
 import styles from "./signup.module.css";
 import { AppContext } from "@/context/AppContextProvider";
 import { authSignup } from "@/lib/authSignup";
+import { addUser } from "@/lib/addUser";
 
 const SignUpDetails = () => {
   function toggleModal() {
@@ -40,13 +41,20 @@ const SignUpDetails = () => {
                   email: values.email,
                   password: values.password,
                 });
+                // console.log("authSignup res:", res);
                 if (res.user) {
+                  // console.log("user:", res.user);
+                  // console.log("res.user:", res.user.id);
+                  // api call
+                  // console.log("SignUpDetails:", res.user);
+                  const data = await addUser(res?.user?.id);
+                  // console.log("addUser:", data);
                   dispatch({ signIn: true });
                   toggleModal();
                   return;
                 }
                 dispatch({ error: { message: "Invalid credentials" } });
-                console.log("authSignup:", res);
+                // console.log("authSignup:", res);
               } catch (error) {
                 console.log(error);
               }
