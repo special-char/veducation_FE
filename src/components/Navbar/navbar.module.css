@@ -1,3 +1,6 @@
+.main {
+  @apply bg-background w-full bottom-0 fixed z-10  justify-center;
+}
 .navBar {
   @apply flex justify-evenly xl:justify-between gap-3 z-30 pt-4;
 

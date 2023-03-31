@@ -1,0 +1,6 @@
+.homebanner {
+  @apply flex flex-col py-4 gap-2;
+  &__img {
+    @apply relative aspect-video;
+  }
+}

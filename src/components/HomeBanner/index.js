@@ -4,6 +4,7 @@ import BannerImage from "public/icons/Bannerimage.png";
 import Carousal from "../carousal";
 import { getCourses } from "@/lib/getCourses";
 import Link from "next/link";
+import styles from "./homebanner.module.css";
 
 // const data = [
 //   {
@@ -27,12 +28,12 @@ import Link from "next/link";
 const HomeBanner = async () => {
   const data = await getCourses();
   return (
-    <div className="flex flex-col py-4 gap-2">
+    <div className={styles.homebanner}>
       <Carousal>
         {data?.data.map((val, index) => {
           return (
             <Link key={index} href={`/courses/${val.id}`}>
-              <div className="relative aspect-video">
+              <div className={styles.homebanner__img}>
                 <Image
                   src={val.attributes.img}
                   fill

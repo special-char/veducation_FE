@@ -46,7 +46,7 @@ const data = [
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-background w-full bottom-0 fixed z-10  justify-center">
+    <div className={styles.main}>
       <nav className={styles.navBar}>
         {data.map((val) => {
           const Svg = val.svg;

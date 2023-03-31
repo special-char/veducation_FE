@@ -86,7 +86,7 @@ const CourseDetails = async (props, users) => {
         <PlayIcon className={styles.coursedetails__playicon} /> */}
       </div>
       <div className={styles.coursedetails__datails}>
-        <h3 className="mb-0 text-xxl leading-[27.3px]">
+        <h3 className={styles.coursedetails__h3}>
           {data?.data?.attributes?.title}
         </h3>
         <RatingComponent
@@ -99,7 +99,7 @@ const CourseDetails = async (props, users) => {
           width={20}
           height={20}
         />
-        <span className="font-bold pt-3 text-sm2">
+        <span className={styles.coursedetails__span}>
           {data?.data?.attributes?.duration} | {data?.data?.attributes?.lessons}
         </span>
         <div className={styles.coursedetails__prize}>

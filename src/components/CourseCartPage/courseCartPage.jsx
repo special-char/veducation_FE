@@ -2,6 +2,7 @@ import React from "react";
 import ProductConfirm from "../ProductConfirm/productConfirm";
 import Tshirt from "public/tshirt.png";
 import CourseCart from "@/components/courseCart/courseCart";
+import styles from "./coursecartpage.module.css";
 
 const item = [
   {
@@ -38,8 +39,8 @@ const data = {
 
 const CoursesCartPage = () => {
   return (
-    <div className=" flex flex-col gap-y-14">
-      <div className="flex flex-col ">
+    <div className={styles.coursecartpage}>
+      <div className={styles.coursecartpage__body}>
         {item.map((x) => (
           <ProductConfirm
             image={x.img}

@@ -17,7 +17,7 @@ const AboutPage = ({ data }) => {
   return (
     <div className={styles.AboutPage}>
       <div className={styles.AboutPage__Img}>
-        <div className="relative aspect-square min-h-[200px] object-contain">
+        <div className={styles.AboutPage__img1}>
           <Image
             src={data.attributes.img}
             alt="aboutpage"
@@ -26,12 +26,8 @@ const AboutPage = ({ data }) => {
           />
         </div>
         <div className={styles.AboutPage__Content}>
-          <p className="large text-secondary leading-[32.5px]">
-            {data.attributes.greet}
-          </p>
-          <p className="large pb-0 mb-0 text-primary2  font-bold leading-[32.5px] w-[236px]">
-            {data.attributes.title}
-          </p>
+          <p className={styles.AboutPage__p}>{data.attributes.greet}</p>
+          <p className={styles.AboutPage__p1}>{data.attributes.title}</p>
         </div>
       </div>
       <div className="">

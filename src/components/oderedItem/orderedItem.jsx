@@ -20,8 +20,8 @@ const OrderdItem = ({
   return (
     <div className={styles.main}>
       <div className={styles.main__detail} key="items">
-        <div className="relative aspect-square min-h-[66px]   ">
-          <Image src={image} alt="item" fill className={styles.main__img} />
+        <div className={styles.main__img}>
+          <Image src={image} alt="item" fill />
         </div>
         <div className={styles.main__desc}>
           <h5 className={styles.main__name}>{title}</h5>

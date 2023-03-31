@@ -5,4 +5,13 @@
     gap: 10px;
     @apply p-2 border border-neutral-250 rounded-md;
   }
+  &__img {
+    @apply relative aspect-square w-[139px] h-full;
+  }
+  &__title {
+    @apply font-bold mb-0 leading-[22px] text-xl;
+  }
+  &__desc {
+    @apply text-xs font-medium pt-[7px] pb-[15px];
+  }
 }

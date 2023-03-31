@@ -10,6 +10,12 @@
   &__datails {
     @apply py-4 border-b-2 border-[#EED9BC];
   }
+  &__h3 {
+    @apply mb-0 text-xxl leading-[27.3px];
+  }
+  &__span {
+    @apply font-bold pt-3 text-sm2;
+  }
   &__prize {
     @apply font-bold text-xl text-neutral-500 pt-1;
   }

@@ -52,13 +52,13 @@ const Btnnavigator = (props) => {
   const { icon, title, desc, component: Component, ...linkProps } = props;
   // const Component = () => component;
   return (
-    <Component {...linkProps} className="flex flex-col gap-2 mb-0">
+    <Component {...linkProps} className={styles.main}>
       <div className={styles.navRoot}>
         <span className={styles.navRoot__body}>
           {icon}
-          <span className="flex flex-col">
-            <h6 className="mb-0 text-base font-bold text-secondary">{title}</h6>
-            <p className="text-sm font-medium">{desc && desc}</p>
+          <span className={styles.navRoot__span}>
+            <h6 className={styles.navRoot__title}>{title}</h6>
+            <p className={styles.navRoot__desc}>{desc && desc}</p>
           </span>
         </span>
         <Arrow className="w-2" />

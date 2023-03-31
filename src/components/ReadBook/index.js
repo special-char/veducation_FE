@@ -50,17 +50,17 @@ const ReadBook = () => {
   return (
     <div className={styles.readbook}>
       <header className="App-header">
-        <div className="flex items-center gap-3 py-5 px-4 border-b border-neutral-250">
+        <div className={styles.readbook__heading}>
           <Link href="/readbook/1">
-            <span className="w-6 h-6 flex p-2 items-center justify-center border border-neutral-150 rounded-lg">
-              <Arrow className="rotate-180 w-2  " />
+            <span className={styles.readbook__span}>
+              <Arrow className="rotate-180 w-2" />
             </span>
           </Link>
-          <div className="flex gap-2 font-bold text-base py-2">
+          <div className={styles.readbook__chep}>
             <p>Chep 02</p> | <p>Bhagvat Puran</p>
           </div>
         </div>
-        <div className="flex justify-between text-sm2 w-full py-2 px-4">
+        <div className={styles.readbook__pagenum}>
           {pageNumber > 1 && (
             <button
               className="flex items-center gap-2"
@@ -79,7 +79,7 @@ const ReadBook = () => {
           )}
         </div>
         <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
-          <div className="max-h-screen overflow-hidden">
+          <div className={styles.readbook__page}>
             <Page
               wrap={false}
               size="A1"
@@ -91,7 +91,7 @@ const ReadBook = () => {
             />
           </div>
         </Document>
-        <div className="fixed bottom-20 bg-background w-full flex items-center justify-end gap-6 text-base pt-3 px-5">
+        <div className={styles.readbook__page2}>
           <Arrow onClick={changePageBack} className="rotate-180 w-2" />
           <div>
             <span className="font-bold">Page {pageNumber}</span> of {numPages}

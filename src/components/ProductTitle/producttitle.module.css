@@ -1,0 +1,6 @@
+.producttitle {
+  @apply flex justify-between items-center pt-[17px] pb-[15px];
+  &__title {
+    @apply mb-0  font-bold leading-[120%];
+  }
+}

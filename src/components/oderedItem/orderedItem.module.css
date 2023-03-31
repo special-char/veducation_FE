@@ -2,9 +2,9 @@
   &__detail {
     @apply flex gap-5 border-b-2  border-[#EED9BC] justify-center py-5;
   }
-  /* &__img{
-    @apply justify-center items-center;
-  } */
+  &__img {
+    @apply relative aspect-square min-h-[66px];
+  }
 
   &__desc {
     @apply flex flex-col justify-evenly;

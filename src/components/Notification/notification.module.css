@@ -9,4 +9,7 @@
   &__order {
     @apply mb-0;
   }
+  &__p {
+    @apply text-sm2;
+  }
 }

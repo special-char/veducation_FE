@@ -6,6 +6,9 @@
     gap: 10px;
     @apply border-2 p-1 rounded-md border-[#4D310914]  gap-2 mb-2;
   }
+  &__img1 {
+    @apply aspect-video w-full h-full relative;
+  }
   &__right {
     @apply flex flex-col gap-2;
   }

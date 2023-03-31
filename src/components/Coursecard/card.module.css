@@ -12,6 +12,9 @@
     z-index: 1;
     @apply my-auto px-6;
   }
+  &__span {
+    @apply text-sm font-semibold text-white;
+  }
   &__title {
     @apply mb-0 font-bold text-white leading-6;
   }

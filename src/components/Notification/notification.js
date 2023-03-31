@@ -17,7 +17,7 @@ const Notification = ({ ...props }) => {
             {props.msg}
           </p>
         </h6>
-        <p className="text-sm2">{props.duration}</p>
+        <p className={styles.main__p}>{props.duration}</p>
       </div>
     </div>
   );

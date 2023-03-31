@@ -11,12 +11,12 @@ const DonationCard2 = ({ img, title, desc, btnText, btnLink }) => {
     <section className={styles.donationcard}>
       <ProductTitle title="Donations" link={"/donations"} />
       <div className={styles.donationcard__main}>
-        <div className="relative aspect-square w-[139px] h-full">
+        <div className={styles.donationcard__img}>
           <Image src={img} fill className="" />
         </div>
         <div className="flex flex-col">
-          <h3 className="font-bold mb-0 leading-[22px] text-xl">{title}</h3>
-          <p className="text-xs font-medium pt-[7px] pb-[15px]">{desc}</p>
+          <h3 className={styles.donationcard__title}>{title}</h3>
+          <p className={styles.donationcard__desc}>{desc}</p>
           <Button
             as={Link}
             variant="primary"

@@ -1,1 +1,3 @@
-
+.uploadimage {
+  @apply relative aspect-square max-h-[170px];
+}

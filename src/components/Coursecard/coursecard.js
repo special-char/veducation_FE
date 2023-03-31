@@ -58,7 +58,7 @@ const Coursecard = ({
             disabled
             isCourse
           />
-          <span className="text-sm font-semibold text-white">
+          <span className={styles.cardRoot__span}>
             {duration} | {lessons}
           </span>
 

@@ -1,0 +1,6 @@
+.coursecartpage {
+  @apply flex flex-col gap-y-14;
+  &__body {
+    @apply flex flex-col;
+  }
+}

@@ -55,9 +55,9 @@ const ProductConfirm = ({
         >
           <Image src={image} alt="item" fill />
         </div>
-        <div className="flex flex-1 flex-col place-content-center gap-2">
+        <div className={styles.main__title}>
           <h5 className={styles.main__name}>{title}</h5>
-          <div className="flex w-full justify-between">
+          <div className={styles.main__pry}>
             {quantity > 0 && <p className={styles.main__price}>{price}</p>}
             {isCourse && (
               <button

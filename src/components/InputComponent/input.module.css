@@ -2,6 +2,10 @@
   & > label {
     @apply text-sm2 text-neutral-150;
   }
+  &__p {
+    @apply text-sm text-error font-semibold;
+  }
+
   .body {
     @apply text-xs font-bold text-primary4;
   }

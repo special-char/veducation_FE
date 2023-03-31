@@ -9,8 +9,14 @@
   &__name {
     @apply text-[#5C5C5C] pb-0 mb-0 text-base;
   }
+  &__title {
+    @apply flex flex-1 flex-col place-content-center gap-2;
+  }
   &__price {
     @apply text-[#261818] font-bold text-base;
+  }
+  &__pry {
+    @apply flex w-full justify-between;
   }
   &__arriving {
     @apply text-xs text-[#455441];

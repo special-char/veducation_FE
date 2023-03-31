@@ -3,8 +3,17 @@
   &__Img {
     @apply flex flex-col gap-[15px] pb-3;
   }
+  &__img1 {
+    @apply relative aspect-square min-h-[200px] object-contain;
+  }
   &__Content {
     @apply text-xl flex flex-col;
+  }
+  &__p {
+    @apply large text-secondary leading-[32.5px];
+  }
+  &__p1 {
+    @apply large pb-0 mb-0 text-primary2  font-bold leading-[32.5px] w-[236px];
   }
   &__span {
     @apply text-primary2 font-bold;

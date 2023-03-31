@@ -1,6 +1,18 @@
+.main {
+  @apply flex flex-col gap-2 mb-0;
+}
 .navRoot {
   @apply border-2 flex w-full items-center justify-between py-3 px-3 rounded-md border-neutral-250;
   &__body {
     @apply flex justify-center gap-3 items-center;
+  }
+  &__span {
+    @apply flex flex-col;
+  }
+  &__title {
+    @apply mb-0 text-base font-bold text-secondary;
+  }
+  &__desc {
+    @apply text-sm font-medium;
   }
 }

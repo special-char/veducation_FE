@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import styles from "./upload.module.css";
 import Image from "next/image";
 import Edit from "public/icons/editprofile.svg";
+import styles from "./upload.module.css";
 
 const UploadImage = ({
   field, // { name, value, onChange, onBlur }
@@ -40,10 +41,7 @@ const UploadImage = ({
           {...props}
           style={{ display: "none" }}
         />
-        <div
-          className="relative aspect-square max-h-[170px]"
-          onClick={handleClick}
-        >
+        <div className={styles.uploadimage} onClick={handleClick}>
           <Image
             fill
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"

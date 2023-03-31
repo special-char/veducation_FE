@@ -78,7 +78,7 @@ const Input = ({
         )}
       </div>
       {touched && errors && !!touched[field?.name] && !!errors[field?.name] && (
-        <p className="text-sm text-error font-semibold">{errors[field.name]}</p>
+        <p className={styles.section__p}>{errors[field.name]}</p>
       )}
     </div>
   );

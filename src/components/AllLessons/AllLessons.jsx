@@ -27,7 +27,7 @@ const AllLessons = ({ data }) => {
           key={val.id}
         >
           <div className={styles.AllLessons__card}>
-            <div className="aspect-video w-full h-full relative ">
+            <div className={styles.AllLessons__img1}>
               <Image
                 src={val.thumbnail}
                 fill
