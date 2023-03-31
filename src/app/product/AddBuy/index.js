@@ -1,5 +1,7 @@
 "use client";
 import Button from "@/components/Button";
+import SignIn from "@/containers/SignIn";
+import { useAppContext } from "@/context/AppContextProvider";
 import { useCartProvider } from "@/context/CartContextProvider";
 import { addToCart } from "@/lib/updateCart";
 import { useSession } from "next-auth/react";
@@ -43,8 +45,9 @@ const AddBuy = ({ id, users }) => {
 
   function onCartClick() {
     if (!data?.data?.user) {
-      const response = confirm("Please Sign up or login to continue");
-      if (response) navigate.push("/");
+      // const response = confirm("Please Sign up... or login to continue");
+      // if (response) navigate.push("/");
+      dispatch({ signIn: true });
       return;
     }
     if (currentCart?.id) {
@@ -57,8 +60,9 @@ const AddBuy = ({ id, users }) => {
 
   function onBuyClick() {
     if (!data?.data?.user) {
-      const response = confirm("Please Sign up or login to continue");
-      if (response) navigate.push("/");
+      // const response = confirm("Please Sign up or login.... to continue");
+      // if (response) navigate.push("/");
+      dispatch({ signIn: true });
       return;
     }
     if (currentCart?.id) {
@@ -70,8 +74,14 @@ const AddBuy = ({ id, users }) => {
     navigate.push("/cart");
   }
 
+  const {
+    state: { signIn },
+    dispatch,
+  } = useAppContext();
+
   return (
     <div className={styles.ProductPage__btn}>
+      <SignIn />
       <Button
         as="button"
         className="md:flex md:justify-center"

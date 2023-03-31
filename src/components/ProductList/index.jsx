@@ -77,21 +77,35 @@ export const ProductItem = async ({
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
+
   const {
     attributes: { name, products },
   } = productData?.data;
 
+  console.log("Productlist:", products.data.length);
   return (
     <div className="flex flex-col">
-      <ProductTitle title={name} link={`/products/${id}`} />
+      <ProductTitle
+        title={name}
+        val={products.data.length > 0}
+        link={`/products/${id}`}
+      />
       <div className="flex overflow-x-scroll no-scrollbar gap-[5px]">
-        {products?.data.map((val) => {
-          return (
-            <Link key={val.id} href={`/product/${val.id}`}>
-              <ProductItem {...val} />
-            </Link>
-          );
-        })}
+        {products.data.length > 0 ? (
+          products?.data.map((val) => {
+            return (
+              <Link key={val.id} href={`/product/${val.id}`}>
+                <ProductItem {...val} />
+              </Link>
+            );
+          })
+        ) : (
+          <div className="h-20  w-full flex items-center justify-center">
+            <span className="bg-primary text-white font-semibold text-sm text-center px-10 py-2 rounded-md">
+              No {name} available
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
