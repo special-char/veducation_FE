@@ -1,4 +1,6 @@
 "use client";
+import SignIn from "@/containers/SignIn";
+import { useAppContext } from "@/context/AppContextProvider";
 import { useCartProvider } from "@/context/CartContextProvider";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -7,6 +9,10 @@ import React from "react";
 import Button from "../Button";
 
 const EnrollCourse = (props) => {
+  const {
+    state: { signIn },
+    dispatch,
+  } = useAppContext();
   const data = useSession();
   const navigate = useRouter();
 
@@ -36,8 +42,9 @@ const EnrollCourse = (props) => {
   }
   function onBuyClick() {
     if (!data?.data?.user) {
-      const response = confirm("Please Sign up or login to continue");
-      if (response) navigate.push("/");
+      // const response = confirm("Please Sign... up or login to continue");
+      // if (response) navigate.push("/");
+      dispatch({ signIn: true });
       return;
     }
     if (currentCart?.id) {
@@ -50,6 +57,7 @@ const EnrollCourse = (props) => {
   }
   return (
     <div>
+      <SignIn />
       <Button
         as="button"
         // href={`/cart?course=${props?.params?.id}`}
