@@ -10,7 +10,7 @@ import Button from "../Button";
 
 const EnrollCourse = (props) => {
   const {
-    state: { signIn },
+    state: { signIn, user },
     dispatch,
   } = useAppContext();
   const data = useSession();
@@ -21,7 +21,7 @@ const EnrollCourse = (props) => {
     cartState: { cart },
   } = useCartProvider();
   const currentCart = cart?.find((item) => {
-    if (item?.attributes?.product?.data?.id == id) {
+    if (item?.attributes?.product?.data?.id == user?.id) {
       return item;
     }
   });

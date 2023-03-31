@@ -25,17 +25,25 @@ const PurchasedItems = async ({
         .map((x) => x?.attributes?.product?.data?.attributes);
   return (
     <div>
-      {productList?.map((x) => (
-        <OrderdItem
-          image={x?.posterImageUrl}
-          price={x?.price}
-          quantity={x?.items}
-          title={x.title}
-          price={x?.price}
-          quantity={x?.items}
-          key={x?.id}
-        />
-      ))}
+      {productList.length > 0 ? (
+        productList?.map((x) => (
+          <OrderdItem
+            image={x?.posterImageUrl}
+            price={x?.price}
+            quantity={x?.items}
+            title={x?.title}
+            price={x?.price}
+            quantity={x?.items}
+            key={x?.id}
+          />
+        ))
+      ) : (
+        <div className="h-[79vh] w-full flex items-center justify-center">
+          <span className="bg-primary text-white font-semibold text-sm text-center px-10 py-2 rounded-md">
+            You should buy Something
+          </span>
+        </div>
+      )}
     </div>
   );
 };

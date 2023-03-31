@@ -75,9 +75,17 @@ const AllCourses = async () => {
   return (
     <section className="">
       <div className="grid md:grid-cols-2 gap-3">
-        {productCourses?.data.map((val) => {
-          return <Coursecard users={user} key={val.id} {...val} />;
-        })}
+        {productCourses?.data?.length > 0 ? (
+          productCourses?.data.map((val) => {
+            return <Coursecard users={user} key={val.id} {...val} />;
+          })
+        ) : (
+          <div className="h-[79vh] w-full flex items-center justify-center">
+            <span className="bg-primary text-white font-semibold text-sm text-center px-10 py-2 rounded-md">
+              No Courses available
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );
