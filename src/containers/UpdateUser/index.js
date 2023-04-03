@@ -47,7 +47,7 @@ const UpdateUser = ({ users, userDetails, useredit }) => {
               city: values.city,
             };
             try {
-              const response = await updateUser(useriddata.id, formValues);
+              const response = await updateUser(useriddata, formValues);
               console.log(values);
               console.log("response:", response);
             } catch (error) {

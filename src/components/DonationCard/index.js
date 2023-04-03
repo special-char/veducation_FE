@@ -9,7 +9,7 @@ import ProductTitle from "../ProductTitle";
 const DonationCard2 = ({ img, title, desc, btnText, btnLink }) => {
   return (
     <section className={styles.donationcard}>
-      <ProductTitle title="Donations" link={"/donations"} />
+      <ProductTitle isDonation title="Donations" link={"/donations"} />
       <div className={styles.donationcard__main}>
         <div className="relative aspect-square w-[139px] h-full">
           <Image src={img} fill className="" />

@@ -24,7 +24,7 @@ const PurchasedItems = async ({
         })
         .map((x) => x?.attributes?.product?.data?.attributes);
   return (
-    <div>
+    <div className="pb-40">
       {productList.length > 0 ? (
         productList?.map((x) => (
           <OrderdItem

@@ -1,6 +1,7 @@
 .main {
+
   &__detail {
-    @apply flex gap-5 border-b-2  border-[#EED9BC] justify-center py-5;
+    @apply flex gap-5 border-b-2   border-[#EED9BC] justify-start px-2 py-5 ;
   }
   /* &__img{
     @apply justify-center items-center;

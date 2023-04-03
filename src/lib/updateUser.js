@@ -1,7 +1,7 @@
 export const updateUser = async (id, form) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/user-edits/${id}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/user-edits/${id}?populate=*`,
       {
         method: "PUT",
         body: JSON.stringify({ data: form }),
@@ -11,6 +11,8 @@ export const updateUser = async (id, form) => {
         },
       }
     );
+    // if(response.json().data.attributes.){}
+
     return response.json();
   } catch (error) {
     console.log(error);
