@@ -14,6 +14,7 @@ const BannerCourses = ({ data }) => {
 
   const {
     video: { link, title, description },
+    isPlaying,
   } = videoState;
   console.log({ videoState });
   useEffect(() => {
@@ -38,6 +39,7 @@ const BannerCourses = ({ data }) => {
             src: link || data?.link,
             type: "video/mp4",
             controls: true,
+            autoPlay: isPlaying,
           }}
           // onPause={() => {
           //   setIsPaused(true);

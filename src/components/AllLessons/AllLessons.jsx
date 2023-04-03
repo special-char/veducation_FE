@@ -10,10 +10,10 @@ const AllLessons = ({ data }) => {
   const { videoState, videoDispatch } = useCourseVideoContext();
 
   const {
-    video: { id },
+    video: { id = data[0].id, ...vid },
   } = videoState;
 
-  console.log("AllLessons page:", data);
+  console.log("AllLessons page:", data, id);
   return (
     <div className={styles.AllLessons}>
       {data?.map((val, key) => (
@@ -22,7 +22,7 @@ const AllLessons = ({ data }) => {
             "opacity-60": id === val?.id,
           })}
           onClick={() => {
-            videoDispatch({ video: val });
+            videoDispatch({ video: val, isPlaying: true });
           }}
           key={val.id}
         >

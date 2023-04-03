@@ -29,11 +29,14 @@ const CourseCart = ({
 
   const [promocode, setPromocode] = useState({
     id: 0,
-    attributes: { rate: "", amount: null },
+    attributes: { rate: null, amount: null },
   });
 
   const { addPurchaseItems } = usePurchaseContext();
 
+  function strToPer(str) {
+    return Number(`0.${parseFloat(str)}`);
+  }
   const handleSearch = () => {
     const currentCode = promocodes.find((p) => {
       return p?.attributes?.code === searchValue;
@@ -57,7 +60,11 @@ const CourseCart = ({
     emptyCart,
   } = useCartProvider();
 
-  const totalPrice = calculatePrice(cart, 1.12);
+  const totalPrice = calculatePrice(
+    cart,
+    1.12 - strToPer(promocode.attributes.rate) || 1,
+    promocode.attributes
+  );
   const shippingDetail = data?.find((shipping) => {
     return shipping?.attributes?.user_id?.data?.id === user?.id;
   });

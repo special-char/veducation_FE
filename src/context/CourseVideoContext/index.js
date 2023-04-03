@@ -9,6 +9,7 @@ function reducer(state, action) {
 
 const initialState = {
   video: {},
+  isPlaying: false,
 };
 
 export const CourseVideoContextProvider = ({ children }) => {
