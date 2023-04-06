@@ -14,7 +14,7 @@
     @apply w-full;
   }
   &__img {
-    @apply pb-2 rounded-sm w-full;
+    @apply pb-2 rounded-sm w-full object-contain aspect-auto;
   }
   &__about {
     @apply font-bold  mb-0 pb-4 pt-2 leading-4;

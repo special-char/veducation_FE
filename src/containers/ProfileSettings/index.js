@@ -15,7 +15,7 @@ const Btndata = [
     id: 2,
     icon: <Edit width="20" />,
     title: "Change Password",
-    href: "/editprofile",
+    href: "/changePassword",
   },
 ];
 

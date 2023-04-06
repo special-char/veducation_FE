@@ -76,11 +76,9 @@ const YourOrderPage = async () => {
   const session = await getSessionUser(headers().get("cookie") ?? "");
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
-  console.log("YourOrderPage:", user);
   const purchaseData = await getPuchasedItems(user?.id);
-  console.log("YourOrderPage data:", purchaseData);
   return (
-    <div className="h-auto">
+    <div className="h-auto pb-36">
       <PurchasedItems purchaseData={purchaseData} user={user} myorder />
     </div>
   );

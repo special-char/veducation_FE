@@ -41,11 +41,11 @@ const users = [
 
 const DonationView = async () => {
   const donations = await getDonationsData();
-  const data = donations.data;
+  const data = donations?.data;
   return (
     <div className={styles.main} id="View">
       <h5 className="">Donations</h5>
-      {data.map((val, i) => {
+      {data?.map((val, i) => {
         const progressValue = val.attributes?.raised
           ?.split("")
           ?.filter((x) => x !== ",")
@@ -58,7 +58,14 @@ const DonationView = async () => {
         return (
           <div className={styles.main__donationInfo} key={val.id}>
             <div className={styles.main__donationdata}>
-              <Image src={Imag2} className={styles.main__img} alt="donation" />
+              <Image
+                src={`${process.env.NEXT_PUBLIC_API_URL}${val?.attributes?.image?.data?.attributes?.url}`}
+                className={styles.main__img}
+                alt="donation"
+                // fill
+                width={100}
+                height={200}
+              />
               {/* {x.img} */}
               <h5 className={styles.main__about}>{val.attributes.title}</h5>
               <div className={styles.main__value}>

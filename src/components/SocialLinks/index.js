@@ -15,7 +15,6 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 const SocialLinks = ({ sociallinks }) => {
-  //console.log("sociallinks:", sociallinks.data);
   const data = useSession();
   const {
     state: { signIn, user },
@@ -39,7 +38,7 @@ const SocialLinks = ({ sociallinks }) => {
         link: "",
       },
     },
-    ...sociallinks.data,
+    ...sociallinks?.data,
   ];
   //console.log("socials data map:", socials);
   return (

@@ -1,20 +1,18 @@
-export const addUser = async (form) => {
+export const updateEditUser = async (id, form) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/user-edits`,
+      `${process.env.NEXT_PUBLIC_API_URL}/user-edits/${id}?populate=*`,
       {
-        method: "POST",
-        body: JSON.stringify({
-          data: {
-            user: form,
-          },
-        }),
+        method: "PUT",
+        body: JSON.stringify({ data: form }),
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       }
     );
+    // if(response.json().data.attributes.){}
+
     return response.json();
   } catch (error) {
     console.log(error);

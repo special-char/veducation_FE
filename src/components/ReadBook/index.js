@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { Book1 } from "../../../public/samplepdf.pdf";
-import { Document, Page, StyleSheet } from "react-pdf/dist/esm/entry.webpack5";
+import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
 import Arrow from "../../../public/icons/arrow.svg";
-import "react-pdf/dist/esm/Page/TextLayer.css";
+// import "react-pdf/dist/esm/Page/TextLayer.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import styles from "./readbook.module.css";
 import Link from "next/link";
 
@@ -13,10 +13,12 @@ import Link from "next/link";
 //   standardFontDataUrl: "standard_fonts/",
 // };
 
-const ReadBook = () => {
+const ReadBook = ({ book, ...props }) => {
   const [file, setFile] = useState(
-    "https://ik.imagekit.io/p99x3nxgz/bhagvatgita.pdf?updatedAt=1679923614120"
+    // "https://ik.imagekit.io/p99x3nxgz/bhagvatgita.pdf?updatedAt=1679923614120"
+    `${process.env.NEXT_PUBLIC_API_URL}${book?.data?.attributes?.pdf?.data?.attributes?.url}`
   );
+  console.log(book?.data?.attributes?.pdf?.data?.attributes?.url);
   // const [numPages, setNumPages] = useState(null);
 
   // function onFileChange(event) {
@@ -36,11 +38,16 @@ const ReadBook = () => {
   }
 
   function changePage(offSet) {
-    setPageNumber((prevPageNumber) => prevPageNumber + offSet);
+    setPageNumber((prevPageNumber) => {
+      if (prevPageNumber === numPages) return prevPageNumber;
+      return prevPageNumber + offSet;
+    });
   }
 
   function changePageBack() {
-    changePage(-1);
+    if (pageNumber !== 1) {
+      changePage(-1);
+    }
   }
 
   function changePageNext() {
@@ -57,7 +64,8 @@ const ReadBook = () => {
             </span>
           </Link>
           <div className="flex gap-2 font-bold text-base py-2">
-            <p>Chep 02</p> | <p>Bhagvat Puran</p>
+            <p>Chep 02</p> |{" "}
+            <p>{book?.data?.attributes?.pdf?.data?.attributes?.name}</p>
           </div>
         </div>
         <div className="flex justify-between text-sm2 w-full py-2 px-4">
@@ -79,11 +87,11 @@ const ReadBook = () => {
           )}
         </div>
         <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
-          <div className="max-h-screen overflow-hidden">
+          <div className="overflow-visible">
             <Page
               wrap={false}
-              size="A1"
-              style={{ backgroundColor: "tomato" }}
+              size="A4"
+              // style={{ backgroundColor: "tomato" }}
               width={window.innerWidth}
               className={styles.readbook__reactpdfPage}
               pageNumber={pageNumber}

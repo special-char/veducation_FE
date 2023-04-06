@@ -16,27 +16,25 @@ const BannerCourses = ({ data }) => {
     video: { link, title, description },
     isPlaying,
   } = videoState;
-  console.log({ videoState });
   useEffect(() => {
     videoRef?.current?.load();
     return () => {};
   }, [link]);
-
-  console.log(videoRef?.current?.duration);
 
   return (
     <div className={styles.BannerCourses}>
       <div className="relative">
         <VideoComponent
           ref={videoRef}
-          loops
-          poster={data?.thumbnail}
+          poster={`${process.env.NEXT_PUBLIC_API_URL}${data?.thumbnail?.data?.attributes?.url}`}
           controls
           controlsList="nodownload"
           muted
           className="w-full aspect-video"
           source={{
-            src: link || data?.link,
+            src:
+              link ||
+              `${process.env.NEXT_PUBLIC_API_URL}${data?.video?.data?.attributes?.url}`,
             type: "video/mp4",
             controls: true,
             autoPlay: isPlaying,

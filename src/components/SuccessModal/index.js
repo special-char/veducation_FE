@@ -25,7 +25,7 @@ const SuccessModal = ({ title, description, href, btnText }) => {
         <div className="flex flex-col items-center">
           <SuccessIcon className="w-2/5 pb-10" />
           <h3 className="pb-2">{title}</h3>
-          <p>{description}</p>
+          {description && <p>{description}</p>}
         </div>
         <Button className="w-full py-3" as={Link} href={href}>
           {btnText}

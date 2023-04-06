@@ -12,9 +12,7 @@ import Link from "next/link";
 
 const Library = ({ allbooks }) => {
   const [search, setsearch] = useState("");
-  console.log("search", search);
   const allbooksdata = allbooks.data;
-  console.log("allbooksdata >...", allbooksdata);
   return (
     <div className="h-screen pt-3 xs:px-container md:px-0 flex flex-col gap-2">
       <div className="relative">
@@ -43,15 +41,15 @@ const Library = ({ allbooks }) => {
       <div className="flex flex-col gap-1">
         {allbooksdata
           .filter((val) => {
-            return search.toLowerCase() === ""
+            return !search.toLowerCase().trim()
               ? val
-              : val.attributes?.title.toLowerCase().includes(search);
+              : val.attributes?.title.toLowerCase().includes(search.toLowerCase().trim());
           })
           .map((val, index) => {
             return (
               <Btnnavigator
                 key={index}
-                component={Link}
+                component={"Link"}
                 href={""}
                 icon={<UpcomingBookImg className="w-6" />}
                 title={val.attributes?.title}

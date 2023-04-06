@@ -43,7 +43,6 @@ const CourseCheckout = ({
     setPromocode(currentCode);
   };
 
-  console.log({ promocode });
 
   const userSession = useSession();
   const user = users?.find(
@@ -56,7 +55,6 @@ const CourseCheckout = ({
       course: course?.data?.id,
       user: user?.id,
     });
-    console.log("CourseCheckout:", res);
     if (res.data.id) {
       const response = await updateCourse(course?.data?.id, {
         isPurchased: true,
@@ -109,7 +107,7 @@ const CourseCheckout = ({
 
         <div className={styles.main__total}>
           <h3 className={styles.main__orderData}>Total:</h3>
-          <h3>${totalPrice.withTax}</h3>
+          <h3>${totalPrice.withTax.toFixed(2)}</h3>
         </div>
       </div>
 

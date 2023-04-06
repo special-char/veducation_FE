@@ -3,24 +3,36 @@ import Dropdown from "@/components/DropDown Component/Dropdown";
 import Input from "@/components/InputComponent";
 import UploadImage from "@/components/UploadImage";
 
-export const editProfileInitValue = {
-  file: null,
-  username: "",
-  email: "",
-  phone: "",
-  street: "",
-  phone: "",
-  street: "",
-  postcode: "",
-  country: "",
-  city: "",
+export const editProfileInitValue = (props) => {
+  console.log({ props });
+  return {
+    profileimage: null,
+    username: props.username ?? "",
+    email: props.email ?? "",
+    phone: props.phone ?? "",
+    street: props.street ?? "",
+    postcode: props.postcode ?? "",
+    country: props.country ?? "",
+    city: props.city ?? "",
+    gender: props.gender ?? "",
+  };
 };
+
+// email
+// :
+// "user@gmail.com"
+// password
+// :
+// "user@123"
+// username
+// :
+// "user"
 
 export const editProfileFields = [
   {
     component: UploadImage,
-    id: "file",
-    name: "file",
+    id: "profileimage",
+    name: "profileimage",
     className: "",
     type: "file",
     validate: (value) => {

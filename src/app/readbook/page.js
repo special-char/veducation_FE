@@ -75,11 +75,10 @@ const ReadBook = () => {
           )}
         </div>
         <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
-          <div className="w-1/2">
+          <div>
             <Page
               wrap={false}
-              size="A4"
-              width={window.innerWidth}
+              size="A1"
               className={"bg-background"}
               pageNumber={pageNumber}
               renderTextLayer={false}

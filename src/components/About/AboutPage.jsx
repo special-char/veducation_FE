@@ -13,13 +13,12 @@ import md from "markdown-it";
 // };
 
 const AboutPage = ({ data }) => {
-  console.log("AboutPage data:", data);
   return (
     <div className={styles.AboutPage}>
       <div className={styles.AboutPage__Img}>
         <div className="relative aspect-square min-h-[200px] object-contain">
           <Image
-            src={data.attributes.img}
+            src={data?.attributes?.img}
             alt="aboutpage"
             fill
             className="object-cover"
@@ -27,10 +26,10 @@ const AboutPage = ({ data }) => {
         </div>
         <div className={styles.AboutPage__Content}>
           <p className="large text-secondary leading-[32.5px]">
-            {data.attributes.greet}
+            {data?.attributes?.greet}
           </p>
           <p className="large pb-0 mb-0 text-primary2  font-bold leading-[32.5px] w-[236px]">
-            {data.attributes.title}
+            {data?.attributes?.title}
           </p>
         </div>
       </div>
@@ -40,7 +39,7 @@ const AboutPage = ({ data }) => {
           className="text-base leading-6"
           style={{ whiteSpace: "pre-line" }}
           dangerouslySetInnerHTML={{
-            __html: md().render(data.attributes.desc ?? ""),
+            __html: md().render(data?.attributes?.desc ?? ""),
           }}
         ></div>
         <div className={styles.AboutPage__button}>

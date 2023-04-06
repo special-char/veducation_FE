@@ -1,13 +1,21 @@
-export const updateUser = async (id, form) => {
+export const updatePassword = async (
+  form = {
+    password: "string",
+    currentPassword: "string",
+    passwordConfirmation: "string",
+  },
+  token
+) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/users/${id}?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/change-password`,
       {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(form),
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${token}`,
         },
       }
     );

@@ -12,10 +12,7 @@ const page = async () => {
   const session = await getSessionUser(headers().get("cookie") ?? "");
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
-  //console.log("purchasedCourse sYourOrderPage:", user);
   const purchasedCourse = await getPurchasedCourses(user?.id);
-  //console.log("purchasedCourse...:", purchasedCourse?.data);
-  console.log("your-course user:", user);
   //fetched purchased courses your-courses-purchased
 
   return (

@@ -1,5 +1,3 @@
-import AllLessons from "@/components/AllLessons/AllLessons";
-import BannerCourses from "@/components/BannerCourses/BannerCourses";
 import StartCourse from "@/containers/Startcourse";
 import React from "react";
 

@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import styles from "../InputComponent/input.module.css";
 import clsx from "classnames";
-import Checkbox from "../CheckBox";
 
 const Input = ({
   field, // { name, value, onChange, onBlur }

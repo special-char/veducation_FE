@@ -13,13 +13,13 @@ export const ProductItem = async ({
   return (
     <div className={styles.product_item}>
       <div className={styles.product_item__image}>
-        <Image
+        {/* <Image
           src={posterImageUrl}
           fill
           alt="book"
           className="px-3 pt-2"
           sizes=""
-        />
+        /> */}
       </div>
       <div className={styles.product_item__desc}>
         <p className={styles.product_item__name}>{title}</p>
@@ -78,14 +78,15 @@ export const ProductItem = async ({
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
 
-  const {
-    attributes: { name, products },
-  } = productData?.data;
+  // const {
+  //   attributes: { name, products },
+  // } = productData?.data;
 
-  console.log("Productlist:", products.data.length);
+  console.log({ productData });
+
   return (
     <div className="flex flex-col">
-      <ProductTitle
+      {/* <ProductTitle
         title={name}
         val={products.data.length > 0}
         link={`/products/${id}`}
@@ -106,7 +107,7 @@ const Productlist = async ({ id }) => {
             </span>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

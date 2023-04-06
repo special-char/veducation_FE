@@ -49,7 +49,6 @@ const CourseCart = ({
     }
     setPromocode(currentCode);
   };
-  console.log({ promocode });
 
   const userSession = useSession();
   const user = users?.find(
@@ -70,10 +69,13 @@ const CourseCart = ({
   });
 
   async function checkout() {
+    const dateFormat = Intl.DateTimeFormat("en");
     try {
       const response = await addPurchase({
         cartId: cart.map((c) => c.id),
         user: user?.id,
+        date: dateFormat.format(new Date()),
+        orderCode: `#${cart.map((c) => c.id).join("") + Date.now()}`,
       });
       if (response.data) {
         if (shippingDetail) {

@@ -67,28 +67,30 @@ const SignIn = () => {
       <FormikForm
         fields={signInFields}
         initialValues={signInInitValue}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
           const res = await signIn("credentials", {
             redirect: false,
             email: values.email,
             password: values.password,
             callbackUrl: "/",
           });
+          console.log({ res });
           if (res.ok) {
             dispatch({ error: null });
             toggleModal();
             return;
           }
-          dispatch({ error: { message: "Invalid credentials" } });
+          setFieldError("password", "Invalid credentials");
+          // dispatch({ error: { message: "Invalid credentials" } });
         }}
       >
-        {error.message && (
+        {/* {error.message && (
           <div className="relative">
             <p className="absolute top-[-10px] text-sm text-error font-semibold">
               {error.message}
             </p>
           </div>
-        )}
+        )} */}
       </FormikForm>
       <div className="text-center flex justify-center items-center gap-3 py-4">
         <div className="w-16 h-[1px] bg-neutral-150"></div>

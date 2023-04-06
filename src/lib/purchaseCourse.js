@@ -19,7 +19,7 @@ export const updateCourse = async (id, payload) => {
   }
 };
 
-export const purchaseCourse = async (id,payload) => {
+export const purchaseCourse = async (id, payload) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/purchases?populate=*`,

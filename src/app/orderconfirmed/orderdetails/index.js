@@ -10,10 +10,10 @@ const OrderDetails = ({ orderCode, date, total, payment }) => {
     {
       svg: <OrderCode />,
       title: "OrderCode",
-      data: "#85764564674646",
+      data: orderCode,
     },
-    { svg: <Date />, title: "Date", data: "February 19, 2021" },
-    { svg: <Total />, title: "Total", data: "$1,345.00" },
+    { svg: <Date />, title: "Date", data: date },
+    { svg: <Total />, title: "Total", data: total },
     { svg: <Payment />, title: "Payment method", data: "Cash on Delivery" },
   ];
   return (

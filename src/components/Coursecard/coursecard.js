@@ -24,16 +24,10 @@ const Coursecard = ({
   ...val
 }) => {
   const data = useSession();
-  // console.log("user_id:::", user_id);
-  // console.log("useSession:", data);
-  // console.log("users...:", users);
-  // const user = users.email === data?.user?.email;
-  // console.log("user_id?.data?.id:", user_id?.data?.id);
+
   const user = users;
-  // console.log("rest:", rest);
-  // console.log("user_id:", user_id?.data?.attributes?.email);
-  // console.log("user:::", user?.email);
-  // console.log("user_email_session:", user);
+  console.log({ img: img?.data?.attributes?.url });
+
   return (
     <Link
       href={
@@ -45,7 +39,12 @@ const Coursecard = ({
       {/* <Link href={`/courses/${val.id}`}> */}
       <div className={styles.cardRoot}>
         <div className={styles.cardRoot__image}>
-          <Image src={img} fill alt="" className="" />
+          <Image
+            src={`${process.env.NEXT_PUBLIC_API_URL}${img?.data?.attributes?.url}`}
+            fill
+            alt=""
+            className=""
+          />
         </div>
         <div className={styles.cardRoot__body}>
           <h4 className={styles.cardRoot__title}>{title}</h4>

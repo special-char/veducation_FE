@@ -13,7 +13,6 @@ const AllLessons = ({ data }) => {
     video: { id = data[0].id, ...vid },
   } = videoState;
 
-  console.log("AllLessons page:", data, id);
   return (
     <div className={styles.AllLessons}>
       {data?.map((val, key) => (
@@ -29,7 +28,7 @@ const AllLessons = ({ data }) => {
           <div className={styles.AllLessons__card}>
             <div className="aspect-video w-full h-full relative ">
               <Image
-                src={val.thumbnail}
+                src={`${process.env.NEXT_PUBLIC_API_URL}${val?.thumbnail?.data?.attributes?.url}`}
                 fill
                 alt="thumbnail"
                 className={styles.AllLessons__img}

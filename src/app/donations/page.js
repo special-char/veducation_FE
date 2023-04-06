@@ -1,10 +1,10 @@
-import Donations from "@/containers/Donations";
 import React from "react";
+import DonationView from "./Donation/donationView";
 
 const Page = () => {
   return (
     <section className="h-full">
-      <Donations />
+      <DonationView />
     </section>
   );
 };

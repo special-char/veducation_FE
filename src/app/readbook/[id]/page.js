@@ -5,38 +5,38 @@ import UpcomingBookImg from "public/icons/upcomingbook.svg";
 import Search from "public/icons/Search.svg";
 import Link from "next/link";
 
-const Page = () => {
+const Page = (props) => {
   const data = [
-    {
-      id: 1,
-      title: "Book1",
-      desc: "This is book1",
-      href: "/readbook/book/1",
-    },
-    {
-      id: 2,
-      title: "Book2",
-      desc: "This is book2",
-      href: "/readbook/book/1",
-    },
-    {
-      id: 3,
-      title: "Book3",
-      desc: "This is book3",
-      href: "/readbook/book/1",
-    },
-    {
-      id: 4,
-      title: "Book4",
-      desc: "This is book1",
-      href: "/readbook/book/1",
-    },
-    {
-      id: 5,
-      title: "Book5",
-      desc: "This is book5",
-      href: "/readbook/book/1",
-    },
+    // {
+    //   id: 1,
+    //   title: "Book1",
+    //   desc: "This is book1",
+    //   href: "/readbook/book/1",
+    // },
+    // {
+    //   id: 2,
+    //   title: "Book2",
+    //   desc: "This is book2",
+    //   href: "/readbook/book/1",
+    // },
+    // {
+    //   id: 3,
+    //   title: "Book3",
+    //   desc: "This is book3",
+    //   href: "/readbook/book/1",
+    // },
+    // {
+    //   id: 4,
+    //   title: "Book4",
+    //   desc: "This is book1",
+    //   href: "/readbook/book/1",
+    // },
+    // {
+    //   id: 5,
+    //   title: "Book5",
+    //   desc: "This is book5",
+    //   href: "/readbook/book/1",
+    // },
   ];
 
   const [search, setsearch] = useState("");
@@ -58,9 +58,11 @@ const Page = () => {
       <div className="flex flex-col gap-2">
         {data
           .filter((val) => {
-            return search.toLowerCase() === ""
+            return !search.toLowerCase().trim()
               ? val
-              : val.attributes?.title.toLowerCase().includes(search);
+              : val.attributes?.title
+                  .toLowerCase()
+                  .includes(search.toLowerCase().trim());
           })
           .map((val, index) => {
             return (

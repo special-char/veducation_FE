@@ -38,11 +38,9 @@ const reviewdata = [
 const CourseDetails = async (props, users) => {
   const user = users?.find((item) => item.email === data?.data?.user?.email);
   const data = await getCourseDetails(props?.params?.id);
-  console.log("CourseDetails:", data);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
-  // console.log("CourseDetails:", user);
-  // console.log("lesson:", data?.data?.attributes?.lesson[0]);
+  console.log({ data });
   // function onBuyClick() {
   //   if (!data?.data?.user) {
   //     const response = confirm("Please Sign up or login to continue");

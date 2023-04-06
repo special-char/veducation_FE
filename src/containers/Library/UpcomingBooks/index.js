@@ -29,10 +29,7 @@ const data = [
 
 const UpcomingBooks = ({ data, search }) => {
   //const { data } = await getAllBooksData();
-  // console.log("UpcomingBooks", data.data);
-  console.log("search", search);
   const allbooks = data.data;
-  // console.log("UpcomingBooks allbooks", allbooks);
   return (
     <section className="pt-1 flex flex-col gap-2">
       {allbooks

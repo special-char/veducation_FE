@@ -1,3 +1,5 @@
+ 
+
 const { default: axiosInstance } = require("./axiosInstance");
 
 export const getAboutData = async () => {

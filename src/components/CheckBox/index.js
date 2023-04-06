@@ -2,10 +2,11 @@ import React from "react";
 
 const Checkbox = ({
   field: { name, value },
-  form: { touched, errors, setFieldValue, setFieldTouched },
+  form: { touched, errors, setFieldValue, setFieldTouched, values },
   options,
   label,
 }) => {
+  console.log({ values });
   return (
     <div>
       <label htmlFor="" className="text-sm2 text-neutral-150">

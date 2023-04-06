@@ -15,11 +15,6 @@ const Carousal = ({ children }) => {
   const [element, setElement] = useState(null);
   const [index, setIndex] = useState(0);
 
-  console.log({
-    scroll: scrollerRef?.current?.children,
-    element: element,
-  });
-
   useEffect(() => {
     const scrollPort = scrollerRef.current;
     if (scrollPort) {
@@ -37,11 +32,17 @@ const Carousal = ({ children }) => {
         behavior: "smooth",
       });
 
+      // if (element.nextElementSibling) {
+      //   setElement(element.nextElementSibling);
+      // }
+
       if (element.nextElementSibling) {
+        const newIndex = index - 1;
+        setIndex(newIndex);
         setElement(element.nextElementSibling);
       }
     }
-  }, [element]);
+  }, [index, element]);
 
   const scrollRight = useCallback(() => {
     if (scrollerRef.current && element) {
@@ -52,18 +53,22 @@ const Carousal = ({ children }) => {
         behavior: "smooth",
       });
 
+      // if (element.previousElementSibling) {
+      //   setElement(element.previousElementSibling);
+      // }
       if (element.previousElementSibling) {
+        const newIndex = index + 1;
+        setIndex(newIndex);
         setElement(element.previousElementSibling);
       }
     }
-  }, [element]);
+  }, [index, element]);
 
   const moveToIndex = useCallback(
     (i) => {
       const scrollport = scrollerRef?.current;
       setIndex(i);
       setElement(scrollport?.children[i]);
-      console.log("move to index", i);
       if (scrollport) {
         const element = scrollport.children[i];
 

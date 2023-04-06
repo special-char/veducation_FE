@@ -47,7 +47,6 @@ const InviteUs = ({ fields, ...prpos }) => {
               invitationdetails: values.invitationdetails,
             };
             try {
-              console.log("formvalues", formValues);
               const res = await sendInvitation(formValues);
               if (res.ok) {
                 dispatch({ error: null });
@@ -56,7 +55,6 @@ const InviteUs = ({ fields, ...prpos }) => {
               }
               dispatch({ error: { message: "Invalid credentials" } });
               toggleModal();
-              console.log("values:", values);
               dispatch({ success: true });
             } catch (error) {
               console.log(error);

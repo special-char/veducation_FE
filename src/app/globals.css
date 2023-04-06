@@ -164,7 +164,7 @@
 
       &::before {
         content: "\2303";
-        @apply absolute right-0 text-center items-center text-sm font-bold text-secondary rotate-180;
+        @apply absolute right-0 text-center items-center text-xl font-bold text-secondary rotate-180;
       }
     }
     & > div:last-child {
@@ -187,7 +187,7 @@
 
       &::before {
         content: "\2303";
-        @apply aspect-square  text-secondary  text-center text-sm font-bold absolute right-0 rotate-0;
+        @apply aspect-square  text-secondary  text-center text-xl font-bold absolute right-0 rotate-0;
       }
     }
   }
@@ -629,7 +629,6 @@
       @apply w-4/5 rounded-xl bg-primary py-10 text-center text-neutral-100;
     }
   } */
-
   .newsletter {
     @apply grid gap-5;
     grid-template-columns: 3fr 2fr;

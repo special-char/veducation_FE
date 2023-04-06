@@ -4,6 +4,7 @@ export const addPurchase = async (
   payload = {
     cartId: ["string or id", "string or id"],
     user: "",
+    date: "",
   }
 ) => {
   try {

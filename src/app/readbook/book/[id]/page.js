@@ -1,10 +1,13 @@
 import ReadBook from "@/components/ReadBook";
+import { getBookById } from "@/lib/getBookById";
 import React from "react";
 
-const Page = () => {
+const Page = async (props) => {
+  const response = await getBookById(props?.params?.id);
+  console.log({ response });
   return (
     <div>
-      <ReadBook />
+      <ReadBook {...props} book={response} />
     </div>
   );
 };

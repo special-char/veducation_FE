@@ -7,14 +7,11 @@ import Style from "./yourbook.module.css";
 import { getAllBooksData } from "@/lib/getAllBooksData";
 import { getAllBooksFromLib } from "@/lib/getAllBooksFromLib";
 
-const Page = async() => {
-    const allBookData= await getAllBooksFromLib();
-    // const {
-    //   attributes: { books },
-    // } = allBookData?.data;
-
-  
-    console.log("Page:", allBookData?.data);
+const Page = async () => {
+  const allBookData = await getAllBooksFromLib();
+  // const {
+  //   attributes: { books },
+  // } = allBookData?.data;
 
   // const data = [
   //   {
@@ -55,9 +52,14 @@ const Page = async() => {
         {allBookData.data.length > 0 ? (
           allBookData?.data.map((val) => {
             return (
-              <Link key={val.id} href={`/readbook/${val.id}`}>
+              <Link key={val.id} href={`/readbook/book/${val.id}`}>
                 <div className="relative aspect-image min-h-[20px]">
-                  <Image src={Book} fill className=""  />
+                  <Image
+                    alt=""
+                    src={`${process.env.NEXT_PUBLIC_API_URL}${val?.attributes?.posterImage?.data?.attributes?.url}`}
+                    fill
+                    className=""
+                  />
                 </div>
               </Link>
             );

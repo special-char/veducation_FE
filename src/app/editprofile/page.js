@@ -7,7 +7,6 @@ import React from "react";
 const EditProfile = async () => {
   const users = await getUser();
   const useredit = await getUseredits();
-  console.log("useredit editprofile:", useredit);
 
   return (
     <div>

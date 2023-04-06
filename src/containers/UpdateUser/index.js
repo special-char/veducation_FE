@@ -3,11 +3,12 @@ import FormikForm from "@/components/FormikForm";
 import React from "react";
 
 import styles from "./editprofile.module.css";
-import { updateUser } from "@/lib/updateUser";
+import { updateEditUser } from "@/lib/updateEditUser";
 import { useSession } from "next-auth/react";
 import { editProfileFields, editProfileInitValue } from "./editProfileFields";
 import { useRouter } from "next/router";
 import { getUseredits } from "@/lib/getuseredits";
+import { updateUser } from "@/lib/updateUser";
 
 const UpdateUser = ({ users, userDetails, useredit }) => {
   const userSession = useSession();
@@ -15,41 +16,34 @@ const UpdateUser = ({ users, userDetails, useredit }) => {
     (item) => item.email === userSession?.data?.user?.email
   );
 
-  // console.log("user:", user);
-  // console.log(
-  //   "useredit:",
-  //   useredit?.data?.find(
-  //     (val) => val?.attributes?.users_permissions_user?.data?.id === user?.id
-  //   )
-  // );
   const useriddata = useredit?.data?.find(
-    (val) => val?.attributes?.users_permissions_user?.data?.id === user?.id
+    (val) => val?.attributes?.user?.data?.id === user?.id
   );
-  // console.log("edit user id:", useriddata.id);
+
+  console.log({ user, useriddata });
+
   return (
     <section className={styles.editprofile}>
       {user ? (
         <FormikForm
           fields={editProfileFields}
-          initialValues={editProfileInitValue}
+          initialValues={editProfileInitValue({
+            ...user,
+            ...useriddata.attributes,
+          })}
           onSubmit={async (values) => {
-            const formValues = {
-              // users_permissions_user: user?.id,
-              name: user.username,
-              email: user.email,
-              profileimage: values.file,
-              gender: values.gender,
-              // username: values.username,
-              phone: values.phone,
-              street: values.street,
-              postcode: values.postcode,
-              country: values.country,
-              city: values.city,
-            };
+            const { username, email, ...rest } = values;
             try {
-              const response = await updateUser(useriddata, formValues);
-              console.log(values);
-              console.log("response:", response);
+              const response = await updateEditUser(useriddata?.id, rest);
+              if (response.data.attributes?.user?.data?.id) {
+                const res = await updateUser(
+                  response.data.attributes?.user?.data?.id,
+                  {
+                    username: values.username,
+                    email: values.email,
+                  }
+                );
+              }
             } catch (error) {
               console.log(error);
             }

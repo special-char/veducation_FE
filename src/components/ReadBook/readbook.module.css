@@ -1,10 +1,9 @@
 .readbook {
-  @apply relative;
+  @apply h-screen relative;
   /* div {
     background: red;
   } */
   &__reactpdfPage {
-    background: #ff7136;
     width: 200px;
     height: 550px;
   }
