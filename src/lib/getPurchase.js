@@ -9,7 +9,7 @@ export const addPurchase = async (
 ) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/purchases?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/purchases?populate=*`,
       {
         method: "POST",
         body: JSON.stringify({

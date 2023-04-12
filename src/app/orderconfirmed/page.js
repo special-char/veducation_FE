@@ -82,9 +82,11 @@ const Page = async (props) => {
       };
     });
 
+  console.log({ purchaseData });
+
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
-      <OrderSucess date={`${productList[0].date}`} />
+      <OrderSucess date={`${productList[0]?.date}`} />
       <div>
         <PurchasedItems
           {...props}
@@ -94,8 +96,10 @@ const Page = async (props) => {
         />
       </div>
       <OrderDetails
-        orderCode={productList[0].orderCode}
-        date={`${dateFormat.format(new Date(productList[0].date))}`}
+        orderCode={productList[0]?.orderCode}
+        date={
+          `${dateFormat.format(new Date(productList[0]?.date))}` ?? "4/10/2023"
+        }
         total={`$ ${productList
           ?.reduce((p, c) => {
             return (p + c.price * c.items) * 1.07;

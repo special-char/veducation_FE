@@ -1,18 +1,10 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import SocialIcon from "./SocialIcon";
-import YoutubeSvg from "../../../public/youtubesvg.svg";
-import InstagramSvg from "../../../public/instagramSvg.svg";
-import UserSvg from "../../../public/user.svg";
-import SpotifySvg from "../../../public/spotify.svg";
-import FacebookSvg from "../../../public/facebook.svg";
 import Plus from "../../../public/plus.svg";
-import AppContextProvider, {
-  AppContext,
-  useAppContext,
-} from "@/context/AppContextProvider";
+import { useAppContext } from "@/context/AppContextProvider";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { baseUrl } from "@/utils/constants";
 
 const SocialLinks = ({ sociallinks }) => {
   const data = useSession();
@@ -20,6 +12,7 @@ const SocialLinks = ({ sociallinks }) => {
     state: { signIn, user },
     dispatch,
   } = useAppContext();
+
   useEffect(() => {
     if (data?.data?.user?.email) {
       setTimeout(() => {
@@ -40,10 +33,11 @@ const SocialLinks = ({ sociallinks }) => {
     },
     ...sociallinks?.data,
   ];
-  //console.log("socials data map:", socials);
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">
       {socials.map((social) => {
+        const url = social?.attributes?.svg?.data?.attributes?.url;
+        const imageUrl = new URL(url, baseUrl).href;
         return (
           <div
             key={social?.attributes.name}
@@ -57,7 +51,11 @@ const SocialLinks = ({ sociallinks }) => {
           >
             <SocialIcon
               variant={social?.attributes.variant}
-              svg={social?.attributes.svg}
+              svg={
+                social?.attributes.variant === "social"
+                  ? imageUrl
+                  : social?.attributes.svg
+              }
               title={social?.attributes.title}
               link={social?.attributes.link}
             />

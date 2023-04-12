@@ -1,7 +1,7 @@
 export const addUser = async (form) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/user-edits`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/user-edits`,
       {
         method: "POST",
         body: JSON.stringify({

@@ -3,7 +3,7 @@ const { default: axiosInstance } = require("./axiosInstance");
 export const getCategoryData = async (id) => {
   try {
     const response = await axiosInstance.get(
-      id ? `categories/${id}?populate=*` : "categories?populate=*"
+      id ? `/categories/${id}?populate=deep` : "/categories?populate=*"
     );
     // const response = await axiosInstance.get("categories/1?populate=*");&filters[user_id][id][$eq]=7&filters[product][id][$eq]=9
     // setList(response.data);
@@ -29,7 +29,7 @@ export const getProductData = async (id, userId) => {
 export const updateProduct = async (id, payload) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/all-products/${id}?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/all-products/${id}?populate=*`,
       {
         method: "PUT",
         body: JSON.stringify({

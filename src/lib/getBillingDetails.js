@@ -12,7 +12,7 @@ export const getBillingDetails = async () => {
 export const addBillingDetails = async (form) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/shipping-details`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/shipping-details`,
       {
         method: "POST",
         body: JSON.stringify({

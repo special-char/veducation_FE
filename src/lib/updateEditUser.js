@@ -1,7 +1,7 @@
 export const updateEditUser = async (id, form) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/user-edits/${id}?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/user-edits/${id}?populate=*`,
       {
         method: "PUT",
         body: JSON.stringify({ data: form }),

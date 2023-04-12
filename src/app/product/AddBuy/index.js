@@ -28,6 +28,7 @@ const AddBuy = ({ id, users }) => {
   });
 
   async function onAddToCartApi() {
+    console.log({ res: { user, users, data } });
     try {
       const res = await addToCart(
         id,
@@ -36,6 +37,7 @@ const AddBuy = ({ id, users }) => {
         currentCart?.id
       );
       if (res.data) {
+        console.log({ res });
         addItem(res.data);
       }
     } catch (error) {
@@ -45,8 +47,6 @@ const AddBuy = ({ id, users }) => {
 
   function onCartClick() {
     if (!data?.data?.user) {
-      // const response = confirm("Please Sign up... or login to continue");
-      // if (response) navigate.push("/");
       dispatch({ signIn: true });
       return;
     }

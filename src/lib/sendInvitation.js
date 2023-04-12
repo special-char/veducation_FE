@@ -1,7 +1,7 @@
 export const sendInvitation = async (form) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/invitations`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/invitations`,
       {
         method: "POST",
         body: JSON.stringify({ data: form }),

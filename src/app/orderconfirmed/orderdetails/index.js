@@ -12,7 +12,7 @@ const OrderDetails = ({ orderCode, date, total, payment }) => {
       title: "OrderCode",
       data: orderCode,
     },
-    { svg: <Date />, title: "Date", data: date },
+    // { svg: <Date />, title: "Date", data: date },
     { svg: <Total />, title: "Total", data: total },
     { svg: <Payment />, title: "Payment method", data: "Cash on Delivery" },
   ];

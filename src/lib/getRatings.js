@@ -26,7 +26,7 @@ export const addRatings = async (
 ) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/ratings?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/ratings?populate=*`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -50,7 +50,7 @@ export const updateRating = async (
 ) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/ratings/${ratingId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/ratings/${ratingId}`,
       {
         method: "PUT",
         body: JSON.stringify({

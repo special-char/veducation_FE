@@ -5,18 +5,27 @@ import { useAppContext } from "@/context/AppContextProvider";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { baseUrl } from "@/utils/constants";
 
 const CartItemList = () => {
   const {
     cartState: { cart },
   } = useCartProvider();
 
+  console.log({ cart });
+
   return (
     <div>
       {cart.map(({ attributes: x, ...item }) => {
+        const url =
+          x?.product?.data?.attributes?.posterImageUrl?.data?.attributes?.url;
+        const imageUrl = new URL(url, baseUrl).href;
+
+        console.log({ imageUrl, url: x });
+
         return (
           <ProductConfirm
-            image={x?.product?.data?.attributes?.posterImageUrl}
+            image={imageUrl}
             title={x?.product?.data?.attributes?.title}
             price={`$${x?.product?.data?.attributes?.price}`}
             quantity={x?.quantity}

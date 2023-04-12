@@ -77,9 +77,10 @@ const YourOrderPage = async () => {
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
   const purchaseData = await getPuchasedItems(user?.id);
+  console.log({ purchaseData });
   return (
     <div className="h-auto pb-36">
-      <PurchasedItems purchaseData={purchaseData} user={user} myorder />
+      {/* <PurchasedItems purchaseData={purchaseData} user={user} myorder /> */}
     </div>
   );
 };

@@ -61,7 +61,7 @@ const CourseCart = ({
 
   const totalPrice = calculatePrice(
     cart,
-    1.12 - strToPer(promocode.attributes.rate) || 1,
+    1.12 - strToPer(promocode?.attributes?.rate) ?? 1,
     promocode.attributes
   );
   const shippingDetail = data?.find((shipping) => {

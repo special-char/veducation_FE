@@ -6,6 +6,7 @@ import Image from "next/image";
 import Style from "./yourbook.module.css";
 import { getAllBooksData } from "@/lib/getAllBooksData";
 import { getAllBooksFromLib } from "@/lib/getAllBooksFromLib";
+import { baseUrl } from "@/utils/constants";
 
 const Page = async () => {
   const allBookData = await getAllBooksFromLib();
@@ -51,15 +52,12 @@ const Page = async () => {
       <div className={Style.yourbook__container}>
         {allBookData.data.length > 0 ? (
           allBookData?.data.map((val) => {
+            const url = val?.attributes?.posterImage?.data?.attributes?.url;
+            const imageUrl = new URL(url, baseUrl).href;
             return (
               <Link key={val.id} href={`/readbook/book/${val.id}`}>
                 <div className="relative aspect-image min-h-[20px]">
-                  <Image
-                    alt=""
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${val?.attributes?.posterImage?.data?.attributes?.url}`}
-                    fill
-                    className=""
-                  />
+                  <Image alt="" src={imageUrl} fill className="" />
                 </div>
               </Link>
             );

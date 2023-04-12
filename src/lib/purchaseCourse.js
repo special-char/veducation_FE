@@ -1,7 +1,7 @@
 export const updateCourse = async (id, payload) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/courses/${id}?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/courses/${id}?populate=*`,
       {
         method: "PUT",
         body: JSON.stringify({
@@ -22,7 +22,7 @@ export const updateCourse = async (id, payload) => {
 export const purchaseCourse = async (id, payload) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/purchases?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/purchases?populate=*`,
       {
         method: "POST",
         body: JSON.stringify({

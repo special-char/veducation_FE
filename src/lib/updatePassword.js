@@ -8,7 +8,7 @@ export const updatePassword = async (
 ) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/change-password`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/change-password`,
       {
         method: "POST",
         body: JSON.stringify(form),

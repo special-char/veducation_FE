@@ -30,7 +30,7 @@ const SocialIcon = ({ svg, title, variant, link }) => {
             )}
           >
             <div className=" ">
-              <Image src={svg} width={20} height={20} />
+              <Image alt="social icon" src={svg} width={20} height={20} />
             </div>
             {/* <img src={svg} alt="" /> */}
           </div>

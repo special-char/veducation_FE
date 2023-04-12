@@ -23,17 +23,16 @@ const PurchasedItems = async ({
           }
         })
         .map((x) => x?.attributes?.product?.data?.attributes);
+  console.log({ productList });
   return (
     <div className="">
-      {productList.length > 0 ? (
+      {productList?.length ? (
         productList?.map((x) => (
           <OrderdItem
             image={x?.posterImageUrl}
             price={x?.price}
             quantity={x?.items}
             title={x?.title}
-            price={x?.price}
-            quantity={x?.items}
             key={x?.id}
           />
         ))

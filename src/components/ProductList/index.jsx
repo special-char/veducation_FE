@@ -5,21 +5,18 @@ import Reviews from "../Reviews";
 import ProductTitle from "../ProductTitle";
 import Link from "next/link";
 import { getCategoryData } from "@/lib/getHomeProductData";
+import { baseUrl } from "@/utils/constants";
 
 export const ProductItem = async ({
   attributes: { posterImageUrl, title, name, author, subtitle },
   id,
 }) => {
+  const url = posterImageUrl?.data?.attributes?.url;
+  const imageUrl = new URL(url, baseUrl).href;
   return (
     <div className={styles.product_item}>
       <div className={styles.product_item__image}>
-        {/* <Image
-          src={posterImageUrl}
-          fill
-          alt="book"
-          className="px-3 pt-2"
-          sizes=""
-        /> */}
+        <Image src={imageUrl} fill alt="book" className="px-3 pt-2" sizes="" />
       </div>
       <div className={styles.product_item__desc}>
         <p className={styles.product_item__name}>{title}</p>
@@ -77,23 +74,17 @@ export const ProductItem = async ({
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
-
-  // const {
-  //   attributes: { name, products },
-  // } = productData?.data;
-
-  console.log({ productData });
-
+  console.log({ productData, id });
   return (
     <div className="flex flex-col">
-      {/* <ProductTitle
-        title={name}
-        val={products.data.length > 0}
+      <ProductTitle
+        title={productData?.data?.attributes?.name}
+        val={productData?.data?.attributes?.products.data.length > 0}
         link={`/products/${id}`}
       />
       <div className="flex overflow-x-scroll no-scrollbar gap-[5px]">
-        {products.data.length > 0 ? (
-          products?.data.map((val) => {
+        {productData?.data?.attributes?.products.data.length > 0 ? (
+          productData?.data?.attributes?.products?.data.map((val) => {
             return (
               <Link key={val.id} href={`/product/${val.id}`}>
                 <ProductItem {...val} />
@@ -103,11 +94,11 @@ const Productlist = async ({ id }) => {
         ) : (
           <div className="h-20  w-full flex items-center justify-center">
             <span className="bg-primary text-white font-semibold text-sm text-center px-10 py-2 rounded-md">
-              No {name} available
+              No {productData?.data?.attributes?.name} available
             </span>
           </div>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

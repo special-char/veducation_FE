@@ -8,6 +8,7 @@ import { getUser } from "@/lib/getUser";
 import { getCartItems } from "@/lib/updateCart";
 import { getRating } from "@/lib/getRatings";
 import RatingComponent from "../../../components/RatingComponent";
+import { baseUrl } from "@/utils/constants";
 
 const Page = async (props) => {
   const productData = await getProductData(props?.params?.id);
@@ -19,13 +20,17 @@ const Page = async (props) => {
   const { title, name, posterImageUrl, price, description } =
     productData?.data?.attributes;
 
+  // console.log({ posterImageUrl });
+  const url = posterImageUrl?.data?.attributes?.url;
+  const imageUrl = new URL(url, baseUrl).href;
+
   const ratingId = productData?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
 
   return (
     <section className={styles.ProductPage}>
       <div className={styles.ProductPage__image}>
-        <Image src={posterImageUrl} alt={name} fill />
+        <Image src={imageUrl} alt={name} fill />
       </div>
       <div className={styles.ProductPage__body}>
         <div>
