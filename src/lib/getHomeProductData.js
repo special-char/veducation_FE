@@ -3,7 +3,7 @@ const { default: axiosInstance } = require("./axiosInstance");
 export const getCategoryData = async (id) => {
   try {
     const response = await axiosInstance.get(
-      id ? `categories/${id}?populate=*` : "categories?populate=*"
+      id ? `categories/${id}?populate=deep` : "categories?populate=deep"
     );
     // const response = await axiosInstance.get("categories/1?populate=*");&filters[user_id][id][$eq]=7&filters[product][id][$eq]=9
     // setList(response.data);

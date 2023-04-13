@@ -26,6 +26,7 @@ import Link from "next/link";
 
 const HomeBanner = async () => {
   const data = await getCourses();
+  console.log(data.data[0]?.attributes)
   return (
     <div className="flex flex-col py-4 gap-2">
       <Carousal>
@@ -34,7 +35,7 @@ const HomeBanner = async () => {
             <Link key={index} href={`/courses/${val.id}`}>
               <div className="relative aspect-video">
                 <Image
-                  src={val.attributes.img}
+                  src={val.attributes.img?.data?.attributes?.url}
                   fill
                   alt={val.attributes.alttext}
                 />

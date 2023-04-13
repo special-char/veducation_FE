@@ -10,11 +10,12 @@ export const ProductItem = async ({
   attributes: { posterImageUrl, title, name, author, subtitle },
   id,
 }) => {
+  
   return (
     <div className={styles.product_item}>
       <div className={styles.product_item__image}>
         <Image
-          src={posterImageUrl}
+          src={posterImageUrl?.data?.attributes?.url}
           fill
           alt="book"
           className="px-3 pt-2"
@@ -77,10 +78,10 @@ export const ProductItem = async ({
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
+
   const {
     attributes: { name, products },
   } = productData?.data;
-
   return (
     <div className="flex flex-col">
       <ProductTitle title={name} link={`/products/${id}`} />

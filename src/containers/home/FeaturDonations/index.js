@@ -6,11 +6,11 @@ import { getFeatureDonations } from "@/lib/getFeaturedDonation";
 const FeatureDonations = async () => {
   const data = await getFeatureDonations();
   const donationData = data?.data?.attributes;
-
+console.log("Donation",donationData?.thumbnail)
   return (
     <div>
       <DonationCard2
-        img={donationData?.thumbnail}
+        img={donationData?.thumbnail?.data?.attributes?.url}
         title={donationData?.title}
         desc={donationData?.description}
         btnText={donationData?.btnText ?? "Donation"}

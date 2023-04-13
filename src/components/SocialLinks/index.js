@@ -41,7 +41,7 @@ const SocialLinks = ({ sociallinks }) => {
     },
     ...sociallinks.data,
   ];
-  //console.log("socials data map:", socials);
+  // console.log("socials data map:", socials);
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">
       {socials.map((social) => {
@@ -58,7 +58,7 @@ const SocialLinks = ({ sociallinks }) => {
           >
             <SocialIcon
               variant={social?.attributes.variant}
-              svg={social?.attributes.svg}
+              svg={social?.attributes.variant === "user" ? social?.attributes.svg : social?.attributes.svg?.data?.attributes?.url}
               title={social?.attributes.title}
               link={social?.attributes.link}
             />

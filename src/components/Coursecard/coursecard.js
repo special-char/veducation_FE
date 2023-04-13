@@ -45,7 +45,7 @@ const Coursecard = ({
       {/* <Link href={`/courses/${val.id}`}> */}
       <div className={styles.cardRoot}>
         <div className={styles.cardRoot__image}>
-          <Image src={img} fill alt="" className="" />
+          <Image src={img?.data?.attributes?.url} fill alt="" className="" />
         </div>
         <div className={styles.cardRoot__body}>
           <h4 className={styles.cardRoot__title}>{title}</h4>
