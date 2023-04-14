@@ -2,11 +2,11 @@ import axiosInstance from "@/lib/axiosInstance";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export default NextAuth({
+export const authOptions = {
   session: {
     strategy: "jwt",
   },
-  
+
   providers: [
     CredentialsProvider({
       name: "scott-point",
@@ -62,4 +62,6 @@ export default NextAuth({
   },
   // Enable debug messages in the console if you are having problems
   debug: process.env.NODE_ENV === "development",
-});
+};
+
+export default NextAuth(authOptions);
