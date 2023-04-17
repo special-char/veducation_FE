@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react";
 import { useRatingContext } from "@/context/RatingContext";
 import { useRouter } from "next/navigation";
 
-const Header = ({ data, users, ratings }) => {
+const Header = ({ data, users }) => {
   const {
     state: { notifications },
   } = useAppContext();
@@ -37,7 +37,7 @@ const Header = ({ data, users, ratings }) => {
 
   useEffect(() => {
     cartInit(data);
-    initAdd(ratings);
+    // initAdd(ratings);
     return () => {};
   }, []);
 

@@ -43,7 +43,6 @@ const CourseCheckout = ({
     setPromocode(currentCode);
   };
 
-
   const userSession = useSession();
   const user = users?.find(
     (item) => item.email === userSession?.data?.user?.email
@@ -51,19 +50,23 @@ const CourseCheckout = ({
   const { emptyCart } = useCartProvider();
 
   async function checkout() {
-    const res = await purchaseCourse(course?.data?.id, {
-      course: course?.data?.id,
-      user: user?.id,
-    });
-    if (res.data.id) {
-      const response = await updateCourse(course?.data?.id, {
-        isPurchased: true,
-        user_id: user?.id,
+    try {
+      const res = await purchaseCourse(course?.data?.id, {
+        course: course?.data?.id,
+        user: user?.id,
       });
-      if (response?.data?.id) {
-        // navigate.push(`/orderconfirmed?courseItems=${response?.data?.id}`);
-        dispatch({ success: true });
+      if (res.data.id) {
+        const response = await updateCourse(course?.data?.id, {
+          isPurchased: true,
+          user_id: user?.id,
+        });
+        if (response?.data?.id) {
+          // navigate.push(`/orderconfirmed?courseItems=${response?.data?.id}`);
+          dispatch({ success: true });
+        }
       }
+    } catch (error) {
+      console.error(error);
     }
   }
 

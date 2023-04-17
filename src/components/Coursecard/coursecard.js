@@ -40,7 +40,7 @@ const Coursecard = ({
       <div className={styles.cardRoot}>
         <div className={styles.cardRoot__image}>
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_URL}${img?.data?.attributes?.url}`}
+            src={`${img?.data?.attributes?.url}`}
             fill
             alt=""
             className=""

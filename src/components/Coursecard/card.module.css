@@ -2,7 +2,7 @@
   @apply grid;
   grid-template-columns: 1fr;
   &__image {
-    @apply aspect-video relative w-full;
+    @apply aspect-video relative w-full h-40;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
   }

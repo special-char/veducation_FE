@@ -3,7 +3,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
-  timeout: 5000,
+  // timeout: 1000,
   timeoutErrorMessage: "Timeout! something went wrong",
 });
 

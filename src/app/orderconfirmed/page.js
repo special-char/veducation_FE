@@ -82,7 +82,7 @@ const Page = async (props) => {
       };
     });
 
-  console.log({ purchaseData });
+  console.log({ userrrr: user, purchaseData });
 
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">

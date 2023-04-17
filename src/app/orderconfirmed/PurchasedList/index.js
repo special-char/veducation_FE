@@ -10,7 +10,7 @@ const PurchasedItems = async ({
   currentCartIds,
   ...props
 }) => {
-  console.log("PurchasedItems:", purchaseData);
+  console.log("PurchasedItems:", purchaseData?.data?.attributes);
   const productList = myorder
     ? purchaseData?.data?.map(
         (item) => item?.attributes?.product?.data?.attributes
@@ -29,7 +29,7 @@ const PurchasedItems = async ({
       {productList?.length ? (
         productList?.map((x) => (
           <OrderdItem
-            image={x?.posterImageUrl}
+            image={x?.posterImageUrl?.data?.attributes?.url}
             price={x?.price}
             quantity={x?.items}
             title={x?.title}

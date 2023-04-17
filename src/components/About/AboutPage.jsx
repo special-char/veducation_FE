@@ -18,7 +18,7 @@ const AboutPage = ({ data }) => {
       <div className={styles.AboutPage__Img}>
         <div className="relative aspect-square min-h-[200px] object-contain">
           <Image
-            src={data?.attributes?.img}
+            src={data?.attributes?.img?.data?.attributes?.url}
             alt="aboutpage"
             fill
             className="object-cover"

@@ -7,7 +7,7 @@ const StartCourse = async (props) => {
   const data = await getCourseDetails(props?.params?.id);
   const lessons = data?.data?.attributes?.lesson;
   const Bannerlessons = data?.data?.attributes?.lesson[0];
-  console.log({ data, lesson: Bannerlessons.video });
+  // console.log({ data, lesson: Bannerlessons.video });
 
   return (
     <section className="py-4 px-container md:px-0 pt-10 ">

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Reviews from "../Reviews";
 import ProductTitle from "../ProductTitle";
 import Link from "next/link";
-import { getCategoryData } from "@/lib/getHomeProductData";
+import { getCategoryData, getProductData } from "@/lib/getHomeProductData";
 import { baseUrl } from "@/utils/constants";
 
 export const ProductItem = async ({
@@ -13,10 +13,19 @@ export const ProductItem = async ({
 }) => {
   const url = posterImageUrl?.data?.attributes?.url;
   const imageUrl = new URL(url, baseUrl).href;
+
+  // console.log({ debugbook: posterImageUrl });
+
   return (
     <div className={styles.product_item}>
       <div className={styles.product_item__image}>
-        <Image src={imageUrl} fill alt="book" className="px-3 pt-2" sizes="" />
+        <Image
+          src={posterImageUrl?.data?.attributes?.url}
+          fill
+          alt="book"
+          className="px-3 pt-2"
+          sizes=""
+        />
       </div>
       <div className={styles.product_item__desc}>
         <p className={styles.product_item__name}>{title}</p>
@@ -74,7 +83,10 @@ export const ProductItem = async ({
 
 const Productlist = async ({ id }) => {
   const productData = await getCategoryData(id);
-  console.log({ productData, id });
+  console.log({
+    productData: productData?.data?.attributes?.products?.data[0],
+    id,
+  });
   return (
     <div className="flex flex-col">
       <ProductTitle

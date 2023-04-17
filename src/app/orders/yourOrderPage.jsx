@@ -80,7 +80,7 @@ const YourOrderPage = async () => {
   console.log({ purchaseData });
   return (
     <div className="h-auto pb-36">
-      {/* <PurchasedItems purchaseData={purchaseData} user={user} myorder /> */}
+      <PurchasedItems purchaseData={purchaseData} user={user} myorder />
     </div>
   );
 };

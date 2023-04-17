@@ -10,7 +10,7 @@ const AllLessons = ({ data }) => {
   const { videoState, videoDispatch } = useCourseVideoContext();
 
   const {
-    video: { id = data[0].id, ...vid },
+    video: { id = data[0]?.id, ...vid },
   } = videoState;
 
   return (
@@ -28,7 +28,7 @@ const AllLessons = ({ data }) => {
           <div className={styles.AllLessons__card}>
             <div className="aspect-video w-full h-full relative ">
               <Image
-                src={`${process.env.NEXT_PUBLIC_API_URL}${val?.thumbnail?.data?.attributes?.url}`}
+                src={`${val?.thumbnail?.data?.attributes?.url}`}
                 fill
                 alt="thumbnail"
                 className={styles.AllLessons__img}

@@ -26,7 +26,7 @@ const BannerCourses = ({ data }) => {
       <div className="relative">
         <VideoComponent
           ref={videoRef}
-          poster={`${process.env.NEXT_PUBLIC_API_URL}${data?.thumbnail?.data?.attributes?.url}`}
+          poster={`${data?.thumbnail?.data?.attributes?.url}`}
           controls
           controlsList="nodownload"
           muted
@@ -34,7 +34,7 @@ const BannerCourses = ({ data }) => {
           source={{
             src:
               link ||
-              `${process.env.NEXT_PUBLIC_API_URL}${data?.video?.data?.attributes?.url}`,
+              `${data?.video?.data?.attributes?.url}`,
             type: "video/mp4",
             controls: true,
             autoPlay: isPlaying,

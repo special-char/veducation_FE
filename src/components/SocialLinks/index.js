@@ -31,7 +31,7 @@ const SocialLinks = ({ sociallinks }) => {
         link: "",
       },
     },
-    ...sociallinks?.data,
+    ...(sociallinks?.data ?? []),
   ];
   return (
     <div className="flex gap-3 overflow-x-scroll no-scrollbar p-1">

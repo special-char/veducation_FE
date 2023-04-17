@@ -42,6 +42,9 @@ const users = [
 const DonationView = async () => {
   const donations = await getDonationsData();
   const data = donations?.data;
+  console.log({
+    dataDonation: data[0]?.attributes?.image?.data?.attributes?.url,
+  });
   return (
     <div className={styles.main} id="View">
       <h5 className="">Donations</h5>
@@ -59,7 +62,7 @@ const DonationView = async () => {
           <div className={styles.main__donationInfo} key={val.id}>
             <div className={styles.main__donationdata}>
               <Image
-                src={`${process.env.NEXT_PUBLIC_API_URL}${val?.attributes?.image?.data?.attributes?.url}`}
+                src={`${val?.attributes?.image?.data?.attributes?.url}`}
                 className={styles.main__img}
                 alt="donation"
                 // fill

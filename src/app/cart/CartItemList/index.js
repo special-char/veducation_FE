@@ -25,7 +25,7 @@ const CartItemList = () => {
 
         return (
           <ProductConfirm
-            image={imageUrl}
+            image={url}
             title={x?.product?.data?.attributes?.title}
             price={`$${x?.product?.data?.attributes?.price}`}
             quantity={x?.quantity}

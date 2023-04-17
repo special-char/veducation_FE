@@ -47,7 +47,7 @@ export default async function RootLayout({ children }) {
   const users = await getUser();
   const user = users?.find((item) => item?.email === session?.user?.email);
   const defaultCartItems = await getCartItems(user?.id);
-  const ratings = await getAllRatings(user?.id);
+  // const ratings = await getAllRatings(user?.id);
 
   return (
     <html
@@ -71,7 +71,7 @@ export default async function RootLayout({ children }) {
                       <main className="bg-background md:px-container h-full scroll-pb-8">
                         <Header
                           {...defaultCartItems}
-                          ratings={ratings}
+                          // ratings={ratings}
                           session={session}
                           users={users}
                         />

@@ -29,7 +29,7 @@ const CartPage = async (props) => {
         {props?.searchParams?.course ? (
           <>
             <ProductConfirm
-              image={course?.data?.attributes?.img}
+              image={course?.data?.attributes?.img?.data?.attributes?.url}
               title={course?.data?.attributes?.title}
               price={`$${course?.data?.attributes?.price}`}
               quantity={1}
