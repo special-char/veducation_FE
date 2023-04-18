@@ -13,7 +13,8 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 
 const ReadBook = () => {
   const [file, setFile] = useState(
-    "https://ik.imagekit.io/p99x3nxgz/bhagvatgita.pdf?updatedAt=1679923614120"
+    // "https://ik.imagekit.io/p99x3nxgz/bhagvatgita.pdf?updatedAt=1679923614120"
+    `${book?.data?.attributes?.pdf?.data?.attributes?.url,"harsh"}`
   );
   // const [numPages, setNumPages] = useState(null);
 

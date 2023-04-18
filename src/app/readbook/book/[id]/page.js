@@ -4,7 +4,9 @@ import React from "react";
 
 const Page = async (props) => {
   const response = await getBookById(props?.params?.id);
-  console.log({ response });
+  // console.log( response.attributes ,"bookslog");
+  // console.log(book?.data?.attributes?.posterImage?.data?.attributes?.url ,"BookById");
+
   return (
     <div>
       <ReadBook {...props} book={response} />

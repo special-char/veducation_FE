@@ -34,6 +34,7 @@ const PurchasedItems = async ({
             quantity={x?.items}
             title={x?.title}
             key={x?.id}
+            
           />
         ))
       ) : (

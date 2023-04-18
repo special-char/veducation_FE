@@ -16,9 +16,9 @@ import Link from "next/link";
 const ReadBook = ({ book, ...props }) => {
   const [file, setFile] = useState(
     // "https://ik.imagekit.io/p99x3nxgz/bhagvatgita.pdf?updatedAt=1679923614120"
-    `${process.env.NEXT_PUBLIC_API_URL}${book?.data?.attributes?.pdf?.data?.attributes?.url}`
+    `${book?.data?.attributes?.pdf?.data?.attributes?.url}`
   );
-  console.log(book?.data?.attributes?.pdf?.data?.attributes?.url);
+  console.log(book?.data?.attributes?.posterImage?.data?.attributes ,"Readboook");
   // const [numPages, setNumPages] = useState(null);
 
   // function onFileChange(event) {

@@ -43,6 +43,8 @@ const ProductConfirm = ({
       );
     }
   };
+ 
+
 
   return (
     <div className={styles.main}>
@@ -64,6 +66,8 @@ const ProductConfirm = ({
                 className={` ${styles.main__dltBtn} ${
                   quantity && quantity ? "block" : "hidden"
                 }`}
+                
+                
               >
                 <Delete />
                 Delete
@@ -99,6 +103,7 @@ const ProductConfirm = ({
                         attributes?.product?.data?.id,
                         attributes?.user_id?.data?.id
                       );
+                      
                     }}
                   >
                     <Delete />

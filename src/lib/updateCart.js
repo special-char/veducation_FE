@@ -14,7 +14,7 @@ export const getCartItems = async (id) => {
 export const addToCart = async (productID, userId, items = 0) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/carts?populate=*`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/carts?populate=deep`,
       {
         method: "POST",
         body: JSON.stringify({
