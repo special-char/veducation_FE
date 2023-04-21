@@ -12,7 +12,7 @@ const HomeBanner = async () => {
 
   return (
     <div className="flex flex-col py-4 gap-2">
-      {/* <Carousal>
+      <Carousal>
         {data?.data.map((val, index) => {
           const url = val?.attributes?.img?.data?.attributes?.url;
           const base = process.env.NEXT_PUBLIC_API_URL;
@@ -32,8 +32,8 @@ const HomeBanner = async () => {
             </Link>
           );
         })}
-      </Carousal> */}
-      <MyPdfViewer1/>
+      </Carousal>
+      {/* <MyPdfViewer1/> */}
     </div>
   );
 };
