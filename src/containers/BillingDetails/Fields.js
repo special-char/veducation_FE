@@ -7,10 +7,9 @@ export const billingInitValue = {
   lastname: "",
   email: "",
   phone: "",
-  street: "",
+  address: "",
   postcode: "",
-  country: "",
-  city: "",
+  state: "",
   orderNote: "",
 };
 
@@ -75,11 +74,32 @@ export const billingFields = [
     },
   },
   {
+    component: Dropdown,
+    id: "state",
+    label: "STATE",
+    placeholder: "Colors",
+    placeholder: "state",
+    options: [
+      { id: 1, cou: "Gujarat" },
+      { id: 2, cou: "Maharashtra" },
+      { id: 2, cou: "MadhyaPradesh" },
+      { id: 2, cou: "Goa" },
+    ],
+    name: "state",
+    type: "text",
+    autoComplete: "state",
+    className: " w-full mr-0  ",
+    validate: (value) => {
+      if (!value) return "Required...";
+      return "";
+    },
+  },
+  {
     component: Input,
-    id: "street",
-    label: "STREET",
+    id: "address",
+    label: "ADDRESS",
     placeholder: "179 Kaylie Crossroad",
-    name: "street",
+    name: "address",
     type: "text",
     className: "w-full mr-0 ",
     autoComplete: "address",
@@ -97,43 +117,6 @@ export const billingFields = [
     type: "number",
     className: "w-full mr-0 ",
     autoComplete: "postcode",
-    validate: (value) => {
-      if (!value) return "Required...";
-      return "";
-    },
-  },
-  {
-    component: Dropdown,
-    id: "country",
-    label: "Country",
-    placeholder: "Colors",
-    placeholder: "Country",
-    options: [
-      { id: 1, cou: "Ind" },
-      { id: 2, cou: "Aus" },
-      { id: 2, cou: "USA" },
-      { id: 2, cou: "UK" },
-    ],
-    name: "country",
-    type: "text",
-    autoComplete: "country",
-    className: " w-full mr-0  ",
-    validate: (value) => {
-      if (!value) return "Required...";
-      return "";
-    },
-  },
-
-  {
-    component: Input,
-    id: "city",
-    label: "CITY",
-    placeholder: "Soutn Mathiasmouth",
-    name: "city",
-    type: "text",
-    className: "w-full mr-0 ",
-    autoComplete: "city",
-
     validate: (value) => {
       if (!value) return "Required...";
       return "";

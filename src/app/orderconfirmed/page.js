@@ -91,7 +91,7 @@ const Page = async (props) => {
         <PurchasedItems
           {...props}
           currentCartIds={currentCartIds}
-          purchaseData={purchaseData}
+          purchaseData={purchaseData} 
           user={user}
         />
       </div>

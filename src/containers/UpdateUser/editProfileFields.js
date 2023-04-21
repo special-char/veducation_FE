@@ -10,10 +10,9 @@ export const editProfileInitValue = (props) => {
     username: props.username ?? "",
     email: props.email ?? "",
     phone: props.phone ?? "",
-    street: props.street ?? "",
+    address: props.address ?? "",
     postcode: props.postcode ?? "",
-    country: props.country ?? "",
-    city: props.city ?? "",
+    state: props.state ?? "",
     gender: props.gender ?? "",
   };
 };
@@ -103,10 +102,10 @@ export const editProfileFields = [
   },
   {
     component: Input,
-    id: "street",
-    label: "STREET",
+    id: "address",
+    label: "ADDRESS",
     placeholder: "179 Kaylie Crossroad",
-    name: "street",
+    name: "address",
     type: "text",
     className: "w-full mr-0 ",
     autoComplete: "address",
@@ -131,36 +130,20 @@ export const editProfileFields = [
   },
   {
     component: Dropdown,
-    id: "country",
-    label: "Country",
+    id: "state",
+    label: "STATE",
     placeholder: "Colors",
-    placeholder: "Country",
+    placeholder: "STATE",
     options: [
-      { id: 1, cou: "Ind" },
-      { id: 2, cou: "Aus" },
-      { id: 2, cou: "USA" },
-      { id: 2, cou: "UK" },
+      { id: 1, cou: "Gujarat" },
+      { id: 2, cou: "Maharashtra" },
+      { id: 2, cou: "Madhya Pradesh" },
+      { id: 2, cou: "Goa" },
     ],
-    name: "country",
+    name: "state",
     type: "text",
-    autoComplete: "country",
+    autoComplete: "state",
     className: " w-full mr-0  ",
-    validate: (value) => {
-      if (!value) return "Required...";
-      return "";
-    },
-  },
-
-  {
-    component: Input,
-    id: "city",
-    label: "CITY",
-    placeholder: "Soutn Mathiasmouth",
-    name: "city",
-    type: "text",
-    className: "w-full mr-0 ",
-    autoComplete: "city",
-
     validate: (value) => {
       if (!value) return "Required...";
       return "";

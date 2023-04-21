@@ -32,10 +32,9 @@ const BillingDetails = ({ user: users, ...props }) => {
             lastname,
             email,
             phone,
-            street,
+            address,
             postcode,
-            country,
-            city,
+            state,
             orderNote,
           }) => {
             const formValues = {
@@ -43,13 +42,14 @@ const BillingDetails = ({ user: users, ...props }) => {
               lastname: `${lastname}`,
               email: `${email}`,
               phone: `${phone}`,
-              street: `${street}`,
+              address: `${address}`,
               postcode: `${postcode}`,
-              country: `${country}`,
-              city: `${city}`,
+              state: `${state}`,
               orderNote: `${orderNote}`,
               user_id: `${user.id}`,
             };
+            console.log(formValues, "checkkk");
+
             try {
               const response = await addBillingDetails(formValues);
               if (response.data) {
@@ -64,6 +64,7 @@ const BillingDetails = ({ user: users, ...props }) => {
                   })
                   // cart.map((c) => c.attributes.quantity)
                 );
+
               }
             } catch (error) {
               console.log(error, "addBillingDetails");

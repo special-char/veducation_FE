@@ -4,6 +4,8 @@ import BannerImage from "public/icons/Bannerimage.png";
 import Carousal from "../carousal";
 import { getCourses } from "@/lib/getCourses";
 import Link from "next/link";
+import MyPdfViewer from "@/app/pdff";
+import MyPdfViewer1 from "@/app/pdff";
 
 const HomeBanner = async () => {
   const data = await getCourses();
@@ -31,6 +33,7 @@ const HomeBanner = async () => {
           );
         })}
       </Carousal>
+      {/* <MyPdfViewer1/> */}
     </div>
   );
 };
