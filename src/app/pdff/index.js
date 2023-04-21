@@ -394,7 +394,7 @@ const MyPdfViewer = () => {
             id="chapter-select"
             value={chapter}
             onChange={handleChapterChange}
-            className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            className="block  mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           >
             {chapterList.map((c) => (
               <option key={c.name} value={c.name}>
@@ -409,7 +409,7 @@ const MyPdfViewer = () => {
             id="subchapter-select"
             value={subChapter}
             onChange={handleSubChapterChange}
-            className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            className="block  mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           >
             <option value="">Select Sub-Chapter</option>
             {chapterList
