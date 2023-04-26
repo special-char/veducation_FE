@@ -9,6 +9,7 @@ import Delete from "public/icons/delete.svg";
 import OrderdItem from "../oderedItem/orderedItem";
 import { useCartProvider } from "@/context/CartContextProvider";
 import clx from "classnames";
+import { useRouter } from "next/navigation";
 
 const ProductConfirm = ({
   image,
@@ -23,6 +24,7 @@ const ProductConfirm = ({
     updateCount,
     cartState: { cart },
   } = useCartProvider();
+  console.log(item, "checkItem");
 
   const incrementCount = () => {
     updateCount(
@@ -43,8 +45,8 @@ const ProductConfirm = ({
       );
     }
   };
- 
 
+  const navigate = useRouter();
 
   return (
     <div className={styles.main}>
@@ -66,8 +68,9 @@ const ProductConfirm = ({
                 className={` ${styles.main__dltBtn} ${
                   quantity && quantity ? "block" : "hidden"
                 }`}
-                
-                
+                onClick={() => {
+                  navigate.replace("/cart");
+                }}
               >
                 <Delete />
                 Delete
@@ -103,7 +106,6 @@ const ProductConfirm = ({
                         attributes?.product?.data?.id,
                         attributes?.user_id?.data?.id
                       );
-                      
                     }}
                   >
                     <Delete />

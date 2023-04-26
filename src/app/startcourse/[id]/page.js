@@ -1,4 +1,4 @@
-import StartCourse from "@/containers/Startcourse";
+import StartCourse from "@/containers/startcourse/index";
 import React from "react";
 
 const Page = (props) => {

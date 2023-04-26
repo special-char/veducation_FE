@@ -14,12 +14,14 @@ import FormikForm from "@/components/FormikForm";
 import { signInFields, signInInitValue } from "./signInFields";
 import { signIn, signOut, useSession } from "next-auth/react";
 import PopupModal from "@/components/popupModal";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
   const handleSignupClick = () => {
     toggleModal();
     dispatch({ signUp: true });
   };
+  const navigate = useRouter();
   const auth = useSession();
   const {
     state: { signIn: open, error },
@@ -47,7 +49,10 @@ const SignIn = () => {
           onClick={() => {
             const res = confirm("Are you sure you want to signOut");
             if (res) {
+
               signOut();
+              navigate.push('/');
+              
             }
           }}
         >

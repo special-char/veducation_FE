@@ -13,31 +13,35 @@ const BannerCourses = ({ data }) => {
   const videoRef = createRef();
 
   const {
-    video: { link, title, description },
-    isPlaying,
+    video: { title, description, ...vid },
   } = videoState;
+  const { video } = vid;
+  // video?.data?.attributes?.url
+  console.log(data?.video?.data?.attributes?.url, "KnokKonok");
   useEffect(() => {
     videoRef?.current?.load();
     return () => {};
-  }, [link]);
+  }, [video?.data?.attributes?.url]);
+
+  console.log(videoRef?.current?.duration);
 
   return (
     <div className={styles.BannerCourses}>
       <div className="relative">
         <VideoComponent
           ref={videoRef}
-          poster={`${data?.thumbnail?.data?.attributes?.url}`}
+          loops
+          poster={data?.thumbnail?.data?.attributes?.url}
           controls
           controlsList="nodownload"
           muted
           className="w-full aspect-video"
           source={{
             src:
-              link ||
-              `${data?.video?.data?.attributes?.url}`,
+              data?.video?.data?.attributes?.url ??
+              video?.data?.attributes?.url,
             type: "video/mp4",
             controls: true,
-            autoPlay: isPlaying,
           }}
           // onPause={() => {
           //   setIsPaused(true);

@@ -296,141 +296,171 @@
 
 // export default MyPdfViewer;
 
-import React, { useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const PdfBook = ({ pageNumber }) => {
-  const [numPages, setNumPages] = useState(null);
 
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-  };
 
-  return (
-    <div className="pdf-book">
-      <Document
-        file="/pdf/Ramayana.pdf"
-        onLoadSuccess={onDocumentLoadSuccess}
-        className="h-[500px] w-60 md:h-[900px] md:w-full"
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <p>
-        Page {pageNumber} of {numPages}
-      </p>
-    </div>
-  );
-};
 
-const MyPdfViewer = () => {
-  const [chapter, setChapter] = useState("Chapter 1");
-  const [subChapter, setSubChapter] = useState("Sub-Chapter 1.1");
 
-  const handleChapterChange = (e) => {
-    setChapter(e.target.value);
-    // reset subChapter when changing chapter
-    setSubChapter("");
-  };
 
-  const handleSubChapterChange = (e) => {
-    setSubChapter(e.target.value);
-  };
 
-  const chapterList = [
-    {
-      name: "Chapter 1",
-      subChapters: [
-        {
-          name: "Sub-Chapter 1.1",
-          page: 1,
-        },
-        {
-          name: "Sub-Chapter 1.2",
-          page: 5,
-        },
-        {
-          name: "Sub-Chapter 1.3",
-          page: 10,
-        },
-      ],
-    },
-    {
-      name: "Chapter 2",
-      subChapters: [
-        {
-          name: "Sub-Chapter 2.1",
-          page: 15,
-        },
-        {
-          name: "Sub-Chapter 2.2",
-          page: 20,
-        },
-      ],
-    },
-    {
-      name: "Chapter 3",
-      subChapters: [
-        {
-          name: "Sub-Chapter 3.1",
-          page: 25,
-        },
-      ],
-    },
-  ];
 
-  // Find the subchapter object based on the name
-  const selectedSubChapter = chapterList
-    .find((c) => c.name === chapter)
-    .subChapters.find((sc) => sc.name === subChapter);
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="w-full max-w-md mx-auto mb-8">
-        <div className="mb-4">
-          <label htmlFor="chapter-select">Chapter:</label>
-          <select
-            id="chapter-select"
-            value={chapter}
-            onChange={handleChapterChange}
-            className="block  mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-          >
-            {chapterList.map((c) => (
-              <option key={c.name} value={c.name}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="subchapter-select">Sub-Chapter:</label>
-          <select
-            id="subchapter-select"
-            value={subChapter}
-            onChange={handleSubChapterChange}
-            className="block  mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-          >
-            <option value="">Select Sub-Chapter</option>
-            {chapterList
-              .find((c) => c.name === chapter)
-              .subChapters.map((sc) => (
-                <option key={sc.name} value={sc.name}>
-                  {sc.name}
-                </option>
-              ))}
-          </select>
-        </div>
-        <div>
-          <p className="mb-2">Selected Chapter: {chapter}</p>
-          <p className="mb-2">Selected Sub-Chapter: {subChapter}</p>
-          {selectedSubChapter && (
-            <PdfBook pageNumber={selectedSubChapter.page} />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
 
-export default MyPdfViewer;
+
+
+
+
+
+
+
+// this is letest 
+
+// import React, { useState } from "react";
+// import { Document, Page, pdfjs } from "react-pdf";
+
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+// const PdfBook = ({ pageNumber }) => {
+//   const [numPages, setNumPages] = useState(null);
+
+//   const onDocumentLoadSuccess = ({ numPages }) => {
+//     setNumPages(numPages);
+//   };
+
+//   return (
+//     <div className="pdf-book">
+//       <Document
+//         file="/pdf/Ramayana.pdf"
+//         onLoadSuccess={onDocumentLoadSuccess}
+//         className="h-[500px] w-60 md:h-[900px] md:w-full"
+//       >
+//         <Page pageNumber={pageNumber} />
+//       </Document>
+//       <p>
+//         Page {pageNumber} of {numPages}
+//       </p>
+//     </div>
+//   );
+// };
+
+// const MyPdfViewer = () => {
+//   const [chapter, setChapter] = useState("Chapter 1");
+//   const [subChapter, setSubChapter] = useState("Sub-Chapter 1.1");
+
+//   const handleChapterChange = (e) => {
+//     setChapter(e.target.value);
+//     // reset subChapter when changing chapter
+//     setSubChapter("");
+//   };
+
+//   const handleSubChapterChange = (e) => {
+//     setSubChapter(e.target.value);
+//   };
+
+//   const chapterList = [
+//     {
+//       name: "Chapter 1",
+//       subChapters: [
+//         {
+//           name: "Sub-Chapter 1.1",
+//           page: 1,
+//         },
+//         {
+//           name: "Sub-Chapter 1.2",
+//           page: 5,
+//         },
+//         {
+//           name: "Sub-Chapter 1.3",
+//           page: 10,
+//         },
+//       ],
+//     },
+//     {
+//       name: "Chapter 2",
+//       subChapters: [
+//         {
+//           name: "Sub-Chapter 2.1",
+//           page: 15,
+//         },
+//         {
+//           name: "Sub-Chapter 2.2",
+//           page: 20,
+//         },
+//       ],
+//     },
+//     {
+//       name: "Chapter 3",
+//       subChapters: [
+//         {
+//           name: "Sub-Chapter 3.1",
+//           page: 25,
+//         },
+//       ],
+//     },
+//   ];
+
+//   // Find the subchapter object based on the name
+//   const selectedSubChapter = chapterList
+//     .find((c) => c.name === chapter)
+//     .subChapters.find((sc) => sc.name === subChapter);
+
+//   return (
+//     <div className="flex flex-col items-center justify-center min-h-screen">
+//       <div className="w-full max-w-md mx-auto mb-8">
+//         <div className="mb-4">
+//           <label htmlFor="chapter-select">Chapter:</label>
+//           <select
+//             id="chapter-select"
+//             value={chapter}
+//             onChange={handleChapterChange}
+//             className="block  mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+//           >
+//             {chapterList.map((c) => (
+//               <option key={c.name} value={c.name}>
+//                 {c.name}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+//         <div className="mb-4">
+//           <label htmlFor="subchapter-select">Sub-Chapter:</label>
+//           <select
+//             id="subchapter-select"
+//             value={subChapter}
+//             onChange={handleSubChapterChange}
+//             className="block  mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+//           >
+//             <option value="">Select Sub-Chapter</option>
+//             {chapterList
+//               .find((c) => c.name === chapter)
+//               .subChapters.map((sc) => (
+//                 <option key={sc.name} value={sc.name}>
+//                   {sc.name}
+//                 </option>
+//               ))}
+//           </select>
+//         </div>
+//         <div>
+//           <p className="mb-2">Selected Chapter: {chapter}</p>
+//           <p className="mb-2">Selected Sub-Chapter: {subChapter}</p>
+//           {selectedSubChapter && (
+//             <PdfBook pageNumber={selectedSubChapter.page} />
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default MyPdfViewer;
+
+
+
+
+
+
+
+
+
+

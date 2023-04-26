@@ -5,7 +5,7 @@ import md from "markdown-it";
 const Accordian = ({ data, hasTag }) => {
   return (
     <>
-      {data.map((val) => (
+      {data?.map((val) => (
         <details
           key={val.id}
           className={clsx({

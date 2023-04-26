@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useReducer } from "react";
 
-export const CourseVideoContext = createContext();
+export const  CourseVideoContext = createContext();
 
 function reducer(state, action) {
   return { ...state, ...action };

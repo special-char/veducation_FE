@@ -75,7 +75,25 @@ const ReadBook = () => {
             </button>
           )}
         </div>
-        <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+
           <div>
             <Page
               wrap={false}
@@ -85,7 +103,7 @@ const ReadBook = () => {
               renderTextLayer={false}
             />
           </div>
-        </Document>
+        </Document> */}
         <div className="flex items-center justify-end gap-6 text-base py-3 px-5">
           <Arrow onClick={changePageBack} className="rotate-180 w-2" />
           <div>

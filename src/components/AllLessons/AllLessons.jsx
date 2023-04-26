@@ -12,6 +12,9 @@ const AllLessons = ({ data }) => {
   const {
     video: { id = data[0]?.id, ...vid },
   } = videoState;
+  
+  
+  console.log(videoState,"checkVideo");
 
   return (
     <div className={styles.AllLessons}>
@@ -21,7 +24,9 @@ const AllLessons = ({ data }) => {
             "opacity-60": id === val?.id,
           })}
           onClick={() => {
+
             videoDispatch({ video: val, isPlaying: true });
+            console.log({ video: val, isPlaying: true },"heeeeee");
           }}
           key={val.id}
         >

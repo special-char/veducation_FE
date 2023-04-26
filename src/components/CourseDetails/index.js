@@ -7,7 +7,7 @@ import Reviews from "../Reviews";
 import { Space_Mono } from "@next/font/google";
 import Button from "../Button";
 import Link from "next/link";
-import styles from "../coursedetails/coursedetails.module.css";
+import styles from "../CourseDetails/coursedetails.module.css";
 import { getCourseDetails } from "@/lib/getCourseDetails";
 import SwitchSection from "./SwitchSection";
 import RatingComponent from "../RatingComponent";
@@ -40,7 +40,7 @@ const CourseDetails = async (props, users) => {
   const data = await getCourseDetails(props?.params?.id);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
-  console.log({ data });
+  console.log({data}, "VidLogCheck");
   // function onBuyClick() {
   //   if (!data?.data?.user) {
   //     const response = confirm("Please Sign up or login to continue");
@@ -60,12 +60,15 @@ const CourseDetails = async (props, users) => {
       <div className={styles.coursedetails__imagebody}>
         <Videocomponent
           loops
-          poster={data?.data?.attributes?.lesson[0].thumbnail}
+          poster={
+            data?.data?.attributes?.lesson[0]?.thumbnail?.data?.attributes?.url
+          }
           controls
           controlsList="nodownload"
           className="w-full aspect-video"
           source={{
-            src: data?.data?.attributes?.lesson[0].link,
+            src:data?.data?.attributes?.lesson[0]?.video?.data?.attributes
+              ?.url,
             type: "video/mp4",
             controls: true,
           }}

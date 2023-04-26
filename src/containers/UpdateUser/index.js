@@ -20,10 +20,16 @@ const UpdateUser = ({ users, userDetails, useredit }) => {
     (val) => val?.attributes?.user?.data?.id === user?.id
   );
 
+  
+
+
+
+
   console.log({ user, useriddata });
 
   return (
     <section className={styles.editprofile}>
+      
       {user ? (
         <FormikForm
           fields={editProfileFields}
@@ -44,6 +50,7 @@ const UpdateUser = ({ users, userDetails, useredit }) => {
                   }
                 );
               }
+              
             } catch (error) {
               console.log(error);
             }

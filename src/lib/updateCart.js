@@ -15,6 +15,8 @@ export const addToCart = async (productID, userId, items = 0) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/carts?populate=deep`,
+      // `${process.env.NEXT_PUBLIC_API_URL}/api/carts?populate=*`,
+
       {
         method: "POST",
         body: JSON.stringify({
@@ -59,3 +61,25 @@ export const updateCart = async (cartId, payload) => {
     console.error(error);
   }
 };
+
+// export const deleteCourse = async (courseId) => {
+//   try {
+//     const response = await fetch(
+//       `${process.env.NEXT_PUBLIC_API_URL}/api/course/${courseId}`,
+//       {
+//         method: "DELETE",
+//         body: JSON.stringify({
+//           data: payload,
+//         }),
+//         headers: {
+//           "Content-Type": "application/json",
+//           Accept: "application/json",
+//         },
+//       }
+//     );
+//     const json = await response.json();
+//     return json;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
