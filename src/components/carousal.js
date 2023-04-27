@@ -21,7 +21,22 @@ const Carousal = ({ children }) => {
       const element = scrollPort.firstElementChild;
       setElement(element);
     }
-  }, []);
+    scrollPort.addEventListener('scroll', () => {
+      if (scrollPort && element) {
+        const scrollerPadding = parseInt(
+          getComputedStyle(scrollPort)['padding-left'],
+        );
+
+        // calculate index of visible banner based on scroll position
+        const index = Math.round(
+          (scrollPort.scrollLeft + scrollerPadding) /
+            (element.clientWidth + scrollerPadding * 2),
+        );
+
+        setIndex(index);
+      }
+    });
+  }, [element]);
 
   const scrollLeft = useCallback(() => {
     if (scrollerRef.current && element) {
