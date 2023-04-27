@@ -17,13 +17,13 @@ const BannerCourses = ({ data }) => {
   } = videoState;
   const { video } = vid;
   // video?.data?.attributes?.url
-  console.log(data?.video?.data?.attributes?.url, "KnokKonok");
+  // console.log(data?.video?.data?.attributes?.url, "KnokKonok");
   useEffect(() => {
     videoRef?.current?.load();
     return () => {};
   }, [video?.data?.attributes?.url]);
 
-  console.log(videoRef?.current?.duration);
+  // console.log(videoRef?.current?.duration);
 
   return (
     <div className={styles.BannerCourses}>

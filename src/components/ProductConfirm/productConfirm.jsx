@@ -24,7 +24,7 @@ const ProductConfirm = ({
     updateCount,
     cartState: { cart },
   } = useCartProvider();
-  console.log(item, "checkItem");
+  // console.log(item, "checkItem");
 
   const incrementCount = () => {
     updateCount(

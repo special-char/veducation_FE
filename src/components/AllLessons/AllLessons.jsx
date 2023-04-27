@@ -14,7 +14,7 @@ const AllLessons = ({ data }) => {
   } = videoState;
   
   
-  console.log(videoState,"checkVideo");
+  // console.log(videoState,"checkVideo");
 
   return (
     <div className={styles.AllLessons}>
@@ -26,7 +26,7 @@ const AllLessons = ({ data }) => {
           onClick={() => {
 
             videoDispatch({ video: val, isPlaying: true });
-            console.log({ video: val, isPlaying: true },"heeeeee");
+            // console.log({ video: val, isPlaying: true },"heeeeee");
           }}
           key={val.id}
         >

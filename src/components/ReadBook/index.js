@@ -18,7 +18,7 @@ const ReadBook = ({ book, ...props }) => {
     // "https://ik.imagekit.io/p99x3nxgz/bhagvatgita.pdf?updatedAt=1679923614120"
     `${book?.data?.attributes?.pdf?.data?.attributes?.url}`
   );
-  console.log(book?.data?.attributes?.posterImage?.data?.attributes ,"Readboook");
+  // console.log(book?.data?.attributes?.posterImage?.data?.attributes ,"Readboook");
   // const [numPages, setNumPages] = useState(null);
 
   // function onFileChange(event) {

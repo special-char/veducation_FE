@@ -21,7 +21,7 @@ const CartItemList = () => {
           x?.product?.data?.attributes?.posterImageUrl?.data?.attributes?.url;
         const imageUrl = new URL(url, baseUrl).href;
 
-        console.log({ imageUrl, url: x });
+        // console.log({ imageUrl, url: x });
 
         return (
           <ProductConfirm

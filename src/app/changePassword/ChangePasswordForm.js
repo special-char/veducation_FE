@@ -15,7 +15,7 @@ const ChangePasswordForm = () => {
 
   async function onSubmit(values, { setFieldError }) {
     const res = await updatePassword(values, session?.data?.user?.accessToken);
-    console.log({ res });
+    // console.log({ res });
     if (!res.jwt) {
       if (res?.error?.details?.errors) {
         res?.error?.details?.errors?.map((item) => {

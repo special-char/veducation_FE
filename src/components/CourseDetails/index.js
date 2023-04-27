@@ -40,7 +40,7 @@ const CourseDetails = async (props, users) => {
   const data = await getCourseDetails(props?.params?.id);
   const ratingId = data?.data?.attributes?.ratings?.data[0]?.id;
   const rating = await getRating(ratingId);
-  console.log({data}, "VidLogCheck");
+  // console.log({data}, "VidLogCheck");
   // function onBuyClick() {
   //   if (!data?.data?.user) {
   //     const response = confirm("Please Sign up or login to continue");

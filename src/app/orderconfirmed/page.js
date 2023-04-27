@@ -79,10 +79,17 @@ const Page = async (props) => {
         ...x?.attributes?.product?.data?.attributes,
         ...x?.attributes?.purchase?.data?.attributes,
         ...x.id,
+        ...x,
       };
     });
 
-  console.log({ userrrr: user, purchaseData });
+  console.log(productList[0]?.attributes?.purchase, "kgfdngj");
+  console.log(
+    productList?.map((p, c) => {
+      return p;
+    }),
+    "jgneargnj"
+  );
 
   return (
     <section className="px-container md:p-0 pt-4 flex flex-col gap-5">
@@ -91,15 +98,17 @@ const Page = async (props) => {
         <PurchasedItems
           {...props}
           currentCartIds={currentCartIds}
-          purchaseData={purchaseData} 
+          purchaseData={purchaseData}
           user={user}
         />
       </div>
       <OrderDetails
-        orderCode={productList[0]?.orderCode}
-        date={
-          `${dateFormat.format(new Date(productList[0]?.date))}` ?? "4/10/2023"
+        orderCode={
+          productList[0]?.attributes?.purchase?.data?.attributes?.orderCode
         }
+        // date={
+        //   `${dateFormat.format(new Date(productList[0]?.date))}` ?? "4/10/2023"
+        // }
         total={`$ ${productList
           ?.reduce((p, c) => {
             return (p + c.price * c.items) * 1.07;

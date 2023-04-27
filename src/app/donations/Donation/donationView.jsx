@@ -42,9 +42,9 @@ const users = [
 const DonationView = async () => {
   const donations = await getDonationsData();
   const data = donations?.data;
-  console.log({
-    dataDonation: data[0]?.attributes?.image?.data?.attributes?.url,
-  });
+  // console.log({
+  //   dataDonation: data[0]?.attributes?.image?.data?.attributes?.url,
+  // });
   return (
     <div className={styles.main} id="View">
       <h5 className="">Donations</h5>

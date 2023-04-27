@@ -6,7 +6,7 @@ const Checkbox = ({
   options,
   label,
 }) => {
-  console.log({ values });
+  // console.log({ values });
   return (
     <div>
       <label htmlFor="" className="text-sm2 text-neutral-150">

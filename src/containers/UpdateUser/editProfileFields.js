@@ -4,7 +4,7 @@ import Input from "@/components/InputComponent";
 import UploadImage from "@/components/UploadImage";
 
 export const editProfileInitValue = (props) => {
-  console.log({ props });
+  // console.log({ props });
   return {
     profileimage: null,
     username: props.username ?? "",

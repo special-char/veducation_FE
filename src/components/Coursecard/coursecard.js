@@ -26,7 +26,7 @@ const Coursecard = ({
   const data = useSession();
 
   const user = users;
-  console.log({ img: img?.data?.attributes?.url });
+  // console.log({ img: img?.data?.attributes?.url });
 
   return (
     <Link

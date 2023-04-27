@@ -14,7 +14,7 @@ export const getCartItems = async (id) => {
 export const addToCart = async (productID, userId, items = 0) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/carts?populate=deep`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/carts?populate[product][populate][0]=posterImageUrl`,
       // `${process.env.NEXT_PUBLIC_API_URL}/api/carts?populate=*`,
 
       {

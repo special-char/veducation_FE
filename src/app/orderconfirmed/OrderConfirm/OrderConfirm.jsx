@@ -18,7 +18,7 @@ const OrderSucess = ({ date }) => {
           Arriving by :{" "}
           <span className="text-[#4CA137] text-base font-bold">
             {/* {date.date}th {date.month} {date.year} */}
-            {`${dateFormat.format(new Date(date))}`}
+            {/* {`${dateFormat.format(new Date(date))}`} */}
           </span>
         </p>
       </div>

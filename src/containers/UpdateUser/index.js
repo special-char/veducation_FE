@@ -25,7 +25,7 @@ const UpdateUser = ({ users, userDetails, useredit }) => {
 
 
 
-  console.log({ user, useriddata });
+  // console.log({ user, useriddata });
 
   return (
     <section className={styles.editprofile}>
