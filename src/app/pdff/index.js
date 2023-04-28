@@ -296,25 +296,7 @@
 
 // export default MyPdfViewer;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// this is letest 
+// this is letest
 
 // import React, { useState } from "react";
 // import { Document, Page, pdfjs } from "react-pdf";
@@ -455,10 +437,41 @@
 
 // export default MyPdfViewer;
 
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import HTMLFlipBook from "react-pageflip";
+// import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
+// import "./style.module.css";
 
+// import samplePDF from "../../../public/pdf/Ramayana.pdf";
 
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
+// const width = 300;
+// const height = 424;
 
+// const Page = React.forwardRef(({ pageNumber }, ref) => {
+//   return (
+//     <div ref={ref}>
+//       <ReactPdfPage pageNumber={pageNumber} width={width} />
+//     </div>
+//   );
+// });
+
+// function Test() {
+//   return (
+//     <Document file={samplePDF}>
+//       <HTMLFlipBook width={width} height={height}>
+//         <Page pageNumber={1} />
+//         <Page pageNumber={2} />
+//         <Page pageNumber={3} />
+//       </HTMLFlipBook>
+//     </Document>
+//   );
+// }
+// export default Test;
+
+// ReactDOM.render(<Test />, document.getElementById("app"));
 
 
 

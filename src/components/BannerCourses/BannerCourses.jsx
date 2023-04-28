@@ -38,8 +38,8 @@ const BannerCourses = ({ data }) => {
           className="w-full aspect-video"
           source={{
             src:
-              data?.video?.data?.attributes?.url ??
-              video?.data?.attributes?.url,
+              video?.data?.attributes?.url ??
+              data?.video?.data?.attributes?.url,
             type: "video/mp4",
             controls: true,
           }}

@@ -15,7 +15,6 @@ const Dropdown = ({
         {props.label}
       </label>
       <select
-        onChange={onchange}
         className={clsx(
           " placeholder-secondary  bg-[#FCE9CF] border mr-0 border-[#F5D9B1] rounded-md text-base",
           {

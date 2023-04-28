@@ -15,7 +15,9 @@ import { RatingContextProvider } from "@/context/RatingContext";
 import { getAllRatings, getRating } from "@/lib/getRatings";
 import { PurchaseContextProvider } from "@/context/PurchasContextProvider";
 import { CourseVideoContextProvider } from "@/context/CourseVideoContext";
+import Loader from "./Loader/loader";
 
+// import PDFBOOK from './pdff/index';
 const myFont = localFont({
   src: "../../public/fonts/sf-pro-display-regular-webfont.woff2",
   variable: "--font-SF-Display",
@@ -60,14 +62,18 @@ export default async function RootLayout({ children }) {
       */}
       <head />
 
+	{/* <script src="./pdff/index">
+	</script> */}
+
       <body>
+        
         <AuthContext session={session}>
           <AppContextProvider user={user}>
             <RatingContextProvider>
               <CartContextProvider>
                 <PurchaseContextProvider>
                   <CourseVideoContextProvider>
-                    <Suspense fallback={<loading>loading....</loading>}>
+                    <Suspense fallback={<Loader/>}>
                       <main className="bg-background md:px-container h-full scroll-pb-8">
                         <Header
                           {...defaultCartItems}
