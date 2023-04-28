@@ -1,4 +1,6 @@
 "use client";
+import Image from 'next/image';
+import Script from 'next/script';
 // import { useState } from "react";
 // import { Document, Page, pdfjs } from "react-pdf";
 // import ReactPaginate from "react-paginate";
@@ -476,4 +478,43 @@
 
 
 
+import React from 'react'
 
+const PdfView = ({pdfUrl,posterUrl,pdfData,pdfTitle}) => {
+  return (
+    <>
+  <title>PubHTML5 LightBox Embed Demo</title>
+  <Script src={pdfUrl}/>     
+
+  <Image
+    src={posterUrl}
+    data-rel="fh5-light-box-demo"
+    data-href={pdfData}
+    data-width={380}
+    data-height={550}
+    data-title={pdfTitle}
+    alt=''
+    width={430}
+    height={400}
+  />
+  
+</>
+
+  )
+}
+
+export default PdfView
+
+
+
+
+// <!DOCTYPE HTML>
+// <html>
+// <head>
+//         <title>PubHTML5 LightBox Embed Demo</title>
+//         <script src='//pubhtml5.com/plugin/LightBox/js/pubhtml5-light-box-api-min.js'></script>
+// </head>
+// <body>
+//         <img src='https://online.pubhtml5.com/lhuod/anrz/files/shot.jpg' data-rel='fh5-light-box-demo' data-href='https://online.pubhtml5.com/lhuod/anrz/' data-width='900' data-height='500' data-title='Ramayana'>
+// </body>
+// </html>

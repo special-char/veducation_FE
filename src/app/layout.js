@@ -16,6 +16,8 @@ import { getAllRatings, getRating } from "@/lib/getRatings";
 import { PurchaseContextProvider } from "@/context/PurchasContextProvider";
 import { CourseVideoContextProvider } from "@/context/CourseVideoContext";
 import Loader from "./Loader/loader";
+import Head from "next/head";
+import Script from "next/script";
 
 // import PDFBOOK from './pdff/index';
 const myFont = localFont({
@@ -64,9 +66,10 @@ export default async function RootLayout({ children }) {
 
 	{/* <script src="./pdff/index">
 	</script> */}
+  
 
-      <body>
-        
+      <body>     
+        <Script src='//pubhtml5.com/plugin/LightBox/js/pubhtml5-light-box-api-min.js'/>     
         <AuthContext session={session}>
           <AppContextProvider user={user}>
             <RatingContextProvider>

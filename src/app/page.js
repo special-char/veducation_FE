@@ -8,6 +8,7 @@ export default function Page(props) {
     <div className="h-full xs:px-container md:px-0 overflow-hidden">
       <HomePage {...props} />
       {/* <Test/> */}
+
     </div>
   );
 }

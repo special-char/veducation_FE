@@ -6,6 +6,9 @@ import Arrow from "../../../public/icons/arrow.svg";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import styles from "./readbook.module.css";
 import Link from "next/link";
+import Script from "next/script";
+import Image from "next/image";
+import PdfView from "@/app/pdff";
 
 // const options = {
 //   cMapUrl: "cmaps/",
@@ -28,6 +31,7 @@ const ReadBook = ({ book, ...props }) => {
   // function onDocumentLoadSuccess({ numPages: nextNumPages }) {
   //   setNumPages(nextNumPages);
   // }
+  console.log(book?.data?.attributes?.title,"whatttt");
 
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -58,17 +62,11 @@ const ReadBook = ({ book, ...props }) => {
     <div className={styles.readbook}>
       <header className="App-header">
         <div className="flex items-center gap-3 py-5 px-4 border-b border-neutral-250">
-          <Link href="/readbook/1">
-            <span className="w-6 h-6 flex p-2 items-center justify-center border border-neutral-150 rounded-lg">
-              <Arrow className="rotate-180 w-2  " />
-            </span>
-          </Link>
           <div className="flex gap-2 font-bold text-base py-2">
-            <p>Chep 02</p> |{" "}
             <p>{book?.data?.attributes?.pdf?.data?.attributes?.name}</p>
           </div>
         </div>
-        <div className="flex justify-between text-sm2 w-full py-2 px-4">
+        {/* <div className="flex justify-between text-sm2 w-full py-2 px-4">
           {pageNumber > 1 && (
             <button
               className="flex items-center gap-2"
@@ -85,8 +83,10 @@ const ReadBook = ({ book, ...props }) => {
               Next Page <Arrow className="w-1" />
             </button>
           )}
-        </div>
-        <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+        </div> */}
+
+        <PdfView pdfData={book?.data?.attributes?.pdfData} pdfUrl={book?.data?.attributes?.pdfUrl} posterUrl={book?.data?.attributes?.posterUrl} pdfTitle={book?.data?.attributes?.title} />
+        {/* <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
           <div className="overflow-visible">
             <Page
               wrap={false}
@@ -98,14 +98,14 @@ const ReadBook = ({ book, ...props }) => {
               renderTextLayer={false}
             />
           </div>
-        </Document>
-        <div className="fixed bottom-20 bg-background w-full flex items-center justify-end gap-6 text-base pt-3 px-5">
+        </Document> */}
+        {/* <div className="fixed bottom-20 bg-background w-full flex items-center justify-end gap-6 text-base pt-3 px-5">
           <Arrow onClick={changePageBack} className="rotate-180 w-2" />
           <div>
             <span className="font-bold">Page {pageNumber}</span> of {numPages}
           </div>
           <Arrow onClick={changePageNext} className="w-2" />
-        </div>
+        </div> */}
         {/* <div className="absolute w-full">
           {pageNumber > 1 && (
             <button onClick={changePageBack}>Previous Page</button>
